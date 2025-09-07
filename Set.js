@@ -1,8 +1,8 @@
 (function(Scratch) {'use strict';
-if(!vm.runtime.extensionStorage['SET']){vm.runtime.extensionStorage['SET']=new Set()}
 const com0=Scratch.BlockType.COMMAND;const str0=Scratch.ArgumentType.STRING;
 const bol0=Scratch.BlockType.BOOLEAN;const rep0=Scratch.BlockType.REPORTER;
 const vm=Scratch.vm;
+if(!vm.runtime.extensionStorage['SET']){vm.runtime.extensionStorage['SET']=new Set()}
 if(!Scratch.extensions.unsandboxed){throw new Error('unsandboxed');}
 class SET{getInfo(){return {id:'SET',name:'SET',color1:'#0092a0',color2:'#b3680f',color3:'#90c144',blocks: [
 {opcode:'a0',blockType:rep0,text:'new Set[a]',arguments:{a:{type:str0,defaultValue:''}}},
