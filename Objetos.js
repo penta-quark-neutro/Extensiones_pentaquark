@@ -1,12 +1,12 @@
 (function(Scratch) {'use strict';
 if(!vm.runtime.extensionStorage['exps']){vm.runtime.extensionStorage['exps']={};}
-var Objglob={},fun=1,dap=1,ops=1,obs=1;
+var Objglob={},fun=1,dap=1,ops=1,obs=1;const AsyncFunction=async function(){}.constructor;
 function ref(){Scratch.vm.extensionManager.refreshBlocks();}
 const com0=Scratch.BlockType.COMMAND,vgbb=Scratch.BlockType.BUTTON,str0=Scratch.ArgumentType.STRING;
 const bol=Scratch.BlockType.BOOLEAN;const rep=Scratch.BlockType.REPORTER;
 const bol1=Scratch.ArgumentType.BOOLEAN;const txt=Scratch.ArgumentType.STRING;
 if(!Scratch.extensions.unsandboxed){throw new Error('This extension must run unsandboxed');}
-class exps{getInfo(){return {id:'exps',name:'exps',color1:'#783305',color2:'#462613',color3:'#a32648',blocks: [
+class exps{getInfo(){return {id:'exps',name:'exps',color1:'#783305',color2:'#462613',color3:'#e39668',blocks: [
 {func:'herr0',blockType:vgbb,text:'Redes pentaquark'},
 {func:'herr1',blockType:vgbb,hideFromPalette:!fun,text:'Mostrar funciones',},{func:'herr2',blockType:vgbb,hideFromPalette:fun,text:'Ocultar funciones'},
 {func:'herr3',blockType:vgbb,hideFromPalette:!dap,text:'Mostrar datos y propiedades',},{func:'herr4',blockType:vgbb,hideFromPalette:dap,text:'Ocultar datos y propiedades'},
@@ -21,6 +21,7 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#783305',color2:'#462
 {opcode:'me35',blockType:rep,text:'new[a](...[b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me15',blockType:rep,text:'Apply[a][b][c]',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'funcion'},b:{type:txt,defaultValue:'this'},c:{type:txt,defaultValue:'Array'}}},
 {opcode:'me36',blockType:rep,text:'Function(...[a],[b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'Args'},b:{type:txt,defaultValue:'Estructura'}}},
+{opcode:'me40',blockType:rep,text:'AsyncFunction(...[a],[b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'Args'},b:{type:txt,defaultValue:'Estructura'}}},
 {opcode:'me37',blockType:rep,text:'try{[a](...[b])}',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {blockType:"label",text:"datos y propiedades",hideFromPalette:dap},//----------------------------------------------------------------------------------------------------------------------
 {opcode:'me00',blockType:rep,text:'array[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:'tr'}}},
@@ -60,18 +61,16 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#783305',color2:'#462
 {opcode:'me20',blockType:rep,text:'Objeto Global',hideFromPalette:obs,disableMonitor:1},
 {opcode:'me25',blockType:rep,text:'Objeto Global Permanente',hideFromPalette:obs,disableMonitor:1},
 {opcode:'me26',blockType:com0,text:'Vaciar Objeto Global Permanente',hideFromPalette:obs,disableMonitor:1},
+{opcode:'me39',blockType:rep,text:'typeof[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me41',blockType:com0,text:'[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
 
-],menus:{pr:{acceptReporters:0,items:['value','writable','enumerable','configurable']},in:{acceptReporters:0,items:['vm','target','util','Scratch','Math','Atomics','Object','Symbol','Array','String','window','Crypto']},vals:{acceptReporters:0,items:['true','false','Undefined','NaN']}}
+],menus:{pr:{acceptReporters:0,items:['value','writable','enumerable','configurable']},in:{acceptReporters:0,items:['vm','target','util','Scratch','Math','Atomics','Object','Symbol','Array','String','window','Crypto']},vals:{acceptReporters:0,items:['true','false','Undefined','NaN','null']}}
 };}
 herr0(){Scratch.openWindow('https://linktr.ee/Penta_quark_neutro');}
 herr1(){fun=0;ref();}herr2(){fun=1;ref();}herr3(){dap=0;ref();}herr4(){dap=1;ref();}
 herr5(){ops=0;ref();}herr6(){ops=1;ref();}herr7(){obs=0;ref();}herr8(){obs=1;ref();}
-me00(ar){return [ar.a];}
-me0(ar){return [ar.a,ar.b];}
-me01(ar){return [ar.a,ar.b,ar.c];}
-me10(ar){return [ar.a,ar.b,ar.c,ar.d];}
-me1(){return {};}
-me2(ar){return Object.fromEntries(ar.a);}
+me00(ar){return [ar.a];}me0(ar){return [ar.a,ar.b];}me01(ar){return [ar.a,ar.b,ar.c];}me10(ar){return [ar.a,ar.b,ar.c,ar.d];}
+me1(){return {};}me2(ar){return Object.fromEntries(ar.a);}
 me3(ar){return Object.getOwnPropertyNames(ar.a);}
 me4(ar){return Object.defineProperties(ar.a,ar.b)}
 me5(ar){var t=Reflect.getOwnPropertyDescriptor(ar.a,ar.b);switch(ar.c){case'value':return t.value;break;case'writable':return t.writable;break;case'enumerable':return t.enumerable;break;case'configurable':return t.configurable;break;}}
@@ -104,7 +103,8 @@ me29(ar){return ar.a(...ar.b);}me35(ar){return new ar.a(...ar.b);}
 me30(ar){return Object.seal(ar.a);}
 me31(ar){return Object.isSealed(ar.a);}
 me32(ar){return Object.getPrototypeOf(ar.a)}
-me36(ar){return Function(...ar.a,ar.b)}
+me36(ar){return Function(...ar.a,ar.b)}me40(ar){return AsyncFunction(...ar.a,ar.b)}
 me37(ar){try{return ar.a(...ar.b)}catch(a){return a;}}
-me38(ar){switch(ar.a){case'true':return true;case'false':return false;case'NaN':return NaN;case'Undefined':return ;}}
+me38(ar){switch(ar.a){case'true':return true;case'false':return false;case'NaN':return NaN;case'Undefined':return ;case'null':return null;}}
+me39(ar){return typeof(ar.a)}me41(){}
 }Scratch.extensions.register(new exps());})(Scratch);
