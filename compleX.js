@@ -1,4 +1,4 @@
-(function(Scratch){'use strict';
+(function(Scratch){'use strict';//por el (pentaquark neutro, penta quark neutro) y neutral auream
 var vgd1=Scratch.ArgumentType.NUMBER;var vgd2=Scratch.ArgumentType.STRING;var vgbt=Scratch.BlockType.REPORTER;var euler=2.718281828459045235360287;
 var vgbb=Scratch.BlockType.BUTTON;let opciones=false;let bloqueslentos=true;let complejos=true;let cuaterniones=true;let octaniones=true;
 if(!Scratch.extensions.unsandboxed){throw new Error('This extension must run unsandboxed');}class Complejospentaquark{getInfo(){return{id:'Complejospent',name:'Numeros Hiper Complejos',color1:'#555555',color2:'#ff00ff',color3:'#00ffff',blocks:[//circulo,anillo,bloque.

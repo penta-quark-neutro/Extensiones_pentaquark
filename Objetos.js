@@ -1,4 +1,4 @@
-(function(Scratch) {'use strict';
+(function(Scratch) {'use strict';//por el (pentaquark neutro, penta quark neutro) y neutral auream
 if(!vm.runtime.extensionStorage['exps']){vm.runtime.extensionStorage['exps']={};}
 var Objglob={},fun=1,dap=1,obs=1,pun=0;const AsyncFunction=async function(){}.constructor,GeneratorFunction=function*(){}.constructor,AsyncGeneratorFunction=async function*(){}.constructor;
 function ref(){Scratch.vm.extensionManager.refreshBlocks();}
@@ -10,7 +10,7 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {func:'herr3',blockType:vgbb,hideFromPalette:!dap,text:'Mostrar datos y propiedades',},{func:'herr4',blockType:vgbb,hideFromPalette:dap,text:'Ocultar datos y propiedades'},
 {func:'herr5',blockType:vgbb,hideFromPalette:!obs,text:'Mostrar Objetos',},{func:'herr6',blockType:vgbb,hideFromPalette:obs,text:'Ocultar Objetos'},
 {blockType:"label",text:"Uso de funciones",hideFromPalette:fun},//--------------------------------------------------------------------------------------------------------------------------------
-{func:'herr7',blockType:vgbb,hideFromPalette:!pun,text:'Ocultar punto funcion',},{func:'herr8',blockType:vgbb,hideFromPalette:pun,text:'Mostrar punto funcion'},
+{func:'herr7',blockType:vgbb,hideFromPalette:!pun||fun,text:'Ocultar punto funcion',},{func:'herr8',blockType:vgbb,hideFromPalette:pun||fun,text:'Mostrar punto funcion'},
 {opcode:'me27',blockType:rep,text:'[a]()',hideFromPalette:fun||pun,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me28',blockType:rep,text:'[a]([b])',hideFromPalette:fun||pun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me29',blockType:rep,text:'[a](...[b])',hideFromPalette:fun||pun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
@@ -73,7 +73,7 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me39',blockType:rep,text:'typeof[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me41',blockType:com0,text:'[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 
-],menus:{pr:{acceptReporters:0,items:['value','writable','enumerable','configurable']},in:{acceptReporters:0,items:['vm','target','util','Scratch','Math','Atomics','Object','Symbol','Array','String','window','Crypto']},vals:{acceptReporters:0,items:['true','false','Undefined','NaN','null','Infinity']}}
+],menus:{pr:{acceptReporters:0,items:['value','writable','enumerable','configurable']},in:{acceptReporters:0,items:['vm','target','util','Scratch','Math','Atomics','Object','Symbol','Array','String','window','Crypto','Map','Set']},vals:{acceptReporters:0,items:['true','false','Undefined','NaN','null','Infinity']}}
 };}
 herr0(){Scratch.openWindow('https://linktr.ee/Penta_quark_neutro');}
 herr1(){fun=0;ref();}herr2(){fun=1;ref();}herr3(){dap=0;ref();}herr4(){dap=1;ref();}
@@ -88,7 +88,7 @@ me7(ar){return Reflect.set(ar.a,ar.b,ar.c);}me7_2(ar){ar.a[ar.b]=ar.c}
 me8(ar){return Reflect.has(ar.a,ar.b);}
 me9(ar){var h=ar.a;Reflect.deleteProperty(h,ar.b);return h;}me9_2(ar){Reflect.deleteProperty(ar.a,ar.b);}
 me11(ar){return JSON.stringify(ar.a);}
-me12(ar,util){switch(ar.a){case'vm':return Scratch.vm;case'target':return util.target;case'util':return util;case'Scratch':return Scratch;case'Math':return Math;case'Atomics':return Atomics;case'Object':return Object;case'Symbol':return Symbol;case'Array':return Array;case'String':return String;case'window':return window;case'Crypto':return Crypto;}}
+me12(ar,util){switch(ar.a){case'vm':return Scratch.vm;case'target':return util.target;case'util':return util;case'Scratch':return Scratch;case'Math':return Math;case'Atomics':return Atomics;case'Object':return Object;case'Symbol':return Symbol;case'Array':return Array;case'String':return String;case'window':return window;case'Crypto':return Crypto;case'Map':return Map;case'Set':return Set;}}
 me13(ar){return JSON.parse(ar.a);}
 me14(ar){return Object.is(ar.a,ar.b);}
 me15(ar){return Reflect.apply(ar.a,ar.b,ar.c);}
@@ -114,7 +114,7 @@ me37(ar){try{return ar.a(...ar.b)}catch(a){return a;}}
 me38(ar){switch(ar.a){case'true':return true;case'false':return false;case'NaN':return NaN;case'Undefined':return ;case'null':return null;case'Infinity':return Infinity;}}
 me39(ar){return typeof(ar.a)}me41(){}me42(ar){return GeneratorFunction(...ar.a,ar.b)}me43(ar){return AsyncGeneratorFunction(...ar.a,ar.b)}me44(ar){return ar.a.next(ar.b)}
 me45(ar){return ar.a.return(ar.b)}me46(ar){return ar.a.trow(new Error(ar.b))}
-me48(ar){return ar.a[ar.c]();}me49(ar){return new ar.a[ar.c]();}
-me50(ar){return ar.a[ar.c](ar.b);}me51(ar){return new ar.a[ar.c](ar.b);}
-me52(ar){return ar.a[ar.c](...ar.b);}me53(ar){return new ar.a[ar.c](...ar.b);}
+me48(ar){return ar.a[ar.c]();}me51(ar){return new ar.a[ar.c]();}
+me49(ar){return ar.a[ar.c](ar.b);}me52(ar){return new ar.a[ar.c](ar.b);}
+me50(ar){return ar.a[ar.c](...ar.b);}me53(ar){return new ar.a[ar.c](...ar.b);}
 }Scratch.extensions.register(new exps());})(Scratch);

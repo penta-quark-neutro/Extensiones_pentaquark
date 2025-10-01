@@ -1,7 +1,6 @@
-//ⁿ⁰¹²³⁴⁵⁶⁷⁸⁹ΔΘΛΞΣאΨΩαφ∞≈≡↑←→↓↔↕∂∏√ƍ•ₓₔₐₑₒ∈∨∋⇒⇔∴∠⌒∫×
-(function(Scratch) {'use strict';
+(function(Scratch) {'use strict';//por el (pentaquark neutro, penta quark neutro) y neutral auream
 const txt=Scratch.ArgumentType.STRING;const reportero=Scratch.BlockType.REPORTER;const numero=Scratch.ArgumentType.NUMBER;const vgbb=Scratch.BlockType.BUTTON;
-const evaluador=Scratch.BlockType.BOOLEAN;const ops=true;const cons=true;const Ext=true;const vect=true;
+const evaluador=Scratch.BlockType.BOOLEAN;var ops=true,cons=true,Ext=true;
 if(!Scratch.extensions.unsandboxed){throw new Error('This extension must run unsandboxed');}
 class minmatespentaquark{getInfo(){return{id:'minmatespentaquark',name:'Pequeñas matematicas',color1:'#555555',color2:'#ffff00',color3:'#00ff00',blocks:[
 //circulo,anillo,bloque.
@@ -46,22 +45,6 @@ class minmatespentaquark{getInfo(){return{id:'minmatespentaquark',name:'Pequeña
 {opcode:'φ0',blockType:reportero,text:'φ0',hideFromPalette:cons,disableMonitor:1,},{opcode:'µ0',blockType:reportero,text:'µ0',hideFromPalette:cons,disableMonitor:1},
 {opcode:'inf0',blockType:reportero,text:'+∞',hideFromPalette:cons,disableMonitor:1,},{opcode:'inf1',blockType:reportero,text:'-∞',hideFromPalette:cons,disableMonitor:1,},
 {opcode:'γ',blockType:reportero,text:'γ',hideFromPalette:cons,disableMonitor:1},
-{blockType:"label",text:"trabajando vectores",},//-----------------------------------------------------------------------------------------------------------------------
- {func:'herram7',blockType:vgbb,hideFromPalette:!vect,text:'mostrar vectores',},{func:'herram8',blockType:vgbb,hideFromPalette:vect,text:'ocultar vectores',},
-{opcode:'prodpunto',blockType:reportero,text:'[a]•[b]',hideFromPalette:vect,arguments:{a:{type:txt,defaultValue:'1,5'},b:{type:txt,defaultValue:'2,6'}}},
-{opcode:'prodcruz',blockType:reportero,text:'[a]×[b]',hideFromPalette:vect,arguments:{a:{type:txt,defaultValue:'1,5,8'},b:{type:txt,defaultValue:'2,6,9'}}},
-{opcode:'norma',blockType:reportero,text:'||[a]||',hideFromPalette:vect,arguments:{a:{type:txt,defaultValue:'1,5,8'}}},
-{opcode:'escvec',blockType:reportero,text:'V[a]*E[b]',hideFromPalette:vect,arguments:{a:{type:txt,defaultValue:'1,5,8'},b:{type:numero,defaultValue:'2'}}},
-{opcode:'vector',blockType:evaluador,text:'¿V[a]?',hideFromPalette:vect,arguments:{a:{type:Scratch.ArgumentType.STRING,defaultValue:'4,4'}}},
-{opcode:'vmv',blockType:reportero,text:'[a]+[b]',hideFromPalette:vect,arguments:{a:{type:txt,defaultValue:'1,5,8'},b:{type:txt,defaultValue:'2,5,4'}}},
-{opcode:'vnv',blockType:reportero,text:'[a]-[b]',hideFromPalette:vect,arguments:{a:{type:txt,defaultValue:'1,5,8'},b:{type:txt,defaultValue:'2,5,4'}}},
-{opcode:'prt',blockType:reportero,text:'V[a] parte[b]',hideFromPalette:vect,arguments:{a:{type:txt,defaultValue:'1,5,8'},b:{type:numero,defaultValue:'2'}}},
-{opcode:'und',blockType:reportero,text:'unir[a],[b]',hideFromPalette:vect,arguments:{a:{type:txt,defaultValue:'1'},b:{type:txt,defaultValue:'2'}}},
-{opcode:'rx',blockType:reportero,text:'[a]∈Rⁿ',hideFromPalette:vect,arguments:{a:{type:txt,defaultValue:'1,4'}}},
-{opcode:'producto_Kronecker',blockType:reportero,text:'[a]⊗[b]',hideFromPalette:vect,arguments:{a:{type:txt,defaultValue:'1,5'},b:{type:txt,defaultValue:'2,5'}}},
-{opcode:'shift',blockType:reportero,text:'Shift[a]',hideFromPalette:vect,arguments:{a:{type:txt,defaultValue:'1,5,8'}}},
-{opcode:'pop',blockType:reportero,text:'pop[a]',hideFromPalette:vect,arguments:{a:{type:txt,defaultValue:'1,5,8'}}},
-{opcode:'rem',blockType:reportero,text:'remplazar p[a] de[b] con[c]',hideFromPalette:vect,arguments:{a:{type:txt,defaultValue:'1'},b:{type:txt,defaultValue:'1,4,8'},c:{type:txt,defaultValue:'10'}}},
 ],};}
 //herramientas----------------------------------------------------------------------------------------------------------
 herram0(){Scratch.openWindow('https://linktr.ee/Penta_quark_neutro');}
@@ -71,8 +54,6 @@ herram3(){cons=false;Scratch.vm.extensionManager.refreshBlocks();}
 herram4(){cons=true;Scratch.vm.extensionManager.refreshBlocks();}
 herram5(){Ext=false;Scratch.vm.extensionManager.refreshBlocks();}
 herram6(){Ext=true;Scratch.vm.extensionManager.refreshBlocks();}
-herram7(){vect=false;Scratch.vm.extensionManager.refreshBlocks();}
-herram8(){vect=true;Scratch.vm.extensionManager.refreshBlocks();}
 //minimas matematicas----------------------------------------------------------------------------------------------------------
 delta_dirac(ar){if(ar.a==ar.x){return 1/0;}else{return 0;}}
 signo_x(ar){return Math.sign(ar.x)}
@@ -97,13 +78,12 @@ escalon(ar){if(ar.k>=0){return 1;}else{return 0;}}
 fract(ar){if(ar.k>=0){return ar.k-Math.floor(ar.k);}else{return ar.k-Math.ceil(ar.k);}}
 enter(ar){return Math.trunc(ar.k);}
 Logx(ar){return Math.log(ar.x)/Math.log(ar.k);}
-fact(ar){let num=1;let num2=1;
-for(num=1;num<=ar.k;num++){num2=num2*num;}return num2;}
+fact(ar){let num=1,num2=1;for(num=1;num<=ar.k;num++){num2*=num;}return num2;}
 gamma(ar){return Math.pow(2*3.14159265358979/ar.k,1/2)*Math.pow((1/2.71828182845905*(ar.k+(1/(12*ar.k-(1/(10*ar.k)))))),ar.k);}
 mei(ar){return (ar.a>=ar.b);}
 mnei(ar){return (ar.a<=ar.b);}
 ni(ar){return (ar.a!=ar.b);}
-tetra(ar){var dat0=ar.a;var i=0;var n=ar.b-1;while(i<n){dat0=ar.a**dat0;i++;}
+tetra(ar){var dat0=ar.a,i=0,n=ar.b-1;while(i<n){dat0=ar.a**dat0;i++;}
 return dat0;}
 //constantes----------------------------------------------------------------------------------------------------------
 c(){return 299792458;}
@@ -121,47 +101,6 @@ E(){return 1.602176565*Math.pow(10,-19);}
 inf0(){return 1/0;}
 inf1(){return -(1/0);}
 γ(){return 0.577215664901632;}
-//vectores----------------------------------------------------------------------------------------------------------
-prodpunto(ar){if(ar.a.includes(',')&&ar.b.includes(',')){var vec1=Array.from(ar.a.split(','));var vec2=Array.from(ar.b.split(','));
-if(vec1.lenght=vec2.length){var i=0;var fin=0;
-while(i<(vec1.length)){fin=fin+((vec1[i]*1)*(vec2[i]*1));
-i=i+1;}}else{return 'vectores no sumables';}
-return fin*1;}else{return 'no valido';}}
-prodcruz(ar){if(ar.a.includes(',')&&ar.b.includes(',')){var vec1=Array.from(ar.a.split(','));var vec2=Array.from(ar.b.split(','));
-if((vec1.lenght=3)&&(vec2.length=3)){return (vec1[1]*vec2[2]-vec1[2]*vec2[1])+','+(vec1[2]*vec2[0]-vec1[0]*vec2[2])+','+(vec1[0]*vec2[1]-vec1[1]*vec2[0]);}}else{return 'vector R3 requerido';}}
-norma(ar){var vec1=Array.from(ar.a.split(','));var i=0;var fin=0;
-while(i<(vec1.length)){fin=fin+(Math.pow(vec1[i]*1,2));i++;}
-return Math.pow(fin,0.5);}
-escvec(ar){var vec1=Array.from(ar.a.split(','));var i=1;var fin=vec1[0]*ar.b;
-while(i<(vec1.length)){fin=fin+','+vec1[i]*ar.b;i++;}
-return fin;}
-vector(ar){var dat0=ar.a.toString();
-if(dat0.includes(',')){var vec1=Array.from(ar.a.split(','));var i=0;var fin=0;
-while(i<(vec1.length)){fin=fin+vec1[i]*1;i++;}
-return ((fin/fin)==1);}else{return false;}}
-vmv(ar){var vec1=Array.from(ar.a.split(','));var vec2=Array.from(ar.b.split(','));var i=1;var fin=vec1[0]*1+vec2[0]*1;
-while(i<(vec1.length)){fin=fin+','+(vec1[i]*1+vec2[i]*1);i++;}
-return fin;}
-prt(ar){return ar.a.split(',')[ar.b-1]}
-und(ar){return ar.a+','+ar.b;}
-rx(ar){var vec1=Array.from(ar.a.split(','));
-return vec1.length;}
-vnv(ar){var vec1=Array.from(ar.a.split(','));var vec2=Array.from(ar.b.split(','));var i=1;var fin=vec1[0]*1-vec2[0]*1;
-while(i<(vec1.length)){fin=fin+','+(vec1[i]*1-vec2[i]*1);i++;}
-return fin;}
-producto_Kronecker(ar){function escvec(vec,esc){var vec1=Array.from(vec.split(','));var i=1;var fin=vec1[0]*esc;while(i<(vec1.length)){fin=fin+','+vec1[i]*esc;i++;}
-return fin;}
-var vec2=Array.from(ar.a.split(','));var j=1;var out=escvec(ar.b,vec2[0]);
-while(j<(vec2.length)){out=out+','+escvec(ar.b,vec2[j]);j++;}
-return out;}
-shift(ar){var vec1=Array.from(ar.a.split(','));
-vec1.shift();
-return vec1.toString();}
-pop(ar){var vec1=Array.from(ar.a.split(','));
-vec1.pop();
-return vec1.toString();}
-rem(ar){var vec1=Array.from(ar.b.split(','));vec1[ar.a-1]=ar.c;
-return vec1.toString();}
 //Azar----------------------------------------------------------------------------------------------------------
 prse(ar){return (ar.x>Math.random());}
 prseve(ar){return 1/ar.x;}

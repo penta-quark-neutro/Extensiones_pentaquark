@@ -1,4 +1,4 @@
-(function(Scratch) {'use strict';
+(function(Scratch) {'use strict';//por el (pentaquark neutro, penta quark neutro) y neutral auream
 const com0=Scratch.BlockType.COMMAND;const str0=Scratch.ArgumentType.STRING;
 const bol0=Scratch.BlockType.BOOLEAN;const rep0=Scratch.BlockType.REPORTER;
 class RSA{getInfo(){return {id:'RSA',name:'RSA',color1:'#f80712',color2:'#0d500f',color3:'#00c055',blocks: [

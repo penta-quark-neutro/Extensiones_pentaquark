@@ -1,6 +1,6 @@
-(function(Scratch) {'use strict';
+(function(Scratch) {'use strict';//por el (pentaquark neutro, penta quark neutro) y neutral auream
 const txt=Scratch.ArgumentType.STRING,rep=Scratch.BlockType.REPORTER,num=Scratch.ArgumentType.NUMBER,vgbb=Scratch.BlockType.BUTTON,evaluador=Scratch.BlockType.BOOLEAN,com=Scratch.BlockType.COMMAND;
-const vm=Scratch.vm,runtime=vm.runtime;let Gvec=[],ops=1,vecs=1,prop=1,glo=1,cc=1,cuat=1,oct=1;
+const vm=Scratch.vm,runtime=vm.runtime;let Gvec=[],ops=1,vecs=1,prop=1,glo=1,cc=1,cuat=1,oct=1,sed=1;
 function ref(){Scratch.vm.extensionManager.refreshBlocks();}
 if(!vm.runtime.extensionStorage['vectorr']){vm.runtime.extensionStorage['vectorr']=[]}
 if(!Scratch.extensions.unsandboxed){throw new Error('unsandboxed');}
@@ -13,10 +13,13 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {func:'herr9',blockType:vgbb,hideFromPalette:!cc,text:'Mostrar Complejos',},{func:'herr10',blockType:vgbb,hideFromPalette:cc,text:'Ocultar Complejos',},
 {func:'herr11',blockType:vgbb,hideFromPalette:!cuat,text:'Mostrar Cuaterniones',},{func:'herr12',blockType:vgbb,hideFromPalette:cuat,text:'Ocultar Cuaterniones',},
 {func:'herr13',blockType:vgbb,hideFromPalette:!oct,text:'Mostrar Octoniones',},{func:'herr14',blockType:vgbb,hideFromPalette:oct,text:'Ocultar Octoniones',},
+{func:'herr15',blockType:vgbb,hideFromPalette:!sed,text:'Mostrar Sedeniones',},{func:'herr16',blockType:vgbb,hideFromPalette:sed,text:'Ocultar Sedeniones',},
 {blockType:"label",text:"Operadores matematicos",hideFromPalette:ops},//--------------------------------------------------------------------------------------------------------------------------------
 {opcode:'m',blockType:rep,text:'[a]+[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:''}}},
 {opcode:'r',blockType:rep,text:'[a]-[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:''}}},
+{opcode:'muVE',blockType:rep,text:'[a]*[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:'5'}}},
 {opcode:'prod',blockType:rep,text:'[a]•[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'cruz',blockType:rep,text:'3D[a]X[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:''}}},
 {opcode:'Hadamard',blockType:rep,text:'[a]⊙[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'invemul',blockType:rep,text:'[a]^-1',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'negvec',blockType:rep,text:'-[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
@@ -24,6 +27,7 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'dsit',blockType:rep,text:'[a]dist[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'lerp',blockType:rep,text:'IterpoLineal[a][b]alpha[c]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:num,defaultValue:'0.5'}}},
 {opcode:'smdr',blockType:rep,text:'Σ[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'prto',blockType:rep,text:'∏[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'med1',blockType:rep,text:'media aritmetica[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'med2',blockType:rep,text:'media geometrica[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'med3',blockType:rep,text:'media armonica[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
@@ -72,13 +76,16 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'tagtp1c',blockType:evaluador,text:'contiene?[t]tp1',hideFromPalette:prop,arguments:{t:{type:txt,defaultValue:''}}},
 {opcode:'s1',blockType:rep,text:'ID',hideFromPalette:prop,disableMonitor:1},
 {opcode:'s2',blockType:rep,text:'DRAWID',hideFromPalette:prop,disableMonitor:1},
+{opcode:'s12',blockType:rep,text:'Referencia object',hideFromPalette:prop,disableMonitor:1},
 {opcode:'s3',blockType:rep,text:'Obj.filter(ID)[a].tp1',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'s4',blockType:evaluador,text:'tocando Obj.tp1.includes[a]?',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'K'}}},
-{opcode:'s9',blockType:evaluador,text:'tocando Obj.tp1.includes[a]?de lista[targets]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'K'},targets:{type:txt,defaultValue:''}}},
+{opcode:'s9',blockType:evaluador,text:'tocando Obj.tp1.includes[a]?de lista[targets]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'K'},targets:{type:txt,defaultValue:'[DrawID,...]'}}},
 {opcode:'s5',blockType:rep,text:'tp1 de toda cosa tocada',hideFromPalette:prop,disableMonitor:1},
 {opcode:'s6',blockType:rep,text:'coordenadas',hideFromPalette:prop,disableMonitor:1},
 {opcode:'s7',blockType:com,text:'Ir a XY[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'s8',blockType:com,text:'mover XY[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'s10',blockType:com,text:'Ir multiples[b]a XY[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'[object,...]'}}},
+{opcode:'s11',blockType:com,text:'mover multiples[b] XY[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'[object,...]'}}},
 {blockType:"label",text:"Global",hideFromPalette:glo},//--------------------------------------------------------------------------------------------------------------------------------
 {opcode:'Gv1',blockType:com,text:'push[t]Gv',hideFromPalette:glo,arguments:{t:{type:txt,defaultValue:'L'}}},
 {opcode:'Gv4',blockType:com,text:'concat[t]Gv',hideFromPalette:glo,arguments:{t:{type:txt,defaultValue:'L'}}},
@@ -116,11 +123,39 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'octa6',blockType:rep,text:'𝕆 conj[a]',hideFromPalette:oct,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'octa8',blockType:rep,text:'𝕆 e^[a]',hideFromPalette:oct,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'octa7',blockType:evaluador,text:'¿[a]es 𝕆?',hideFromPalette:oct,arguments:{a:{type:txt,defaultValue:''}}},
+{blockType:"label",text:"Sedeniones",hideFromPalette:sed},//--------------------------------------------------------------------------------------------------------------------------------
+{opcode:'sed1',blockType:rep,text:'𝕊[a]+[b]',hideFromPalette:sed,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'sed2',blockType:rep,text:'𝕊[a]-[b]',hideFromPalette:sed,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'sed5',blockType:rep,text:'𝕊[a]*[b]',hideFromPalette:sed,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'sed3',blockType:rep,text:'𝕊 conj[a]',hideFromPalette:sed,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'sed4',blockType:rep,text:'¿[a]es 𝕊?',hideFromPalette:sed,arguments:{a:{type:txt,defaultValue:''}}},
 ],menus:{
 outs:{acceptReporters:0,items:['+','-','*','/','^','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10']},
 Filt:{acceptReporters:0,items:['==','===','<','>','>=','<=','!=','includes','!includes','Reflect.has','!Reflect.has','typeof','!inNaN']},
 Asig:{acceptReporters:0,items:['=','+=','-=','/=','*=','**=','<<=','??=','%=','>>=','>>>=']}}
 };}
+sed1(ar){const v=ar.a,w=ar.b;return [v[0]*1+w[0]*1,v[1]*1+w[1]*1,v[2]*1+w[2]*1,v[3]*1+w[3]*1,v[4]*1+w[4]*1,v[5]*1+w[5]*1,v[6]*1+w[6]*1,v[7]*1+w[7]*1,v[8]*1+w[8]*1,v[9]*1+w[9]*1,v[10]*1+w[10]*1,v[11]*1+w[11]*1,v[12]*1+w[12]*1,v[13]*1+w[13]*1,v[14]*1+w[14]*1,v[15]*1+w[15]*1]}
+sed2(ar){const v=ar.a,w=ar.b;return [v[0]-w[0],v[1]-w[1],v[2]-w[2],v[3]-w[3],v[4]-w[4],v[5]-w[5],v[6]-w[6],v[7]-w[7],v[8]-w[8],v[9]-w[9],v[10]-w[10],v[11]-w[11],v[12]-w[12],v[13]-w[13],v[14]-w[14],v[15]-w[15]]}
+sed3(ar){const v=ar.a;return [v[0],-v[1],-v[2],-v[3],-v[4],-v[5],-v[6],-v[7],-v[8],-v[9],-v[10],-v[11],-v[12],-v[13],-v[14],-v[15]]}
+sed4(ar){return (ar.a.every((r)=>!isNaN(Number(r)))&&ar.a.length==16)}
+sed5(ar){const v=ar.a,k=ar.b;return [
+(v[0]*k[0])-(v[1]*k[1])-(v[2]*k[2])-(v[3]*k[3])-(v[4]*k[4])-(v[5]*k[5])-(v[6]*k[6])-(v[7]*k[7])-(v[8]*k[8])-(v[9]*k[9])-(v[10]*k[10])-(v[11]*k[11])-(v[12]*k[12])-(v[13]*k[13])-(v[14]*k[14])-(v[15]*k[15])
+,(v[0]*k[1])+(v[1]*k[0])+(v[2]*k[3])-(v[3]*k[2])+(v[4]*k[5])-(v[5]*k[4])-(v[6]*k[7])+(v[7]*k[6])+(v[8]*k[9])-(v[9]*k[8])-(v[10]*k[11])+(v[11]*k[10])-(v[12]*k[13])+(v[13]*k[12])+(v[14]*k[15])-(v[15]*k[14])
+,(v[0]*k[2])-(v[1]*k[3])+(v[2]*k[0])+(v[3]*k[1])+(v[4]*k[6])+(v[5]*k[7])-(v[6]*k[4])-(v[7]*k[5])+(v[8]*k[10])+(v[9]*k[11])-(v[10]*k[8])-(v[11]*k[9])-(v[12]*k[14])-(v[13]*k[15])+(v[14]*k[12])+(v[15]*k[13])
+,(v[0]*k[3])+(v[1]*k[2])-(v[2]*k[1])+(v[3]*k[0])+(v[4]*k[7])-(v[5]*k[6])+(v[6]*k[5])-(v[7]*k[4])+(v[8]*k[11])-(v[9]*k[10])+(v[10]*k[9])-(v[11]*k[8])-(v[12]*k[15])+(v[13]*k[14])-(v[14]*k[13])+(v[15]*k[12])
+,(v[0]*k[4])-(v[1]*k[5])-(v[2]*k[6])-(v[3]*k[7])+(v[4]*k[0])+(v[5]*k[1])+(v[6]*k[2])+(v[7]*k[3])+(v[8]*k[12])+(v[9]*k[13])+(v[10]*k[14])+(v[11]*k[15])-(v[12]*k[8])-(v[13]*k[9])-(v[14]*k[10])-(v[15]*k[11])
+,(v[0]*k[5])+(v[1]*k[4])-(v[2]*k[7])+(v[3]*k[6])-(v[4]*k[1])+(v[5]*k[0])-(v[6]*k[3])+(v[7]*k[2])+(v[8]*k[13])-(v[9]*k[12])+(v[10]*k[15])-(v[11]*k[14])+(v[12]*k[9])-(v[13]*k[8])+(v[14]*k[11])-(v[15]*k[10])
+,(v[0]*k[6])+(v[1]*k[7])+(v[2]*k[4])-(v[3]*k[5])-(v[4]*k[2])+(v[5]*k[3])+(v[6]*k[0])-(v[7]*k[1])+(v[8]*k[14])-(v[9]*k[15])-(v[10]*k[12])+(v[11]*k[13])+(v[12]*k[10])-(v[13]*k[11])-(v[14]*k[8])+(v[15]*k[9])
+,(v[0]*k[7])-(v[1]*k[6])+(v[2]*k[5])+(v[3]*k[4])-(v[4]*k[3])-(v[5]*k[2])+(v[6]*k[1])+(v[7]*k[0])+(v[8]*k[15])+(v[9]*k[14])-(v[10]*k[13])-(v[11]*k[12])+(v[12]*k[11])+(v[13]*k[10])-(v[14]*k[9])-(v[15]*k[8])
+,(v[0]*k[8])-(v[1]*k[9])-(v[2]*k[10])-(v[3]*k[11])-(v[4]*k[12])-(v[5]*k[13])-(v[6]*k[14])-(v[7]*k[15])+(v[8]*k[0])+(v[9]*k[1])+(v[10]*k[2])+(v[11]*k[3])+(v[12]*k[4])+(v[13]*k[5])+(v[14]*k[6])+(v[15]*k[7])
+,(v[0]*k[9])+(v[1]*k[8])-(v[2]*k[11])+(v[3]*k[10])-(v[4]*k[13])+(v[5]*k[12])+(v[6]*k[15])-(v[7]*k[14])-(v[8]*k[1])+(v[9]*k[0])-(v[10]*k[3])+(v[11]*k[2])-(v[12]*k[5])+(v[13]*k[4])+(v[14]*k[7])-(v[15]*k[6])
+,(v[0]*k[10])+(v[1]*k[11])+(v[2]*k[8])-(v[3]*k[9])-(v[4]*k[14])-(v[5]*k[15])+(v[6]*k[12])+(v[7]*k[13])-(v[8]*k[2])+(v[9]*k[3])+(v[10]*k[0])-(v[11]*k[1])-(v[12]*k[6])-(v[13]*k[7])+(v[14]*k[4])+(v[15]*k[5])
+,(v[0]*k[11])-(v[1]*k[10])+(v[2]*k[9])+(v[3]*k[8])-(v[4]*k[15])+(v[5]*k[14])-(v[6]*k[13])+(v[7]*k[12])-(v[8]*k[3])-(v[9]*k[2])+(v[10]*k[1])+(v[11]*k[0])-(v[12]*k[7])+(v[13]*k[6])-(v[14]*k[5])+(v[15]*k[4])
+,(v[0]*k[12])+(v[1]*k[13])+(v[2]*k[14])+(v[3]*k[15])+(v[4]*k[8])-(v[5]*k[9])-(v[6]*k[10])-(v[7]*k[11])-(v[8]*k[4])+(v[9]*k[5])+(v[10]*k[6])+(v[11]*k[7])+(v[12]*k[0])-(v[13]*k[1])-(v[14]*k[2])-(v[15]*k[3])
+,(v[0]*k[13])-(v[1]*k[12])+(v[2]*k[15])-(v[3]*k[14])+(v[4]*k[9])+(v[5]*k[8])+(v[6]*k[11])-(v[7]*k[10])-(v[8]*k[5])-(v[9]*k[4])+(v[10]*k[7])-(v[11]*k[6])+(v[12]*k[1])+(v[13]*k[0])+(v[14]*k[3])-(v[15]*k[2])
+,(v[0]*k[14])-(v[1]*k[15])-(v[2]*k[12])+(v[3]*k[13])+(v[4]*k[10])-(v[5]*k[11])+(v[6]*k[8])+(v[7]*k[9])-(v[8]*k[6])-(v[9]*k[7])-(v[10]*k[4])+(v[11]*k[5])+(v[12]*k[2])-(v[13]*k[3])+(v[14]*k[0])+(v[15]*k[1])
+,(v[0]*k[15])+(v[1]*k[14])-(v[2]*k[13])-(v[3]*k[12])+(v[4]*k[11])+(v[5]*k[10])-(v[6]*k[9])+(v[7]*k[8])-(v[8]*k[7])+(v[9]*k[6])-(v[10]*k[5])-(v[11]*k[4])+(v[12]*k[3])+(v[13]*k[2])-(v[14]*k[1])+(v[15]*k[0])
+]}
 octa1(ar){return [ar.a[0]*1+1*ar.b[0],ar.a[1]*1+ar.b[1]*1,ar.a[2]*1+ar.b[2]*1,ar.a[3]*1+ar.b[3]*1,ar.a[4]*1+ar.b[4]*1,ar.a[5]*1+ar.b[5]*1,ar.a[6]*1+ar.b[6]*1,ar.a[7]*1+ar.b[7]*1]}
 octa2(ar){return [ar.a[0]-ar.b[0],ar.a[1]-ar.b[1],ar.a[2]-ar.b[2],ar.a[3]-ar.b[3],ar.a[4]-ar.b[4],ar.a[5]-ar.b[5],ar.a[6]-ar.b[6],ar.a[7]-ar.b[7]]}
 octa3(ar){const v1=ar.a,v2=ar.b;return [(v1[0]*v2[0])-(v1[1]*v2[1])-(v1[2]*v2[2])-(v1[3]*v2[3])-(v1[4]*v2[4])-(v1[5]*v2[5])-(v1[6]*v2[6])-(v1[7]*v2[7]),(v1[0]*v2[1])+(v1[1]*v2[0])-(v1[2]*v2[3])+(v1[3]*v2[2])-(v1[4]*v2[5])+(v1[5]*v2[4])+(v1[6]*v2[7])-(v1[7]*v2[6]),(v1[0]*v2[2])+(v1[1]*v2[3])+(v1[2]*v2[0])-(v1[3]*v2[1])-(v1[4]*v2[6])-(v1[5]*v2[7])+(v1[6]*v2[4])+(v1[7]*v2[5]),(v1[0]*v2[3])-(v1[1]*v2[2])+(v1[2]*v2[1])+(v1[3]*v2[0])-(v1[4]*v2[7])+(v1[5]*v2[6])-(v1[6]*v2[5])+(v1[7]*v2[4]),(v1[0]*v2[4])+(v1[1]*v2[5])+(v1[2]*v2[6])+(v1[3]*v2[7])+(v1[4]*v2[0])-(v1[5]*v2[1])-(v1[6]*v2[2])-(v1[7]*v2[3]),(v1[0]*v2[5])-(v1[1]*v2[4])+(v1[2]*v2[7])-(v1[3]*v2[6])+(v1[4]*v2[1])+(v1[5]*v2[0])+(v1[6]*v2[3])-(v1[7]*v2[2]),(v1[0]*v2[6])-(v1[1]*v2[7])-(v1[2]*v2[4])+(v1[3]*v2[5])+(v1[4]*v2[2])-(v1[5]*v2[3])+(v1[6]*v2[0])+(v1[7]*v2[1]),(v1[0]*v2[7])+(v1[1]*v2[6])-(v1[2]*v2[5])-(v1[3]*v2[4])+(v1[4]*v2[3])+(v1[5]*v2[2])-(v1[6]*v2[1])+(v1[7]*v2[0])]}
@@ -133,8 +168,8 @@ cua2(ar){return [ar.a[0]-ar.b[0],ar.a[1]-ar.b[1],ar.a[2]-ar.b[2],ar.a[3]-ar.b[3]
 cua3(ar){const v1=ar.a,v2=ar.b;return [((v1[0]*v2[0])-(v1[1]*v2[1])-(v1[2]*v2[2])-(v1[3]*v2[3])),((v1[0]*v2[1])+(v1[1]*v2[0])+(v1[2]*v2[3])-(v1[3]*v2[2])),((v1[0]*v2[2])-(v1[1]*v2[3])+(v1[2]*v2[0])+(v1[3]*v2[1])),((v1[0]*v2[3])+(v1[1]*v2[2])-(v1[2]*v2[1])+(v1[3]*v2[0]))];}
 cua4(ar){const v1=ar.a,v2=ar.b,mo=(v2[0]**2)+(v2[1]**2)+(v2[2]**2)+(v2[3]**2);return [((v1[0]*v2[0])-(v1[1]*-v2[1])-(v1[2]*-v2[2])-(v1[3]*-v2[3]))/mo,((v1[0]*-v2[1])+(v1[1]*v2[0])+(v1[2]*-v2[3])-(v1[3]*-v2[2]))/mo,((v1[0]*-v2[2])-(v1[1]*-v2[3])+(v1[2]*v2[0])+(v1[3]*-v2[1]))/mo,((v1[0]*-v2[3])+(v1[1]*-v2[2])-(v1[2]*-v2[1])+(v1[3]*v2[0]))/mo];}
 cua6(ar){return [ar.a[0],-ar.a[1],-ar.a[2],-ar.a[3]]}
-cua7(ar){const V=ar.a,MO=Math.sqrt((V[1]**2)+(V[2]**2)+(V[3]**2)),cq=Math.acos(V[0]/Math.hypot(...V));return [Math.log(Math.hypot(...V)),(V[1]/MO*cq),(V[2]/MO*cq),(V[3]/MO*cq)]}
-cua8(ar){const V=ar.a,r=Math.sqrt((V[1]**2)+(V[2]**2)+(V[3]**2)),senrad=Math.sin(r)/r*Math.exp(V[0]);return [(Math.exp(V[0])*Math.cos(r)),senrad*V[1],senrad*V[2],senrad*V[3]]}
+cua7(ar){const V=ar.a,M=((V[1]**2)+(V[2]**2)+(V[3]**2))**0.5,c=Math.acos(V[0]/Math.hypot(...V));return [Math.log(Math.hypot(...V)),(V[1]/M*c),(V[2]/MO*c),(V[3]/M*c)]}
+cua8(ar){const V=ar.a,r=((V[1]**2)+(V[2]**2)+(V[3]**2))**0.5,srad=Math.sin(r)/r*Math.exp(V[0]);return [(Math.exp(V[0])*Math.cos(r)),srad*V[1],srad*V[2],srad*V[3]]}
 cua9(ar){return (ar.a.length==4&&!isNaN(Number(ar.a[0]))&&!isNaN(Number(ar.a[1]))&&!isNaN(Number(ar.a[2]))&&!isNaN(Number(ar.a[3])))}
 cc1(ar){return [ar.a[0]*1+1*ar.b[0],ar.a[1]*1+ar.b[1]*1]}
 cc2(ar){return [ar.a[0]-ar.b[0],ar.a[1]-ar.b[1]]}
@@ -163,7 +198,7 @@ case'!Reflect.has':return ar.a.filter(dat=>!(Reflect.has(dat,ar.b)));break;case'
 }}
 herr0(){Scratch.openWindow('https://linktr.ee/Penta_quark_neutro');}
 herr1(){ops=0;ref();}herr2(){ops=1;ref();}herr3(){vecs=0;ref();}herr4(){vecs=1;ref();}herr5(){prop=0;ref();}herr6(){prop=1;ref();}herr7(){glo=0;ref();}herr8(){glo=1;ref();}
-herr9(){cc=0;ref();}herr10(){cc=1;ref();}herr11(){cuat=0;ref();}herr12(){cuat=1;ref();}herr13(){oct=0;ref();}herr14(){oct=1;ref();}
+herr9(){cc=0;ref();}herr10(){cc=1;ref();}herr11(){cuat=0;ref();}herr12(){cuat=1;ref();}herr13(){oct=0;ref();}herr14(){oct=1;ref();}herr15(){sed=0;ref();}herr16(){sed=1;ref();}
 arr(ar){return Array.from(ar.a.split(','));}
 le(ar){return ar.a.length;}
 nor(ar){return Math.hypot(...ar.a)}
@@ -177,16 +212,14 @@ case'*=':ar.a[ar.b]*=ar.c;break;case'**=':ar.a[ar.b]**=ar.c;break;case'<<=':ar.a
 case'>>>=':ar.a[ar.b]>>>=ar.c;break;case'??=':ar.a[ar.b]??=ar.c;break;case'%=':ar.a[ar.b]%=ar.c;break;
 }}
 angu(ar){return Math.acos(ar.a[0]/Math.hypot(...ar.a))}
-m(ar){var vec1=ar.a,i=0,fin=[];while(i<(vec1.length)){fin.push(vec1[i]*1+ar.b[i++]*1);}return fin;}
-r(ar){var vec1=ar.a,i=0,fin=[];while(i<(vec1.length)){fin.push(vec1[i]-ar.b[i++]);}return fin;}
-Hadamard(ar){var i=0,fin=[];while(i<(ar.a.length)){fin.push(ar.a[i]*ar.b[i++]);}return fin;}
+m(ar){var vec1=ar.a,i=0,fin=Array(vec1.length);while(i<(vec1.length)){fin[i]=(vec1[i]*1+ar.b[i++]*1);}return fin;}
+r(ar){var vec1=ar.a,i=0,fin=Array(vec1.length);while(i<(vec1.length)){fin[i]=(vec1[i]-ar.b[i++]);}return fin;}
+Hadamard(ar){var i=0,fin=Array(ar.a.length);while(i<(fin.length)){fin[i]=(ar.a[i]*ar.b[i++]);}return fin;}
 invemul(ar){return ar.a.map(k=>1/k);}
-gen(ar){var a=new Array(ar.a*1);return a.fill(ar.b*1);}
-gen2(ar){var i=0,fin=[];while(i<(ar.a)){fin.push(Math.random()*(ar.b-ar.c)+ar.c);i++;}return fin;}
-pu(ar){var vec1=ar.a;vec1.push(ar.b);return vec1;}
-sh(ar){var vec1=ar.a;vec1.shift();return vec1;}
-po(ar){var vec1=ar.a;vec1.pop();return vec1;}
-Kr(ar){function esve(es,ve){var i=0,fin=[];while(i<(ve.length)){fin.push(ve[i++]*es);}return fin;}var vec2=ar.a,j=0,out=[];while(j<(vec2.length)){out=out.concat(esve(vec2[j++],ar.b));}return out;}
+gen(ar){return Array(ar.a).fill(ar.b);}
+gen2(ar){var i=0,fin=Array(ar.a);while(i<(ar.a)){fin[i++]=(Math.random()*(ar.b-ar.c)+ar.c);}return fin;}
+pu(ar){return ar.a.push(ar.b);}sh(ar){return ar.a.shift();}po(ar){return ar.a.pop();}
+Kr(ar){var vec1=ar.a,vec2=ar.b,i=0,j=0,t=0,out=Array(vec1.length*vec2.length);while(i<vec1.length){j=0;while(j<vec2.length){out[t++]=vec1[i]*vec2[j++];}i++}return out;}
 tagtp1m(ar,util){if(!util.target.tag1){util.target.tag1=[];}if(util.target.tag1.includes(ar.t)||ar.t===''){return;}else{util.target.tag1.push(ar.t)};}
 tagtp1mc(ar,util){if(!util.target.tag1){util.target.tag1=[];}if(ar.t===''){return;}else{util.target.tag1.push(ar.t)};}
 tagtp1(ar,util){return util.target.tag1;}
@@ -211,12 +244,18 @@ uin1(ar){return new Uint8Array(ar.a);}uin2(ar){return new Uint16Array(ar.a);}
 uin3(ar){return new Uint32Array(ar.a);}uin4(ar){return new Int8Array(ar.a);}
 uin5(ar){return new Int16Array(ar.a);}uin6(ar){return new Int32Array(ar.a);}
 uin7(ar){return new Float16Array(ar.a);}uin8(ar){return new Float32Array(ar.a);}uin9(ar){return new Float64Array(ar.a);}
-dsit(ar){var i=0,out=[];while(i<ar.a.length){out[i]=ar.b[i]-ar.a[i++];}return Math.hypot(...out);}
-lerp(ar){var i=0,out=[],z=ar.c;while(i<ar.a.length){out[i]=ar.a[i]*1+(ar.b[i]-ar.a[i++])*z;}return out;}
+dsit(ar){var i=0,out=Array(ar.a.length);while(i<ar.a.length){out[i]=ar.b[i]-ar.a[i++];}return Math.hypot(...out);}
+lerp(ar){var i=0,out=Array(ar.a.length),z=ar.c;while(i<ar.a.length){out[i]=ar.a[i]*1+(ar.b[i]-ar.a[i++])*z;}return out;}
 negvec(ar){return ar.a.map(k=>k*-1);}
 smdr(ar){var i=0,out=0;while(i<ar.a.length){out+=ar.a[i++];}return out;}
 med1(ar){var i=0,out=0;while(i<ar.a.length){out+=ar.a[i++];}return out/ar.a.length;}
 med2(ar){var i=1,out=ar.a[0];while(i<ar.a.length){out*=ar.a[i++];}return out**(1/ar.a.length);}
 med3(ar){var i=0,out=0;while(i<ar.a.length){out+=1/ar.a[i++];}return ar.a.length/out;}
 med4(ar){const ve=ar.a.map(k=>k**2);var i=0,out=0;while(i<ve.length){out+=ve[i++];}return (out/ve.length)**0.5;}
+s10(ar){var i=0,ob=ar.b,ps=ar.a;while(i<ob.length){ob[i++].setXY(ps[0]*1,ps[1]*1)}}
+s11(ar){var i=0,ob=ar.b,ps=ar.a;while(i<ob.length){ob[i].setXY(ob[i].x*1+ps[0]*1,ob[i++].y*1+ps[1]*1)}}
+s12(ar,util){return util.target}
+prto(ar){var i=0,out=1;while(i<ar.a.length){out*=ar.a[i++];}return out;}
+muVE(ar){var i=0,fin=Array(ar.a.length);while(i<fin.length){fin[i]=ar.a[i++]*ar.b}return fin;}
+cruz(ar){return [(ar.a[1]*ar.b[2])-(ar.a[2]*ar.b[1]),(ar.a[2]*ar.b[0])-(ar.a[0]*ar.b[2]),(ar.a[0]*ar.b[1])-(ar.a[1]*ar.b[0])]}
 }Scratch.extensions.register(new vectorr());})(Scratch);

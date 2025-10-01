@@ -1,8 +1,7 @@
-(function(Scratch) {'use strict';
+(function(Scratch) {'use strict';//por el (pentaquark neutro, penta quark neutro) y neutral auream
 const com0=Scratch.BlockType.COMMAND;const str0=Scratch.ArgumentType.STRING;
 const bol0=Scratch.BlockType.BOOLEAN;const rep0=Scratch.BlockType.REPORTER;
 const vm=Scratch.vm;
-if(!vm.runtime.extensionStorage['SET']){vm.runtime.extensionStorage['SET']=new Set()}
 if(!Scratch.extensions.unsandboxed){throw new Error('unsandboxed');}
 class SET{getInfo(){return {id:'SET',name:'SET',color1:'#0092a0',color2:'#b3680f',color3:'#90c144',blocks: [
 {opcode:'a0',blockType:rep0,text:'new Set[a]',arguments:{a:{type:str0,defaultValue:''}}},
@@ -28,7 +27,6 @@ class SET{getInfo(){return {id:'SET',name:'SET',color1:'#0092a0',color2:'#b3680f
 {opcode:'a15',blockType:rep0,text:'tocando objeto con etiqueta[a]',arguments:{a:{type:str0,defaultValue:'coli'}}},
 {opcode:'a16',blockType:rep0,text:'tocando objeto con etiqueta[a]de lista[b]',arguments:{a:{type:str0,defaultValue:'coli'},b:{type:str0,defaultValue:''}}},
 {opcode:'a19',blockType:rep0,text:'etiqueta',disableMonitor:1},
-{opcode:'a21',blockType:rep0,text:'SET global persistente',disableMonitor:1},
 ],};}
 a0(ar){return new Set(ar.a);}
 a1(ar){return ar.a.has(ar.b);}
@@ -53,5 +51,4 @@ a17(ar,util){if(util.target.tag2){util.target.tag2.delete(ar.a);}}
 a18(ar,util){if(util.target.tag2){util.target.tag2.clear();}}
 a19(ar,util){if(util.target.tag2){var j=[];for(const entry of util.target.tag2.entries()){j.push(entry[0]);}return j;}}
 a20(ar,util){if(util.target.tag2){return util.target.tag2.has(ar.a);}}
-a21(ar){return vm.runtime.extensionStorage['SET']}
 }Scratch.extensions.register(new SET());})(Scratch);
