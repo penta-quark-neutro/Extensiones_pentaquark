@@ -1,4 +1,4 @@
-(function(Scratch) {'use strict';
+(function(Scratch) {'use strict';//por el (pentaquark neutro, penta quark neutro) y neutral auream
 const com0=Scratch.BlockType.COMMAND;const str0=Scratch.ArgumentType.STRING;
 const bol0=Scratch.BlockType.BOOLEAN;const rep0=Scratch.BlockType.REPORTER;
 const bol1=Scratch.ArgumentType.BOOLEAN;const vm=Scratch.vm;const runtime=vm.runtime;
@@ -29,11 +29,13 @@ class Interfacepent{getInfo(){return {id:'Interfacepent',name:'Interface 1',colo
 {opcode:'nlc',blockType:rep0,text:'Nlinea',disableMonitor:true},
 {opcode:'un',blockType:rep0,text:'Undefined',disableMonitor:true},
 {opcode:'NAN',blockType:rep0,text:'NaN',disableMonitor:true},
-{opcode:'itw',blockType:rep0,text:'isTouchingDrawables[a][b]',arguments:{a:{type:str0,defaultValue:'drawID'},b:{type:str0,defaultValue:'vector de drawId a detectar'}}},
+{opcode:'itw',blockType:bol0,text:'isTouchingDrawables[a][b]',arguments:{a:{type:str0,defaultValue:'drawID'},b:{type:str0,defaultValue:'vector de drawId a detectar'}}},
 {opcode:'cdt',blockType:rep0,text:'candidatesTouching[a][b]',arguments:{a:{type:str0,defaultValue:'drawID'},b:{type:str0,defaultValue:'vector de drawId a detectar'}}},
-{opcode:'vol',blockType:com0,text:'volumen[a]%',arguments:{a:{type:str0,defaultValue:'200'}}},
-{opcode:'perm1',blockType:rep0,text:'Datos persistentes=[a]',arguments:{a:{type:str0,defaultValue:'txt'}}},
+{opcode:'vol',blockType:com0,text:'volumen[a]%',hideFromPalette:1,arguments:{a:{type:str0,defaultValue:'200'}}},
+{opcode:'perm1',blockType:com0,text:'Datos persistentes=[a]',arguments:{a:{type:str0,defaultValue:'txt'}}},
 {opcode:'perm2',blockType:rep0,text:'Datos persistentes',disableMonitor:true},
+{opcode:'perm3',blockType:com0,text:'Para target,Dato persistente=[b]',arguments:{b:{type:str0,defaultValue:'datos'}}},
+{opcode:'perm4',blockType:rep0,text:'Dato persistente de target',disableMonitor:true},
 ],};}
 informacion(args){alert(args.string);}
 entrada_de_datos(args){return prompt(args.STRING);}
@@ -61,7 +63,8 @@ NAN(){return NaN;}
 itw(ar,util){return vm.renderer.isTouchingDrawables(ar.a,ar.b);}
 cdt(ar,util){return vm.renderer._candidatesTouching(ar.a,ar.b);}
 vol(ar,util){util.target.volume=ar.a*1;}
-per1(ar){vm.runtime.extensionStorage['Interfacepent']=ar.a}
-per2(ar){return vm.runtime.extensionStorage['Interfacepent']}
-
+perm1(ar){vm.runtime.extensionStorage['Interfacepent']=ar.a}
+perm2(ar){return vm.runtime.extensionStorage['Interfacepent']}
+perm3(ar,util){util.target.extensionStorage.Interfacepent=ar.b}
+perm4(ar,util){return util.target.extensionStorage.Interfacepent}
 }Scratch.extensions.register(new Interfacepent());})(Scratch);
