@@ -45,7 +45,7 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me16',blockType:rep,text:'[a]?.[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'}}},
 {opcode:'me7',blockType:bol,text:'[a].[b]=[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'100'}}},
 {opcode:'me7_2',blockType:com0,text:'[a].[b]=[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'100'}}},
-{opcode:'me8',blockType:bol,text:'[a]¿tiene?[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'}}},
+{opcode:'me8',blockType:bol,text:'[a]in[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:'tr'},b:{type:txt,defaultValue:''}}},
 {opcode:'me14',blockType:bol,text:'[a]¿es?[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me32',blockType:rep,text:'getPrototypeOf[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me47',blockType:rep,text:'setPrototypeOf[a][b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
@@ -71,6 +71,7 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me25',blockType:rep,text:'Objeto Global Permanente',hideFromPalette:obs,disableMonitor:1},
 {opcode:'me26',blockType:com0,text:'Vaciar Objeto Global Permanente',hideFromPalette:obs,disableMonitor:1},
 {opcode:'me39',blockType:rep,text:'typeof[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me54',blockType:rep,text:'[a]instanceof[b]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me41',blockType:com0,text:'[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 
 ],menus:{pr:{acceptReporters:0,items:['value','writable','enumerable','configurable']},in:{acceptReporters:0,items:['vm','target','util','Scratch','Math','Atomics','Object','Symbol','Array','String','window','Crypto','Map','Set']},vals:{acceptReporters:0,items:['true','false','Undefined','NaN','null','Infinity']}}
@@ -78,21 +79,21 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 herr0(){Scratch.openWindow('https://linktr.ee/Penta_quark_neutro');}
 herr1(){fun=0;ref();}herr2(){fun=1;ref();}herr3(){dap=0;ref();}herr4(){dap=1;ref();}
 herr5(){obs=0;ref();}herr6(){obs=1;ref();}herr7(){pun=0;ref();}herr8(){pun=1;ref();}
-me00(ar){return [ar.a];}me0(ar){return [ar.a,ar.b];}me01(ar){return [ar.a,ar.b,ar.c];}me10(ar){return [ar.a,ar.b,ar.c,ar.d];}
+me00({a}){return [a];}me0({a,b}){return [a,b];}me01({a,b,c}){return [a,b,c];}me10({a,b,c,d}){return [a,b,c,d];}
 me1(){return {};}me2(ar){return Object.fromEntries(ar.a);}
 me3(ar){return Object.getOwnPropertyNames(ar.a);}
 me4(ar){return Object.defineProperties(ar.a,ar.b)}
 me5(ar){var t=Reflect.getOwnPropertyDescriptor(ar.a,ar.b);switch(ar.c){case'value':return t.value;break;case'writable':return t.writable;break;case'enumerable':return t.enumerable;break;case'configurable':return t.configurable;break;}}
 me6(ar){return ar.a[ar.b]}
-me7(ar){return Reflect.set(ar.a,ar.b,ar.c);}me7_2(ar){ar.a[ar.b]=ar.c}
-me8(ar){return Reflect.has(ar.a,ar.b);}
-me9(ar){var h=ar.a;Reflect.deleteProperty(h,ar.b);return h;}me9_2(ar){Reflect.deleteProperty(ar.a,ar.b);}
+me7({a,b,c}){return Reflect.set(a,b,c);}me7_2({a,b,c}){a[b]=c}
+me8(ar){return ar.a in ar.b;}
+me9(ar){Reflect.deleteProperty(ar.a,ar.b);return ar.a;}me9_2(ar){Reflect.deleteProperty(ar.a,ar.b);}
 me11(ar){return JSON.stringify(ar.a);}
 me12(ar,util){switch(ar.a){case'vm':return Scratch.vm;case'target':return util.target;case'util':return util;case'Scratch':return Scratch;case'Math':return Math;case'Atomics':return Atomics;case'Object':return Object;case'Symbol':return Symbol;case'Array':return Array;case'String':return String;case'window':return window;case'Crypto':return Crypto;case'Map':return Map;case'Set':return Set;}}
 me13(ar){return JSON.parse(ar.a);}
 me14(ar){return Object.is(ar.a,ar.b);}
-me15(ar){return Reflect.apply(ar.a,ar.b,ar.c);}
-me16(ar){return ar.a?.[ar.b]}
+me15({a,b,c}){return Reflect.apply(a,b,c);}
+me16({a,b}){return a?.[b]}
 me17(ar){return Object.values(ar.a);}
 me18(ar){return Object.entries(ar.a);}
 me19(ar){return Object.assign(ar.a,ar.b);}
@@ -103,18 +104,19 @@ me23(ar){return Object.create(ar.a);}
 me24(ar){ar.a[Symbol.toStringTag]=ar.b.toString();}
 me25(ar){return vm.runtime.extensionStorage['exps'];}
 me26(ar){vm.runtime.extensionStorage['exps']={};}
-me27(ar){return ar.a();}me33(ar){return new ar.a();}
-me28(ar){return ar.a(ar.b);}me34(ar){return new ar.a(ar.b);}
-me29(ar){return ar.a(...ar.b);}me35(ar){return new ar.a(...ar.b);}
+me27({a}){return a();}me33({a}){return new a();}
+me28({a,b}){return a(b);}me34({a,b}){return new a(b);}
+me29({a,b}){return a(...b);}me35({a,b}){return new a(...b);}
 me30(ar){return Object.seal(ar.a);}
 me31(ar){return Object.isSealed(ar.a);}
 me32(ar){return Object.getPrototypeOf(ar.a)}me47(ar){return Object.setPrototypeOf(ar.a,ar.b)}
 me36(ar){return Function(...ar.a,ar.b)}me40(ar){return AsyncFunction(...ar.a,ar.b)}
-me37(ar){try{return ar.a(...ar.b)}catch(a){return a;}}
+me37({a,b}){try{return a(...b)}catch(a){return a;}}
 me38(ar){switch(ar.a){case'true':return true;case'false':return false;case'NaN':return NaN;case'Undefined':return ;case'null':return null;case'Infinity':return Infinity;}}
 me39(ar){return typeof(ar.a)}me41(){}me42(ar){return GeneratorFunction(...ar.a,ar.b)}me43(ar){return AsyncGeneratorFunction(...ar.a,ar.b)}me44(ar){return ar.a.next(ar.b)}
 me45(ar){return ar.a.return(ar.b)}me46(ar){return ar.a.trow(new Error(ar.b))}
-me48(ar){return ar.a[ar.c]();}me51(ar){return new ar.a[ar.c]();}
-me49(ar){return ar.a[ar.c](ar.b);}me52(ar){return new ar.a[ar.c](ar.b);}
-me50(ar){return ar.a[ar.c](...ar.b);}me53(ar){return new ar.a[ar.c](...ar.b);}
+me48({a,c}){return a[c]();}me51({a,c}){return new a[c]();}
+me49({a,b,c}){return a[c](b);}me52({a,b,c}){return new a[c](b);}
+me50({a,b,c}){return a[c](...b);}me53({a,b,c}){return new a[c](...b);}
+me54({a,b}){return (a instanceof b)}
 }Scratch.extensions.register(new exps());})(Scratch);
