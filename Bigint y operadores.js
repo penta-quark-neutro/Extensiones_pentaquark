@@ -1,4 +1,4 @@
-(function(Scratch) {'use strict';
+(function(Scratch) {'use strict';//por el (pentaquark neutro, penta quark neutro) y neutral auream
 let com0=Scratch.BlockType.COMMAND;let str0=Scratch.ArgumentType.STRING;
 let bol0=Scratch.BlockType.BOOLEAN;let rep0=Scratch.BlockType.REPORTER;
 function bg(a){return BigInt(a);}

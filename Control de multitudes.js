@@ -17,7 +17,7 @@ class multitudes{getInfo(){return{id:'multitudes',name:'multitudes',color1:'#f45
 ],menus:{}
 };}
 mu1(ar){if(ar.b in univ){var i=0,ob=univ[ar.b];while(i<ob.length){ob[i++].setXY(ar.a*1,ar.k*1)}}else{console.log('Lista '+ar.b+' no existe');}}
-mu2(ar){if(ar.b in univ){var i=0,ob=univ[ar.b];while(i<ob.length){ob[i].setXY(ob[i].x+ar.a*1,ob[i++].y+ar.k*1)}}else{console.log('Lista '+ar.b+' no existe');}}
+mu2({b,a,k}){if(b in univ){var i=0,ob=univ[b];while(i<ob.length){ob[i].setXY(ob[i].x+a*1,ob[i++].y+k*1)}}else{console.log('Lista '+b+' no existe');}}
 mu3(ar,util){if(univ[ar.a].map(h=>h.id).some(k=>k==util.target.id)){console.log(util.target.sprite.name+' '+(util.target.id)+' ya estaba en lista '+ar.a)}else{univ[ar.a].push(util.target)}}
 mu4(ar){if(ar.a in univ){console.log('Error asignando lista '+ar.a);}else{univ[ar.a]=[];}}
 mu5(){return Object.getOwnPropertyNames(univ);}
@@ -27,4 +27,5 @@ mu8(ar,util){var r=univ[ar.a].map(h=>h.id).findIndex(k=>k==util.target.id);if(r!
 mu9(ar){const tar=runtime.targets.map(h=>h.id);univ[ar.a]=univ[ar.a].filter(u=>tar.includes(u.id))}
 mu10(ar){if(ar.b in univ){var i=0,ob=univ[ar.b];while(i<ob.length){ob[i++].setDirection(ar.a*1)}}else{console.log('Lista '+ar.b+' no existe');}}
 mu11(ar){if(ar.b in univ){var i=0,ob=univ[ar.b];while(i<ob.length){ob[i].setDirection(ob[i++].direction+ar.a*1)}}else{console.log('Lista '+ar.b+' no existe');}}
+
 }Scratch.extensions.register(new multitudes());})(Scratch);

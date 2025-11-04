@@ -1,6 +1,6 @@
 (function(Scratch) {'use strict';//por el (pentaquark neutro, penta quark neutro) y neutral auream
 if(!vm.runtime.extensionStorage['exps']){vm.runtime.extensionStorage['exps']={};}
-var Objglob={},fun=1,dap=1,obs=1,pun=0;const AsyncFunction=async function(){}.constructor,GeneratorFunction=function*(){}.constructor,AsyncGeneratorFunction=async function*(){}.constructor;
+var Objglob={},fun=1,dap=1,obs=1,pun=0,blo=1;const AsyncFunction=async function(){}.constructor,GeneratorFunction=function*(){}.constructor,AsyncGeneratorFunction=async function*(){}.constructor;
 function ref(){Scratch.vm.extensionManager.refreshBlocks();}
 const com0=Scratch.BlockType.COMMAND,vgbb=Scratch.BlockType.BUTTON,str0=Scratch.ArgumentType.STRING,bol=Scratch.BlockType.BOOLEAN,rep=Scratch.BlockType.REPORTER,bol1=Scratch.ArgumentType.BOOLEAN,txt=Scratch.ArgumentType.STRING;
 if(!Scratch.extensions.unsandboxed){throw new Error('This extension must run unsandboxed');}
@@ -11,18 +11,31 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {func:'herr5',blockType:vgbb,hideFromPalette:!obs,text:'Mostrar Objetos',},{func:'herr6',blockType:vgbb,hideFromPalette:obs,text:'Ocultar Objetos'},
 {blockType:"label",text:"Uso de funciones",hideFromPalette:fun},//--------------------------------------------------------------------------------------------------------------------------------
 {func:'herr7',blockType:vgbb,hideFromPalette:!pun||fun,text:'Ocultar punto funcion',},{func:'herr8',blockType:vgbb,hideFromPalette:pun||fun,text:'Mostrar punto funcion'},
-{opcode:'me27',blockType:rep,text:'[a]()',hideFromPalette:fun||pun,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'me28',blockType:rep,text:'[a]([b])',hideFromPalette:fun||pun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'me29',blockType:rep,text:'[a](...[b])',hideFromPalette:fun||pun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'me33',blockType:rep,text:'new[a]()',hideFromPalette:fun||pun,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'me34',blockType:rep,text:'new[a]([b])',hideFromPalette:fun||pun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'me35',blockType:rep,text:'new[a](...[b])',hideFromPalette:fun||pun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'me48',blockType:rep,text:'[a].[c]()',hideFromPalette:fun||!pun,arguments:{a:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
-{opcode:'me49',blockType:rep,text:'[a].[c]([b])',hideFromPalette:fun||!pun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
-{opcode:'me50',blockType:rep,text:'[a].[c](...[b])',hideFromPalette:fun||!pun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
-{opcode:'me51',blockType:rep,text:'new[a].[c]()',hideFromPalette:fun||!pun,arguments:{a:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
-{opcode:'me52',blockType:rep,text:'new[a].[c]([b])',hideFromPalette:fun||!pun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
-{opcode:'me53',blockType:rep,text:'new[a].[c](...[b])',hideFromPalette:fun||!pun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{func:'herr9',blockType:vgbb,hideFromPalette:!blo||fun,text:'Mostrar forma comando',},{func:'herr10',blockType:vgbb,hideFromPalette:blo||fun,text:'Ocultar forma comando'},
+{opcode:'me27',blockType:rep,text:'[a]()',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me28',blockType:rep,text:'[a]([b])',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me29',blockType:rep,text:'[a](...[b])',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me33',blockType:rep,text:'new[a]()',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me34',blockType:rep,text:'new[a]([b])',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me35',blockType:rep,text:'new[a](...[b])',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me48',blockType:rep,text:'[a].[c]()',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me49',blockType:rep,text:'[a].[c]([b])',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me50',blockType:rep,text:'[a].[c](...[b])',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me51',blockType:rep,text:'new[a].[c]()',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me52',blockType:rep,text:'new[a].[c]([b])',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me53',blockType:rep,text:'new[a].[c](...[b])',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me55',blockType:com0,text:'[a]()',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me56',blockType:com0,text:'[a]([b])',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me57',blockType:com0,text:'[a](...[b])',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me58',blockType:com0,text:'new[a]()',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me59',blockType:com0,text:'new[a]([b])',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me60',blockType:com0,text:'new[a](...[b])',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me61',blockType:com0,text:'[a].[c]()',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me62',blockType:com0,text:'[a].[c]([b])',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me63',blockType:com0,text:'[a].[c](...[b])',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me64',blockType:com0,text:'new[a].[c]()',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me65',blockType:com0,text:'new[a].[c]([b])',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me66',blockType:com0,text:'new[a].[c](...[b])',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
 {opcode:'me37',blockType:rep,text:'try{[a](...[b])}',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me15',blockType:rep,text:'Apply[a][b][c]',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'funcion'},b:{type:txt,defaultValue:'this'},c:{type:txt,defaultValue:'Array'}}},
 {opcode:'me36',blockType:rep,text:'Function(...[a],[b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'Args'},b:{type:txt,defaultValue:'Estructura'}}},
@@ -37,16 +50,16 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me0',blockType:rep,text:'array[a],[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:'tr'},b:{type:txt,defaultValue:'45'}}},
 {opcode:'me01',blockType:rep,text:'array[a],[b],[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:'tr'},b:{type:txt,defaultValue:'45'},c:{type:txt,defaultValue:'jk'}}},
 {opcode:'me10',blockType:rep,text:'array[a],[b],[c],[d]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:'1'},b:{type:txt,defaultValue:'2'},c:{type:txt,defaultValue:'3'},d:{type:txt,defaultValue:'4'}}},
-{opcode:'me2',blockType:rep,text:'Nuevo objeto de arr[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:'Requiere array como [["a",b],["c",d],...]'}}},
+{opcode:'me2',blockType:rep,text:'Object.fromEntries[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:'Requiere array como [["a",b],["c",d],...]'}}},
 {opcode:'me3',blockType:rep,text:'keys[a]',disableMonitor:1,hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'me4',blockType:rep,text:'nueva propiedad a[a]es[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'requiere Object como {K:{value:,writable:,...}'}}},
+{opcode:'me4',blockType:rep,text:'Object.defineProperties[a][b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'requiere Object como {K:{value:,writable:,...}'}}},
 {opcode:'me5',blockType:rep,text:'Descriptor[a]prop[b].[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,menu:'pr'}}},
 {opcode:'me6',blockType:rep,text:'[a].[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'}}},
 {opcode:'me16',blockType:rep,text:'[a]?.[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'}}},
 {opcode:'me7',blockType:bol,text:'[a].[b]=[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'100'}}},
 {opcode:'me7_2',blockType:com0,text:'[a].[b]=[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'100'}}},
 {opcode:'me8',blockType:bol,text:'[a]in[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:'tr'},b:{type:txt,defaultValue:''}}},
-{opcode:'me14',blockType:bol,text:'[a]¿es?[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me14',blockType:bol,text:'Object.is[a][b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me32',blockType:rep,text:'getPrototypeOf[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me47',blockType:rep,text:'setPrototypeOf[a][b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me9',blockType:rep,text:'[a]borrar[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'}}},
@@ -74,13 +87,15 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me54',blockType:rep,text:'[a]instanceof[b]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me41',blockType:com0,text:'[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 
-],menus:{pr:{acceptReporters:0,items:['value','writable','enumerable','configurable']},in:{acceptReporters:0,items:['vm','target','util','Scratch','Math','Atomics','Object','Symbol','Array','String','window','Crypto','Map','Set']},vals:{acceptReporters:0,items:['true','false','Undefined','NaN','null','Infinity']}}
+],menus:{pr:{acceptReporters:0,items:['value','writable','enumerable','configurable']},in:{acceptReporters:0,items:['vm','target','util','Scratch','Math','Atomics','Object','Symbol','Array','String','window','Crypto','Map','Set','twgl','gl']},vals:{acceptReporters:0,items:['true','false','Undefined','NaN','null','Infinity']}}
 };}
 herr0(){Scratch.openWindow('https://linktr.ee/Penta_quark_neutro');}
 herr1(){fun=0;ref();}herr2(){fun=1;ref();}herr3(){dap=0;ref();}herr4(){dap=1;ref();}
 herr5(){obs=0;ref();}herr6(){obs=1;ref();}herr7(){pun=0;ref();}herr8(){pun=1;ref();}
+herr9(){blo=0;ref();}herr10(){blo=1;ref();}
 me00({a}){return [a];}me0({a,b}){return [a,b];}me01({a,b,c}){return [a,b,c];}me10({a,b,c,d}){return [a,b,c,d];}
-me1(){return {};}me2(ar){return Object.fromEntries(ar.a);}
+me1(){return {};}
+me2(ar){return Object.fromEntries(ar.a);}
 me3(ar){return Object.getOwnPropertyNames(ar.a);}
 me4(ar){return Object.defineProperties(ar.a,ar.b)}
 me5(ar){var t=Reflect.getOwnPropertyDescriptor(ar.a,ar.b);switch(ar.c){case'value':return t.value;break;case'writable':return t.writable;break;case'enumerable':return t.enumerable;break;case'configurable':return t.configurable;break;}}
@@ -89,7 +104,7 @@ me7({a,b,c}){return Reflect.set(a,b,c);}me7_2({a,b,c}){a[b]=c}
 me8(ar){return ar.a in ar.b;}
 me9(ar){Reflect.deleteProperty(ar.a,ar.b);return ar.a;}me9_2(ar){Reflect.deleteProperty(ar.a,ar.b);}
 me11(ar){return JSON.stringify(ar.a);}
-me12(ar,util){switch(ar.a){case'vm':return Scratch.vm;case'target':return util.target;case'util':return util;case'Scratch':return Scratch;case'Math':return Math;case'Atomics':return Atomics;case'Object':return Object;case'Symbol':return Symbol;case'Array':return Array;case'String':return String;case'window':return window;case'Crypto':return Crypto;case'Map':return Map;case'Set':return Set;}}
+me12(ar,util){switch(ar.a){case'vm':return Scratch.vm;case'target':return util.target;case'util':return util;case'Scratch':return Scratch;case'Math':return Math;case'Atomics':return Atomics;case'Object':return Object;case'Symbol':return Symbol;case'Array':return Array;case'String':return String;case'window':return window;case'Crypto':return Crypto;case'Map':return Map;case'Set':return Set;case'twgl':return vm.renderer.exports.twgl;case'gl':return vm.renderer._gl;}}
 me13(ar){return JSON.parse(ar.a);}
 me14(ar){return Object.is(ar.a,ar.b);}
 me15({a,b,c}){return Reflect.apply(a,b,c);}
@@ -119,4 +134,10 @@ me48({a,c}){return a[c]();}me51({a,c}){return new a[c]();}
 me49({a,b,c}){return a[c](b);}me52({a,b,c}){return new a[c](b);}
 me50({a,b,c}){return a[c](...b);}me53({a,b,c}){return new a[c](...b);}
 me54({a,b}){return (a instanceof b)}
+me55({a}){return a();}me58({a}){return new a();}
+me56({a,b}){return a(b);}me59({a,b}){return new a(b);}
+me57({a,b}){return a(...b);}me60({a,b}){return new a(...b);}
+me61({a,c}){return a[c]();}me64({a,c}){return new a[c]();}
+me62({a,b,c}){return a[c](b);}me65({a,b,c}){return new a[c](b);}
+me63({a,b,c}){return a[c](...b);}me66({a,b,c}){return new a[c](...b);}
 }Scratch.extensions.register(new exps());})(Scratch);

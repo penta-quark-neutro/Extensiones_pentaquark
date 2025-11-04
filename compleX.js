@@ -3,7 +3,7 @@ var vgd1=Scratch.ArgumentType.NUMBER;var vgd2=Scratch.ArgumentType.STRING;var vg
 var vgbb=Scratch.BlockType.BUTTON;let opciones=false;let bloqueslentos=true;let complejos=true;let cuaterniones=true;let octaniones=true;
 if(!Scratch.extensions.unsandboxed){throw new Error('This extension must run unsandboxed');}class Complejospentaquark{getInfo(){return{id:'Complejospent',name:'Numeros Hiper Complejos',color1:'#555555',color2:'#ff00ff',color3:'#00ffff',blocks:[//circulo,anillo,bloque.
 {blockType:"label",text:"Herramientas",},
-	{func:'herram1',blockType:vgbb,hideFromPalette:!bloqueslentos||opciones,text:'Ver operadores compactos',},{func:'herram2',blockType:vgbb,hideFromPalette:bloqueslentos||opciones,text:'ocultar operadores compactos',},
+{func:'herram1',blockType:vgbb,hideFromPalette:!bloqueslentos||opciones,text:'Ver operadores compactos',},{func:'herram2',blockType:vgbb,hideFromPalette:bloqueslentos||opciones,text:'ocultar operadores compactos',},
 {func:'herram3',blockType:vgbb,hideFromPalette:!opciones,text:'mostrar Herramientas',},{func:'herram4',blockType:vgbb,hideFromPalette:opciones,text:'ocultar Herramientas',},
 {func:'herram5',blockType:vgbb,hideFromPalette:!complejos||opciones,text:'mostrar complejos',},{func:'herram6',blockType:vgbb,hideFromPalette:complejos||opciones,text:'ocultar complejos',},
 {func:'herram7',blockType:vgbb,hideFromPalette:!cuaterniones||opciones,text:'mostrar cuaterniones',},{func:'herram8',blockType:vgbb,hideFromPalette:cuaterniones||opciones,text:'ocultar cuaterniones',},

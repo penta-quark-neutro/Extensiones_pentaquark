@@ -46,7 +46,7 @@ class Typedvectorr{getInfo(){return{id:'Typedvectorr',name:'Typedvectorr',color1
 {opcode:'setv',blockType:rep,text:'[c].[u][a][b]',hideFromPalette:vecs,arguments:{u:{type:txt,menu:'setm'},a:{type:num,defaultValue:'0'},b:{type:num,defaultValue:'5'},c:{type:txt,defaultValue:'DataView'}}},
 {opcode:'props',blockType:rep,text:'[a].[u]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},u:{type:txt,menu:'pr'}}},
 ],menus:{
-outs:{acceptReporters:0,items:['+','-','*','/','^','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','&','|','^','<<','>>','>>>']},
+outs:{acceptReporters:0,items:['+','-','*','/','^','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','&','|','^','<<','>>','>>>','~']},
 Filt:{acceptReporters:0,items:['==','===','<','>','>=','<=','!=']},
 Asig:{acceptReporters:0,items:['=','+=','-=','/=','*=','**=','<<=','??=','%=','>>=','>>>=','&=','|=','^=']},
 uins:{acceptReporters:0,items:['Uint8Array','Uint16Array','Uint32Array','Int8Array','Int16Array','Int32Array','Float16Array','Float32Array','Float64Array','Uint8ClampedArray','BigInt64Array','BigUint64Array']},
@@ -59,7 +59,7 @@ case'^':return ar.a.map(k=>k**ar.b);break;case'LogB':return ar.a.map(k=>Math.log
 case'tan':return ar.a.map(k=>Math.tan(k));break;case'sign':return ar.a.map(k=>Math.sign(k));break;case'abs':return ar.a.map(k=>Math.abs(k));break;case'rampa':return ar.a.map(k=>(k>0 ? k:0));break;
 case'lim+':return ar.a.map(k=>(k>ar.b ? ar.b:k));break;case'lim-':return ar.a.map(k=>(k<ar.b ? ar.b:k));break;case'int':return ar.a.map(k=>Math.trunc(k));break;
 case'arcsen':return ar.a.map(k=>Math.asin(k));break;case'arccos':return ar.a.map(k=>Math.acos(k));break;case'arctan':return ar.a.map(k=>Math.atan(k));break;case'e^':return ar.a.map(k=>Math.exp(k));break;
-case'Ln':return ar.a.map(k=>Math.log(k));break;case'Log10':return ar.a.map(k=>Math.log10(k));break;case'&':return ar.a.map(k=>k&ar.b);break;case'|':return ar.a.map(k=>k|ar.b);break;case'^':return ar.a.map(k=>k^ar.b);break;case'<<':return ar.a.map(k=>k<<ar.b);break;case'>>':return ar.a.map(k=>k>>ar.b);break;case'>>>':return ar.a.map(k=>k>>>ar.b);break;
+case'Ln':return ar.a.map(k=>Math.log(k));break;case'Log10':return ar.a.map(k=>Math.log10(k));break;case'&':return ar.a.map(k=>k&ar.b);break;case'|':return ar.a.map(k=>k|ar.b);break;case'^':return ar.a.map(k=>k^ar.b);break;case'<<':return ar.a.map(k=>k<<ar.b);break;case'>>':return ar.a.map(k=>k>>ar.b);break;case'>>>':return ar.a.map(k=>k>>>ar.b);break;case'~':return ar.a.map(k=>~k);break;
 }}
 Fil(ar){switch(ar.ou){
 case'==':return ar.a.filter(dat=>(dat==ar.b ? 1:0));break;case'===':return ar.a.filter(dat=>(dat===ar.b ? 1:0));break;
@@ -70,10 +70,10 @@ case'!=':return ar.a.filter(dat=>(dat!=ar.b ? 1:0));break;
 herr0(){Scratch.openWindow('https://linktr.ee/Penta_quark_neutro');}
 herr1(){ops=0;ref();}herr2(){ops=1;ref();}herr3(){vecs=0;ref();}herr4(){vecs=1;ref();}
 le(ar){return ar.a.length;}
-nor(ar){return Math.hypot(...ar.a)}
-unit(ar){const E0=Math.hypot(...ar.a);return ar.a.map(g=>g/E0)}
+nor(ar){var i=0,b=0;while(i<ar.a.length){b+=ar.a[i++]**2}return b**0.5}
+unit(ar){var i=0,b=0;while(i<ar.a.length){b+=ar.a[i++]**2}b**=0.5;return ar.a.map(g=>g/b)}
 pt(ar){return ar.a[ar.b];}
-prod(ar){var i=0,fin=0;while(i<(ar.a.length)){fin+=((ar.a[i])*(ar.b[i++]));}return fin*1;}
+prod(ar){var i=0,fin=0;while(i<(ar.a.length)){fin+=((ar.a[i])*(ar.b[i++]));}return fin;}
 rpt(ar){ar.a[ar.b]=ar.c;return ar.a;}
 rpt2(ar){ar.a[ar.b]=ar.c;}
 rpt3(ar){switch(ar.tip){case'=':ar.a[ar.b]=ar.c;break;case'+=':ar.a[ar.b]+=ar.c;break;case'-=':ar.a[ar.b]-=ar.c;break;case'/=':ar.a[ar.b]/=ar.c;break;
