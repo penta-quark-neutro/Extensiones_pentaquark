@@ -1,10 +1,9 @@
 (function(Scratch) {'use strict';//por el (pentaquark neutro, penta quark neutro) y neutral auream
 let com0=Scratch.BlockType.COMMAND;let str0=Scratch.ArgumentType.STRING;
 let bol0=Scratch.BlockType.BOOLEAN;let rep0=Scratch.BlockType.REPORTER;
-function bg(a){return BigInt(a);}
 if(!Scratch.extensions.unsandboxed){throw new Error('unsandboxed');}
 class BGI{getInfo(){return {id:'BGI',name:'BGI',color1:'#8923FF',color2:'#0F70A0',color3:'#ffff00',blocks: [
-{opcode:'a0',blockType:rep0,text:'big[a]',arguments:{a:{type:str0,defaultValue:'1'}}},
+{opcode:'a0',blockType:rep0,text:'BigInt[a]',arguments:{a:{type:str0,defaultValue:'1'}}},
 {opcode:'a1',blockType:rep0,text:'[a]+[b]',arguments:{a:{type:str0,defaultValue:'10'},b:{type:str0,defaultValue:'10'}}},
 {opcode:'a2',blockType:rep0,text:'[a]-[b]',arguments:{a:{type:str0,defaultValue:'10'},b:{type:str0,defaultValue:'10'}}},
 {opcode:'a3',blockType:rep0,text:'[a]*[b]',arguments:{a:{type:str0,defaultValue:'10'},b:{type:str0,defaultValue:'10'}}},
@@ -25,7 +24,7 @@ class BGI{getInfo(){return {id:'BGI',name:'BGI',color1:'#8923FF',color2:'#0F70A0
 {opcode:'a17',blockType:rep0,text:'[a]^[b]',arguments:{a:{type:str0,defaultValue:'10'},b:{type:str0,defaultValue:'10'}}},
 {opcode:'a18',blockType:rep0,text:'~[a]',arguments:{a:{type:str0,defaultValue:'10'}}},
 ],};}
-a0(ar){return bg(ar.a);}
+a0(ar){return BigInt(ar.a);}
 a1(ar){return ar.a+ar.b;}
 a2(ar){return ar.a-ar.b;}
 a3(ar){return ar.a*ar.b;}
@@ -36,7 +35,7 @@ a7(ar){return ar.a==ar.b;}
 a8(ar){return ar.a>=ar.b;}
 a9(ar){return ar.a!=ar.b;}
 a10(ar){var a=1,b=1n,c=ar.k;while(a<=c){b*=BigInt(a++);}return b;}
-a11(ar){var dat0=bg(ar.a),i=0;const dat=dat0;while(i<ar.b-1){dat0=dat**dat0;i++;}return dat0;}
+a11(ar){var dat0=BigInt(ar.a),i=0;const dat=dat0;while(i<ar.b-1){dat0=dat**dat0;i++;}return dat0;}
 a12(ar){return ar.a<<ar.b;}
 a13(ar){return ar.a>>ar.b;}
 a14(ar){return ar.a>>>ar.b;}

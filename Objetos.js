@@ -2,6 +2,33 @@
 if(!vm.runtime.extensionStorage['exps']){vm.runtime.extensionStorage['exps']={};}
 var Objglob={},fun=1,dap=1,obs=1,pun=0,blo=1;const AsyncFunction=async function(){}.constructor,GeneratorFunction=function*(){}.constructor,AsyncGeneratorFunction=async function*(){}.constructor;
 function ref(){Scratch.vm.extensionManager.refreshBlocks();}
+function ExpsCadena(objetivo,vistor){let ff=new Set(vistor);//v1.0.5
+try{var gj=JSON.stringify(objetivo)}catch(sec){var gj='000XecjsEiC';}
+try{if(gj!='000XecjsEiC'&&!ff.has(objetivo)){if(typeof(objetivo)=="object"){
+if(objetivo===null){return '"[null]"'}
+if(objetivo instanceof Uint8Array){return '["[ui8a]",['+objetivo.toString()+"]]"}if(objetivo instanceof Uint16Array){return '["[ui16a]",['+objetivo.toString()+"]]"}
+if(objetivo instanceof Uint32Array){return '["[ui32a]",['+objetivo.toString()+"]]"}if(objetivo instanceof Uint8ClampedArray){return '["[ui8ca]",['+objetivo.toString()+"]]"}
+if(objetivo instanceof Int8Array){return '["[i8a]",['+objetivo.toString()+"]]"}if(objetivo instanceof Int16Array){return '["[i16a]",['+objetivo.toString()+"]]"}
+if(objetivo instanceof Int32Array){return '["[i32a]",['+objetivo.toString()+"]]"}if(objetivo instanceof Float16Array){return '["[f16a]",['+objetivo.toString()+"]]"}
+if(objetivo instanceof Float32Array){return '["[f32a]",['+objetivo.toString()+"]]"}if(objetivo instanceof Float64Array){return '["[f64a]",['+objetivo.toString()+"]]"}
+if(objetivo instanceof Array){return '["[ga]",['+objetivo.map(t=>ExpsCadena(t))+"]]"}if(objetivo instanceof Map){return '["[Mp]",['+Array.from(objetivo).map(t=>ExpsCadena(t))+"]]"}
+if(objetivo instanceof Set){return '["[St]",['+Array.from(objetivo).map(t=>ExpsCadena(t))+"]]"}if(objetivo instanceof Date){return '["[dt]",'+'["'+objetivo.toISOString()+'"]'}
+if(objetivo instanceof Object){ff.add(objetivo);let cad="{";for(const ENT in objetivo){cad+=","+JSON.stringify(ENT)+":"+ExpsCadena(objetivo[ENT],ff)}return cad.replace(',','')+"}"}
+}else{
+if(typeof(objetivo)=="function"){if((objetivo.toString()).includes("[native code]")){return '["[EII!]"]'}else{return '["[Fc]",'+JSON.stringify(objetivo.toString())+']'}}
+if(typeof(objetivo)=="number"){if(isFinite(objetivo)){return objetivo.toString()}else{if(!isNaN(objetivo)){return '"['+objetivo.toString()+']"'}else{return '"[Na]"'}}}else{
+if(typeof(objetivo)=="boolean"){return (objetivo?'true':'false')}else{return JSON.stringify((objetivo?objetivo?.toString():'[Udf]'))}}}}else{return '"DETENCION"'}ff=null;}catch(fail){return gj;console.log(fail)}}
+function reconstruccion(arg,func){//v1.0.1
+if(arg[0]=="[ui8a]"){return new Uint8Array(arg[1])}if(arg[0]=="[ui16a]"){return new Uint16Array(arg[1])}if(arg[0]=="[ui32a]"){return new Uint32Array(arg[1])}
+if(arg[0]=="[ui8ca]"){return new Uint8ClampedArray(arg[1])}if(arg[0]=="[i8a]"){return new Int8Array(arg[1])}if(arg[0]=="[i16a]"){return new Int16Array(arg[1])}
+if(arg[0]=="[i32a]"){return new Int32Array(arg[1])}if(arg[0]=="[f16a]"){return new Float16Array(arg[1])}if(arg[0]=="[f32a]"){return new Float32Array(arg[1])}
+if(arg[0]=="[f64a]"){return new Float64Array(arg[1])}if(arg[0]=="[ga]"){return arg[1].map(k=>(typeof(k)=='object'?ExpsParseCadena(k,true,func):k))}if(arg[0]=="[Mp]"){return new Map(arg[1].map(k=>(typeof(k)=='object'?ExpsParseCadena(k,true,func):k)))}
+if(arg[0]=="[St]"){return new Set(arg[1].map(k=>(typeof(k)=='object'?ExpsParseCadena(k,true,func):k)))}if(arg[0]=="[dt]"){return new Date(arg[1])}if(arg[0]=='[Fc]'){return (func?eval("const h="+arg[1]+";h"):arg[1])}if(true){return arg}}
+function ExpsParseCadena(Cadena,omitir,trusted){var cad2=(omitir?Cadena:JSON.parse(Cadena));if(typeof(cad2)=='object'&&!Array.isArray(cad2)){for(const props in cad2){if(Array.isArray(cad2[props])){cad2[props]=reconstruccion(cad2[props],trusted)}else{
+if(cad2[props]=='[EII!]'){Reflect.deleteProperty(cad2,props)}if(cad2[props]=='[Infinity]'){cad2[props]=Infinity}if(cad2[props]=='[-Infinity]'){cad2[props]=-Infinity}if(cad2[props]=='[Na]'){cad2[props]=NaN}
+if(cad2[props]=='[Udf]'){cad2[props]=undefined}}
+}}else{if(Array.isArray(cad2)){cad2=reconstruccion(cad2,trusted)}else{
+if(cad2=='[Infinity]'){cad2=Infinity}if(cad2=='[-Infinity]'){cad2=-Infinity}if(cad2=='[Na]'){cad2[props]=NaN}if(cad2=='[Udf]'){cad2=undefined}}}return cad2}
 const com0=Scratch.BlockType.COMMAND,vgbb=Scratch.BlockType.BUTTON,str0=Scratch.ArgumentType.STRING,bol=Scratch.BlockType.BOOLEAN,rep=Scratch.BlockType.REPORTER,bol1=Scratch.ArgumentType.BOOLEAN,txt=Scratch.ArgumentType.STRING;
 if(!Scratch.extensions.unsandboxed){throw new Error('This extension must run unsandboxed');}
 class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763613',color3:'#e39668',blocks: [
@@ -37,14 +64,18 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me65',blockType:com0,text:'new[a].[c]([b])',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
 {opcode:'me66',blockType:com0,text:'new[a].[c](...[b])',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
 {opcode:'me37',blockType:rep,text:'try{[a](...[b])}',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'me15',blockType:rep,text:'Apply[a][b][c]',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'funcion'},b:{type:txt,defaultValue:'this'},c:{type:txt,defaultValue:'Array'}}},
+{opcode:'me15',blockType:rep,text:'Apply[a][b][c]',hideFromPalette:fun||!blo,arguments:{a:{type:txt,defaultValue:'funcion'},b:{type:txt,defaultValue:'this'},c:{type:txt,defaultValue:'Array'}}},
+{opcode:'me70',blockType:com0,text:'Apply[a][b][c]',hideFromPalette:fun||blo,arguments:{a:{type:txt,defaultValue:'funcion'},b:{type:txt,defaultValue:'this'},c:{type:txt,defaultValue:'Array'}}},
+{opcode:'me73',blockType:rep,text:'[a].bind(...[b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me36',blockType:rep,text:'Function(...[a],[b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'Args'},b:{type:txt,defaultValue:'Estructura'}}},
 {opcode:'me40',blockType:rep,text:'AsyncFunction(...[a],[b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'Args'},b:{type:txt,defaultValue:'Estructura'}}},
 {opcode:'me42',blockType:rep,text:'GeneratorFunction(...[a],[b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'Args'},b:{type:txt,defaultValue:'Estructura'}}},
 {opcode:'me43',blockType:rep,text:'AsyncGeneratorFunction(...[a],[b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'Args'},b:{type:txt,defaultValue:'Estructura'}}},
 {opcode:'me44',blockType:rep,text:'[a].next([b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me45',blockType:rep,text:'[a].return([b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'0'}}},
-{opcode:'me46',blockType:rep,text:'[a].trow([b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'Error'}}},
+{opcode:'me46',blockType:rep,text:'[a].throw([b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'Error'}}},
+{opcode:'me74',blockType:rep,text:'new Worker[a][b]',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'scriptURL'},b:{type:txt,defaultValue:'{opciones}'}}},
+{opcode:'me75',blockType:rep,text:'JS a scriptURL[a]',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'self.addEventListener("message", function(e){const resultado=1+1;self.postMessage(resultado);});'}}},
 {blockType:"label",text:"datos y propiedades",hideFromPalette:dap},//----------------------------------------------------------------------------------------------------------------------
 {opcode:'me00',blockType:rep,text:'array[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:'tr'}}},
 {opcode:'me0',blockType:rep,text:'array[a],[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:'tr'},b:{type:txt,defaultValue:'45'}}},
@@ -66,6 +97,8 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me9_2',blockType:com0,text:'[a]borrar[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'}}},
 {opcode:'me11',blockType:rep,text:'stringify[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me13',blockType:rep,text:'parse[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:'{"valor1":false, "valor2":100}'}}},
+{opcode:'me68',blockType:rep,text:'ExpsCadena[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me69',blockType:rep,text:'ExpsParseCadena[a]functioneval[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:'{"valor1":"[Na]","valor2":["[ui8a]",[0,255]]}'},b:{type:txt,defaultValue:'1'}}},
 {opcode:'me17',blockType:rep,text:'values[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me18',blockType:rep,text:'entries[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me19',blockType:rep,text:'assign[a][b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
@@ -76,6 +109,7 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me31',blockType:bol,text:'isSealed[a]?',hideFromPalette:dap,hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me23',blockType:rep,text:'create[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me24',blockType:com0,text:'toStringTag[a]=[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'PersObj'}}},
+{opcode:'me67',blockType:rep,text:'structuredClone[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
 {blockType:"label",text:"Objetos y utiles",hideFromPalette:obs},//--------------------------------------------------------------------------------------------------------------------------------
 {opcode:'me1',blockType:rep,text:'Nuevo Objeto vacio',hideFromPalette:obs,disableMonitor:1},
 {opcode:'me38',blockType:bol,text:'[a]',hideFromPalette:obs,disableMonitor:1,arguments:{a:{type:txt,menu:'vals'}}},
@@ -86,8 +120,10 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me39',blockType:rep,text:'typeof[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me54',blockType:rep,text:'[a]instanceof[b]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me41',blockType:com0,text:'[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me71',blockType:rep,text:'Referencia variable[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'mi variable'}}},
+{opcode:'me72',blockType:rep,text:'Referencia lista[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'lista-1'}}},
 
-],menus:{pr:{acceptReporters:0,items:['value','writable','enumerable','configurable']},in:{acceptReporters:0,items:['vm','target','util','Scratch','Math','Atomics','Object','Symbol','Array','String','window','Crypto','Map','Set','twgl','gl']},vals:{acceptReporters:0,items:['true','false','Undefined','NaN','null','Infinity']}}
+],menus:{pr:{acceptReporters:0,items:['value','writable','enumerable','configurable']},in:{acceptReporters:0,items:['vm','target','util','Scratch','Math','Atomics','Object','Symbol','Array','String','window','Crypto','Map','Set','twgl','gl','Proxy']},vals:{acceptReporters:0,items:['true','false','Undefined','NaN','null','Infinity']}}
 };}
 herr0(){Scratch.openWindow('https://linktr.ee/Penta_quark_neutro');}
 herr1(){fun=0;ref();}herr2(){fun=1;ref();}herr3(){dap=0;ref();}herr4(){dap=1;ref();}
@@ -104,10 +140,10 @@ me7({a,b,c}){return Reflect.set(a,b,c);}me7_2({a,b,c}){a[b]=c}
 me8(ar){return ar.a in ar.b;}
 me9(ar){Reflect.deleteProperty(ar.a,ar.b);return ar.a;}me9_2(ar){Reflect.deleteProperty(ar.a,ar.b);}
 me11(ar){return JSON.stringify(ar.a);}
-me12(ar,util){switch(ar.a){case'vm':return Scratch.vm;case'target':return util.target;case'util':return util;case'Scratch':return Scratch;case'Math':return Math;case'Atomics':return Atomics;case'Object':return Object;case'Symbol':return Symbol;case'Array':return Array;case'String':return String;case'window':return window;case'Crypto':return Crypto;case'Map':return Map;case'Set':return Set;case'twgl':return vm.renderer.exports.twgl;case'gl':return vm.renderer._gl;}}
+me12(ar,util){switch(ar.a){case'vm':return Scratch.vm;case'target':return util.target;case'util':return util;case'Scratch':return Scratch;case'Math':return Math;case'Atomics':return Atomics;case'Object':return Object;case'Symbol':return Symbol;case'Array':return Array;case'String':return String;case'window':return window;case'Crypto':return Crypto;case'Map':return Map;case'Set':return Set;case'twgl':return vm.renderer.exports.twgl;case'gl':return vm.renderer._gl;case'Proxy':return Proxy;}}
 me13(ar){return JSON.parse(ar.a);}
 me14(ar){return Object.is(ar.a,ar.b);}
-me15({a,b,c}){return Reflect.apply(a,b,c);}
+me15({a,b,c}){return Reflect.apply(a,b,c);}me70({a,b,c}){Reflect.apply(a,b,c);}
 me16({a,b}){return a?.[b]}
 me17(ar){return Object.values(ar.a);}
 me18(ar){return Object.entries(ar.a);}
@@ -129,7 +165,7 @@ me36(ar){return Function(...ar.a,ar.b)}me40(ar){return AsyncFunction(...ar.a,ar.
 me37({a,b}){try{return a(...b)}catch(a){return a;}}
 me38(ar){switch(ar.a){case'true':return true;case'false':return false;case'NaN':return NaN;case'Undefined':return ;case'null':return null;case'Infinity':return Infinity;}}
 me39(ar){return typeof(ar.a)}me41(){}me42(ar){return GeneratorFunction(...ar.a,ar.b)}me43(ar){return AsyncGeneratorFunction(...ar.a,ar.b)}me44(ar){return ar.a.next(ar.b)}
-me45(ar){return ar.a.return(ar.b)}me46(ar){return ar.a.trow(new Error(ar.b))}
+me45(ar){return ar.a.return(ar.b)}me46(ar){return ar.a.throw(new Error(ar.b))}
 me48({a,c}){return a[c]();}me51({a,c}){return new a[c]();}
 me49({a,b,c}){return a[c](b);}me52({a,b,c}){return new a[c](b);}
 me50({a,b,c}){return a[c](...b);}me53({a,b,c}){return new a[c](...b);}
@@ -140,4 +176,12 @@ me57({a,b}){return a(...b);}me60({a,b}){return new a(...b);}
 me61({a,c}){return a[c]();}me64({a,c}){return new a[c]();}
 me62({a,b,c}){return a[c](b);}me65({a,b,c}){return new a[c](b);}
 me63({a,b,c}){return a[c](...b);}me66({a,b,c}){return new a[c](...b);}
+me67(ar){return structuredClone(ar.a)}
+me68(ar){return ExpsCadena(ar.a)}
+me69(ar){return ExpsParseCadena(ar.a,false,ar.b)}
+me71(ar,util){return util.target.lookupVariableByNameAndType(ar.a+'','')}
+me72(ar,util){return util.target.lookupVariableByNameAndType(ar.a+'','list')}
+me73(ar){return ar.a.bind(...ar.b)}
+me74(ar){return (new Worker(ar.a,ar.b))}
+me75(ar){return URL.createObjectURL(new Blob([ar.a],{type:'text/javascript'}))}
 }Scratch.extensions.register(new exps());})(Scratch);

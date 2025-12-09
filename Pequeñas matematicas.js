@@ -22,6 +22,7 @@ class minmatespentaquark{getInfo(){return{id:'minmatespentaquark',name:'Pequeña
 {opcode:'devo',blockType:evaluador,text:'[x]',hideFromPalette:ops,arguments:{x:{type:txt,defaultValue:''}}},
 {opcode:'fix',blockType:reportero,text:'redondeo[z]limite[k]',hideFromPalette:ops,arguments:{z:{type:numero,defaultValue:'1.9389834346'},k:{type:numero,defaultValue:'5'}}},
 {opcode:'expo',blockType:reportero,text:'[z]^[k]',hideFromPalette:ops,arguments:{z:{type:numero,defaultValue:'1.9'},k:{type:numero,defaultValue:'5'}}},
+{opcode:'atn2',blockType:reportero,text:'atan2 [z][k]',hideFromPalette:ops,arguments:{z:{type:numero,defaultValue:'3'},k:{type:numero,defaultValue:'8'}}},
 {opcode:'sinc',blockType:reportero,text:'sincN[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'5'}}},
 {opcode:'escalon',blockType:reportero,text:'Escalon[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'5'}}},
 {opcode:'fract',blockType:reportero,text:'fract[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'5.5656'}}},
@@ -71,6 +72,7 @@ if(ar.a==0 && ar.b==infinity || ar.a==0 && ar.b==-infinity){return 0;}else{retur
 neg(ar){return -ar.x;}
 neg2(ar){return !(ar.x==true);}
 devo(ar){return ar.x;}
+atn2(ar){return Math.atan2(ar.z,ar.k)}
 fix(ar){if(ar.k>=0){return ar.z.toFixed(ar.k*1);}else{return ar.z.toFixed(-ar.k*1);}}
 expo(ar){return Math.pow(ar.z,ar.k);}
 sinc(ar){if(ar.k==0){return 1;}else{return Math.sin(3.1415926535*ar.k)/(3.1415926535*ar.k);}}

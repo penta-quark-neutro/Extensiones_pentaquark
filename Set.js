@@ -5,6 +5,7 @@ const vm=Scratch.vm;
 if(!Scratch.extensions.unsandboxed){throw new Error('unsandboxed');}
 class SET{getInfo(){return {id:'SET',name:'SET',color1:'#0092a0',color2:'#b3680f',color3:'#90c144',blocks: [
 {opcode:'a0',blockType:rep0,text:'new Set[a]',arguments:{a:{type:str0,defaultValue:''}}},
+{opcode:'a21',blockType:rep0,text:'new WeakSet[a]',arguments:{a:{type:str0,defaultValue:''}}},
 {opcode:'a1',blockType:bol0,text:'¿[a]tiene[b]?',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:'txt'}}},
 {opcode:'a2',blockType:rep0,text:'[a]añadir[b]',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:'txt'}}},
 {opcode:'a2_2',blockType:com0,text:'[a]añadir[b]',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:'txt'}}},
@@ -51,4 +52,5 @@ a17(ar,util){if(util.target.tag2){util.target.tag2.delete(ar.a);}}
 a18(ar,util){if(util.target.tag2){util.target.tag2.clear();}}
 a19(ar,util){if(util.target.tag2){var j=[];for(const entry of util.target.tag2.entries()){j.push(entry[0]);}return j;}}
 a20(ar,util){if(util.target.tag2){return util.target.tag2.has(ar.a);}}
+a21(ar){return new WeakSet(ar.a);}
 }Scratch.extensions.register(new SET());})(Scratch);
