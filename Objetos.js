@@ -87,8 +87,22 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me5',blockType:rep,text:'Descriptor[a]prop[b].[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,menu:'pr'}}},
 {opcode:'me6',blockType:rep,text:'[a].[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'}}},
 {opcode:'me16',blockType:rep,text:'[a]?.[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'}}},
-{opcode:'me7',blockType:bol,text:'[a].[b]=[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'100'}}},
 {opcode:'me7_2',blockType:com0,text:'[a].[b]=[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'100'}}},
+{opcode:'me76',blockType:com0,text:'[a].[b]+=[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'100'}}},
+{opcode:'me77',blockType:com0,text:'[a].[b]-=[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'100'}}},
+{opcode:'me78',blockType:com0,text:'[a].[b]/=[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'100'}}},
+{opcode:'me79',blockType:com0,text:'[a].[b]*=[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'100'}}},
+{opcode:'me80',blockType:com0,text:'[a].[b]**=[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'100'}}},
+{opcode:'me81',blockType:com0,text:'[a].[b]%=[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'100'}}},
+{opcode:'me82',blockType:com0,text:'[a].[b]<<=[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'100'}}},
+{opcode:'me83',blockType:com0,text:'[a].[b]>>=[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'100'}}},
+{opcode:'me84',blockType:com0,text:'[a].[b]>>>=[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'100'}}},
+{opcode:'me85',blockType:com0,text:'[a].[b]&=[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'100'}}},
+{opcode:'me86',blockType:com0,text:'[a].[b]|=[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'100'}}},
+{opcode:'me87',blockType:com0,text:'[a].[b]^=[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'100'}}},
+{opcode:'me88',blockType:com0,text:'[a].[b]||=[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'100'}}},
+{opcode:'me89',blockType:com0,text:'[a].[b]&&=[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'100'}}},
+{opcode:'me90',blockType:com0,text:'[a].[b]??=[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'100'}}},
 {opcode:'me8',blockType:bol,text:'[a]in[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:'tr'},b:{type:txt,defaultValue:''}}},
 {opcode:'me14',blockType:bol,text:'Object.is[a][b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me32',blockType:rep,text:'getPrototypeOf[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
@@ -136,7 +150,7 @@ me3(ar){return Object.getOwnPropertyNames(ar.a);}
 me4(ar){return Object.defineProperties(ar.a,ar.b)}
 me5(ar){var t=Reflect.getOwnPropertyDescriptor(ar.a,ar.b);switch(ar.c){case'value':return t.value;break;case'writable':return t.writable;break;case'enumerable':return t.enumerable;break;case'configurable':return t.configurable;break;}}
 me6(ar){return ar.a[ar.b]}
-me7({a,b,c}){return Reflect.set(a,b,c);}me7_2({a,b,c}){a[b]=c}
+me7_2({a,b,c}){a[b]=c}
 me8(ar){return ar.a in ar.b;}
 me9(ar){Reflect.deleteProperty(ar.a,ar.b);return ar.a;}me9_2(ar){Reflect.deleteProperty(ar.a,ar.b);}
 me11(ar){return JSON.stringify(ar.a);}
@@ -184,4 +198,6 @@ me72(ar,util){return util.target.lookupVariableByNameAndType(ar.a+'','list')}
 me73(ar){return ar.a.bind(...ar.b)}
 me74(ar){return (new Worker(ar.a,ar.b))}
 me75(ar){return URL.createObjectURL(new Blob([ar.a],{type:'text/javascript'}))}
+me76({a,b,c}){a[b]+=c}me77({a,b,c}){a[b]-=c}me78({a,b,c}){a[b]/=c}me79({a,b,c}){a[b]*=c}me80({a,b,c}){a[b]**=c}me81({a,b,c}){a[b]%=c}me82({a,b,c}){a[b]<<=c}me83({a,b,c}){a[b]>>=c}me84({a,b,c}){a[b]>>>=c}
+me85({a,b,c}){a[b]&=c}me86({a,b,c}){a[b]|=c}me87({a,b,c}){a[b]^=c}me88({a,b,c}){a[b]||=c}me89({a,b,c}){a[b]&&=c}me90({a,b,c}){a[b]??=c}
 }Scratch.extensions.register(new exps());})(Scratch);
