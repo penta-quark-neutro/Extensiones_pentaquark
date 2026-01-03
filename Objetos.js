@@ -76,6 +76,7 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me46',blockType:rep,text:'[a].throw([b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'Error'}}},
 {opcode:'me74',blockType:rep,text:'new Worker[a][b]',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'scriptURL'},b:{type:txt,defaultValue:'{opciones}'}}},
 {opcode:'me75',blockType:rep,text:'JS a scriptURL[a]',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'self.addEventListener("message", function(e){const resultado=1+1;self.postMessage(resultado);});'}}},
+{opcode:'me91',blockType:com0,text:'revokeObjectURL[a]',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:''}}},
 {blockType:"label",text:"datos y propiedades",hideFromPalette:dap},//----------------------------------------------------------------------------------------------------------------------
 {opcode:'me00',blockType:rep,text:'array[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:'tr'}}},
 {opcode:'me0',blockType:rep,text:'array[a],[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:'tr'},b:{type:txt,defaultValue:'45'}}},
@@ -85,8 +86,8 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me3',blockType:rep,text:'keys[a]',disableMonitor:1,hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me4',blockType:rep,text:'Object.defineProperties[a][b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'requiere Object como {K:{value:,writable:,...}'}}},
 {opcode:'me5',blockType:rep,text:'Descriptor[a]prop[b].[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,menu:'pr'}}},
-{opcode:'me6',blockType:rep,text:'[a].[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'}}},
-{opcode:'me16',blockType:rep,text:'[a]?.[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'}}},
+{opcode:'me6',blockType:bol,text:'[a].[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'}}},
+{opcode:'me16',blockType:bol,text:'[a]?.[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'}}},
 {opcode:'me7_2',blockType:com0,text:'[a].[b]=[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'100'}}},
 {opcode:'me76',blockType:com0,text:'[a].[b]+=[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'100'}}},
 {opcode:'me77',blockType:com0,text:'[a].[b]-=[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'100'}}},
@@ -131,6 +132,7 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me20',blockType:rep,text:'Objeto Global',hideFromPalette:obs,disableMonitor:1},
 {opcode:'me25',blockType:rep,text:'Objeto Global Permanente',hideFromPalette:obs,disableMonitor:1},
 {opcode:'me26',blockType:com0,text:'Vaciar Objeto Global Permanente',hideFromPalette:obs,disableMonitor:1},
+{opcode:'me92',blockType:bol,text:'[a]?[b]:[c]',hideFromPalette:dap,arguments:{a:{type:bol1,defaultValue:''},b:{type:txt,defaultValue:'1'},c:{type:txt,defaultValue:'0'}}},
 {opcode:'me39',blockType:rep,text:'typeof[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me54',blockType:rep,text:'[a]instanceof[b]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me41',blockType:com0,text:'[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
@@ -200,4 +202,6 @@ me74(ar){return (new Worker(ar.a,ar.b))}
 me75(ar){return URL.createObjectURL(new Blob([ar.a],{type:'text/javascript'}))}
 me76({a,b,c}){a[b]+=c}me77({a,b,c}){a[b]-=c}me78({a,b,c}){a[b]/=c}me79({a,b,c}){a[b]*=c}me80({a,b,c}){a[b]**=c}me81({a,b,c}){a[b]%=c}me82({a,b,c}){a[b]<<=c}me83({a,b,c}){a[b]>>=c}me84({a,b,c}){a[b]>>>=c}
 me85({a,b,c}){a[b]&=c}me86({a,b,c}){a[b]|=c}me87({a,b,c}){a[b]^=c}me88({a,b,c}){a[b]||=c}me89({a,b,c}){a[b]&&=c}me90({a,b,c}){a[b]??=c}
+me91(ar){URL.revokeObjectURL(ar.a)}
+me92(ar){return (ar.a?ar.b:ar.c)}
 }Scratch.extensions.register(new exps());})(Scratch);

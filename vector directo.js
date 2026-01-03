@@ -32,6 +32,7 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'med2',blockType:rep,text:'media geometrica[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'med3',blockType:rep,text:'media armonica[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'med4',blockType:rep,text:'media cuadratica[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'med5',blockType:rep,text:'desviacion tipica[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'nor',blockType:rep,text:'||[a]||',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'unit',blockType:rep,text:'versor[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'angu',blockType:rep,text:'Θ°[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
@@ -126,7 +127,7 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'Gv2',blockType:rep,text:'Gv',hideFromPalette:glo,disableMonitor:1},
 {opcode:'Gv3',blockType:com,text:'Gv=[t]',hideFromPalette:glo,arguments:{t:{type:txt,defaultValue:''}}},
 {opcode:'Gv5',blockType:rep,text:'runtime Targets',hideFromPalette:glo,disableMonitor:1},
-{blockType:"label",text:"Vector global persistente",hideFromPalette:glo},//------------------------------------------------------------
+{blockType:"label",text:"Vector global persistente",hideFromPalette:glo},//---------------------------------------------------------------------------------------------------------
 {opcode:'Gv6',blockType:com,text:'push[t]VGP',hideFromPalette:glo,arguments:{t:{type:txt,defaultValue:'L'}}},
 {opcode:'Gv8',blockType:rep,text:'VGP',hideFromPalette:glo,disableMonitor:1},
 {opcode:'Gv9',blockType:com,text:'VGP=[t]',hideFromPalette:glo,arguments:{t:{type:txt,defaultValue:''}}},
@@ -169,7 +170,7 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 ],menus:{
 outs:{acceptReporters:0,items:['+','-','*','/','**','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','|','&','^','~','<<','>>','>>>','tofixed','function->']},
 Filt:{acceptReporters:0,items:['==','===','<','>','>=','<=','!=','includes','!includes','Reflect.has','!Reflect.has','typeof','!isNaN','isNaN']},
-Asig:{acceptReporters:0,items:['=','+=','-=','/=','*=','**=','<<=','??=','%=','>>=','>>>=']}}
+Asig:{acceptReporters:1,items:['=','+=','-=','/=','*=','**=','<<=','??=','%=','>>=','>>>=','|=','&=','^=','||=','&&=']}}
 };}
 sed1({v,w}){return [v[0]*1+w[0]*1,v[1]*1+w[1]*1,v[2]*1+w[2]*1,v[3]*1+w[3]*1,v[4]*1+w[4]*1,v[5]*1+w[5]*1,v[6]*1+w[6]*1,v[7]*1+w[7]*1,v[8]*1+w[8]*1,v[9]*1+w[9]*1,v[10]*1+w[10]*1,v[11]*1+w[11]*1,v[12]*1+w[12]*1,v[13]*1+w[13]*1,v[14]*1+w[14]*1,v[15]*1+w[15]*1]}
 sed2({v,w}){return [v[0]-w[0],v[1]-w[1],v[2]-w[2],v[3]-w[3],v[4]-w[4],v[5]-w[5],v[6]-w[6],v[7]-w[7],v[8]-w[8],v[9]-w[9],v[10]-w[10],v[11]-w[11],v[12]-w[12],v[13]-w[13],v[14]-w[14],v[15]-w[15]]}
@@ -252,9 +253,9 @@ pt4(ar){return ar.a[ar.b][ar.c][ar.d][ar.e]}
 prod(ar){var i=0,fin=0;while(i<(ar.a.length)){fin+=((ar.a[i])*(ar.b[i++]));}return fin;}
 rpt(ar){ar.a[ar.b]=ar.c;return ar.a;}
 rpt2(ar){ar.a[ar.b]=ar.c;}
-rpt3(ar){switch(ar.tip){case'=':ar.a[ar.b]=ar.c;break;case'+=':ar.a[ar.b]+=ar.c;break;case'-=':ar.a[ar.b]-=ar.c;break;case'/=':ar.a[ar.b]/=ar.c;break;
-case'*=':ar.a[ar.b]*=ar.c;break;case'**=':ar.a[ar.b]**=ar.c;break;case'<<=':ar.a[ar.b]<<=ar.c;break;case'>>=':ar.a[ar.b]>>=ar.c;break;
-case'>>>=':ar.a[ar.b]>>>=ar.c;break;case'??=':ar.a[ar.b]??=ar.c;break;case'%=':ar.a[ar.b]%=ar.c;break;
+rpt3(ar){switch(ar.tip){case'=':ar.a[ar.b]=ar.c;break;case'+=':ar.a[ar.b]+=ar.c;break;case'-=':ar.a[ar.b]-=ar.c;break;case'/=':ar.a[ar.b]/=ar.c;break;case'&&=':ar.a[ar.b]&&=ar.c;break;
+case'*=':ar.a[ar.b]*=ar.c;break;case'**=':ar.a[ar.b]**=ar.c;break;case'<<=':ar.a[ar.b]<<=ar.c;break;case'>>=':ar.a[ar.b]>>=ar.c;break;case'^=':ar.a[ar.b]^=ar.c;break;case'||=':ar.a[ar.b]||=ar.c;break;
+case'>>>=':ar.a[ar.b]>>>=ar.c;break;case'??=':ar.a[ar.b]??=ar.c;break;case'%=':ar.a[ar.b]%=ar.c;break;case'|=':ar.a[ar.b]|=ar.c;break;case'&=':ar.a[ar.b]&=ar.c;break;
 }}
 rpt4(ar){ar.a[ar.b]=ar.c,ar.a[ar.d]=ar.e;}
 rpt5(ar){ar.a[ar.b]=ar.c,ar.a[ar.d]=ar.e,ar.a[ar.f]=ar.g;}
@@ -335,5 +336,6 @@ while(i<a.length){nv[i]=[nv[i][0]*matriz[0]+nv[i][1]*matriz[3]+nv[i][2]*matriz[6
 			 nv[i][0]*matriz[1]+nv[i][1]*matriz[4]+nv[i][2]*matriz[7],
 			 nv[i][0]*matriz[2]+nv[i][1]*matriz[5]+nv[i++][2]*matriz[8]];
 }return nv;}
+med5(ar){var i=0,out=0,k=0;while(i<ar.a.length){out+=ar.a[i++];}out/=ar.a.length;i=0;while(i<ar.a.length){k+=(ar.a[i++]-out)**2;}return (k/(ar.a.length-1))**0.5;}
 
 }Scratch.extensions.register(new vectorr());})(Scratch);
