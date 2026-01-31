@@ -1,5 +1,5 @@
 (function(Scratch) {'use strict';//por el (pentaquark neutro, penta quark neutro) y neutral auream
-const txt=Scratch.ArgumentType.STRING,rep=Scratch.BlockType.REPORTER,num=Scratch.ArgumentType.NUMBER,vgbb=Scratch.BlockType.BUTTON,evaluador=Scratch.BlockType.BOOLEAN,com=Scratch.BlockType.COMMAND;
+const txt=Scratch.ArgumentType.STRING,rep=Scratch.BlockType.REPORTER,num=Scratch.ArgumentType.NUMBER,vgbb=Scratch.BlockType.BUTTON,evaluador=Scratch.BlockType.BOOLEAN,com=Scratch.BlockType.COMMAND,bol1=Scratch.ArgumentType.BOOLEAN;;
 const vm=Scratch.vm,runtime=vm.runtime;let ops=1,vecs=1;
 function ref(){Scratch.vm.extensionManager.refreshBlocks();}
 if(!Scratch.extensions.unsandboxed){throw new Error('unsandboxed');}
@@ -9,13 +9,13 @@ class Typedvectorr{getInfo(){return{id:'Typedvectorr',name:'Typedvectorr',color1
 {func:'herr3',blockType:vgbb,hideFromPalette:!vecs,text:'Mostrar vectores',},{func:'herr4',blockType:vgbb,hideFromPalette:vecs,text:'Ocultar vectores',},
 {blockType:"label",text:"Operadores matematicos",hideFromPalette:ops},//--------------------------------------------------------------------------------------------------------------------------------
 {blockType:"label",text:"Mutan vector principal",hideFromPalette:ops},//--------------------------------------------------------------------------------------------------------------------------------
-{opcode:'m',blockType:rep,text:'[a]+[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:''}}},
-{opcode:'r',blockType:rep,text:'[a]-[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:''}}},
-{opcode:'muVE',blockType:rep,text:'[a]*[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:'5'}}},
-{opcode:'lerp',blockType:rep,text:'IterpoLineal[a][b]alpha[c]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:num,defaultValue:'0.5'}}},
-{opcode:'invemul',blockType:rep,text:'[a]^-1',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'Hadamard',blockType:rep,text:'[a]⊙[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'Rotacion',blockType:rep,text:'3DRotar lista[a]en eje[b][c]grados',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:''},c:{type:num,defaultValue:'45'}}},
+{opcode:'m',blockType:com,text:'[a]+[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:''}}},
+{opcode:'r',blockType:com,text:'[a]-[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:''}}},
+{opcode:'muVE',blockType:com,text:'[a]*[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:'5'}}},
+{opcode:'lerp',blockType:com,text:'IterpoLineal[a][b]alpha[c]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:num,defaultValue:'0.5'}}},
+{opcode:'invemul',blockType:com,text:'[a]^-1',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'Hadamard',blockType:com,text:'[a]⊙[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'Rotacion',blockType:com,text:'3DRotar lista[a]en eje[b][c]grados',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:''},c:{type:num,defaultValue:'45'}}},
 {blockType:"label",text:"No mutan",hideFromPalette:ops},//------------------------------------------------------------------------------------------------------------------------------
 {opcode:'prod',blockType:rep,text:'[a]•[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'cruz',blockType:rep,text:'3D[a]X[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:''}}},
@@ -38,8 +38,8 @@ class Typedvectorr{getInfo(){return{id:'Typedvectorr',name:'Typedvectorr',color1
 {opcode:'rpt3',blockType:com,text:'[a]p[b][tip][c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'0'},c:{type:txt,defaultValue:'10'},tip:{type:txt,menu:'Asig'}}},
 {opcode:'ma',blockType:rep,text:'[a].map[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'outs'},b:{type:num,defaultValue:'3'}}},
 {opcode:'Fil',blockType:rep,text:'[a].filter[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
-{opcode:'set',blockType:rep,text:'[a].set[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'fill',blockType:rep,text:'[a].fill[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'0'}}},
+{opcode:'set',blockType:com,text:'[a].set[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'fill',blockType:com,text:'[a].fill[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'0'}}},
 {opcode:'join',blockType:rep,text:'[a].join[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'|'}}},
 {opcode:'uin0',blockType:rep,text:'Array from[a]separador[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:'1,4,7,4'},b:{type:txt,defaultValue:','}}},
 {opcode:'uin1',blockType:rep,text:'new [u][a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},u:{type:txt,menu:'uins'}}},
@@ -47,7 +47,7 @@ class Typedvectorr{getInfo(){return{id:'Typedvectorr',name:'Typedvectorr',color1
 {opcode:'subar',blockType:rep,text:'[c].subarray[a][b]',hideFromPalette:vecs,arguments:{a:{type:num,defaultValue:'0'},b:{type:num,defaultValue:'5'},c:{type:txt,defaultValue:''}}},
 {opcode:'trans',blockType:rep,text:'[b].transfer[a]',hideFromPalette:vecs,arguments:{a:{type:num,defaultValue:'0'},b:{type:txt,defaultValue:'buffer'}}},
 {opcode:'view',blockType:rep,text:'new DataView[a][b][c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:'buffer'},b:{type:num,defaultValue:'0'},c:{type:num,defaultValue:'2'}}},
-{opcode:'setv',blockType:rep,text:'[c].[u][a][b]',hideFromPalette:vecs,arguments:{u:{type:txt,menu:'setm'},a:{type:num,defaultValue:'0'},b:{type:num,defaultValue:'5'},c:{type:txt,defaultValue:'DataView'}}},
+{opcode:'setv',blockType:rep,text:'[c].[u][a][b][d]',hideFromPalette:vecs,arguments:{u:{type:txt,menu:'setm'},a:{type:num,defaultValue:'0'},b:{type:num,defaultValue:'5'},c:{type:txt,defaultValue:'DataView'},d:{type:bol1,defaultValue:''}}},
 {opcode:'props',blockType:rep,text:'[a].[u]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},u:{type:txt,menu:'pr'}}},
 {blockType:"label",text:"solo Uint8Array",hideFromPalette:vecs},//--------------------------------------------------------------------------------------------------------------------------------
 {opcode:'thex',blockType:rep,text:'[a].toHex',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
@@ -63,7 +63,7 @@ class Typedvectorr{getInfo(){return{id:'Typedvectorr',name:'Typedvectorr',color1
 {opcode:'mtx2',blockType:com,text:'mtz(4*4)[a]*Arr(4)[b]_salida[c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
 
 ],menus:{
-outs:{acceptReporters:0,items:['+','-','*','/','^','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','&','|','^','<<','>>','>>>','~']},
+outs:{acceptReporters:0,items:['+','-','*','/','^','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','&','|','^','<<','>>','>>>','~','function->']},
 Filt:{acceptReporters:0,items:['==','===','<','>','>=','<=','!=']},
 Asig:{acceptReporters:0,items:['=','+=','-=','/=','*=','**=','<<=','??=','%=','>>=','>>>=','&=','|=','^=']},
 uins:{acceptReporters:0,items:['Uint8Array','Uint16Array','Uint32Array','Int8Array','Int16Array','Int32Array','Float16Array','Float32Array','Float64Array','Uint8ClampedArray','BigInt64Array','BigUint64Array']},
@@ -77,6 +77,7 @@ case'tan':return ar.a.map(Math.tan);break;case'sign':return ar.a.map(Math.sign);
 case'lim+':return ar.a.map(k=>(k>ar.b ? ar.b:k));break;case'lim-':return ar.a.map(k=>(k<ar.b ? ar.b:k));break;case'int':return ar.a.map(Math.trunc);break;
 case'arcsen':return ar.a.map(Math.asin);break;case'arccos':return ar.a.map(Math.acos);break;case'arctan':return ar.a.map(Math.atan);break;case'e^':return ar.a.map(Math.exp);break;
 case'Ln':return ar.a.map(Math.log);break;case'Log10':return ar.a.map(Math.log10);break;case'&':return ar.a.map(k=>k&ar.b);break;case'|':return ar.a.map(k=>k|ar.b);break;case'^':return ar.a.map(k=>k^ar.b);break;case'<<':return ar.a.map(k=>k<<ar.b);break;case'>>':return ar.a.map(k=>k>>ar.b);break;case'>>>':return ar.a.map(k=>k>>>ar.b);break;case'~':return ar.a.map(k=>~k);break;
+case'function->':return ar.a.map(ar.b);break;
 }}
 Fil(ar){switch(ar.ou){
 case'==':return ar.a.filter(dat=>(dat==ar.b ? 1:0));break;case'===':return ar.a.filter(dat=>(dat===ar.b ? 1:0));break;
@@ -98,14 +99,14 @@ case'*=':ar.a[ar.b]*=ar.c;break;case'**=':ar.a[ar.b]**=ar.c;break;case'<<=':ar.a
 case'>>>=':ar.a[ar.b]>>>=ar.c;break;case'??=':ar.a[ar.b]??=ar.c;break;case'%=':ar.a[ar.b]%=ar.c;break;case'&=':ar.a[ar.b]&=ar.c;break;case'|=':ar.a[ar.b]|=ar.c;break;
 }}
 angu(ar){return Math.acos(ar.a[0]/Math.hypot(...ar.a))}
-m(ar){var i=0;while(i<(ar.a.length)){ar.a[i]+=ar.b[i++];}return ar.a;}
-r(ar){var i=0;while(i<(ar.a.length)){ar.a[i]-=ar.b[i++];}return ar.a;}
-Hadamard(ar){var i=0;while(i<(ar.a.length)){ar.a[i]*=ar.b[i++];}return ar.a;}
-invemul(ar){return ar.a.map(k=>1/k);}
+m(ar){var i=0;while(i<(ar.a.length)){ar.a[i]+=ar.b[i++];}}
+r(ar){var i=0;while(i<(ar.a.length)){ar.a[i]-=ar.b[i++];}}
+Hadamard(ar){var i=0;while(i<(ar.a.length)){ar.a[i]*=ar.b[i++];}}
+invemul(ar){ar.a.map(k=>1/k);}
 uin0(ar){return Array.from(ar.a.split(ar.b+""));}
 uin1(ar){return new window[ar.u](ar.a);}
 dsit(ar){var i=0,out=Array(ar.a.length);while(i<ar.a.length){out[i]=ar.b[i]-ar.a[i++];}return Math.hypot(...out);}
-lerp(ar){var i=0,z=ar.c;while(i<ar.a.length){ar.a[i]+=(ar.b[i]-ar.a[i++])*z;}return ar.a;}
+lerp(ar){var i=0,z=ar.c;while(i<ar.a.length){ar.a[i]+=(ar.b[i]-ar.a[i++])*z;}}
 negvec(ar){return ar.a.map(k=>k*-1);}
 smdr(ar){var i=0,out=0;while(i<ar.a.length){out+=ar.a[i++];}return out;}
 med1(ar){var i=0,out=0;while(i<ar.a.length){out+=ar.a[i++];}return out/ar.a.length;}
@@ -113,16 +114,16 @@ med2(ar){var i=1,out=ar.a[0];while(i<ar.a.length){out*=ar.a[i++];}return out**(1
 med3(ar){var i=0,out=0;while(i<ar.a.length){out+=1/ar.a[i++];}return ar.a.length/out;}
 med4(ar){const ve=ar.a.map(k=>k**2);var i=0,out=0;while(i<ve.length){out+=ve[i++];}return (out/ve.length)**0.5;}
 prto(ar){var i=0,out=1;while(i<ar.a.length){out*=ar.a[i++];}return out;}
-muVE(ar){var i=0;while(i<ar.a.length){ar.a[i++]*=ar.b}return ar.a;}
+muVE(ar){var i=0;while(i<ar.a.length){ar.a[i++]*=ar.b}}
 cruz(ar){return [(ar.a[1]*ar.b[2])-(ar.a[2]*ar.b[1]),(ar.a[2]*ar.b[0])-(ar.a[0]*ar.b[2]),(ar.a[0]*ar.b[1])-(ar.a[1]*ar.b[0])]}
 buffer(ar){return new ArrayBuffer(ar.a,ar.b)}
 subar(ar){return ar.c.subarray(ar.a,ar.b)}
 trans(ar){return ar.b.transfer(ar.a)}
 view(ar){return new DataView(ar.a,ar.b,ar.c)}
-setv(ar){return ar.c[ar.u](ar.a,ar.b)}
+setv(ar){return ar.c[ar.u](ar.a,ar.b,ar.d)}
 props(ar){return ar.a[ar.u]}
 set(ar){return ar.a.set(ar.b)}
-fill(ar){return ar.a.fill(ar.b)}
+fill(ar){ar.a.fill(ar.b)}
 thex(ar){return ar.a.toHex()}
 tb64(ar){return ar.a.toBase64()}
 frhex(ar){return Uint8Array.fromHex(ar.b.toString())}
@@ -133,7 +134,7 @@ matriz=[cos+(b[0]**2)*(1-cos),b[0]*b[1]*(1-cos)-b[2]*sen,b[0]*b[2]*(1-cos)+b[1]*
 	b[2]*b[0]*(1-cos)-b[1]*sen,b[2]*b[1]*(1-cos)+b[0]*sen,cos+(b[2]**2)*(1-cos)],i=0;
 while(i<a.length){nv[i]=[a[i][0]*matriz[0]+a[i][1]*matriz[3]+a[i][2]*matriz[6],
 			 a[i][0]*matriz[1]+a[i][1]*matriz[4]+a[i][2]*matriz[7],
-			 a[i][0]*matriz[2]+a[i][1]*matriz[5]+a[i++][2]*matriz[8]];}return a;}
+			 a[i][0]*matriz[2]+a[i][1]*matriz[5]+a[i++][2]*matriz[8]];}}
 mtx0({a,b,c}){c[0]=(a[0]*b[0])+(a[1]*b[1]),c[1]=(a[2]*b[0])+(a[3]*b[1])}
 mtx1({a,b,c}){c[0]=(a[0]*b[0])+(a[1]*b[1])+(a[2]*b[2]),c[1]=(a[3]*b[0])+(a[4]*b[1])+(a[5]*b[2]),c[2]=(a[6]*b[0])+(a[7]*b[1])+(a[8]*b[2])}
 mtx2({a,b,c}){c[0]=(a[0]*b[0])+(a[1]*b[1])+(a[2]*b[2])+(a[3]*b[3]),c[1]=(a[4]*b[0])+(a[5]*b[1])+(a[6]*b[2])+(a[7]*b[3]),c[2]=(a[8]*b[0])+(a[9]*b[1])+(a[10]*b[2])+(a[11]*b[3]),c[3]=(a[12]*b[0])+(a[13]*b[1])+(a[14]*b[2])+(a[15]*b[3])}

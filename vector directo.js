@@ -56,7 +56,7 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'arentries',blockType:rep,text:'[a].entries',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'aritera',blockType:rep,text:'[a]〚Symbol.iterator〛()',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'arnex',blockType:rep,text:'[a].next',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'pu',blockType:rep,text:'push[a]p[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'9'}}},
+{opcode:'pu',blockType:com,text:'push[a]p[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'9'}}},
 {opcode:'sh',blockType:rep,text:'shift[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'po',blockType:rep,text:'pop[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'fl',blockType:rep,text:'[a].flat[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'5'}}},
@@ -85,6 +85,8 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'uin7',blockType:rep,text:'new Float16Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'uin8',blockType:rep,text:'new Float32Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'uin9',blockType:rep,text:'new Float64Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'uin11',blockType:rep,text:'new BigInt64Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'uin12',blockType:rep,text:'new BigUint64Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
 {blockType:"label",text:"vectores-tuplas y accesores",hideFromPalette:vecs},//--------------------------------------------------------------------------------------------------------------------------------
 {opcode:'cu_i',blockType:rep,text:'i',hideFromPalette:vecs,disableMonitor:1},
 {opcode:'cu_j',blockType:rep,text:'j',hideFromPalette:vecs,disableMonitor:1},
@@ -273,7 +275,7 @@ Hadamard({a,b}){var i=0,fin=Array(a.length);while(i<(fin.length)){fin[i]=(a[i]*b
 invemul(ar){return ar.a.map(k=>1/k);}
 gen(ar){return Array(ar.a).fill(ar.b);}
 gen2(ar){var i=0,fin=Array(ar.a);while(i<(ar.a)){fin[i++]=(Math.random()*(ar.b-ar.c)+ar.c);}return fin;}
-pu(ar){return ar.a.push(ar.b);}sh(ar){return ar.a.shift();}po(ar){return ar.a.pop();}
+pu(ar){ar.a.push(ar.b);}sh(ar){return ar.a.shift();}po(ar){return ar.a.pop();}
 Kr({a,b}){var i=0,j=0,t=0,out=Array(a.length*b.length);while(i<a.length){j=0;while(j<b.length){out[t++]=a[i]*b[j++];}i++}return out;}
 tagtp1m(ar,util){if(!util.target.tag1){util.target.tag1=[];}if(util.target.tag1.includes(ar.t)||ar.t===''){return;}else{util.target.tag1.push(ar.t)};}
 tagtp1mc(ar,util){if(!util.target.tag1){util.target.tag1=[];}if(ar.t===''){return;}else{util.target.tag1.push(ar.t)};}
@@ -302,6 +304,7 @@ uin1(ar){return new Uint8Array(ar.a);}uin2(ar){return new Uint16Array(ar.a);}uin
 uin3(ar){return new Uint32Array(ar.a);}uin4(ar){return new Int8Array(ar.a);}
 uin5(ar){return new Int16Array(ar.a);}uin6(ar){return new Int32Array(ar.a);}
 uin7(ar){return new Float16Array(ar.a);}uin8(ar){return new Float32Array(ar.a);}uin9(ar){return new Float64Array(ar.a);}
+uin11(ar){return new BigInt64Array(ar.a)}uin12(ar){return new BigUint64Array(ar.a)}
 dsit(ar){var i=0,out=Array(ar.a.length);while(i<ar.a.length){out[i]=ar.b[i]-ar.a[i++];}return Math.hypot(...out);}
 lerp(ar){var i=0,out=Array(ar.a.length);while(i<ar.a.length){out[i]=ar.a[i]*1+(ar.b[i]-ar.a[i++])*ar.c;}return out;}
 negvec(ar){return ar.a.map(k=>k*-1);}

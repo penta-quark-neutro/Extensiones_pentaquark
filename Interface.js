@@ -36,7 +36,7 @@ class Interfacepent{getInfo(){return {id:'Interfacepent',name:'Interface 1',colo
 {opcode:'perm2',blockType:rep0,text:'Datos persistentes',disableMonitor:true},
 {opcode:'perm3',blockType:com0,text:'Para target,Dato persistente=[b]',arguments:{b:{type:str0,defaultValue:'datos'}}},
 {opcode:'perm4',blockType:rep0,text:'Dato persistente de target',disableMonitor:true},
-{opcode:'proy',blockType:com0,text:'_projection[a]',arguments:{a:{type:str0,defaultValue:'vector de 16 parametros'}}},
+{opcode:'proy',blockType:com0,text:'_projection[a]update',arguments:{a:{type:str0,defaultValue:'vector de 16 parametros'}}},
 {opcode:'proy2',blockType:rep0,text:'_projection',disableMonitor:true},
 ],};}
 informacion(args){alert(args.string);}
@@ -69,6 +69,6 @@ perm1(ar){vm.runtime.extensionStorage['Interfacepent']=ar.a}
 perm2(ar){return vm.runtime.extensionStorage['Interfacepent']}
 perm3(ar,util){util.target.extensionStorage.Interfacepent=ar.b}
 perm4(ar,util){return util.target.extensionStorage.Interfacepent}
-proy({a}){vm.renderer._projection=[a[0],a[1],a[2],a[3],a[4],a[5],a[6],a[7],a[8],a[9],a[10],a[11],a[12],a[13],a[14],a[15]]}
+proy({a}){vm.renderer._projection=[a[0],a[1],a[2],a[3],a[4],a[5],a[6],a[7],a[8],a[9],a[10],a[11],a[12],a[13],a[14],a[15]];vm.renderer.dirty=true}
 proy2(){return vm.renderer._projection}
 }Scratch.extensions.register(new Interfacepent());})(Scratch);

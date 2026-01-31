@@ -1,6 +1,6 @@
 (function(Scratch) {'use strict';//por el (pentaquark neutro, penta quark neutro) y neutral auream
 const txt=Scratch.ArgumentType.STRING;const reportero=Scratch.BlockType.REPORTER;const numero=Scratch.ArgumentType.NUMBER;const vgbb=Scratch.BlockType.BUTTON;
-const evaluador=Scratch.BlockType.BOOLEAN;var ops=true,cons=true,Ext=true;
+const evaluador=Scratch.BlockType.BOOLEAN;var ops=true,cons=true;
 if(!Scratch.extensions.unsandboxed){throw new Error('This extension must run unsandboxed');}
 class minmatespentaquark{getInfo(){return{id:'minmatespentaquark',name:'Pequeñas matematicas',color1:'#555555',color2:'#ffff00',color3:'#00ff00',blocks:[
 //circulo,anillo,bloque.
@@ -24,6 +24,12 @@ class minmatespentaquark{getInfo(){return{id:'minmatespentaquark',name:'Pequeña
 {opcode:'expo',blockType:reportero,text:'[z]^[k]',hideFromPalette:ops,arguments:{z:{type:numero,defaultValue:'1.9'},k:{type:numero,defaultValue:'5'}}},
 {opcode:'atn2',blockType:reportero,text:'atan2 [z][k]',hideFromPalette:ops,arguments:{z:{type:numero,defaultValue:'3'},k:{type:numero,defaultValue:'8'}}},
 {opcode:'sinc',blockType:reportero,text:'sincN[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'5'}}},
+{opcode:'cosh',blockType:reportero,text:'cosh[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'5'}}},
+{opcode:'sinh',blockType:reportero,text:'sinh[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'5'}}},
+{opcode:'tanh',blockType:reportero,text:'tanh[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'5'}}},
+{opcode:'asinh',blockType:reportero,text:'asinh[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'5'}}},
+{opcode:'acosh',blockType:reportero,text:'acosh[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'5'}}},
+{opcode:'atanh',blockType:reportero,text:'atanh[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'0.5'}}},
 {opcode:'escalon',blockType:reportero,text:'Escalon[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'5'}}},
 {opcode:'fract',blockType:reportero,text:'fract[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'5.5656'}}},
 {opcode:'enter',blockType:reportero,text:'int[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'5.5656'}}},
@@ -33,9 +39,8 @@ class minmatespentaquark{getInfo(){return{id:'minmatespentaquark',name:'Pequeña
 {opcode:'mei',blockType:evaluador,text:'[a]≥[b]',hideFromPalette:ops,arguments:{a:{type:numero,defaultValue:'2'},b:{type:numero,defaultValue:'5'}}},
 {opcode:'mnei',blockType:evaluador,text:'[a]≤[b]',hideFromPalette:ops,arguments:{a:{type:numero,defaultValue:'2'},b:{type:numero,defaultValue:'5'}}},
 {opcode:'ni',blockType:reportero,text:'[a]≠[b]',hideFromPalette:ops,arguments:{a:{type:numero,defaultValue:'2'},b:{type:numero,defaultValue:'5'}}},
-{opcode:'tetra',blockType:evaluador,text:'[a]↑↑[b]',hideFromPalette:ops,arguments:{a:{type:numero,defaultValue:'3'},b:{type:numero,defaultValue:'3'}}},{blockType:"label",text:"Azar",hideFromPalette:ops},//----------------------------------------------------------------------------------------------------------------------------------
+{opcode:'tetra',blockType:evaluador,text:'[a]↑↑[b]',hideFromPalette:ops,arguments:{a:{type:numero,defaultValue:'3'},b:{type:numero,defaultValue:'3'}}},
 {opcode:'prse',blockType:evaluador,text:'[x]%',hideFromPalette:ops,arguments:{x:{type:numero,defaultValue:'0.34'}}},
-{opcode:'prseve',blockType:reportero,text:'eventos[x]unif%',hideFromPalette:ops,arguments:{x:{type:numero,defaultValue:'5'}}},
 {blockType:"label",text:"constantes",},//----------------------------------------------------------------------------------------------------------------------------------
  {func:'herram3',blockType:vgbb,hideFromPalette:!cons,text:'mostrar constantes',},{func:'herram4',blockType:vgbb,hideFromPalette:cons,text:'ocultar constantes',},
 {opcode:'c',blockType:reportero,text:'c',hideFromPalette:cons,disableMonitor:1},{opcode:'π',blockType:reportero,text:'π',hideFromPalette:cons,disableMonitor:1},
@@ -56,6 +61,12 @@ herram4(){cons=true;Scratch.vm.extensionManager.refreshBlocks();}
 herram5(){Ext=false;Scratch.vm.extensionManager.refreshBlocks();}
 herram6(){Ext=true;Scratch.vm.extensionManager.refreshBlocks();}
 //minimas matematicas----------------------------------------------------------------------------------------------------------
+cosh(ar){return Math.cosh(ar.k)}
+sinh(ar){return Math.sinh(ar.k)}
+asinh(ar){return Math.asinh(ar.k)}
+acosh(ar){return Math.acosh(ar.k)}
+atanh(ar){return Math.atanh(ar.k)}
+tanh(ar){return Math.tanh(ar.k)}
 delta_dirac(ar){if(ar.a==ar.x){return 1/0;}else{return 0;}}
 signo_x(ar){return Math.sign(ar.x)}
 rampa_de_x(ar){if(ar.x<0){return 0;}else{return ar.x}}
@@ -74,7 +85,7 @@ neg2(ar){return !(ar.x==true);}
 devo(ar){return ar.x;}
 atn2(ar){return Math.atan2(ar.z,ar.k)}
 fix(ar){if(ar.k>=0){return ar.z.toFixed(ar.k*1);}else{return ar.z.toFixed(-ar.k*1);}}
-expo(ar){return Math.pow(ar.z,ar.k);}
+expo(ar){return ar.z**ar.k;}
 sinc(ar){if(ar.k==0){return 1;}else{return Math.sin(3.1415926535*ar.k)/(3.1415926535*ar.k);}}
 escalon(ar){if(ar.k>=0){return 1;}else{return 0;}}
 fract(ar){if(ar.k>=0){return ar.k-Math.floor(ar.k);}else{return ar.k-Math.ceil(ar.k);}}
@@ -105,7 +116,6 @@ inf1(){return -(1/0);}
 γ(){return 0.577215664901632;}
 //Azar----------------------------------------------------------------------------------------------------------
 prse(ar){return (ar.x>Math.random());}
-prseve(ar){return 1/ar.x;}
   }
   Scratch.extensions.register(new minmatespentaquark());
 })(Scratch);
