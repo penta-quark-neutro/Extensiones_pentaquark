@@ -63,7 +63,8 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me64',blockType:com0,text:'new[a].[c]()',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
 {opcode:'me65',blockType:com0,text:'new[a].[c]([b])',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
 {opcode:'me66',blockType:com0,text:'new[a].[c](...[b])',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
-{opcode:'me37',blockType:rep,text:'try{[a](...[b])}',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me37',blockType:rep,text:'try{[a](...[b])}',hideFromPalette:fun||pun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me98',blockType:rep,text:'try{[a].[b](...[c])}',hideFromPalette:fun||!pun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:''}}},
 {opcode:'me15',blockType:rep,text:'Apply[a][b][c]',hideFromPalette:fun||!blo,arguments:{a:{type:txt,defaultValue:'funcion'},b:{type:txt,defaultValue:'this'},c:{type:txt,defaultValue:'Array'}}},
 {opcode:'me70',blockType:com0,text:'Apply[a][b][c]',hideFromPalette:fun||blo,arguments:{a:{type:txt,defaultValue:'funcion'},b:{type:txt,defaultValue:'this'},c:{type:txt,defaultValue:'Array'}}},
 {opcode:'me73',blockType:rep,text:'[a].bind(...[b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
@@ -88,6 +89,10 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me5',blockType:rep,text:'Descriptor[a]prop[b].[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,menu:'pr'}}},
 {opcode:'me6',blockType:bol,text:'[a].[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'}}},
 {opcode:'me16',blockType:bol,text:'[a]?.[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'}}},
+{opcode:'me93',blockType:bol,text:'[a].[b].[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'pr'}}},
+{opcode:'me94',blockType:bol,text:'[a]?.[b]?.[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'pr'}}},
+{opcode:'me95',blockType:bol,text:'[a].[b].[c].[d]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'pr'},d:{type:txt,defaultValue:'kr'}}},
+{opcode:'me96',blockType:bol,text:'[a]?.[b]?.[c]?.[d]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'pr'},d:{type:txt,defaultValue:'kr'}}},
 {opcode:'me7_2',blockType:com0,text:'[a].[b]=[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'100'}}},
 {opcode:'me76',blockType:com0,text:'[a].[b]+=[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'100'}}},
 {opcode:'me77',blockType:com0,text:'[a].[b]-=[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:'100'}}},
@@ -108,8 +113,8 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me14',blockType:bol,text:'Object.is[a][b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me32',blockType:rep,text:'getPrototypeOf[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me47',blockType:rep,text:'setPrototypeOf[a][b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'me9',blockType:rep,text:'[a]borrar[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'}}},
-{opcode:'me9_2',blockType:com0,text:'[a]borrar[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'}}},
+{opcode:'me9',blockType:rep,text:'[a]deleteProperty[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'}}},
+{opcode:'me9_2',blockType:com0,text:'[a]deleteProperty[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'}}},
 {opcode:'me11',blockType:rep,text:'stringify[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me13',blockType:rep,text:'parse[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:'{"valor1":false, "valor2":100}'}}},
 {opcode:'me68',blockType:rep,text:'ExpsCadena[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
@@ -123,8 +128,11 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me30',blockType:rep,text:'seal[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me31',blockType:bol,text:'isSealed[a]?',hideFromPalette:dap,hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me23',blockType:rep,text:'create[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me99',blockType:rep,text:'construct([a],[b],[c])',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
 {opcode:'me24',blockType:com0,text:'toStringTag[a]=[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'PersObj'}}},
 {opcode:'me67',blockType:rep,text:'structuredClone[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me97',blockType:rep,text:'Object.groupBy[a][b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me100',blockType:rep,text:'Object.assign([a],...[b])',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {blockType:"label",text:"Objetos y utiles",hideFromPalette:obs},//--------------------------------------------------------------------------------------------------------------------------------
 {opcode:'me1',blockType:rep,text:'Nuevo Objeto vacio',hideFromPalette:obs,disableMonitor:1},
 {opcode:'me38',blockType:bol,text:'[a]',hideFromPalette:obs,disableMonitor:1,arguments:{a:{type:txt,menu:'vals'}}},
@@ -132,12 +140,13 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me20',blockType:rep,text:'Objeto Global',hideFromPalette:obs,disableMonitor:1},
 {opcode:'me25',blockType:rep,text:'Objeto Global Permanente',hideFromPalette:obs,disableMonitor:1},
 {opcode:'me26',blockType:com0,text:'Vaciar Objeto Global Permanente',hideFromPalette:obs,disableMonitor:1},
-{opcode:'me92',blockType:bol,text:'[a]?[b]:[c]',hideFromPalette:dap,arguments:{a:{type:bol1,defaultValue:''},b:{type:txt,defaultValue:'1'},c:{type:txt,defaultValue:'0'}}},
+{opcode:'me92',blockType:bol,text:'[a]?[b]:[c]',hideFromPalette:obs,arguments:{a:{type:bol1,defaultValue:''},b:{type:txt,defaultValue:'1'},c:{type:txt,defaultValue:'0'}}},
 {opcode:'me39',blockType:rep,text:'typeof[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me54',blockType:rep,text:'[a]instanceof[b]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me41',blockType:com0,text:'[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me71',blockType:rep,text:'Referencia variable[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'mi variable'}}},
 {opcode:'me72',blockType:rep,text:'Referencia lista[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'lista-1'}}},
+{opcode:'me101',blockType:Scratch.BlockType.HAT,text:'Si[a]',hideFromPalette:obs,isEdgeActivated:true,arguments:{a:{type:txt,defaultValue:''}}},
 
 ],menus:{pr:{acceptReporters:0,items:['value','writable','enumerable','configurable']},in:{acceptReporters:0,items:['vm','target','util','Scratch','Math','Atomics','Object','Symbol','Array','String','window','crypto','Map','Set','twgl','gl','Proxy']},vals:{acceptReporters:0,items:['true','false','Undefined','NaN','null','Infinity']}}
 };}
@@ -178,7 +187,7 @@ me30(ar){return Object.seal(ar.a);}
 me31(ar){return Object.isSealed(ar.a);}
 me32(ar){return Object.getPrototypeOf(ar.a)}me47(ar){return Object.setPrototypeOf(ar.a,ar.b)}
 me36(ar){return Function(...ar.a,ar.b)}me40(ar){return AsyncFunction(...ar.a,ar.b)}
-me37({a,b}){try{return a(...b)}catch(a){return a;}}
+me37({a,b}){try{return a(...b)}catch(c){return c;}}
 me38(ar){switch(ar.a){case'true':return true;case'false':return false;case'NaN':return NaN;case'Undefined':return ;case'null':return null;case'Infinity':return Infinity;}}
 me39(ar){return typeof(ar.a)}me41(){}me42(ar){return GeneratorFunction(...ar.a,ar.b)}me43(ar){return AsyncGeneratorFunction(...ar.a,ar.b)}me44(ar){return ar.a.next(ar.b)}
 me45(ar){return ar.a.return(ar.b)}me46(ar){return ar.a.throw(new Error(ar.b))}
@@ -204,4 +213,13 @@ me76({a,b,c}){a[b]+=c}me77({a,b,c}){a[b]-=c}me78({a,b,c}){a[b]/=c}me79({a,b,c}){
 me85({a,b,c}){a[b]&=c}me86({a,b,c}){a[b]|=c}me87({a,b,c}){a[b]^=c}me88({a,b,c}){a[b]||=c}me89({a,b,c}){a[b]&&=c}me90({a,b,c}){a[b]??=c}
 me91(ar){URL.revokeObjectURL(ar.a)}
 me92(ar){return (ar.a?ar.b:ar.c)}
+me93(ar){return ar.a[ar.b][ar.c]}
+me94(ar){return ar.a?.[ar.b]?.[ar.c]}
+me95(ar){return ar.a[ar.b][ar.c][ar.d]}
+me96(ar){return ar.a?.[ar.b]?.[ar.c]?.[ar.d]}
+me97(ar){return Object.groupBy(ar.a,ar.b)}
+me98({a,b,c}){try{return a[b](...c)}catch(d){return d;}}
+me99(ar){return Reflect.construct(ar.a,ar.b,ar.c)}
+me100(ar){return Object.assign(ar.a,...ar.b)}
+me101(ar){return ar.a}
 }Scratch.extensions.register(new exps());})(Scratch);
