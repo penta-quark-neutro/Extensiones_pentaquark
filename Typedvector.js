@@ -1,6 +1,6 @@
 (function(Scratch) {'use strict';//por el (pentaquark neutro, penta quark neutro) y neutral auream
 const txt=Scratch.ArgumentType.STRING,rep=Scratch.BlockType.REPORTER,num=Scratch.ArgumentType.NUMBER,vgbb=Scratch.BlockType.BUTTON,evaluador=Scratch.BlockType.BOOLEAN,com=Scratch.BlockType.COMMAND,bol1=Scratch.ArgumentType.BOOLEAN;;
-const vm=Scratch.vm,runtime=vm.runtime;let ops=1,vecs=1;
+const vm=Scratch.vm,runtime=vm.runtime;let ops=1,vecs=1,grrad=Math.PI/180;
 function ref(){Scratch.vm.extensionManager.refreshBlocks();}
 if(!Scratch.extensions.unsandboxed){throw new Error('unsandboxed');}
 class Typedvectorr{getInfo(){return{id:'Typedvectorr',name:'Typedvectorr',color1:'#94b3d2',color2:'#00ffff',color3:'#ff0000',blocks:[
@@ -66,7 +66,7 @@ class Typedvectorr{getInfo(){return{id:'Typedvectorr',name:'Typedvectorr',color1
 outs:{acceptReporters:0,items:['+','-','*','/','^','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','&','|','^','<<','>>','>>>','~','function->']},
 Filt:{acceptReporters:0,items:['==','===','<','>','>=','<=','!=']},
 Asig:{acceptReporters:0,items:['=','+=','-=','/=','*=','**=','<<=','??=','%=','>>=','>>>=','&=','|=','^=']},
-uins:{acceptReporters:0,items:['Uint8Array','Uint16Array','Uint32Array','Int8Array','Int16Array','Int32Array','Float16Array','Float32Array','Float64Array','Uint8ClampedArray','BigInt64Array','BigUint64Array']},
+uins:{acceptReporters:0,items:['Uint8ClampedArray','Uint8Array','Uint16Array','Uint32Array','Int8Array','Int16Array','Int32Array','Float16Array','Float32Array','Float64Array','BigInt64Array','BigUint64Array']},
 setm:{acceptReporters:0,items:['getInt8','getUint8','getInt16','getUint16','getFloat16','getInt32','getUint32','getFloat32','getFloat64','getBigUint64','getBigInt64','setInt8','setUint8','setInt16','setUint16','setFloat16','setInt32','setUint32','setFloat32','setFloat64','setBigUint64','setBigInt64']},
 pr:{acceptReporters:0,items:['buffer','byteLength','byteOffset']}
 }};}
@@ -102,7 +102,7 @@ angu(ar){return Math.acos(ar.a[0]/Math.hypot(...ar.a))}
 m(ar){var i=0;while(i<(ar.a.length)){ar.a[i]+=ar.b[i++];}}
 r(ar){var i=0;while(i<(ar.a.length)){ar.a[i]-=ar.b[i++];}}
 Hadamard(ar){var i=0;while(i<(ar.a.length)){ar.a[i]*=ar.b[i++];}}
-invemul(ar){ar.a.map(k=>1/k);}
+invemul(ar){var i=0;while(i<(ar.a.length)){ar.a[++i]**=-1;}}
 uin0(ar){return Array.from(ar.a.split(ar.b+""));}
 uin1(ar){return new window[ar.u](ar.a);}
 dsit(ar){var i=0,out=Array(ar.a.length);while(i<ar.a.length){out[i]=ar.b[i]-ar.a[i++];}return Math.hypot(...out);}
@@ -132,7 +132,7 @@ Rotacion({a,b,c}){var cos=Math.cos((-c)*grrad),sen=Math.sin((-c)*grrad),
 matriz=[cos+(b[0]**2)*(1-cos),b[0]*b[1]*(1-cos)-b[2]*sen,b[0]*b[2]*(1-cos)+b[1]*sen,
 	b[1]*b[0]*(1-cos)+b[2]*sen,cos+(b[1]**2)*(1-cos),b[1]*b[2]*(1-cos)-b[0]*sen,
 	b[2]*b[0]*(1-cos)-b[1]*sen,b[2]*b[1]*(1-cos)+b[0]*sen,cos+(b[2]**2)*(1-cos)],i=0;
-while(i<a.length){nv[i]=[a[i][0]*matriz[0]+a[i][1]*matriz[3]+a[i][2]*matriz[6],
+while(i<a.length){a[i]=[a[i][0]*matriz[0]+a[i][1]*matriz[3]+a[i][2]*matriz[6],
 			 a[i][0]*matriz[1]+a[i][1]*matriz[4]+a[i][2]*matriz[7],
 			 a[i][0]*matriz[2]+a[i][1]*matriz[5]+a[i++][2]*matriz[8]];}}
 mtx0({a,b,c}){c[0]=(a[0]*b[0])+(a[1]*b[1]),c[1]=(a[2]*b[0])+(a[3]*b[1])}

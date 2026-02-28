@@ -56,17 +56,20 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'arentries',blockType:rep,text:'[a].entries',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'aritera',blockType:rep,text:'[a]〚Symbol.iterator〛()',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'arnex',blockType:rep,text:'[a].next',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'pu',blockType:com,text:'push[a]p[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'9'}}},
+{opcode:'pu',blockType:com,text:'[a].push[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'9'}}},
+{opcode:'unsh',blockType:com,text:'[a].unshift[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'9'}}},
 {opcode:'sh',blockType:rep,text:'shift[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'po',blockType:rep,text:'pop[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'fl',blockType:rep,text:'[a].flat[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'5'}}},
 {opcode:'fill',blockType:rep,text:'[a].fill[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'5'}}},
 {opcode:'sl',blockType:rep,text:'[a].splice[b][c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:'1'},c:{type:num,defaultValue:'1'}}},
+{opcode:'sli',blockType:rep,text:'[a].slice[b][c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:'1'},c:{type:num,defaultValue:'1'}}},
 {opcode:'in',blockType:rep,text:'[c].indexOf[a][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:'K'},b:{type:num,defaultValue:'0'},c:{type:txt,defaultValue:''}}},
 {opcode:'lain',blockType:rep,text:'[c].lastIndexOf[a][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:'K'},b:{type:num,defaultValue:'-1'},c:{type:txt,defaultValue:''}}},
 {opcode:'arrcopy',blockType:rep,text:'[a].copyWithin[b][c][d]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:'1'},c:{type:num,defaultValue:'1'},d:{type:num,defaultValue:'1'}}},
-{opcode:'ma',blockType:rep,text:'[a].map[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'outs'},b:{type:num,defaultValue:'3'}}},
+{opcode:'ma',blockType:rep,text:'[a].map[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'outs'},b:{type:txt,defaultValue:'3'}}},
 {opcode:'Fil',blockType:rep,text:'[a].filter[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
+{opcode:'reduc',blockType:rep,text:'[a].reduce[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'redu'},b:{type:txt,defaultValue:'0'}}},
 {opcode:'co',blockType:rep,text:'[a].concat[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'incl',blockType:rep,text:'[a].includes[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'5'}}},
 {opcode:'rev',blockType:rep,text:'[a].reverse',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
@@ -160,6 +163,7 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'octa3',blockType:rep,text:'𝕆[v1]*[v2]',hideFromPalette:oct,arguments:{v1:{type:txt,defaultValue:''},v2:{type:txt,defaultValue:''}}},
 {opcode:'octa4',blockType:rep,text:'𝕆[v1]/[v2]',hideFromPalette:oct,arguments:{v1:{type:txt,defaultValue:''},v2:{type:txt,defaultValue:''}}},
 {opcode:'octa6',blockType:rep,text:'𝕆 conj[a]',hideFromPalette:oct,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'octa10',blockType:rep,text:'𝕆 LN[V]',hideFromPalette:oct,arguments:{V:{type:txt,defaultValue:''}}},
 {opcode:'octa8',blockType:rep,text:'𝕆 e^[v]',hideFromPalette:oct,arguments:{v:{type:txt,defaultValue:''}}},
 {opcode:'octa9',blockType:rep,text:'𝕆 ||[v]||',hideFromPalette:oct,arguments:{v:{type:txt,defaultValue:''}}},
 {opcode:'octa7',blockType:evaluador,text:'¿[a]es 𝕆?',hideFromPalette:oct,arguments:{a:{type:txt,defaultValue:''}}},
@@ -170,9 +174,10 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'sed3',blockType:rep,text:'𝕊 conj[v]',hideFromPalette:sed,arguments:{v:{type:txt,defaultValue:''}}},
 {opcode:'sed4',blockType:evaluador,text:'¿[a]es 𝕊?',hideFromPalette:sed,arguments:{a:{type:txt,defaultValue:''}}},
 ],menus:{
-outs:{acceptReporters:0,items:['+','-','*','/','**','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','|','&','^','~','<<','>>','>>>','tofixed','function->']},
-Filt:{acceptReporters:0,items:['==','===','<','>','>=','<=','!=','includes','!includes','Reflect.has','!Reflect.has','typeof','!isNaN','isNaN']},
-Asig:{acceptReporters:1,items:['=','+=','-=','/=','*=','**=','<<=','??=','%=','>>=','>>>=','|=','&=','^=','||=','&&=']}}
+outs:{acceptReporters:0,items:['+','-','*','/','**','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','|','&','^','~','<<','>>','>>>','tofixed','[x]','function->']},
+Filt:{acceptReporters:0,items:['==','===','<','>','>=','<=','!=','includes','!includes','Reflect.has','!Reflect.has','typeof','!isNaN','isNaN','[x]','function->']},
+Asig:{acceptReporters:1,items:['=','+=','-=','/=','*=','**=','<<=','??=','%=','>>=','>>>=','|=','&=','^=','||=','&&=']},
+redu:{acceptReporters:1,items:['+','-','*','/','**','|','&','^','max','min']}}
 };}
 sed1({v,w}){return [v[0]*1+w[0]*1,v[1]*1+w[1]*1,v[2]*1+w[2]*1,v[3]*1+w[3]*1,v[4]*1+w[4]*1,v[5]*1+w[5]*1,v[6]*1+w[6]*1,v[7]*1+w[7]*1,v[8]*1+w[8]*1,v[9]*1+w[9]*1,v[10]*1+w[10]*1,v[11]*1+w[11]*1,v[12]*1+w[12]*1,v[13]*1+w[13]*1,v[14]*1+w[14]*1,v[15]*1+w[15]*1]}
 sed2({v,w}){return [v[0]-w[0],v[1]-w[1],v[2]-w[2],v[3]-w[3],v[4]-w[4],v[5]-w[5],v[6]-w[6],v[7]-w[7],v[8]-w[8],v[9]-w[9],v[10]-w[10],v[11]-w[11],v[12]-w[12],v[13]-w[13],v[14]-w[14],v[15]-w[15]]}
@@ -204,6 +209,7 @@ octa6({a}){return [a[0],-a[1],-a[2],-a[3],-a[4],-a[5],-a[6],-a[7]]}
 octa7({a}){return (a.length==8&&!isNaN(Number(a[0]))&&!isNaN(Number(a[1]))&&!isNaN(Number(a[2]))&&!isNaN(Number(a[3]))&&!isNaN(Number(a[4]))&&!isNaN(Number(a[5]))&&!isNaN(Number(a[6]))&&!isNaN(Number(a[7])))}
 octa8({v}){const mo=Math.hypot(v[1],v[2],v[3],v[4],v[5],v[6],v[7]),s=Math.sin(mo)*Math.exp(v[0]);return [Math.cos(mo)*Math.exp(v[0]),s*v[1]/mo,s*v[2]/mo,s*v[3]/mo,s*v[4]/mo,s*v[5]/mo,s*v[6]/mo,s*v[7]/mo]}
 octa9({v}){return (v[0]**2+v[1]**2+v[2]**2+v[3]**2+v[4]**2+v[5]**2+v[6]**2+v[7]**2)**0.5}
+octa10({V}){const M=((V[1]**2)+(V[2]**2)+(V[3]**2)+(V[4]**2)+(V[5]**2)+(V[6]**2)+(V[7]**2))**0.5,c=Math.acos(V[0]/Math.hypot(...V));return [Math.log(Math.hypot(...V)),(V[1]/M*c),(V[2]/M*c),(V[3]/M*c),(V[4]/M*c),(V[5]/M*c),(V[6]/M*c),(V[7]/M*c)]}
 cua1({a,b}){return [a[0]*1+1*b[0],a[1]*1+b[1]*1,a[2]*1+b[2]*1,a[3]*1+b[3]*1]}
 cua2({a,b}){return [a[0]-b[0],a[1]-b[1],a[2]-b[2],a[3]-b[3]]}
 cua3({v1,v2}){return [((v1[0]*v2[0])-(v1[1]*v2[1])-(v1[2]*v2[2])-(v1[3]*v2[3])),((v1[0]*v2[1])+(v1[1]*v2[0])+(v1[2]*v2[3])-(v1[3]*v2[2])),((v1[0]*v2[2])-(v1[1]*v2[3])+(v1[2]*v2[0])+(v1[3]*v2[1])),((v1[0]*v2[3])+(v1[1]*v2[2])-(v1[2]*v2[1])+(v1[3]*v2[0]))];}
@@ -231,7 +237,7 @@ case'lim+':return ar.a.map(k=>(k>ar.b ? ar.b:k));break;case'lim-':return ar.a.ma
 case'arcsen':return ar.a.map(Math.asin);break;case'arccos':return ar.a.map(Math.acos);break;case'arctan':return ar.a.map(Math.atan);break;case'e^':return ar.a.map(Math.exp);break;
 case'Ln':return ar.a.map(Math.log);break;case'Log10':return ar.a.map(Math.log10);break;case'|':return ar.a.map(k=>k|ar.b);break;case'&':return ar.a.map(k=>k&ar.b);break;
 case'^':return ar.a.map(k=>k^ar.b);break;case'~':return ar.a.map(k=>~k);break;case'<<':return ar.a.map(k=>k<<ar.b);break;case'>>':return ar.a.map(k=>k>>ar.b);break;case'>>>':return ar.a.map(k=>k>>>ar.b);break;
-case'tofixed':return ar.a.map(k=>k.toFixed(ar.b));break;case'function->':return ar.a.map(ar.b);break
+case'tofixed':return ar.a.map(k=>k.toFixed(ar.b));break;case'function->':return ar.a.map(ar.b);break;case'[x]':return ar.a.map(x=>x[ar.b]);break
 }}
 Fil(ar){switch(ar.ou){
 case'==':return ar.a.filter(dat=>(dat==ar.b ? 1:0));break;case'===':return ar.a.filter(dat=>(dat===ar.b ? 1:0));break;case'isNaN':return ar.a.filter(k=>isNaN(k));break;
@@ -240,7 +246,12 @@ case'>=':return ar.a.filter(dat=>(dat>=ar.b ? 1:0));break;case'<=':return ar.a.f
 case'!=':return ar.a.filter(dat=>(dat!=ar.b ? 1:0));break;case'includes':return ar.a.filter(dat=>dat.toString().includes(ar.b));break;
 case'!includes':return ar.a.filter(dat=>!(dat.toString().includes(ar.b)));break;case'Reflect.has':return ar.a.filter(dat=>Reflect.has(dat,ar.b));break;
 case'!Reflect.has':return ar.a.filter(dat=>!(Reflect.has(dat,ar.b)));break;case'typeof':return ar.a.filter(dat=>typeof(dat)==ar.b);break;case'!isNaN':return ar.a.filter(k=>!isNaN(k));break;
+case'function->':return ar.a.filter(ar.b);break;case'[x]':return ar.a.filter(k=>(k[ar.b]?true:false));break
 }}
+reduc(ar){switch(ar.ou){
+case'+':return ar.a.reduce((ac,an)=>ac+an,ar.b);case'-':return ar.a.reduce((ac,an)=>ac-an,ar.b);case'*':return ar.a.reduce((ac,an)=>ac*an,ar.b);case'/':return ar.a.reduce((ac,an)=>ac/an,ar.b);
+case'**':return ar.a.reduce((ac,an)=>ac**an,ar.b);case'|':return ar.a.reduce((ac,an)=>ac|an,ar.b);case'&':return ar.a.reduce((ac,an)=>ac&an,ar.b);case'^':return ar.a.reduce((ac,an)=>ac^an,ar.b);
+case'max':return ar.a.reduce((ac,an)=>Math.max(ac,an),-Infinity);case'min':return ar.a.reduce((ac,an)=>Math.min(ac,an),Infinity);default:return ar.a.reduce(ar.ou,ar.b);}}
 herr0(){Scratch.openWindow('https://linktr.ee/Penta_quark_neutro');}
 herr1(){ops=0;ref();}herr2(){ops=1;ref();}herr3(){vecs=0;ref();}herr4(){vecs=1;ref();}herr5(){prop=0;ref();}herr6(){prop=1;ref();}herr7(){glo=0;ref();}herr8(){glo=1;ref();}
 herr9(){cc=0;ref();}herr10(){cc=1;ref();}herr11(){cuat=0;ref();}herr12(){cuat=1;ref();}herr13(){oct=0;ref();}herr14(){oct=1;ref();}herr15(){sed=0;ref();}herr16(){sed=1;ref();}
@@ -275,7 +286,7 @@ Hadamard({a,b}){var i=0,fin=Array(a.length);while(i<(fin.length)){fin[i]=(a[i]*b
 invemul(ar){return ar.a.map(k=>1/k);}
 gen(ar){return Array(ar.a).fill(ar.b);}
 gen2(ar){var i=0,fin=Array(ar.a);while(i<(ar.a)){fin[i++]=(Math.random()*(ar.b-ar.c)+ar.c);}return fin;}
-pu(ar){ar.a.push(ar.b);}sh(ar){return ar.a.shift();}po(ar){return ar.a.pop();}
+pu(ar){ar.a.push(ar.b);}sh(ar){return ar.a.shift();}po(ar){return ar.a.pop();}unsh(ar){ar.a.unshift(ar.b)}
 Kr({a,b}){var i=0,j=0,t=0,out=Array(a.length*b.length);while(i<a.length){j=0;while(j<b.length){out[t++]=a[i]*b[j++];}i++}return out;}
 tagtp1m(ar,util){if(!util.target.tag1){util.target.tag1=[];}if(util.target.tag1.includes(ar.t)||ar.t===''){return;}else{util.target.tag1.push(ar.t)};}
 tagtp1mc(ar,util){if(!util.target.tag1){util.target.tag1=[];}if(ar.t===''){return;}else{util.target.tag1.push(ar.t)};}
@@ -340,5 +351,6 @@ while(i<a.length){nv[i]=[nv[i][0]*matriz[0]+nv[i][1]*matriz[3]+nv[i][2]*matriz[6
 			 nv[i][0]*matriz[2]+nv[i][1]*matriz[5]+nv[i++][2]*matriz[8]];
 }return nv;}
 med5(ar){var i=0,out=0,k=0;while(i<ar.a.length){out+=ar.a[i++];}out/=ar.a.length;i=0;while(i<ar.a.length){k+=(ar.a[i++]-out)**2;}return (k/(ar.a.length-1))**0.5;}
+sli(ar){return ar.a.slice(ar.b,ar.c);}
 
 }Scratch.extensions.register(new vectorr());})(Scratch);
