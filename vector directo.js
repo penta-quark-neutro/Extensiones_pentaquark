@@ -71,6 +71,8 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'fore',blockType:rep,text:'[a].forEach[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'outs2'},b:{type:txt,defaultValue:'3'}}},
 {opcode:'Fil',blockType:rep,text:'[a].filter[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
 {opcode:'reduc',blockType:rep,text:'[a].reduce[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'redu'},b:{type:txt,defaultValue:'0'}}},
+{opcode:'some',blockType:rep,text:'[a].some[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
+{opcode:'every',blockType:rep,text:'[a].every[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
 {opcode:'co',blockType:rep,text:'[a].concat[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'incl',blockType:rep,text:'[a].includes[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'5'}}},
 {opcode:'rev',blockType:rep,text:'[a].reverse',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
@@ -417,6 +419,24 @@ rpt2(ar){ar.a[ar.b]=ar.c;}
 rpt3(ar){switch(ar.tip){case'=':ar.a[ar.b]=ar.c;break;case'+=':ar.a[ar.b]+=ar.c;break;case'-=':ar.a[ar.b]-=ar.c;break;case'/=':ar.a[ar.b]/=ar.c;break;case'&&=':ar.a[ar.b]&&=ar.c;break;
 case'*=':ar.a[ar.b]*=ar.c;break;case'**=':ar.a[ar.b]**=ar.c;break;case'<<=':ar.a[ar.b]<<=ar.c;break;case'>>=':ar.a[ar.b]>>=ar.c;break;case'^=':ar.a[ar.b]^=ar.c;break;case'||=':ar.a[ar.b]||=ar.c;break;
 case'>>>=':ar.a[ar.b]>>>=ar.c;break;case'??=':ar.a[ar.b]??=ar.c;break;case'%=':ar.a[ar.b]%=ar.c;break;case'|=':ar.a[ar.b]|=ar.c;break;case'&=':ar.a[ar.b]&=ar.c;break;
+}}
+some(ar){switch(ar.ou){
+case'==':return ar.a.some(dat=>(dat==ar.b ? 1:0));break;case'===':return ar.a.some(dat=>(dat===ar.b ? 1:0));break;case'isNaN':return ar.a.some(k=>isNaN(k));break;
+case'<':return ar.a.some(dat=>(dat<ar.b ? 1:0));break;case'>':return ar.a.some(dat=>(dat>ar.b ? 1:0));break;
+case'>=':return ar.a.some(dat=>(dat>=ar.b ? 1:0));break;case'<=':return ar.a.some(dat=>(dat<=ar.b ? 1:0));break;
+case'!=':return ar.a.some(dat=>(dat!=ar.b ? 1:0));break;case'includes':return ar.a.some(dat=>dat.toString().includes(ar.b));break;
+case'!includes':return ar.a.some(dat=>!(dat.toString().includes(ar.b)));break;case'Reflect.has':return ar.a.some(dat=>Reflect.has(dat,ar.b));break;
+case'!Reflect.has':return ar.a.some(dat=>!(Reflect.has(dat,ar.b)));break;case'typeof':return ar.a.some(dat=>typeof(dat)==ar.b);break;case'!isNaN':return ar.a.some(k=>!isNaN(k));break;
+case'function->':return ar.a.some(ar.b);break;case'[x]':return ar.a.some(k=>(k[ar.b]?true:false));break
+}}
+every(ar){switch(ar.ou){
+case'==':return ar.a.every(dat=>(dat==ar.b ? 1:0));break;case'===':return ar.a.every(dat=>(dat===ar.b ? 1:0));break;case'isNaN':return ar.a.every(k=>isNaN(k));break;
+case'<':return ar.a.every(dat=>(dat<ar.b ? 1:0));break;case'>':return ar.a.every(dat=>(dat>ar.b ? 1:0));break;
+case'>=':return ar.a.every(dat=>(dat>=ar.b ? 1:0));break;case'<=':return ar.a.every(dat=>(dat<=ar.b ? 1:0));break;
+case'!=':return ar.a.every(dat=>(dat!=ar.b ? 1:0));break;case'includes':return ar.a.every(dat=>dat.toString().includes(ar.b));break;
+case'!includes':return ar.a.every(dat=>!(dat.toString().includes(ar.b)));break;case'Reflect.has':return ar.a.every(dat=>Reflect.has(dat,ar.b));break;
+case'!Reflect.has':return ar.a.every(dat=>!(Reflect.has(dat,ar.b)));break;case'typeof':return ar.a.every(dat=>typeof(dat)==ar.b);break;case'!isNaN':return ar.a.every(k=>!isNaN(k));break;
+case'function->':return ar.a.every(ar.b);break;case'[x]':return ar.a.every(k=>(k[ar.b]?true:false));break
 }}
 rpt4(ar){ar.a[ar.b]=ar.c,ar.a[ar.d]=ar.e;}
 rpt5(ar){ar.a[ar.b]=ar.c,ar.a[ar.d]=ar.e,ar.a[ar.f]=ar.g;}

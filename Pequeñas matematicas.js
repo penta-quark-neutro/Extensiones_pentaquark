@@ -38,8 +38,8 @@ class minmatespentaquark{getInfo(){return{id:'minmatespentaquark',name:'Pequeña
 {opcode:'gamma',blockType:reportero,text:'Γ[k]≈',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'5'}}},
 {opcode:'mei',blockType:evaluador,text:'[a]≥[b]',hideFromPalette:ops,arguments:{a:{type:numero,defaultValue:'2'},b:{type:numero,defaultValue:'5'}}},
 {opcode:'mnei',blockType:evaluador,text:'[a]≤[b]',hideFromPalette:ops,arguments:{a:{type:numero,defaultValue:'2'},b:{type:numero,defaultValue:'5'}}},
-{opcode:'ni',blockType:reportero,text:'[a]≠[b]',hideFromPalette:ops,arguments:{a:{type:numero,defaultValue:'2'},b:{type:numero,defaultValue:'5'}}},
-{opcode:'tetra',blockType:evaluador,text:'[a]↑↑[b]',hideFromPalette:ops,arguments:{a:{type:numero,defaultValue:'3'},b:{type:numero,defaultValue:'3'}}},
+{opcode:'ni',blockType:evaluador,text:'[a]≠[b]',hideFromPalette:ops,arguments:{a:{type:numero,defaultValue:'2'},b:{type:numero,defaultValue:'5'}}},
+{opcode:'tetra',blockType:reportero,text:'[a]↑↑[b]',hideFromPalette:ops,arguments:{a:{type:numero,defaultValue:'3'},b:{type:numero,defaultValue:'3'}}},
 {opcode:'prse',blockType:evaluador,text:'[x]%',hideFromPalette:ops,arguments:{x:{type:numero,defaultValue:'0.34'}}},
 {blockType:"label",text:"constantes",},//----------------------------------------------------------------------------------------------------------------------------------
  {func:'herram3',blockType:vgbb,hideFromPalette:!cons,text:'mostrar constantes',},{func:'herram4',blockType:vgbb,hideFromPalette:cons,text:'ocultar constantes',},

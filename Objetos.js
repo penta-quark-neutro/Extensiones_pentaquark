@@ -39,18 +39,18 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {blockType:"label",text:"Uso de funciones",hideFromPalette:fun},//--------------------------------------------------------------------------------------------------------------------------------
 {func:'herr7',blockType:vgbb,hideFromPalette:!pun||fun,text:'Ocultar punto funcion',},{func:'herr8',blockType:vgbb,hideFromPalette:pun||fun,text:'Mostrar punto funcion'},
 {func:'herr9',blockType:vgbb,hideFromPalette:!blo||fun,text:'Mostrar forma comando',},{func:'herr10',blockType:vgbb,hideFromPalette:blo||fun,text:'Ocultar forma comando'},
-{opcode:'me27',blockType:rep,text:'[a]()',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'me28',blockType:rep,text:'[a]([b])',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'me29',blockType:rep,text:'[a](...[b])',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'me33',blockType:rep,text:'new[a]()',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'me34',blockType:rep,text:'new[a]([b])',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'me35',blockType:rep,text:'new[a](...[b])',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'me48',blockType:rep,text:'[a].[c]()',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
-{opcode:'me49',blockType:rep,text:'[a].[c]([b])',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
-{opcode:'me50',blockType:rep,text:'[a].[c](...[b])',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
-{opcode:'me51',blockType:rep,text:'new[a].[c]()',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
-{opcode:'me52',blockType:rep,text:'new[a].[c]([b])',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
-{opcode:'me53',blockType:rep,text:'new[a].[c](...[b])',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me27',blockType:bol,text:'[a]()',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me28',blockType:bol,text:'[a]([b])',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me29',blockType:bol,text:'[a](...[b])',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me33',blockType:bol,text:'new[a]()',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me34',blockType:bol,text:'new[a]([b])',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me35',blockType:bol,text:'new[a](...[b])',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me48',blockType:bol,text:'[a].[c]()',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me49',blockType:bol,text:'[a].[c]([b])',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me50',blockType:bol,text:'[a].[c](...[b])',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me51',blockType:bol,text:'new[a].[c]()',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me52',blockType:bol,text:'new[a].[c]([b])',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me53',blockType:bol,text:'new[a].[c](...[b])',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
 {opcode:'me55',blockType:com0,text:'[a]()',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me56',blockType:com0,text:'[a]([b])',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me57',blockType:com0,text:'[a](...[b])',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
@@ -142,13 +142,13 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me26',blockType:com0,text:'Vaciar Objeto Global Permanente',hideFromPalette:obs,disableMonitor:1},
 {opcode:'me92',blockType:bol,text:'[a]?[b]:[c]',hideFromPalette:obs,arguments:{a:{type:bol1,defaultValue:''},b:{type:txt,defaultValue:'1'},c:{type:txt,defaultValue:'0'}}},
 {opcode:'me39',blockType:rep,text:'typeof[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'me54',blockType:rep,text:'[a]instanceof[b]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me54',blockType:bol,text:'[a]instanceof[b]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me41',blockType:com0,text:'[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me71',blockType:rep,text:'Referencia variable[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'mi variable'}}},
 {opcode:'me72',blockType:rep,text:'Referencia lista[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'lista-1'}}},
 {opcode:'me101',blockType:Scratch.BlockType.HAT,text:'Si[a]',hideFromPalette:obs,isEdgeActivated:true,arguments:{a:{type:txt,defaultValue:''}}},
 
-],menus:{pr:{acceptReporters:0,items:['value','writable','enumerable','configurable']},in:{acceptReporters:0,items:['vm','target','util','Scratch','Math','Atomics','Object','Symbol','Array','String','window','crypto','Map','Set','twgl','gl','Proxy']},vals:{acceptReporters:0,items:['true','false','Undefined','NaN','null','Infinity']}}
+],menus:{pr:{acceptReporters:0,items:['value','writable','enumerable','configurable']},in:{acceptReporters:0,items:['vm','target','util','Scratch','Math','Atomics','Object','Symbol','Array','String','window','crypto','Map','Set','twgl','gl','Proxy','navigator']},vals:{acceptReporters:0,items:['true','false','Undefined','NaN','null','Infinity']}}
 };}
 herr0(){Scratch.openWindow('https://linktr.ee/Penta_quark_neutro');}
 herr1(){fun=0;ref();}herr2(){fun=1;ref();}herr3(){dap=0;ref();}herr4(){dap=1;ref();}
@@ -165,7 +165,7 @@ me7_2({a,b,c}){a[b]=c}
 me8(ar){return ar.a in ar.b;}
 me9(ar){Reflect.deleteProperty(ar.a,ar.b);return ar.a;}me9_2(ar){Reflect.deleteProperty(ar.a,ar.b);}
 me11(ar){return JSON.stringify(ar.a);}
-me12(ar,util){switch(ar.a){case'vm':return Scratch.vm;case'target':return util.target;case'util':return util;case'Scratch':return Scratch;case'Math':return Math;case'Atomics':return Atomics;case'Object':return Object;case'Symbol':return Symbol;case'Array':return Array;case'String':return String;case'window':return window;case'crypto':return crypto;case'Map':return Map;case'Set':return Set;case'twgl':return vm.renderer.exports.twgl;case'gl':return vm.renderer._gl;case'Proxy':return Proxy;}}
+me12(ar,util){switch(ar.a){case'vm':return Scratch.vm;case'target':return util.target;case'util':return util;case'Scratch':return Scratch;case'Math':return Math;case'Atomics':return Atomics;case'Object':return Object;case'Symbol':return Symbol;case'Array':return Array;case'String':return String;case'window':return window;case'crypto':return crypto;case'Map':return Map;case'Set':return Set;case'twgl':return vm.renderer.exports.twgl;case'gl':return vm.renderer._gl;case'Proxy':return Proxy;case'navigator':return navigator;}}
 me13(ar){return JSON.parse(ar.a);}
 me14(ar){return Object.is(ar.a,ar.b);}
 me15({a,b,c}){return Reflect.apply(a,b,c);}me70({a,b,c}){Reflect.apply(a,b,c);}
