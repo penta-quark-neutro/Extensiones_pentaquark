@@ -133,6 +133,7 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me67',blockType:rep,text:'structuredClone[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me97',blockType:rep,text:'Object.groupBy[a][b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me100',blockType:rep,text:'Object.assign([a],...[b])',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me102',blockType:rep,text:'Object.preventExtensions[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
 {blockType:"label",text:"Objetos y utiles",hideFromPalette:obs},//--------------------------------------------------------------------------------------------------------------------------------
 {opcode:'me1',blockType:rep,text:'Nuevo Objeto vacio',hideFromPalette:obs,disableMonitor:1},
 {opcode:'me38',blockType:bol,text:'[a]',hideFromPalette:obs,disableMonitor:1,arguments:{a:{type:txt,menu:'vals'}}},
@@ -222,4 +223,5 @@ me98({a,b,c}){try{return a[b](...c)}catch(d){return d;}}
 me99(ar){return Reflect.construct(ar.a,ar.b,ar.c)}
 me100(ar){return Object.assign(ar.a,...ar.b)}
 me101(ar){return ar.a}
+me102(ar){return Object.preventExtensions(ar.a)}
 }Scratch.extensions.register(new exps());})(Scratch);

@@ -129,6 +129,8 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'s8',blockType:com,text:'mover XY[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'s10',blockType:com,text:'Ir multiples[b]a XY[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'[object,...]'}}},
 {opcode:'s11',blockType:com,text:'mover multiples[b] XY[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'[object,...]'}}},
+{opcode:'s13',blockType:rep,text:'distancia a[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
+{opcode:'s14',blockType:rep,text:'distancia lista[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'[referencia,...]'}}},
 {blockType:"label",text:"Global",hideFromPalette:glo},//--------------------------------------------------------------------------------------------------------------------------------
 {opcode:'Gv1',blockType:com,text:'push[t]Gv',hideFromPalette:glo,arguments:{t:{type:txt,defaultValue:'L'}}},
 {opcode:'Gv4',blockType:com,text:'concat[t]Gv',hideFromPalette:glo,arguments:{t:{type:txt,defaultValue:'L'}}},
@@ -520,5 +522,6 @@ while(i<a.length){nv[i]=[nv[i][0]*matriz[0]+nv[i][1]*matriz[3]+nv[i][2]*matriz[6
 }return nv;}
 med5(ar){var i=0,out=0,k=0;while(i<ar.a.length){out+=ar.a[i++];}out/=ar.a.length;i=0;while(i<ar.a.length){k+=(ar.a[i++]-out)**2;}return (k/(ar.a.length-1))**0.5;}
 sli(ar){return ar.a.slice(ar.b,ar.c);}
-
+s13(ar,util){return Math.hypot((ar.a.x-util.target.x),(ar.a.y-util.target.y))}
+s14(ar,util){const coord=[util.target.x,util.target.y];var arr=Array(ar.a.length),i=0;while(i<arr.length){arr[i]=Math.hypot(ar.a[i].x-coord[0],ar.a[i++].y-coord[1])}return arr}
 }Scratch.extensions.register(new vectorr());})(Scratch);
