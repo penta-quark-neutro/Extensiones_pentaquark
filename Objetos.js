@@ -1,3 +1,32 @@
+class FloatCadenaMarkov{'use strict'//hecho por el pentaquark neutro y neutral auream
+	constructor(estados,dist,estado_inicial){
+	if(!Array.isArray(estados)){throw new Error('se esperaba un Array para el estado',{cause:typeof(estados)})}
+	if(!Array.isArray(dist)){throw new Error('se esperaba un Array',{cause:typeof(dist)})}
+	if(estados.length!=dist.length){throw new Error('los dos Array deben tener el mismo length')}
+	if(!dist.every(x=>Array.isArray(x))){throw new Error('dist solo debe contener Arrays con las posibilidades')}
+	if(!estados.includes(estado_inicial)){throw new Error('el estado_inicial debe exitir en estados',{cause:estado_inicial})}
+		this.estado=estado_inicial;
+		this.cadenas=estados;
+		this.distribucion=dist;
+		this.estadoAnterior=null;
+}
+//metodos static de la clase
+static fromArray(ar){return new FloatCadenaMarkov(ar[0],ar[1],ar[2])}
+
+//aqui los get
+get estadodeCambio(){return this.distribucion[this.cadenas.indexOf(this.estado)]}
+get estadoMasPosible(){return this.cadenas[this.estadodeCambio.indexOf(Math.max(...this.estadodeCambio))]}
+get estadoMenosPosible(){return this.cadenas[this.estadodeCambio.lastIndexOf(Math.min(...this.estadodeCambio))]}
+get [Symbol.toStringTag](){return 'FloatCadenaMarkov'}
+
+//funciones que tendra heredadas a lo creado
+paso(rnd){rnd=(typeof(rnd)=='number'?rnd:Math.random());let i=0,sum=0,pos=this.distribucion[this.cadenas.indexOf(this.estado)];this.estadoAnterior=this.estado;
+	while(i<this.cadenas.length){sum+=pos[i];if(sum>=rnd){this.estado=this.cadenas[i];return !(this.estadoAnterior==this.estado)}i++}
+	this.estado=this.cadenas[i-1];return !(this.estadoAnterior==this.estado)}
+nPasos(k){let i=0,st=Array(k);while(i<k){this.paso();st[i++]=this.estado;}return st;}
+obtenerArray(){return [this.cadenas,this.distribucion,this.estado]}
+}
+
 (function(Scratch) {'use strict';//por el (pentaquark neutro, penta quark neutro) y neutral auream
 if(!vm.runtime.extensionStorage['exps']){vm.runtime.extensionStorage['exps']={};}
 var Objglob={},fun=1,dap=1,obs=1,pun=0,blo=1;const AsyncFunction=async function(){}.constructor,GeneratorFunction=function*(){}.constructor,AsyncGeneratorFunction=async function*(){}.constructor;
@@ -83,7 +112,7 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me0',blockType:rep,text:'array[a],[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:'tr'},b:{type:txt,defaultValue:'45'}}},
 {opcode:'me01',blockType:rep,text:'array[a],[b],[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:'tr'},b:{type:txt,defaultValue:'45'},c:{type:txt,defaultValue:'jk'}}},
 {opcode:'me10',blockType:rep,text:'array[a],[b],[c],[d]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:'1'},b:{type:txt,defaultValue:'2'},c:{type:txt,defaultValue:'3'},d:{type:txt,defaultValue:'4'}}},
-{opcode:'me2',blockType:rep,text:'Object.fromEntries[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:'Requiere array como [["a",b],["c",d],...]'}}},
+{opcode:'me2',blockType:rep,text:'Object.fromEntries[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me3',blockType:rep,text:'keys[a]',disableMonitor:1,hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me4',blockType:rep,text:'Object.defineProperties[a][b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'requiere Object como {K:{value:,writable:,...}'}}},
 {opcode:'me5',blockType:rep,text:'Descriptor[a]prop[b].[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,menu:'pr'}}},
@@ -147,9 +176,13 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me41',blockType:com0,text:'[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me71',blockType:rep,text:'Referencia variable[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'mi variable'}}},
 {opcode:'me72',blockType:rep,text:'Referencia lista[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'lista-1'}}},
+{opcode:'me103',blockType:rep,text:'await[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me101',blockType:Scratch.BlockType.HAT,text:'Si[a]',hideFromPalette:obs,isEdgeActivated:true,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me104',blockType:bol,text:'void[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 
-],menus:{pr:{acceptReporters:0,items:['value','writable','enumerable','configurable']},in:{acceptReporters:0,items:['vm','target','util','Scratch','Math','Atomics','Object','Symbol','Array','String','window','crypto','Map','Set','twgl','gl','Proxy','navigator']},vals:{acceptReporters:0,items:['true','false','Undefined','NaN','null','Infinity']}}
+],menus:{pr:{acceptReporters:0,items:['value','writable','enumerable','configurable']},
+in:{acceptReporters:0,items:['vm','target','util','Scratch','Math','Atomics','Object','Symbol','Array','String','window','crypto','Map','Set','twgl','gl','Proxy','navigator','FloatCadenaMarkov']},
+vals:{acceptReporters:0,items:['true','false','Undefined','NaN','null','Infinity']}}
 };}
 herr0(){Scratch.openWindow('https://linktr.ee/Penta_quark_neutro');}
 herr1(){fun=0;ref();}herr2(){fun=1;ref();}herr3(){dap=0;ref();}herr4(){dap=1;ref();}
@@ -166,7 +199,7 @@ me7_2({a,b,c}){a[b]=c}
 me8(ar){return ar.a in ar.b;}
 me9(ar){Reflect.deleteProperty(ar.a,ar.b);return ar.a;}me9_2(ar){Reflect.deleteProperty(ar.a,ar.b);}
 me11(ar){return JSON.stringify(ar.a);}
-me12(ar,util){switch(ar.a){case'vm':return Scratch.vm;case'target':return util.target;case'util':return util;case'Scratch':return Scratch;case'Math':return Math;case'Atomics':return Atomics;case'Object':return Object;case'Symbol':return Symbol;case'Array':return Array;case'String':return String;case'window':return window;case'crypto':return crypto;case'Map':return Map;case'Set':return Set;case'twgl':return vm.renderer.exports.twgl;case'gl':return vm.renderer._gl;case'Proxy':return Proxy;case'navigator':return navigator;}}
+me12(ar,util){switch(ar.a){case'vm':return Scratch.vm;case'target':return util.target;case'util':return util;case'Scratch':return Scratch;case'Math':return Math;case'Atomics':return Atomics;case'Object':return Object;case'Symbol':return Symbol;case'Array':return Array;case'String':return String;case'window':return window;case'crypto':return crypto;case'Map':return Map;case'Set':return Set;case'twgl':return vm.renderer.exports.twgl;case'gl':return vm.renderer._gl;case'Proxy':return Proxy;case'navigator':return navigator;case'FloatCadenaMarkov':return FloatCadenaMarkov;}}
 me13(ar){return JSON.parse(ar.a);}
 me14(ar){return Object.is(ar.a,ar.b);}
 me15({a,b,c}){return Reflect.apply(a,b,c);}me70({a,b,c}){Reflect.apply(a,b,c);}
@@ -224,4 +257,7 @@ me99(ar){return Reflect.construct(ar.a,ar.b,ar.c)}
 me100(ar){return Object.assign(ar.a,...ar.b)}
 me101(ar){return ar.a}
 me102(ar){return Object.preventExtensions(ar.a)}
+async me103(ar){return await ar.a;}
+me104(ar){void ar.a}//no se para que recontra carajos alguien quiere esto.
+
 }Scratch.extensions.register(new exps());})(Scratch);

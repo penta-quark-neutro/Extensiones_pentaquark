@@ -25,6 +25,8 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'negvec',blockType:rep,text:'-[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'Kr',blockType:rep,text:'[a]⊗[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'dsit',blockType:rep,text:'[a]dist[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'pmedio',blockType:rep,text:'[a]punto medio[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'pmedioN',blockType:rep,text:'punto medio[a]N puntos',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:'[[...],[...]...]'}}},
 {opcode:'lerp',blockType:rep,text:'IterpoLineal[a][b]alpha[c]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:num,defaultValue:'0.5'}}},
 {opcode:'smdr',blockType:rep,text:'Σ[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'prto',blockType:rep,text:'∏[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
@@ -73,6 +75,10 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'reduc',blockType:rep,text:'[a].reduce[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'redu'},b:{type:txt,defaultValue:'0'}}},
 {opcode:'some',blockType:rep,text:'[a].some[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
 {opcode:'every',blockType:rep,text:'[a].every[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
+{opcode:'find',blockType:rep,text:'[a].find[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
+{opcode:'findIndex',blockType:rep,text:'[a].findIndex[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
+{opcode:'findlast',blockType:rep,text:'[a].findLast[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
+{opcode:'findlastindex',blockType:rep,text:'[a].findLastIndex[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
 {opcode:'co',blockType:rep,text:'[a].concat[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'incl',blockType:rep,text:'[a].includes[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'5'}}},
 {opcode:'rev',blockType:rep,text:'[a].reverse',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
@@ -125,12 +131,26 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'s9',blockType:evaluador,text:'tocando Obj.tp1.includes[a]?de lista[targets]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'K'},targets:{type:txt,defaultValue:'[DrawID,...]'}}},
 {opcode:'s5',blockType:rep,text:'tp1 de toda cosa tocada',hideFromPalette:prop,disableMonitor:1},
 {opcode:'s6',blockType:rep,text:'coordenadas',hideFromPalette:prop,disableMonitor:1},
-{opcode:'s7',blockType:com,text:'Ir a XY[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'s8',blockType:com,text:'mover XY[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'s10',blockType:com,text:'Ir multiples[b]a XY[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'[object,...]'}}},
-{opcode:'s11',blockType:com,text:'mover multiples[b] XY[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'[object,...]'}}},
+{opcode:'s7',blockType:com,text:'Ir a XY[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'[]'}}},
+{opcode:'s8',blockType:com,text:'mover XY[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'[]'}}},
+{blockType:"label",text:"Control de referencias",hideFromPalette:prop},//--------------------------------------------------------------------------------------------------------------------------------
+{opcode:'s10',blockType:com,text:'Ir multiples[b]a XY[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'[referencia,...]'}}},
+{opcode:'s11',blockType:com,text:'mover multiples[b] XY[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'[referencia,...]'}}},
+{opcode:'s16',blockType:com,text:'Ir a coord[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
+{opcode:'s19',blockType:com,text:'[a]ir a coord[b]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'},b:{type:txt,defaultValue:'[]'}}},
 {opcode:'s13',blockType:rep,text:'distancia a[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
 {opcode:'s14',blockType:rep,text:'distancia lista[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'[referencia,...]'}}},
+{opcode:'s15',blockType:rep,text:'distancia entre[a][b]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'},b:{type:txt,defaultValue:'referencia'}}},
+{opcode:'s17',blockType:rep,text:'punto medio[a][b]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'},b:{type:txt,defaultValue:'referencia'}}},
+{opcode:'s18',blockType:rep,text:'punto medio[a]N ref',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'[referencia,...]'}}},
+{opcode:'s20',blockType:com,text:'dar direccion[b]a[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'},b:{type:txt,defaultValue:'90'}}},
+{opcode:'s21',blockType:com,text:'apuntar a[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
+{opcode:'s22',blockType:com,text:'dar direccion de[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
+{opcode:'s25',blockType:com,text:'dar direccion y posicion de[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
+{opcode:'s23',blockType:com,text:'[b]apuntar a[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'},b:{type:txt,defaultValue:'referencia'}}},
+{opcode:'s24',blockType:com,text:'Eliminar[a](clon)',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
+{opcode:'s26',blockType:com,text:'mostrar[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
+{opcode:'s27',blockType:com,text:'esconder[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
 {blockType:"label",text:"Global",hideFromPalette:glo},//--------------------------------------------------------------------------------------------------------------------------------
 {opcode:'Gv1',blockType:com,text:'push[t]Gv',hideFromPalette:glo,arguments:{t:{type:txt,defaultValue:'L'}}},
 {opcode:'Gv4',blockType:com,text:'concat[t]Gv',hideFromPalette:glo,arguments:{t:{type:txt,defaultValue:'L'}}},
@@ -360,45 +380,30 @@ case'^':return ar.a.map(k=>k^ar.b);case'~':return ar.a.map(k=>~k);case'<<':retur
 case'tofixed':return ar.a.map(k=>k.toFixed(ar.b));case'function->':return ar.a.map(ar.b);case'[x]':return ar.a.map(x=>x[ar.b]);
 }}
 fore(ar){switch(ar.ou){
-case'+':ar.a.forEach((j,k,l)=>l[k]+=ar.b*1);break;
-case'-':ar.a.forEach((j,k,l)=>l[k]-=ar.b);break;
-case'*':ar.a.forEach((j,k,l)=>l[k]*=ar.b);break;
-case'/':ar.a.forEach((j,k,l)=>l[k]/=ar.b);break;
-case'**':ar.a.forEach((j,k,l)=>l[k]**=ar.b);break;
-case'LogB':ar.a.forEach((j,k,l)=>l[k]=Math.log(j)/Math.log(ar.b));break;
-case'sen':ar.a.forEach((j,k,l)=>l[k]=Math.sin(j));break;
-case'cos':ar.a.forEach((j,k,l)=>l[k]=Math.cos(j));break;
-case'tan':ar.a.forEach((j,k,l)=>l[k]=Math.tan(j));break;
-case'sign':ar.a.forEach((j,k,l)=>l[k]=Math.sign(j));break;
-case'abs':ar.a.forEach((j,k,l)=>l[k]=Math.abs(j));break;
-case'rampa':ar.a.forEach((j,k,l)=>l[k]=(j>0 ? j:0));break;
-case'lim+':ar.a.forEach((j,k,l)=>l[k]=(j>ar.b ? ar.b:j));break;
-case'lim-':ar.a.forEach((j,k,l)=>l[k]=(j<ar.b ? ar.b:j));break;
-case'int':ar.a.forEach((j,k,l)=>l[k]=Math.trunc(j));break;
-case'arcsen':ar.a.forEach((j,k,l)=>l[k]=Math.asin(j));break;
-case'arccos':ar.a.forEach((j,k,l)=>l[k]=Math.acos(j));break;
-case'arctan':ar.a.forEach((j,k,l)=>l[k]=Math.atan(j));break;
-case'e^':ar.a.forEach((j,k,l)=>l[k]=Math.exp(j));break;
-case'Ln':ar.a.forEach((j,k,l)=>l[k]=Math.log(j));break;
-case'Log10':ar.a.forEach((j,k,l)=>l[k]=Math.log10(j));break;
-case'|':ar.a.forEach((j,k,l)=>l[k]|=ar.b);break;
-case'&':ar.a.forEach((j,k,l)=>l[k]&=ar.b);break;
-case'^':ar.a.forEach((j,k,l)=>l[k]^=ar.b);break;
-case'~':ar.a.forEach((j,k,l)=>l[k]=~j);break;
-case'<<':ar.a.forEach((j,k,l)=>l[k]<<=ar.b);break;
-case'>>':ar.a.forEach((j,k,l)=>l[k]>>=ar.b);break;
-case'>>>':ar.a.forEach((j,k,l)=>l[k]>>>=ar.b);break;
-case'tofixed':ar.a.forEach((j,k,l)=>l[k]=j.toFixed(ar.b));break;
-case'function->':ar.a.forEach(ar.b);break;
+case'+':ar.a.forEach((j,k,l)=>l[k]+=ar.b*1);break;case'-':ar.a.forEach((j,k,l)=>l[k]-=ar.b);break;
+case'*':ar.a.forEach((j,k,l)=>l[k]*=ar.b);break;case'/':ar.a.forEach((j,k,l)=>l[k]/=ar.b);break;
+case'**':ar.a.forEach((j,k,l)=>l[k]**=ar.b);break;case'LogB':ar.a.forEach((j,k,l)=>l[k]=Math.log(j)/Math.log(ar.b));break;
+case'sen':ar.a.forEach((j,k,l)=>l[k]=Math.sin(j));break;case'cos':ar.a.forEach((j,k,l)=>l[k]=Math.cos(j));break;
+case'tan':ar.a.forEach((j,k,l)=>l[k]=Math.tan(j));break;case'sign':ar.a.forEach((j,k,l)=>l[k]=Math.sign(j));break;
+case'abs':ar.a.forEach((j,k,l)=>l[k]=Math.abs(j));break;case'rampa':ar.a.forEach((j,k,l)=>l[k]=(j>0 ? j:0));break;
+case'lim+':ar.a.forEach((j,k,l)=>l[k]=(j>ar.b ? ar.b:j));break;case'lim-':ar.a.forEach((j,k,l)=>l[k]=(j<ar.b ? ar.b:j));break;
+case'int':ar.a.forEach((j,k,l)=>l[k]=Math.trunc(j));break;case'arcsen':ar.a.forEach((j,k,l)=>l[k]=Math.asin(j));break;
+case'arccos':ar.a.forEach((j,k,l)=>l[k]=Math.acos(j));break;case'arctan':ar.a.forEach((j,k,l)=>l[k]=Math.atan(j));break;
+case'e^':ar.a.forEach((j,k,l)=>l[k]=Math.exp(j));break;case'Ln':ar.a.forEach((j,k,l)=>l[k]=Math.log(j));break;
+case'Log10':ar.a.forEach((j,k,l)=>l[k]=Math.log10(j));break;case'|':ar.a.forEach((j,k,l)=>l[k]|=ar.b);break;
+case'&':ar.a.forEach((j,k,l)=>l[k]&=ar.b);break;case'^':ar.a.forEach((j,k,l)=>l[k]^=ar.b);break;
+case'~':ar.a.forEach((j,k,l)=>l[k]=~j);break;case'<<':ar.a.forEach((j,k,l)=>l[k]<<=ar.b);break;
+case'>>':ar.a.forEach((j,k,l)=>l[k]>>=ar.b);break;case'>>>':ar.a.forEach((j,k,l)=>l[k]>>>=ar.b);break;
+case'tofixed':ar.a.forEach((j,k,l)=>l[k]=j.toFixed(ar.b));break;case'function->':ar.a.forEach(ar.b);break;
 }}
 Fil(ar){switch(ar.ou){
-case'==':return ar.a.filter(dat=>(dat==ar.b ? 1:0));break;case'===':return ar.a.filter(dat=>(dat===ar.b ? 1:0));break;case'isNaN':return ar.a.filter(k=>isNaN(k));break;
-case'<':return ar.a.filter(dat=>(dat<ar.b ? 1:0));break;case'>':return ar.a.filter(dat=>(dat>ar.b ? 1:0));break;
-case'>=':return ar.a.filter(dat=>(dat>=ar.b ? 1:0));break;case'<=':return ar.a.filter(dat=>(dat<=ar.b ? 1:0));break;
-case'!=':return ar.a.filter(dat=>(dat!=ar.b ? 1:0));break;case'includes':return ar.a.filter(dat=>dat.toString().includes(ar.b));break;
-case'!includes':return ar.a.filter(dat=>!(dat.toString().includes(ar.b)));break;case'Reflect.has':return ar.a.filter(dat=>Reflect.has(dat,ar.b));break;
-case'!Reflect.has':return ar.a.filter(dat=>!(Reflect.has(dat,ar.b)));break;case'typeof':return ar.a.filter(dat=>typeof(dat)==ar.b);break;case'!isNaN':return ar.a.filter(k=>!isNaN(k));break;
-case'function->':return ar.a.filter(ar.b);break;case'[x]':return ar.a.filter(k=>(k[ar.b]?true:false));break
+case'==':return ar.a.filter(dat=>(dat==ar.b ? 1:0));case'===':return ar.a.filter(dat=>(dat===ar.b ? 1:0));case'isNaN':return ar.a.filter(k=>isNaN(k));
+case'<':return ar.a.filter(dat=>(dat<ar.b ? 1:0));case'>':return ar.a.filter(dat=>(dat>ar.b ? 1:0));
+case'>=':return ar.a.filter(dat=>(dat>=ar.b ? 1:0));case'<=':return ar.a.filter(dat=>(dat<=ar.b ? 1:0));
+case'!=':return ar.a.filter(dat=>(dat!=ar.b ? 1:0));case'includes':return ar.a.filter(dat=>dat.toString().includes(ar.b));
+case'!includes':return ar.a.filter(dat=>!(dat.toString().includes(ar.b)));case'Reflect.has':return ar.a.filter(dat=>Reflect.has(dat,ar.b));
+case'!Reflect.has':return ar.a.filter(dat=>!(Reflect.has(dat,ar.b)));case'typeof':return ar.a.filter(dat=>typeof(dat)==ar.b);case'!isNaN':return ar.a.filter(k=>!isNaN(k));
+case'function->':return ar.a.filter(ar.b);case'[x]':return ar.a.filter(k=>(k[ar.b]?true:false));
 }}
 reduc(ar){switch(ar.ou){
 case'+':return ar.a.reduce((ac,an)=>ac+an,ar.b);case'-':return ar.a.reduce((ac,an)=>ac-an,ar.b);case'*':return ar.a.reduce((ac,an)=>ac*an,ar.b);case'/':return ar.a.reduce((ac,an)=>ac/an,ar.b);
@@ -423,22 +428,58 @@ case'*=':ar.a[ar.b]*=ar.c;break;case'**=':ar.a[ar.b]**=ar.c;break;case'<<=':ar.a
 case'>>>=':ar.a[ar.b]>>>=ar.c;break;case'??=':ar.a[ar.b]??=ar.c;break;case'%=':ar.a[ar.b]%=ar.c;break;case'|=':ar.a[ar.b]|=ar.c;break;case'&=':ar.a[ar.b]&=ar.c;break;
 }}
 some(ar){switch(ar.ou){
-case'==':return ar.a.some(dat=>(dat==ar.b ? 1:0));break;case'===':return ar.a.some(dat=>(dat===ar.b ? 1:0));break;case'isNaN':return ar.a.some(k=>isNaN(k));break;
-case'<':return ar.a.some(dat=>(dat<ar.b ? 1:0));break;case'>':return ar.a.some(dat=>(dat>ar.b ? 1:0));break;
-case'>=':return ar.a.some(dat=>(dat>=ar.b ? 1:0));break;case'<=':return ar.a.some(dat=>(dat<=ar.b ? 1:0));break;
-case'!=':return ar.a.some(dat=>(dat!=ar.b ? 1:0));break;case'includes':return ar.a.some(dat=>dat.toString().includes(ar.b));break;
-case'!includes':return ar.a.some(dat=>!(dat.toString().includes(ar.b)));break;case'Reflect.has':return ar.a.some(dat=>Reflect.has(dat,ar.b));break;
-case'!Reflect.has':return ar.a.some(dat=>!(Reflect.has(dat,ar.b)));break;case'typeof':return ar.a.some(dat=>typeof(dat)==ar.b);break;case'!isNaN':return ar.a.some(k=>!isNaN(k));break;
-case'function->':return ar.a.some(ar.b);break;case'[x]':return ar.a.some(k=>(k[ar.b]?true:false));break
+case'==':return ar.a.some(dat=>(dat==ar.b ? 1:0));case'===':return ar.a.some(dat=>(dat===ar.b ? 1:0));case'isNaN':return ar.a.some(k=>isNaN(k));
+case'<':return ar.a.some(dat=>(dat<ar.b ? 1:0));case'>':return ar.a.some(dat=>(dat>ar.b ? 1:0));
+case'>=':return ar.a.some(dat=>(dat>=ar.b ? 1:0));case'<=':return ar.a.some(dat=>(dat<=ar.b ? 1:0));
+case'!=':return ar.a.some(dat=>(dat!=ar.b ? 1:0));case'includes':return ar.a.some(dat=>dat.toString().includes(ar.b));
+case'!includes':return ar.a.some(dat=>!(dat.toString().includes(ar.b)));case'Reflect.has':return ar.a.some(dat=>Reflect.has(dat,ar.b));
+case'!Reflect.has':return ar.a.some(dat=>!(Reflect.has(dat,ar.b)));case'typeof':return ar.a.some(dat=>typeof(dat)==ar.b);case'!isNaN':return ar.a.some(k=>!isNaN(k));
+case'function->':return ar.a.some(ar.b);case'[x]':return ar.a.some(k=>(k[ar.b]?true:false));
 }}
 every(ar){switch(ar.ou){
-case'==':return ar.a.every(dat=>(dat==ar.b ? 1:0));break;case'===':return ar.a.every(dat=>(dat===ar.b ? 1:0));break;case'isNaN':return ar.a.every(k=>isNaN(k));break;
-case'<':return ar.a.every(dat=>(dat<ar.b ? 1:0));break;case'>':return ar.a.every(dat=>(dat>ar.b ? 1:0));break;
-case'>=':return ar.a.every(dat=>(dat>=ar.b ? 1:0));break;case'<=':return ar.a.every(dat=>(dat<=ar.b ? 1:0));break;
-case'!=':return ar.a.every(dat=>(dat!=ar.b ? 1:0));break;case'includes':return ar.a.every(dat=>dat.toString().includes(ar.b));break;
-case'!includes':return ar.a.every(dat=>!(dat.toString().includes(ar.b)));break;case'Reflect.has':return ar.a.every(dat=>Reflect.has(dat,ar.b));break;
-case'!Reflect.has':return ar.a.every(dat=>!(Reflect.has(dat,ar.b)));break;case'typeof':return ar.a.every(dat=>typeof(dat)==ar.b);break;case'!isNaN':return ar.a.every(k=>!isNaN(k));break;
-case'function->':return ar.a.every(ar.b);break;case'[x]':return ar.a.every(k=>(k[ar.b]?true:false));break
+case'==':return ar.a.every(dat=>(dat==ar.b ? 1:0));case'===':return ar.a.every(dat=>(dat===ar.b ? 1:0));case'isNaN':return ar.a.every(k=>isNaN(k));
+case'<':return ar.a.every(dat=>(dat<ar.b ? 1:0));case'>':return ar.a.every(dat=>(dat>ar.b ? 1:0));
+case'>=':return ar.a.every(dat=>(dat>=ar.b ? 1:0));case'<=':return ar.a.every(dat=>(dat<=ar.b ? 1:0));
+case'!=':return ar.a.every(dat=>(dat!=ar.b ? 1:0));case'includes':return ar.a.every(dat=>dat.toString().includes(ar.b));
+case'!includes':return ar.a.every(dat=>!(dat.toString().includes(ar.b)));case'Reflect.has':return ar.a.every(dat=>Reflect.has(dat,ar.b));
+case'!Reflect.has':return ar.a.every(dat=>!(Reflect.has(dat,ar.b)));case'typeof':return ar.a.every(dat=>typeof(dat)==ar.b);case'!isNaN':return ar.a.every(k=>!isNaN(k));
+case'function->':return ar.a.every(ar.b);case'[x]':return ar.a.every(k=>(k[ar.b]?true:false));
+}}
+find(ar){switch(ar.ou){
+case'==':return ar.a.find(dat=>(dat==ar.b ? 1:0));case'===':return ar.a.find(dat=>(dat===ar.b ? 1:0));case'isNaN':return ar.a.find(k=>isNaN(k));
+case'<':return ar.a.find(dat=>(dat<ar.b ? 1:0));case'>':return ar.a.find(dat=>(dat>ar.b ? 1:0));
+case'>=':return ar.a.find(dat=>(dat>=ar.b ? 1:0));case'<=':return ar.a.find(dat=>(dat<=ar.b ? 1:0));
+case'!=':return ar.a.find(dat=>(dat!=ar.b ? 1:0));case'includes':return ar.a.find(dat=>dat.toString().includes(ar.b));
+case'!includes':return ar.a.find(dat=>!(dat.toString().includes(ar.b)));case'Reflect.has':return ar.a.find(dat=>Reflect.has(dat,ar.b));
+case'!Reflect.has':return ar.a.find(dat=>!(Reflect.has(dat,ar.b)));case'typeof':return ar.a.find(dat=>typeof(dat)==ar.b);case'!isNaN':return ar.a.find(k=>!isNaN(k));
+case'function->':return ar.a.find(ar.b);case'[x]':return ar.a.find(k=>(k[ar.b]?true:false));
+}}
+findIndex(ar){switch(ar.ou){
+case'==':return ar.a.findIndex(dat=>(dat==ar.b ? 1:0));case'===':return ar.a.findIndex(dat=>(dat===ar.b ? 1:0));case'isNaN':return ar.a.findIndex(k=>isNaN(k));
+case'<':return ar.a.findIndex(dat=>(dat<ar.b ? 1:0));case'>':return ar.a.findIndex(dat=>(dat>ar.b ? 1:0));
+case'>=':return ar.a.findIndex(dat=>(dat>=ar.b ? 1:0));case'<=':return ar.a.findIndex(dat=>(dat<=ar.b ? 1:0));
+case'!=':return ar.a.findIndex(dat=>(dat!=ar.b ? 1:0));case'includes':return ar.a.findIndex(dat=>dat.toString().includes(ar.b));
+case'!includes':return ar.a.findIndex(dat=>!(dat.toString().includes(ar.b)));case'Reflect.has':return ar.a.findIndex(dat=>Reflect.has(dat,ar.b));
+case'!Reflect.has':return ar.a.findIndex(dat=>!(Reflect.has(dat,ar.b)));case'typeof':return ar.a.findIndex(dat=>typeof(dat)==ar.b);case'!isNaN':return ar.a.findIndex(k=>!isNaN(k));
+case'function->':return ar.a.findIndex(ar.b);case'[x]':return ar.a.findIndex(k=>(k[ar.b]?true:false));
+}}
+findlast(ar){switch(ar.ou){
+case'==':return ar.a.findLast(dat=>(dat==ar.b ? 1:0));case'===':return ar.a.findLast(dat=>(dat===ar.b ? 1:0));case'isNaN':return ar.a.findLast(k=>isNaN(k));
+case'<':return ar.a.findLast(dat=>(dat<ar.b ? 1:0));case'>':return ar.a.findLast(dat=>(dat>ar.b ? 1:0));
+case'>=':return ar.a.findLast(dat=>(dat>=ar.b ? 1:0));case'<=':return ar.a.findLast(dat=>(dat<=ar.b ? 1:0));
+case'!=':return ar.a.findLast(dat=>(dat!=ar.b ? 1:0));case'includes':return ar.a.findLast(dat=>dat.toString().includes(ar.b));
+case'!includes':return ar.a.findLast(dat=>!(dat.toString().includes(ar.b)));case'Reflect.has':return ar.a.findLast(dat=>Reflect.has(dat,ar.b));
+case'!Reflect.has':return ar.a.findLast(dat=>!(Reflect.has(dat,ar.b)));case'typeof':return ar.a.findLast(dat=>typeof(dat)==ar.b);case'!isNaN':return ar.a.findLast(k=>!isNaN(k));
+case'function->':return ar.a.findLast(ar.b);case'[x]':return ar.a.findLast(k=>(k[ar.b]?true:false));
+}}
+findlastindex(ar){switch(ar.ou){
+case'==':return ar.a.findLastIndex(dat=>(dat==ar.b ? 1:0));case'===':return ar.a.findLastIndex(dat=>(dat===ar.b ? 1:0));case'isNaN':return ar.a.findLastIndex(k=>isNaN(k));
+case'<':return ar.a.findLastIndex(dat=>(dat<ar.b ? 1:0));case'>':return ar.a.findLastIndex(dat=>(dat>ar.b ? 1:0));
+case'>=':return ar.a.findLastIndex(dat=>(dat>=ar.b ? 1:0));case'<=':return ar.a.findLastIndex(dat=>(dat<=ar.b ? 1:0));
+case'!=':return ar.a.findLastIndex(dat=>(dat!=ar.b ? 1:0));case'includes':return ar.a.findLastIndex(dat=>dat.toString().includes(ar.b));
+case'!includes':return ar.a.findLastIndex(dat=>!(dat.toString().includes(ar.b)));case'Reflect.has':return ar.a.findLastIndex(dat=>Reflect.has(dat,ar.b));
+case'!Reflect.has':return ar.a.findLastIndex(dat=>!(Reflect.has(dat,ar.b)));case'typeof':return ar.a.findLastIndex(dat=>typeof(dat)==ar.b);case'!isNaN':return ar.a.findLastIndex(k=>!isNaN(k));
+case'function->':return ar.a.findLastIndex(ar.b);case'[x]':return ar.a.findLastIndex(k=>(k[ar.b]?true:false));
 }}
 rpt4(ar){ar.a[ar.b]=ar.c,ar.a[ar.d]=ar.e;}
 rpt5(ar){ar.a[ar.b]=ar.c,ar.a[ar.d]=ar.e,ar.a[ar.f]=ar.g;}
@@ -524,4 +565,19 @@ med5(ar){var i=0,out=0,k=0;while(i<ar.a.length){out+=ar.a[i++];}out/=ar.a.length
 sli(ar){return ar.a.slice(ar.b,ar.c);}
 s13(ar,util){return Math.hypot((ar.a.x-util.target.x),(ar.a.y-util.target.y))}
 s14(ar,util){const coord=[util.target.x,util.target.y];var arr=Array(ar.a.length),i=0;while(i<arr.length){arr[i]=Math.hypot(ar.a[i].x-coord[0],ar.a[i++].y-coord[1])}return arr}
+s15(ar){return Math.hypot((ar.a.x-ar.b.x),(ar.a.y-ar.b.y))}
+s16(ar,util){util.target.setXY(ar.a.x,ar.a.y)}
+pmedio(ar){let arr=Array(ar.a.length),i=0;while(i<ar.a.length){arr[i]=(ar.a[i]+ar.b[i++])/2}return arr}
+pmedioN(ar){let arr=Array(ar.a[0].length).fill(0),i=0,j=0;while(j<ar.a.length){while(i<ar.a[0].length){arr[i]+=(ar.a[j][i++])/ar.a.length}j++;i=0;}return arr}
+s17(ar){return [(ar.a.x+ar.b.x)/2,(ar.a.y+ar.b.y)/2]}
+s18(ar){let arr=[0,0],i=0;while(i<ar.a.length){arr[0]+=ar.a[i].x/ar.a.length,arr[1]+=ar.a[i++].y/ar.a.length}return arr}
+s19(ar){ar.a.x=ar.b[0],ar.a.y=ar.b[1]}
+s20(ar){ar.a.setDirection(ar.b)}
+s21(ar,util){util.target.setDirection(Math.atan2(ar.a.x-util.target.x,ar.a.y-util.target.y)*57.295779513082320876798154814105)}
+s22(ar,util){util.target.setDirection(ar.a.direction)}
+s23(ar){ar.b.setDirection(Math.atan2(ar.a.x-ar.b.x,ar.a.y-ar.b.y)*57.295779513082320876798154814105)}
+s24(ar){Scratch.vm.runtime.disposeTarget(ar.a)}
+s25(ar,util){util.target.setDirection(ar.a.direction);util.target.setXY(ar.a.x,ar.a.y)}
+s26(ar){ar.a.setVisible(true)}
+s27(ar){ar.a.setVisible(false)}
 }Scratch.extensions.register(new vectorr());})(Scratch);
