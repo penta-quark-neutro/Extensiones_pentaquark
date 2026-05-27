@@ -65,6 +65,7 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'fl',blockType:rep,text:'[a].flat[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'5'}}},
 {opcode:'fill',blockType:rep,text:'[a].fill[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'5'}}},
 {opcode:'sl',blockType:rep,text:'[a].splice[b][c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:'1'},c:{type:num,defaultValue:'1'}}},
+{opcode:'sl2',blockType:com,text:'[a].splice[b][c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:'1'},c:{type:num,defaultValue:'1'}}},
 {opcode:'sli',blockType:rep,text:'[a].slice[b][c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:'1'},c:{type:num,defaultValue:'1'}}},
 {opcode:'in',blockType:rep,text:'[c].indexOf[a][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:'K'},b:{type:num,defaultValue:'0'},c:{type:txt,defaultValue:''}}},
 {opcode:'lain',blockType:rep,text:'[c].lastIndexOf[a][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:'K'},b:{type:num,defaultValue:'-1'},c:{type:txt,defaultValue:''}}},
@@ -131,9 +132,12 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'s9',blockType:evaluador,text:'tocando Obj.tp1.includes[a]?de lista[targets]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'K'},targets:{type:txt,defaultValue:'[DrawID,...]'}}},
 {opcode:'s5',blockType:rep,text:'tp1 de toda cosa tocada',hideFromPalette:prop,disableMonitor:1},
 {opcode:'s6',blockType:rep,text:'coordenadas',hideFromPalette:prop,disableMonitor:1},
-{opcode:'s7',blockType:com,text:'Ir a XY[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'[]'}}},
-{opcode:'s8',blockType:com,text:'mover XY[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'[]'}}},
+{opcode:'s7',blockType:com,text:'Ir a[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'[]'}}},
+{opcode:'s8',blockType:com,text:'mover[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'[]'}}},
+{opcode:'s28',blockType:com,text:'apuntar a[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'[]'}}},
 {blockType:"label",text:"Control de referencias",hideFromPalette:prop},//--------------------------------------------------------------------------------------------------------------------------------
+{opcode:'s29',blockType:evaluador,text:'tocando [a]?',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
+{opcode:'s30',blockType:rep,text:'tocando de lista[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'[referencia,...]'}}},
 {opcode:'s10',blockType:com,text:'Ir multiples[b]a XY[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'[referencia,...]'}}},
 {opcode:'s11',blockType:com,text:'mover multiples[b] XY[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'[referencia,...]'}}},
 {opcode:'s16',blockType:com,text:'Ir a coord[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
@@ -504,7 +508,7 @@ tagtp1mc(ar,util){if(!util.target.tag1){util.target.tag1=[];}if(ar.t===''){retur
 tagtp1(ar,util){return util.target.tag1;}
 tagtp1c(ar,util){return (util.target.tag1.includes(ar.t) ? true:false);}
 tagtp1ig(ar,util){util.target.tag1=ar.t}
-sl(ar){return ar.a.splice(ar.b,ar.c);}
+sl(ar){return ar.a.splice(ar.b,ar.c);}sl2(ar){ar.a.splice(ar.b,ar.c);}
 fill(ar){return ar.a.fill(ar.b)}
 fl(ar){return ar.a.flat(ar.b);}
 s1(ar,util){return util.target.id;}
@@ -580,4 +584,8 @@ s24(ar){Scratch.vm.runtime.disposeTarget(ar.a)}
 s25(ar,util){util.target.setDirection(ar.a.direction);util.target.setXY(ar.a.x,ar.a.y)}
 s26(ar){ar.a.setVisible(true)}
 s27(ar){ar.a.setVisible(false)}
+s28(ar,util){util.target.setDirection(Math.atan2(ar.a[0]-util.target.x,ar.a[1]-util.target.y)*57.295779513082320876798154814105)}
+s29(ar,util){return vm.renderer.isTouchingDrawables(util.target.drawableID,[ar.a.drawableID]);}
+s30(ar,util){return ar.a.filter(z=>vm.renderer.isTouchingDrawables(util.target.drawableID,[z.drawableID]))}
+
 }Scratch.extensions.register(new vectorr());})(Scratch);

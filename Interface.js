@@ -15,13 +15,13 @@ class Interfacepent{getInfo(){return {id:'Interfacepent',name:'Interface 1',colo
 {opcode:'ifabc',blockType:rep0,text:'if[A][B][C]',arguments:{A:{type:bol1,defaultValue:''},B:{type:str0,defaultValue:''},C:{type:str0,defaultValue:''}}},
 {opcode:'greenFlag',blockType:com0,text:'Reinicio'},
 {opcode:'clon',blockType:bol0,text:'clon?',filter:[Scratch.TargetType.SPRITE],disableMonitor:true},
-{opcode:'xmove',blockType:com0,text:'mover x[a]',hideFromPalette:1,arguments:{a:{type:str0,defaultValue:'5'}}},
 {opcode:'sieve',blockType:Scratch.BlockType.HAT,text:'Si [INPUT]',isEdgeActivated:true,arguments:{INPUT:{type:bol1,defaultValue:''}}},
 {opcode:'eve',blockType:rep0,text:'eval[a]',arguments:{a:{type:str0,defaultValue:'alert()'}}},
 {opcode:'eve2',blockType:rep0,text:'eval[a]x=[b]',arguments:{a:{type:str0,defaultValue:'alert()'},b:{type:str0,defaultValue:'100'}}},
 {opcode:'eve3',blockType:rep0,text:'eval?.[a]',arguments:{a:{type:str0,defaultValue:'alert()'}}},
 {opcode:'tgid',blockType:rep0,text:'ID',filter:[Scratch.TargetType.SPRITE],disableMonitor:true},
 {opcode:'drawID',blockType:rep0,text:'drawID',filter:[Scratch.TargetType.SPRITE],disableMonitor:true},
+{opcode:'func1',blockType:rep0,text:'getBounds',filter:[Scratch.TargetType.SPRITE],disableMonitor:true},
 {opcode:'to',blockType:rep0,text:'typeof[a]',arguments:{a:{type:str0,defaultValue:'txt'}}},
 {opcode:'tr',blockType:bol0,text:'true',disableMonitor:true},
 {opcode:'fa',blockType:bol0,text:'false',disableMonitor:true},
@@ -31,7 +31,7 @@ class Interfacepent{getInfo(){return {id:'Interfacepent',name:'Interface 1',colo
 {opcode:'NAN',blockType:rep0,text:'NaN',disableMonitor:true},
 {opcode:'itw',blockType:bol0,text:'isTouchingDrawables[a][b]',arguments:{a:{type:str0,defaultValue:'drawID'},b:{type:str0,defaultValue:'vector de drawId a detectar'}}},
 {opcode:'cdt',blockType:rep0,text:'candidatesTouching[a][b]',arguments:{a:{type:str0,defaultValue:'drawID'},b:{type:str0,defaultValue:'vector de drawId a detectar'}}},
-{opcode:'vol',blockType:com0,text:'volumen[a]%',hideFromPalette:1,arguments:{a:{type:str0,defaultValue:'200'}}},
+{opcode:'func0',blockType:rep0,text:'drawableTouching[a][b][c][d][e]',arguments:{a:{type:str0,defaultValue:'drawID'},b:{type:str0,defaultValue:'10'},c:{type:str0,defaultValue:'10'},d:{type:str0,defaultValue:'0'},e:{type:str0,defaultValue:'0'}}},
 {opcode:'perm1',blockType:com0,text:'Datos persistentes=[a]',arguments:{a:{type:str0,defaultValue:'txt'}}},
 {opcode:'perm2',blockType:rep0,text:'Datos persistentes',disableMonitor:true},
 {opcode:'perm3',blockType:com0,text:'Para target,Dato persistente=[b]',arguments:{b:{type:str0,defaultValue:'datos'}}},
@@ -48,7 +48,6 @@ ifabc(ar){if(ar.A){return ar.B;}else{return ar.C;}}
 greenFlag(ar,util){util.runtime.greenFlag();}
 nada(){}
 clon(args, util){if(util.target.isOriginal){return 0;}else{return 1;}}
-xmove(ar,util){util.target.setXY(target.x+ar.a,target.y);}
 sieve(ar){return ar.INPUT}
 eve(ar,util){const wa=eval(ar.a);return wa;}
 eve2(ar,util){var x=ar.b;const wa=eval(ar.a);return wa;}
@@ -64,11 +63,12 @@ nlc(){return '\n';}
 NAN(){return NaN;}
 itw(ar,util){return vm.renderer.isTouchingDrawables(ar.a,ar.b);}
 cdt(ar,util){return vm.renderer._candidatesTouching(ar.a,ar.b);}
-vol(ar,util){util.target.volume=ar.a*1;}
 perm1(ar){vm.runtime.extensionStorage['Interfacepent']=ar.a}
 perm2(ar){return vm.runtime.extensionStorage['Interfacepent']}
 perm3(ar,util){util.target.extensionStorage.Interfacepent=ar.b}
 perm4(ar,util){return util.target.extensionStorage.Interfacepent}
 proy({a}){vm.renderer._projection=[a[0],a[1],a[2],a[3],a[4],a[5],a[6],a[7],a[8],a[9],a[10],a[11],a[12],a[13],a[14],a[15]];vm.renderer.dirty=true}
 proy2(){return vm.renderer._projection}
+func0(ar){return vm.renderer.drawableTouching(ar.a,ar.b,ar.c,ar.d,ar.e)}
+func1(ar,util){return util.target.getBounds()}
 }Scratch.extensions.register(new Interfacepent());})(Scratch);
