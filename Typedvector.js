@@ -79,7 +79,6 @@ case'tan':return ar.a.map(Math.tan);break;case'sign':return ar.a.map(Math.sign);
 case'lim+':return ar.a.map(k=>(k>ar.b ? ar.b:k));break;case'lim-':return ar.a.map(k=>(k<ar.b ? ar.b:k));break;case'int':return ar.a.map(Math.trunc);break;
 case'arcsen':return ar.a.map(Math.asin);break;case'arccos':return ar.a.map(Math.acos);break;case'arctan':return ar.a.map(Math.atan);break;case'e^':return ar.a.map(Math.exp);break;
 case'Ln':return ar.a.map(Math.log);break;case'Log10':return ar.a.map(Math.log10);break;case'&':return ar.a.map(k=>k&ar.b);break;case'|':return ar.a.map(k=>k|ar.b);break;case'^':return ar.a.map(k=>k^ar.b);break;case'<<':return ar.a.map(k=>k<<ar.b);break;case'>>':return ar.a.map(k=>k>>ar.b);break;case'>>>':return ar.a.map(k=>k>>>ar.b);break;case'~':return ar.a.map(k=>~k);break;
-case'function->':return ar.a.map(ar.b);break;
 }}
 Fil(ar){switch(ar.ou){
 case'==':return ar.a.filter(dat=>(dat==ar.b ? 1:0));break;case'===':return ar.a.filter(dat=>(dat===ar.b ? 1:0));break;
