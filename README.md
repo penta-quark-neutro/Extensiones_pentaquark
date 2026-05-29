@@ -11,7 +11,7 @@ actualmente sin mantenimiento...
 pero es un poquito mas eficiente moviendo muchos objetos, que si todos tuvieran su propio codigo... no es muy util realmente.
 ### interface
 no tiene mucho de interface.
-permite usar eval, y varias funciones internas de turbowarp, ademas de valores de unos primitivos directamente.
+permite usar eval, y varias funciones internas de turbowarp, ademas de unos valores primitivos directamente.
 ⚠️permite ejecucion arbitraria de codigo.
 ### Map
 da disponibilidad al Objeto Map y WeakMap.
@@ -20,6 +20,7 @@ da disponinilidad al Objeto Set y WeakSet.
 ### RSA
 de la API cripto, da disponibilidad parcial a la encriptacion RSA.
 perfecto para web sockets...
+tambien tiene las firmas con HMAC.
 ¡aun esta en desarrollo!
 ⚠️no lo use como si fuera realmente algo seguro, si quiere protejer datos, use algo que este especialisado
 ### Symbol
