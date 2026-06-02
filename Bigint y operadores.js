@@ -9,11 +9,13 @@ class BGI{getInfo(){return {id:'BGI',name:'BGI',color1:'#8923FF',color2:'#0F70A0
 {opcode:'a3',blockType:rep0,text:'[a]*[b]',arguments:{a:{type:str0,defaultValue:'10'},b:{type:str0,defaultValue:'10'}}},
 {opcode:'a4',blockType:rep0,text:'[a]/[b]',arguments:{a:{type:str0,defaultValue:'10'},b:{type:str0,defaultValue:'10'}}},
 {opcode:'a5',blockType:rep0,text:'[a]**[b]',arguments:{a:{type:str0,defaultValue:'10'},b:{type:str0,defaultValue:'10'}}},
+{opcode:'a21',blockType:rep0,text:'[a]%[b]',arguments:{a:{type:str0,defaultValue:'10'},b:{type:str0,defaultValue:'10'}}},
 {opcode:'a6',blockType:bol0,text:'[a]>[b]',arguments:{a:{type:str0,defaultValue:'1'},b:{type:str0,defaultValue:'1'}}},
 {opcode:'a7',blockType:bol0,text:'[a]==[b]',arguments:{a:{type:str0,defaultValue:'1'},b:{type:str0,defaultValue:'1'}}},
 {opcode:'a20',blockType:bol0,text:'[a]===[b]',arguments:{a:{type:str0,defaultValue:'1'},b:{type:str0,defaultValue:'1'}}},
 {opcode:'a8',blockType:bol0,text:'[a]>=[b]',arguments:{a:{type:str0,defaultValue:'1'},b:{type:str0,defaultValue:'1'}}},
 {opcode:'a9',blockType:bol0,text:'[a]!=[b]',arguments:{a:{type:str0,defaultValue:'1'},b:{type:str0,defaultValue:'1'}}},
+{opcode:'a22',blockType:bol0,text:'[a]!==[b]',arguments:{a:{type:str0,defaultValue:'1'},b:{type:str0,defaultValue:'1'}}},
 {opcode:'a19',blockType:bol0,text:'[a]??[b]',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:'10'}}},
 {opcode:'a10',blockType:rep0,text:'[k]!',arguments:{k:{type:str0,defaultValue:'12'}}},
 {opcode:'a11',blockType:rep0,text:'[a]↑↑[b]',arguments:{a:{type:str0,defaultValue:'1'},b:{type:str0,defaultValue:'1'}}},
@@ -46,4 +48,6 @@ a17(ar){return ar.a^ar.b;}
 a18(ar){return ~ar.a;}
 a19(ar){return ar.a??ar.b}
 a20(ar){return ar.a===ar.b}
+a21(ar){return ar.a%ar.b}
+a22(ar){return ar.a!==ar.b}
 }Scratch.extensions.register(new BGI());})(Scratch);
