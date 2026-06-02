@@ -28,13 +28,13 @@ class RSA{getInfo(){return {id:'RSA',name:'RSA',color1:'#f80712',color2:'#0d500f
 ],};}
 
 E0(ar){return crypto.subtle.generateKey({name:"RSA-OAEP",modulusLength:Number(ar.a),publicExponent:new Uint8Array([1, 0, 1]),hash:"SHA-256"},true,["encrypt","decrypt"])}
-E1(ar){return new Uint16Array(Array.from(ar.a.split('')).map(k=>k.charCodeAt(0)))}
+E1(ar){return (new TextEncoder()).encode(ar.a)}
 E2(ar){if(ar.b.toString()=='[object CryptoKey]'){return crypto.subtle.encrypt({name:"RSA-OAEP"},ar.b,ar.a)}else{return crypto.subtle.encrypt({name:"RSA-OAEP"},ar.b.publicKey,ar.a)}}
 E3(ar){return crypto.subtle.exportKey('spki',ar.a.publicKey)}
 E4(ar){return crypto.subtle.importKey('spki',ar.a,{name:"RSA-OAEP",hash:"SHA-256"},true,['encrypt'])}
 E5(ar){if(ar.b.toString()=='[object Object]'){return crypto.subtle.decrypt({name:"RSA-OAEP"},ar.b.privateKey,ar.a)}else{return crypto.subtle.decrypt({name:"RSA-OAEP"},ar.b,ar.a)}}
 E6(ar){if(typeof(ar.a)=='object'){if((ar.a.byteLength/2)%2==0){return new Uint16Array(ar.a)}else{return new Uint8Array(ar.a)}}else{return new Uint16Array(Array.from(ar.a.split(',')))}}
-E7(ar){return String.fromCharCode(...ar.a)}
+E7(ar){return (new TextDecoder()).decode(ar.a)}
 E8(ar){return crypto.getRandomValues(new Uint8Array(ar.a))}
 E9(ar){return crypto.randomUUID();}
 E10(ar){var i=0,k=ar.b,t=ar.a.length-(ar.c+k.length);if((t)>=0){while(i<k.length){k[i]^=ar.a[i+ar.c];i++;}return k;}else{return 'libro de desplasamiento insuficiente';}}
