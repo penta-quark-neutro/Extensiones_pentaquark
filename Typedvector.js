@@ -47,6 +47,7 @@ class Typedvectorr{getInfo(){return{id:'Typedvectorr',name:'Typedvectorr',color1
 {opcode:'uin1',blockType:rep,text:'new [u][a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},u:{type:txt,menu:'uins'}}},
 {opcode:'buffer',blockType:rep,text:'new ArrayBuffer[a][b]',hideFromPalette:vecs,arguments:{a:{type:num,defaultValue:'8'},b:{type:num,defaultValue:'12'}}},
 {opcode:'buffer2',blockType:rep,text:'new ArrayBuffer[a]',hideFromPalette:vecs,arguments:{a:{type:num,defaultValue:'8'}}},
+{opcode:'isview',blockType:rep,text:'isView[a]',hideFromPalette:vecs,arguments:{a:{type:num,defaultValue:''}}},
 {opcode:'trans',blockType:rep,text:'[b].transfer[a]',hideFromPalette:vecs,arguments:{a:{type:num,defaultValue:'0'},b:{type:txt,defaultValue:'buffer'}}},
 {opcode:'res',blockType:com,text:'[b].resize[a]',hideFromPalette:vecs,arguments:{a:{type:num,defaultValue:'10'},b:{type:txt,defaultValue:'buffer'}}},
 {opcode:'view',blockType:rep,text:'new DataView[a][b][c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:'buffer'},b:{type:num,defaultValue:'0'},c:{type:num,defaultValue:'2'}}},
@@ -65,12 +66,12 @@ class Typedvectorr{getInfo(){return{id:'Typedvectorr',name:'Typedvectorr',color1
 {opcode:'mtx1',blockType:com,text:'mtz(3*3)[a]*Arr(3)[b]_salida[c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
 {opcode:'mtx2',blockType:com,text:'mtz(4*4)[a]*Arr(4)[b]_salida[c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
 ],menus:{
-outs:{acceptReporters:0,items:['+','-','*','/','^','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','&','|','^','<<','>>','>>>','~','function->']},
+outs:{acceptReporters:0,items:['+','-','*','/','^','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','&','|','^','<<','>>','>>>','~']},
 Filt:{acceptReporters:0,items:['==','===','<','>','>=','<=','!=']},
 Asig:{acceptReporters:0,items:['=','+=','-=','/=','*=','**=','<<=','??=','%=','>>=','>>>=','&=','|=','^=']},
 uins:{acceptReporters:0,items:['Uint8ClampedArray','Uint8Array','Uint16Array','Uint32Array','Int8Array','Int16Array','Int32Array','Float16Array','Float32Array','Float64Array','BigInt64Array','BigUint64Array']},
 setm:{acceptReporters:0,items:['getInt8','getUint8','getInt16','getUint16','getFloat16','getInt32','getUint32','getFloat32','getFloat64','getBigUint64','getBigInt64','setInt8','setUint8','setInt16','setUint16','setFloat16','setInt32','setUint32','setFloat32','setFloat64','setBigUint64','setBigInt64']},
-pr:{acceptReporters:0,items:['buffer','byteLength','byteOffset']}
+pr:{acceptReporters:0,items:['buffer','byteLength','byteOffset','detached']}
 }};}
 ma(ar){switch(ar.ou){
 case'+':return ar.a.map(k=>k*1+ar.b*1);break;case'-':return ar.a.map(k=>k-ar.b);break;case'*':return ar.a.map(k=>k*ar.b);break;case'/':return ar.a.map(k=>k/ar.b);break;
@@ -150,4 +151,5 @@ mtx1({a,b,c}){c[0]=(a[0]*b[0])+(a[1]*b[1])+(a[2]*b[2]),c[1]=(a[3]*b[0])+(a[4]*b[
 mtx2({a,b,c}){c[0]=(a[0]*b[0])+(a[1]*b[1])+(a[2]*b[2])+(a[3]*b[3]),c[1]=(a[4]*b[0])+(a[5]*b[1])+(a[6]*b[2])+(a[7]*b[3]),c[2]=(a[8]*b[0])+(a[9]*b[1])+(a[10]*b[2])+(a[11]*b[3]),c[3]=(a[12]*b[0])+(a[13]*b[1])+(a[14]*b[2])+(a[15]*b[3])}
 mtxi0(){return [1,0,0,1]}mtxi1(){return [1,0,0,0,1,0,0,0,1]}mtxi2(){return [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]}
 join(ar){return ar.a.join(ar.b)}
+isview(ar){return ArrayBuffer.isView(ar.a)}
 }Scratch.extensions.register(new Typedvectorr());})(Scratch);
