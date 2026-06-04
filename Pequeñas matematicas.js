@@ -100,14 +100,14 @@ tetra(ar){var dat0=ar.a,i=0,n=ar.b-1;while(i<n){dat0=ar.a**dat0;i++;}
 return dat0;}
 //constantes----------------------------------------------------------------------------------------------------------
 c(){return 299792458;}
-π(){return 3.1415926535;}
-φ(){return 1.6118033988;}
-e(){return 2.7182818284;}
-G(){return 6.67408*Math.pow(10,-11);}
-h(){return 6.62607004*Math.pow(10,-34)}
-α(){return 0.0072973525;}
-g(){return 9.80665;}
-Na(){return 6.02214129*Math.pow(10,23);}
+π(){return 3.14159265358979323846264338327950288419716939937510582097494459230781640628620;}//pi
+φ(){return 1.61803398874989484820458683436563811772030917980576286213544862270526046281890;}//numero aureo
+e(){return 2.71828182845904523536028747135266249775724709369995957496696762772407663035354;}//numero de euler
+G(){return 6.67408*Math.pow(10,-11);}//constante gravitacional
+h(){return 6.62607004*Math.pow(10,-34)}//contante de planck
+α(){return 0.0072973525643;}//constante de estructura fina
+g(){return 9.80665;}//gravedad estandar
+Na(){return 6.02214129*Math.pow(10,23);}//numero de avogadro
 E(){return 1.602176565*Math.pow(10,-19);}
 φ0(){return 2.067833758*Math.pow(10,-15);}
 µ0(){return 0.000001256637061;}
@@ -116,6 +116,5 @@ inf1(){return -(1/0);}
 γ(){return 0.577215664901632;}
 //Azar----------------------------------------------------------------------------------------------------------
 prse(ar){return (ar.x>Math.random());}
-  }
-  Scratch.extensions.register(new minmatespentaquark());
-})(Scratch);
+
+}Scratch.extensions.register(new minmatespentaquark());})(Scratch);
