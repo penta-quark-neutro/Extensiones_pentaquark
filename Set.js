@@ -6,21 +6,21 @@ if(!Scratch.extensions.unsandboxed){throw new Error('unsandboxed');}
 class SET{getInfo(){return {id:'SET',name:'SET',color1:'#0092a0',color2:'#b3680f',color3:'#90c144',blocks: [
 {opcode:'a0',blockType:rep0,text:'new Set[a]',arguments:{a:{type:str0,defaultValue:''}}},
 {opcode:'a21',blockType:rep0,text:'new WeakSet[a]',arguments:{a:{type:str0,defaultValue:''}}},
-{opcode:'a1',blockType:bol0,text:'¿[a]tiene[b]?',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:'txt'}}},
-{opcode:'a2',blockType:rep0,text:'[a]añadir[b]',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:'txt'}}},
-{opcode:'a2_2',blockType:com0,text:'[a]añadir[b]',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:'txt'}}},
-{opcode:'a3',blockType:com0,text:'vaciar[a]',arguments:{a:{type:str0,defaultValue:''}}},
-{opcode:'a4_2',blockType:bol0,text:'[a]eliminar[b]',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:'txt'}}},
-{opcode:'a4',blockType:com0,text:'[a]eliminar[b]',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:'txt'}}},
-{opcode:'a5',blockType:rep0,text:'[a]diferencia[b]A∖B',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:''}}},
+{opcode:'a1',blockType:bol0,text:'[a].has[b]',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:'txt'}}},
+{opcode:'a2',blockType:rep0,text:'[a].add[b]',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:'txt'}}},
+{opcode:'a2_2',blockType:com0,text:'[a].add[b]',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:'txt'}}},
+{opcode:'a3',blockType:com0,text:'clear[a]',arguments:{a:{type:str0,defaultValue:''}}},
+{opcode:'a4_2',blockType:bol0,text:'[a].delete[b]',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:'txt'}}},
+{opcode:'a4',blockType:com0,text:'[a].delete[b]',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:'txt'}}},
+{opcode:'a5',blockType:rep0,text:'[a]difference[b]A∖B',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:''}}},
 {opcode:'a6',blockType:rep0,text:'entradas[a]',arguments:{a:{type:str0,defaultValue:''}}},
-{opcode:'a7',blockType:rep0,text:'[a]interseccion[b]A∩B',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:''}}},
-{opcode:'a8',blockType:bol0,text:'[a]es disjunto[b]',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:''}}},
-{opcode:'a9',blockType:bol0,text:'[a]es Subconjunto de[b]A⊆B',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:''}}},
-{opcode:'a10',blockType:bol0,text:'[a]contiene[b]A⊇B',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:''}}},
-{opcode:'a11',blockType:rep0,text:'[a]diferencia[b]A⊖B',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:''}}},
-{opcode:'a12',blockType:rep0,text:'[a]union[b]A∪B',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:''}}},
-{opcode:'a13',blockType:rep0,text:'tamaño de[a]',arguments:{a:{type:str0,defaultValue:''}}},
+{opcode:'a7',blockType:rep0,text:'[a].intersection[b]A∩B',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:''}}},
+{opcode:'a8',blockType:bol0,text:'[a].isDisjointFrom[b]',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:''}}},
+{opcode:'a9',blockType:bol0,text:'[a].isSubsetOf[b]A⊆B',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:''}}},
+{opcode:'a10',blockType:bol0,text:'[a].isSupersetOf[b]A⊇B',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:''}}},
+{opcode:'a11',blockType:rep0,text:'[a].symmetricDifference[b]A⊖B',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:''}}},
+{opcode:'a12',blockType:rep0,text:'[a].union[b]A∪B',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:''}}},
+{opcode:'a13',blockType:rep0,text:'[a].size',arguments:{a:{type:str0,defaultValue:''}}},
 {opcode:'a14',blockType:com0,text:'añadir a etiqueta[a]',arguments:{a:{type:str0,defaultValue:'coli'}}},
 {opcode:'a17',blockType:com0,text:'eliminar de etiqueta[a]',arguments:{a:{type:str0,defaultValue:'coli'}}},
 {opcode:'a20',blockType:rep0,text:'¿tiene etiqueta[a]?',arguments:{a:{type:str0,defaultValue:'coli'}}},
@@ -28,6 +28,8 @@ class SET{getInfo(){return {id:'SET',name:'SET',color1:'#0092a0',color2:'#b3680f
 {opcode:'a15',blockType:rep0,text:'tocando objeto con etiqueta[a]',arguments:{a:{type:str0,defaultValue:'coli'}}},
 {opcode:'a16',blockType:rep0,text:'tocando objeto con etiqueta[a]de lista[b]',arguments:{a:{type:str0,defaultValue:'coli'},b:{type:str0,defaultValue:''}}},
 {opcode:'a19',blockType:rep0,text:'etiqueta',disableMonitor:1},
+{opcode:'a22',blockType:rep0,text:'StringifySet[a]',arguments:{a:{type:str0,defaultValue:''}}},
+{opcode:'a23',blockType:rep0,text:'ParseSet[a]',arguments:{a:{type:str0,defaultValue:''}}},
 ],};}
 a0(ar){return new Set(ar.a);}
 a1(ar){return ar.a.has(ar.b);}
@@ -53,4 +55,6 @@ a18(ar,util){if(util.target.tag2){util.target.tag2.clear();}}
 a19(ar,util){if(util.target.tag2){var j=[];for(const entry of util.target.tag2.entries()){j.push(entry[0]);}return j;}}
 a20(ar,util){if(util.target.tag2){return util.target.tag2.has(ar.a);}}
 a21(ar){return new WeakSet(ar.a);}
+a22(ar){return JSON.stringify(Array.from(ar.a))}
+a23(ar){return new Set(JSON.parse(ar.a))}
 }Scratch.extensions.register(new SET());})(Scratch);

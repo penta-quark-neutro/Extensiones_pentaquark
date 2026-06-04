@@ -13,6 +13,7 @@ class MAP{getInfo(){return {id:'MAP',name:'MAP',color1:'#d1a199',color2:'#30c0c0
 {opcode:'mp5',blockType:com0,text:'[map].clear',arguments:{map:{type:str0,defaultValue:''}}},
 {opcode:'mp6',blockType:rep0,text:'[map].entries',arguments:{map:{type:str0,defaultValue:''}}},
 {opcode:'mp7',blockType:rep0,text:'[map].getOrInsert[a][b]',arguments:{a:{type:str0,defaultValue:'0'},b:{type:str0,defaultValue:'default'},map:{type:str0,defaultValue:''}}},
+{opcode:'mp14',blockType:rep0,text:'[map].getOrInsertComputed[a][b]',arguments:{a:{type:str0,defaultValue:'0'},b:{type:str0,defaultValue:'default'},map:{type:str0,defaultValue:''}}},
 {opcode:'mp8',blockType:rep0,text:'[map].keys',arguments:{map:{type:str0,defaultValue:''}}},
 {opcode:'mp9',blockType:rep0,text:'[map].values',arguments:{map:{type:str0,defaultValue:''}}},
 {opcode:'mp10',blockType:rep0,text:'[map].size',arguments:{map:{type:str0,defaultValue:''}}},
@@ -29,10 +30,11 @@ mp4(ar){return ar.map.delete(ar.a)}
 mp4_2(ar){ar.map.delete(ar.a)}
 mp5(ar){ar.map.clear()}
 mp6(ar){return Array.from(ar.map.entries())}
-mp7({map,a,b}){if(map.has(a)){return map.get(a)}else{map.set(a,b);return b}}
+mp7(ar){return ar.map.getOrInsert(ar.a,ar.b)}//if(map.has(a)){return map.get(a)}else{map.set(a,b);return b}
 mp8(ar){return Array.from(ar.map.keys())}
 mp9(ar){return Array.from(ar.map.values())}
 mp10(ar){return ar.map.size}
 mp11(ar){return JSON.stringify(Array.from(ar.map))}
 mp12(ar){return new Map(JSON.parse(ar.map))}
+mp14(ar){return ar.map.getOrInsertComputed(ar.a,ar.b)}
 }Scratch.extensions.register(new MAP());})(Scratch);
