@@ -92,6 +92,18 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me64',blockType:com0,text:'new[a].[c]()',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
 {opcode:'me65',blockType:com0,text:'new[a].[c]([b])',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
 {opcode:'me66',blockType:com0,text:'new[a].[c](...[b])',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me107',blockType:bol,text:'[a]?.()',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me105',blockType:bol,text:'[a]?.([b])',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me106',blockType:bol,text:'[a]?.(...[b])',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me108',blockType:bol,text:'[a].[b]?.()',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'}}},
+{opcode:'me109',blockType:bol,text:'[a].[b]?.([c])',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:''}}},
+{opcode:'me110',blockType:bol,text:'[a].[b]?.(...[c])',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:''}}},
+{opcode:'me111',blockType:com0,text:'[a]?.()',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me112',blockType:com0,text:'[a]?.([b])',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me113',blockType:com0,text:'[a]?.(...[b])',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me114',blockType:com0,text:'[a].[b]?.()',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me115',blockType:com0,text:'[a].[b]?.([c])',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:''}}},
+{opcode:'me116',blockType:com0,text:'[a].[b]?.(...[c])',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:''}}},
 {opcode:'me37',blockType:rep,text:'try{[a](...[b])}',hideFromPalette:fun||pun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me98',blockType:rep,text:'try{[a].[b](...[c])}',hideFromPalette:fun||!pun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:''}}},
 {opcode:'me15',blockType:rep,text:'Apply[a][b][c]',hideFromPalette:fun||!blo,arguments:{a:{type:txt,defaultValue:'funcion'},b:{type:txt,defaultValue:'this'},c:{type:txt,defaultValue:'Array'}}},
@@ -259,5 +271,16 @@ me101(ar){return ar.a}
 me102(ar){return Object.preventExtensions(ar.a)}
 async me103(ar){return await ar.a;}
 me104(ar){void ar.a}//no se para que recontra carajos alguien quiere esto.
-
+me105(ar){return ar.a?.(ar.b)}
+me106(ar){return ar.a?.(...ar.b)}
+me107(ar){return ar.a?.()}
+me108(ar){return ar.a[ar.b]?.()}
+me109(ar){return ar.a[ar.b]?.(ar.c)}
+me110(ar){return ar.a[ar.b]?.(...ar.c)}
+me111(ar){return ar.a?.()}
+me112(ar){return ar.a?.(ar.b)}
+me113(ar){return ar.a?.(...ar.b)}
+me114(ar){return ar.a[ar.b]?.()}
+me115(ar){return ar.a[ar.b]?.(ar.c)}
+me116(ar){return ar.a[ar.b]?.(...ar.c)}
 }Scratch.extensions.register(new exps());})(Scratch);
