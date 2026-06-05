@@ -25,8 +25,10 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'negvec',blockType:rep,text:'-[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'Kr',blockType:rep,text:'[a]⊗[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'dsit',blockType:rep,text:'[a]dist[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'dsit2',blockType:rep,text:'[a]dist[b]lista',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'[[],[]...]'}}},
 {opcode:'pmedio',blockType:rep,text:'[a]punto medio[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'pmedioN',blockType:rep,text:'punto medio[a]N puntos',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:'[[...],[...]...]'}}},
+{opcode:'pmedioN',blockType:rep,text:'punto medio[a]N puntos',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:'[[],[]...]'}}},
+{opcode:'ppoli',blockType:rep,text:'punto[P]dentro de[polygon]poligono',hideFromPalette:ops,arguments:{P:{type:txt,defaultValue:''},polygon:{type:txt,defaultValue:'[[],[]...]'}}},
 {opcode:'lerp',blockType:rep,text:'IterpoLineal[a][b]alpha[c]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:num,defaultValue:'0.5'}}},
 {opcode:'smdr',blockType:rep,text:'Σ[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'prto',blockType:rep,text:'∏[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
@@ -587,5 +589,15 @@ s27(ar){ar.a.setVisible(false)}
 s28(ar,util){util.target.setDirection(Math.atan2(ar.a[0]-util.target.x,ar.a[1]-util.target.y)*57.295779513082320876798154814105)}
 s29(ar,util){return vm.renderer.isTouchingDrawables(util.target.drawableID,[ar.a.drawableID]);}
 s30(ar,util){return ar.a.filter(z=>vm.renderer.isTouchingDrawables(util.target.drawableID,[z.drawableID]))}
+dsit2(ar){return ar.b.map(x=>Math.hypot(x[0]-ar.a[0],x[1]-ar.a[1]))}
+ppoli({P,polygon}){const between=(p,a,b)=>(p>=a&&p<=b||p<=a&&p>=b);let inside=false,A,B,c;//modificacion de codigo en stack overflow por 'timeapp-> https://stackoverflow.com/users/2608744/timepp'
+    for(let i=polygon.length-1,j=0;j<polygon.length;i=j,j++){A=polygon[i],B=polygon[j]
+	if(P[0]==A[0]&&P[1]==A[1]||P[0]==B[0]&&P[1]==B[1]){return 0}
+	if(A[1]==B[1]&&P[1]==A[1]&&between(P[0],A[0],B[0])){return 0}
+	if(between(P[1],A[1],B[1])){
+		if (P[1]==A[1]&&B[1]>=A[1]||P[1]==B[1]&&A[1]>=B[1]) continue
+		c=(A[0]-P[0])*(B[1]-P[1])-(B[0]-P[0])*(A[1]-P[1])
+		if(c==0){return 0}if((A[1]<B[1])==(c>0)){inside=!inside}
+	}}return inside?1:-1}
 
 }Scratch.extensions.register(new vectorr());})(Scratch);
