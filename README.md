@@ -5,7 +5,7 @@ ni devuelven numbers y strings unicamente, pueden devolver: vectores, Objects, e
 por lo cual su logica de manejo debe ser mas cuidadoso.
 ## contenido de extensiones
 ### bigint y operadores
-contiene los operadores basicos de js (+,-,/,*,**,<<,>>,>>>,^,~,|,&) y Bigint() y comparadores
+contiene los operadores basicos de js (+,-,/,*,**,%,<<,>>,>>>,^,~,|,&) y Bigint() y comparadores
 ### control de multitudes
 actualmente sin mantenimiento...
 pero es un poquito mas eficiente moviendo muchos objetos, que si todos tuvieran su propio codigo... no es muy util realmente.
@@ -39,6 +39,7 @@ es una de las potentes, permite usar Arrays y TypedArray (pero menos flexible qu
 con la mayoria de metodos de Array, muchos metodos para ahorrar espacio de bloques y eficiencia.
 una gran cantidad de metodos aritmeticos y gestion de referencias de Objetos del editor (Sprites).
 ademas de manejar numeros complejos,cuaterniones,octaniones y sedeniones.
+cuenta con deteccion de colicion geometrica basica.
 ⚠️permite ejecucion arbitraria de codigo.
 ## objetos
 es la mas potente extension hasta el momento.
