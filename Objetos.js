@@ -1,32 +1,21 @@
-class FloatCadenaMarkov{'use strict'//hecho por el pentaquark neutro y neutral auream
+if(window.cadena==undefined){window.cadena=class FloatCadenaMarkov{'use strict'//hecho por el pentaquark neutro y neutral auream
 	constructor(estados,dist,estado_inicial){
 	if(!Array.isArray(estados)){throw new Error('se esperaba un Array para el estado',{cause:typeof(estados)})}
 	if(!Array.isArray(dist)){throw new Error('se esperaba un Array',{cause:typeof(dist)})}
 	if(estados.length!=dist.length){throw new Error('los dos Array deben tener el mismo length')}
 	if(!dist.every(x=>Array.isArray(x))){throw new Error('dist solo debe contener Arrays con las posibilidades')}
 	if(!estados.includes(estado_inicial)){throw new Error('el estado_inicial debe exitir en estados',{cause:estado_inicial})}
-		this.estado=estado_inicial;
-		this.cadenas=estados;
-		this.distribucion=dist;
-		this.estadoAnterior=null;
-}
-//metodos static de la clase
+		this.estado=estado_inicial;this.cadenas=estados;this.distribucion=dist;this.estadoAnterior=null;}
 static fromArray(ar){return new FloatCadenaMarkov(ar[0],ar[1],ar[2])}
-
-//aqui los get
 get estadodeCambio(){return this.distribucion[this.cadenas.indexOf(this.estado)]}
 get estadoMasPosible(){return this.cadenas[this.estadodeCambio.indexOf(Math.max(...this.estadodeCambio))]}
 get estadoMenosPosible(){return this.cadenas[this.estadodeCambio.lastIndexOf(Math.min(...this.estadodeCambio))]}
 get [Symbol.toStringTag](){return 'FloatCadenaMarkov'}
-
-//funciones que tendra heredadas a lo creado
 paso(rnd){rnd=(typeof(rnd)=='number'?rnd:Math.random());let i=0,sum=0,pos=this.distribucion[this.cadenas.indexOf(this.estado)];this.estadoAnterior=this.estado;
 	while(i<this.cadenas.length){sum+=pos[i];if(sum>=rnd){this.estado=this.cadenas[i];return !(this.estadoAnterior==this.estado)}i++}
 	this.estado=this.cadenas[i-1];return !(this.estadoAnterior==this.estado)}
 nPasos(k){let i=0,st=Array(k);while(i<k){this.paso();st[i++]=this.estado;}return st;}
-obtenerArray(){return [this.cadenas,this.distribucion,this.estado]}
-}
-
+obtenerArray(){return [this.cadenas,this.distribucion,this.estado]}};}
 (function(Scratch) {'use strict';//por el (pentaquark neutro, penta quark neutro) y neutral auream
 if(!vm.runtime.extensionStorage['exps']){vm.runtime.extensionStorage['exps']={};}
 var Objglob={},fun=1,dap=1,obs=1,pun=0,blo=1;const AsyncFunction=async function(){}.constructor,GeneratorFunction=function*(){}.constructor,AsyncGeneratorFunction=async function*(){}.constructor;
@@ -109,6 +98,7 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me15',blockType:rep,text:'Apply[a][b][c]',hideFromPalette:fun||!blo,arguments:{a:{type:txt,defaultValue:'funcion'},b:{type:txt,defaultValue:'this'},c:{type:txt,defaultValue:'Array'}}},
 {opcode:'me70',blockType:com0,text:'Apply[a][b][c]',hideFromPalette:fun||blo,arguments:{a:{type:txt,defaultValue:'funcion'},b:{type:txt,defaultValue:'this'},c:{type:txt,defaultValue:'Array'}}},
 {opcode:'me73',blockType:rep,text:'[a].bind(...[b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me117',blockType:rep,text:'[a].call([b],...[c])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
 {opcode:'me36',blockType:rep,text:'Function(...[a],[b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'Args'},b:{type:txt,defaultValue:'Estructura'}}},
 {opcode:'me40',blockType:rep,text:'AsyncFunction(...[a],[b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'Args'},b:{type:txt,defaultValue:'Estructura'}}},
 {opcode:'me42',blockType:rep,text:'GeneratorFunction(...[a],[b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'Args'},b:{type:txt,defaultValue:'Estructura'}}},
@@ -154,6 +144,7 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me14',blockType:bol,text:'Object.is[a][b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me32',blockType:rep,text:'getPrototypeOf[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me47',blockType:rep,text:'setPrototypeOf[a][b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me120',blockType:bol,text:'[a]isPrototypeOf[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me9',blockType:rep,text:'[a]deleteProperty[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'}}},
 {opcode:'me9_2',blockType:com0,text:'[a]deleteProperty[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'}}},
 {opcode:'me11',blockType:rep,text:'stringify[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
@@ -176,21 +167,23 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me100',blockType:rep,text:'Object.assign([a],...[b])',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me102',blockType:rep,text:'Object.preventExtensions[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
 {blockType:"label",text:"Objetos y utiles",hideFromPalette:obs},//--------------------------------------------------------------------------------------------------------------------------------
-{opcode:'me1',blockType:rep,text:'Nuevo Objeto vacio',hideFromPalette:obs,disableMonitor:1},
+{opcode:'me1',blockType:rep,text:'{}',hideFromPalette:obs,disableMonitor:1},
 {opcode:'me38',blockType:bol,text:'[a]',hideFromPalette:obs,disableMonitor:1,arguments:{a:{type:txt,menu:'vals'}}},
 {opcode:'me12',blockType:rep,text:'interno[a]',hideFromPalette:obs,disableMonitor:1,arguments:{a:{type:txt,menu:'in'}}},
 {opcode:'me20',blockType:rep,text:'Objeto Global',hideFromPalette:obs,disableMonitor:1},
 {opcode:'me25',blockType:rep,text:'Objeto Global Permanente',hideFromPalette:obs,disableMonitor:1},
 {opcode:'me26',blockType:com0,text:'Vaciar Objeto Global Permanente',hideFromPalette:obs,disableMonitor:1},
-{opcode:'me92',blockType:bol,text:'[a]?[b]:[c]',hideFromPalette:obs,arguments:{a:{type:bol1,defaultValue:''},b:{type:txt,defaultValue:'1'},c:{type:txt,defaultValue:'0'}}},
+{opcode:'me92',blockType:bol,text:'[a]?[b]:[c]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'1'},c:{type:txt,defaultValue:'0'}}},
 {opcode:'me39',blockType:rep,text:'typeof[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me54',blockType:bol,text:'[a]instanceof[b]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me41',blockType:com0,text:'[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me119',blockType:bol,text:'[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me71',blockType:rep,text:'Referencia variable[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'mi variable'}}},
 {opcode:'me72',blockType:rep,text:'Referencia lista[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'lista-1'}}},
 {opcode:'me103',blockType:rep,text:'await[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me101',blockType:Scratch.BlockType.HAT,text:'Si[a]',hideFromPalette:obs,isEdgeActivated:true,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me104',blockType:bol,text:'void[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me118',blockType:com0,text:'throw[a]',isTerminal:1,hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 
 ],menus:{pr:{acceptReporters:0,items:['value','writable','enumerable','configurable']},
 in:{acceptReporters:0,items:['vm','target','util','Scratch','Math','Atomics','Object','Symbol','Array','String','window','crypto','Map','Set','twgl','gl','Proxy','navigator','FloatCadenaMarkov']},
@@ -211,7 +204,7 @@ me7_2({a,b,c}){a[b]=c}
 me8(ar){return ar.a in ar.b;}
 me9(ar){Reflect.deleteProperty(ar.a,ar.b);return ar.a;}me9_2(ar){Reflect.deleteProperty(ar.a,ar.b);}
 me11(ar){return JSON.stringify(ar.a);}
-me12(ar,util){switch(ar.a){case'vm':return Scratch.vm;case'target':return util.target;case'util':return util;case'Scratch':return Scratch;case'Math':return Math;case'Atomics':return Atomics;case'Object':return Object;case'Symbol':return Symbol;case'Array':return Array;case'String':return String;case'window':return window;case'crypto':return crypto;case'Map':return Map;case'Set':return Set;case'twgl':return vm.renderer.exports.twgl;case'gl':return vm.renderer._gl;case'Proxy':return Proxy;case'navigator':return navigator;case'FloatCadenaMarkov':return FloatCadenaMarkov;}}
+me12(ar,util){switch(ar.a){case'vm':return Scratch.vm;case'target':return util.target;case'util':return util;case'Scratch':return Scratch;case'Math':return Math;case'Atomics':return Atomics;case'Object':return Object;case'Symbol':return Symbol;case'Array':return Array;case'String':return String;case'window':return window;case'crypto':return crypto;case'Map':return Map;case'Set':return Set;case'twgl':return vm.renderer.exports.twgl;case'gl':return vm.renderer._gl;case'Proxy':return Proxy;case'navigator':return navigator;case'FloatCadenaMarkov':return window.cadena;}}
 me13(ar){return JSON.parse(ar.a);}
 me14(ar){return Object.is(ar.a,ar.b);}
 me15({a,b,c}){return Reflect.apply(a,b,c);}me70({a,b,c}){Reflect.apply(a,b,c);}
@@ -283,4 +276,8 @@ me113(ar){return ar.a?.(...ar.b)}
 me114(ar){return ar.a[ar.b]?.()}
 me115(ar){return ar.a[ar.b]?.(ar.c)}
 me116(ar){return ar.a[ar.b]?.(...ar.c)}
+me117(ar){return ar.a.call(ar.b,...ar.c)}
+me118(ar){throw ar.a}
+me119(ar){return ar.a}
+me120(ar){return a.isPrototypeOf(ar.b)}
 }Scratch.extensions.register(new exps());})(Scratch);

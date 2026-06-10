@@ -66,7 +66,7 @@ class Typedvectorr{getInfo(){return{id:'Typedvectorr',name:'Typedvectorr',color1
 {opcode:'mtx1',blockType:com,text:'mtz(3*3)[a]*Arr(3)[b]_salida[c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
 {opcode:'mtx2',blockType:com,text:'mtz(4*4)[a]*Arr(4)[b]_salida[c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
 ],menus:{
-outs:{acceptReporters:0,items:['+','-','*','/','^','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','&','|','^','<<','>>','>>>','~']},
+outs:{acceptReporters:0,items:['+','-','*','/','**','%','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','&','|','^','<<','>>','>>>','~']},
 Filt:{acceptReporters:0,items:['==','===','<','>','>=','<=','!=']},
 Asig:{acceptReporters:0,items:['=','+=','-=','/=','*=','**=','<<=','??=','%=','>>=','>>>=','&=','|=','^=']},
 uins:{acceptReporters:0,items:['Uint8ClampedArray','Uint8Array','Uint16Array','Uint32Array','Int8Array','Int16Array','Int32Array','Float16Array','Float32Array','Float64Array','BigInt64Array','BigUint64Array']},
@@ -74,18 +74,18 @@ setm:{acceptReporters:0,items:['getInt8','getUint8','getInt16','getUint16','getF
 pr:{acceptReporters:0,items:['buffer','byteLength','byteOffset','detached']}
 }};}
 ma(ar){switch(ar.ou){
-case'+':return ar.a.map(k=>k*1+ar.b*1);break;case'-':return ar.a.map(k=>k-ar.b);break;case'*':return ar.a.map(k=>k*ar.b);break;case'/':return ar.a.map(k=>k/ar.b);break;
-case'^':return ar.a.map(k=>k**ar.b);break;case'LogB':return ar.a.map(k=>Math.log(k)/Math.log(ar.b));break;case'sen':return ar.a.map(Math.sin);break;case'cos':return ar.a.map(Math.cos);break;
-case'tan':return ar.a.map(Math.tan);break;case'sign':return ar.a.map(Math.sign);break;case'abs':return ar.a.map(Math.abs);break;case'rampa':return ar.a.map(k=>(k>0 ? k:0));break;
-case'lim+':return ar.a.map(k=>(k>ar.b ? ar.b:k));break;case'lim-':return ar.a.map(k=>(k<ar.b ? ar.b:k));break;case'int':return ar.a.map(Math.trunc);break;
-case'arcsen':return ar.a.map(Math.asin);break;case'arccos':return ar.a.map(Math.acos);break;case'arctan':return ar.a.map(Math.atan);break;case'e^':return ar.a.map(Math.exp);break;
-case'Ln':return ar.a.map(Math.log);break;case'Log10':return ar.a.map(Math.log10);break;case'&':return ar.a.map(k=>k&ar.b);break;case'|':return ar.a.map(k=>k|ar.b);break;case'^':return ar.a.map(k=>k^ar.b);break;case'<<':return ar.a.map(k=>k<<ar.b);break;case'>>':return ar.a.map(k=>k>>ar.b);break;case'>>>':return ar.a.map(k=>k>>>ar.b);break;case'~':return ar.a.map(k=>~k);break;
+case'+':return ar.a.map(k=>k*1+ar.b*1);case'-':return ar.a.map(k=>k-ar.b);case'*':return ar.a.map(k=>k*ar.b);case'/':return ar.a.map(k=>k/ar.b);
+case'**':return ar.a.map(k=>k**ar.b);case'%':return ar.a.map(k=>k%ar.b);case'LogB':return ar.a.map(k=>Math.log(k)/Math.log(ar.b));case'sen':return ar.a.map(Math.sin);case'cos':return ar.a.map(Math.cos);
+case'tan':return ar.a.map(Math.tan);case'sign':return ar.a.map(Math.sign);case'abs':return ar.a.map(Math.abs);case'rampa':return ar.a.map(k=>(k>0 ? k:0));
+case'lim+':return ar.a.map(k=>(k>ar.b ? ar.b:k));case'lim-':return ar.a.map(k=>(k<ar.b ? ar.b:k));case'int':return ar.a.map(Math.trunc);
+case'arcsen':return ar.a.map(Math.asin);case'arccos':return ar.a.map(Math.acos);case'arctan':return ar.a.map(Math.atan);case'e^':return ar.a.map(Math.exp);
+case'Ln':return ar.a.map(Math.log);case'Log10':return ar.a.map(Math.log10);case'&':return ar.a.map(k=>k&ar.b);case'|':return ar.a.map(k=>k|ar.b);case'^':return ar.a.map(k=>k^ar.b);case'<<':return ar.a.map(k=>k<<ar.b);case'>>':return ar.a.map(k=>k>>ar.b);case'>>>':return ar.a.map(k=>k>>>ar.b);case'~':return ar.a.map(k=>~k);
 }}
 Fil(ar){switch(ar.ou){
-case'==':return ar.a.filter(dat=>(dat==ar.b ? 1:0));break;case'===':return ar.a.filter(dat=>(dat===ar.b ? 1:0));break;
-case'<':return ar.a.filter(dat=>(dat<ar.b ? 1:0));break;case'>':return ar.a.filter(dat=>(dat>ar.b ? 1:0));break;
-case'>=':return ar.a.filter(dat=>(dat>=ar.b ? 1:0));break;case'<=':return ar.a.filter(dat=>(dat<=ar.b ? 1:0));break;
-case'!=':return ar.a.filter(dat=>(dat!=ar.b ? 1:0));break;
+case'==':return ar.a.filter(dat=>(dat==ar.b ? 1:0));case'===':return ar.a.filter(dat=>(dat===ar.b ? 1:0));
+case'<':return ar.a.filter(dat=>(dat<ar.b ? 1:0));case'>':return ar.a.filter(dat=>(dat>ar.b ? 1:0));
+case'>=':return ar.a.filter(dat=>(dat>=ar.b ? 1:0));case'<=':return ar.a.filter(dat=>(dat<=ar.b ? 1:0));
+case'!=':return ar.a.filter(dat=>(dat!=ar.b ? 1:0));
 }}
 herr0(){Scratch.openWindow('https://linktr.ee/Penta_quark_neutro');}
 herr1(){ops=0;ref();}herr2(){ops=1;ref();}herr3(){vecs=0;ref();}herr4(){vecs=1;ref();}
