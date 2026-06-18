@@ -30,6 +30,12 @@ class minmatespentaquark{getInfo(){return{id:'minmatespentaquark',name:'Pequeña
 {opcode:'asinh',blockType:reportero,text:'asinh[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'5'}}},
 {opcode:'acosh',blockType:reportero,text:'acosh[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'5'}}},
 {opcode:'atanh',blockType:reportero,text:'atanh[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'0.5'}}},
+{opcode:'sin',blockType:reportero,text:'sin[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'45'}}},
+{opcode:'cos',blockType:reportero,text:'cos[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'45'}}},
+{opcode:'tan',blockType:reportero,text:'tan[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'45'}}},
+{opcode:'asin',blockType:reportero,text:'asin[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'0.7'}}},
+{opcode:'acos',blockType:reportero,text:'acos[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'0.7'}}},
+{opcode:'atan',blockType:reportero,text:'atan[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'0.7'}}},
 {opcode:'escalon',blockType:reportero,text:'Escalon[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'5'}}},
 {opcode:'fract',blockType:reportero,text:'fract[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'5.5656'}}},
 {opcode:'enter',blockType:reportero,text:'int[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'5.5656'}}},
@@ -41,6 +47,9 @@ class minmatespentaquark{getInfo(){return{id:'minmatespentaquark',name:'Pequeña
 {opcode:'ni',blockType:evaluador,text:'[a]≠[b]',hideFromPalette:ops,arguments:{a:{type:numero,defaultValue:'2'},b:{type:numero,defaultValue:'5'}}},
 {opcode:'tetra',blockType:reportero,text:'[a]↑↑[b]',hideFromPalette:ops,arguments:{a:{type:numero,defaultValue:'3'},b:{type:numero,defaultValue:'3'}}},
 {opcode:'prse',blockType:evaluador,text:'[x]%',hideFromPalette:ops,arguments:{x:{type:numero,defaultValue:'0.34'}}},
+{opcode:'sin',blockType:reportero,text:'sin[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'45'}}},
+{opcode:'cos',blockType:reportero,text:'cos[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'45'}}},
+{opcode:'clz32',blockType:reportero,text:'clz32[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'2'}}},
 {blockType:"label",text:"constantes",},//----------------------------------------------------------------------------------------------------------------------------------
  {func:'herram3',blockType:vgbb,hideFromPalette:!cons,text:'mostrar constantes',},{func:'herram4',blockType:vgbb,hideFromPalette:cons,text:'ocultar constantes',},
 {opcode:'c',blockType:reportero,text:'c',hideFromPalette:cons,disableMonitor:1},{opcode:'π',blockType:reportero,text:'π',hideFromPalette:cons,disableMonitor:1},
@@ -61,6 +70,13 @@ herram4(){cons=true;Scratch.vm.extensionManager.refreshBlocks();}
 herram5(){Ext=false;Scratch.vm.extensionManager.refreshBlocks();}
 herram6(){Ext=true;Scratch.vm.extensionManager.refreshBlocks();}
 //minimas matematicas----------------------------------------------------------------------------------------------------------
+clz32(ar){return Math.clz32(ar.k)}
+asin(ar){return Math.asin(ar.k)}
+acos(ar){return Math.acos(ar.k)}
+atan(ar){return Math.atan(ar.k)}
+sin(ar){return Math.sin(ar.k)}
+cos(ar){return Math.cos(ar.k)}
+tan(ar){return Math.tan(ar.k)}
 cosh(ar){return Math.cosh(ar.k)}
 sinh(ar){return Math.sinh(ar.k)}
 asinh(ar){return Math.asinh(ar.k)}

@@ -145,6 +145,7 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'s11',blockType:com,text:'mover multiples[b] XY[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'[referencia,...]'}}},
 {opcode:'s16',blockType:com,text:'Ir a coord[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
 {opcode:'s19',blockType:com,text:'[a]ir a coord[b]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'},b:{type:txt,defaultValue:'[]'}}},
+{opcode:'s31',blockType:com,text:'[a]ir a[b]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'},b:{type:txt,defaultValue:'referencia'}}},
 {opcode:'s13',blockType:rep,text:'distancia a[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
 {opcode:'s14',blockType:rep,text:'distancia lista[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'[referencia,...]'}}},
 {opcode:'s15',blockType:rep,text:'distancia entre[a][b]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'},b:{type:txt,defaultValue:'referencia'}}},
@@ -241,7 +242,7 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 
 
 ],menus:{
-outs:{acceptReporters:0,items:['+','-','*','/','**','%','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','|','&','^','~','<<','>>','>>>','tofixed','[x]','function->']},
+outs:{acceptReporters:0,items:['+','-','*','/','**','%','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','|','&','^','~','<<','>>','>>>','tofixed','[x]','function->','parse','stringify']},
 outs2:{acceptReporters:0,items:['+','-','*','/','**','%','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','|','&','^','~','<<','>>','>>>','tofixed','function->']},
 Filt:{acceptReporters:0,items:['==','===','<','>','>=','<=','!=','includes','!includes','Reflect.has','!Reflect.has','typeof','!isNaN','isNaN','[x]','function->']},
 Asig:{acceptReporters:1,items:['=','+=','-=','/=','*=','**=','<<=','??=','%=','>>=','>>>=','|=','&=','^=','||=','&&=']},
@@ -394,7 +395,7 @@ case'lim+':return ar.a.map(k=>(k>ar.b ? ar.b:k));case'lim-':return ar.a.map(k=>(
 case'arcsen':return ar.a.map(Math.asin);case'arccos':return ar.a.map(Math.acos);case'arctan':return ar.a.map(Math.atan);case'e^':return ar.a.map(Math.exp);
 case'Ln':return ar.a.map(Math.log);case'Log10':return ar.a.map(Math.log10);case'|':return ar.a.map(k=>k|ar.b);case'&':return ar.a.map(k=>k&ar.b);
 case'^':return ar.a.map(k=>k^ar.b);case'~':return ar.a.map(k=>~k);case'<<':return ar.a.map(k=>k<<ar.b);case'>>':return ar.a.map(k=>k>>ar.b);case'>>>':return ar.a.map(k=>k>>>ar.b);
-case'tofixed':return ar.a.map(k=>k.toFixed(ar.b));case'function->':return ar.a.map(ar.b);case'[x]':return ar.a.map(x=>x[ar.b]);
+case'tofixed':return ar.a.map(k=>k.toFixed(ar.b));case'function->':return ar.a.map(ar.b);case'[x]':return ar.a.map(x=>x[ar.b]);case'parse':return ar.a.map(x=>JSON.parse(x));case'stringify':return ar.a.map(x=>JSON.stringify(x));
 }}
 fore(ar){switch(ar.ou){
 case'+':ar.a.forEach((j,k,l)=>l[k]+=ar.b*1);break;case'-':ar.a.forEach((j,k,l)=>l[k]-=ar.b);break;
@@ -588,7 +589,7 @@ pmedio(ar){let arr=Array(ar.a.length),i=0;while(i<ar.a.length){arr[i]=(ar.a[i]+a
 pmedioN(ar){let arr=Array(ar.a[0].length).fill(0),i=0,j=0;while(j<ar.a.length){while(i<ar.a[0].length){arr[i]+=(ar.a[j][i++])/ar.a.length}j++;i=0;}return arr}
 s17(ar){return [(ar.a.x+ar.b.x)/2,(ar.a.y+ar.b.y)/2]}
 s18(ar){let arr=[0,0],i=0;while(i<ar.a.length){arr[0]+=ar.a[i].x/ar.a.length,arr[1]+=ar.a[i++].y/ar.a.length}return arr}
-s19(ar){ar.a.x=ar.b[0],ar.a.y=ar.b[1]}
+s19(ar){ar.a.setXY(ar.b[0],ar.b[1])}
 s20(ar){ar.a.setDirection(ar.b)}
 s21(ar,util){util.target.setDirection(Math.atan2(ar.a.x-util.target.x,ar.a.y-util.target.y)*57.295779513082320876798154814105)}
 s22(ar,util){util.target.setDirection(ar.a.direction)}
@@ -617,4 +618,5 @@ geo3({a,b}){return (a[0]>=b[0]&&a[0]<=(b[0]+b[3]))&&(a[1]<=b[1]&&a[1]>=(b[1]-b[4
 dsit3({a,b,c}){let lin=[(b[1]-c[1])/(b[0]-c[0]),b[1]-(b[1]-c[1])/(b[0]-c[0])*b[0]];return Math.abs((lin[0]*a[0]-a[1]+lin[1])/Math.hypot(lin[0],-1))}
 geo4({a,b}){return (a[0]>=b[0]&&a[0]<=(b[0]+b[2]))&&(a[1]<=b[1]&&a[1]>=(b[1]-b[2]))}
 geo5({a,b}){return (a[0]>=b[0]&&a[0]<=(b[0]+b[3]))&&(a[1]<=b[1]&&a[1]>=(b[1]-b[3]))&&(a[2]>=b[3]&&a[2]<=(b[2]+b[3]))}
+s31(ar){return ar.a.setXY(ar.b.x,ar.b.y)}
 }Scratch.extensions.register(new vectorr());})(Scratch);

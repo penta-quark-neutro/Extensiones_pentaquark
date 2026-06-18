@@ -48,6 +48,7 @@ class Typedvectorr{getInfo(){return{id:'Typedvectorr',name:'Typedvectorr',color1
 {opcode:'buffer',blockType:rep,text:'new ArrayBuffer[a][b]',hideFromPalette:vecs,arguments:{a:{type:num,defaultValue:'8'},b:{type:num,defaultValue:'12'}}},
 {opcode:'buffer2',blockType:rep,text:'new ArrayBuffer[a]',hideFromPalette:vecs,arguments:{a:{type:num,defaultValue:'8'}}},
 {opcode:'isview',blockType:rep,text:'isView[a]',hideFromPalette:vecs,arguments:{a:{type:num,defaultValue:''}}},
+{opcode:'esTyped',blockType:rep,text:'¿TypedArray[a]?',hideFromPalette:vecs,arguments:{a:{type:num,defaultValue:''}}},
 {opcode:'trans',blockType:rep,text:'[b].transfer[a]',hideFromPalette:vecs,arguments:{a:{type:num,defaultValue:'0'},b:{type:txt,defaultValue:'buffer'}}},
 {opcode:'res',blockType:com,text:'[b].resize[a]',hideFromPalette:vecs,arguments:{a:{type:num,defaultValue:'10'},b:{type:txt,defaultValue:'buffer'}}},
 {opcode:'view',blockType:rep,text:'new DataView[a][b][c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:'buffer'},b:{type:num,defaultValue:'0'},c:{type:num,defaultValue:'2'}}},
@@ -152,4 +153,5 @@ mtx2({a,b,c}){c[0]=(a[0]*b[0])+(a[1]*b[1])+(a[2]*b[2])+(a[3]*b[3]),c[1]=(a[4]*b[
 mtxi0(){return [1,0,0,1]}mtxi1(){return [1,0,0,0,1,0,0,0,1]}mtxi2(){return [1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1]}
 join(ar){return ar.a.join(ar.b)}
 isview(ar){return ArrayBuffer.isView(ar.a)}
+esTyped(ar){return  ar.a instanceof Uint8Array.__proto__}
 }Scratch.extensions.register(new Typedvectorr());})(Scratch);

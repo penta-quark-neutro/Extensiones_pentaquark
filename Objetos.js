@@ -159,7 +159,7 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me22',blockType:bol,text:'isFrozen[a]?',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me30',blockType:rep,text:'seal[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me31',blockType:bol,text:'isSealed[a]?',hideFromPalette:dap,hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'me23',blockType:rep,text:'create[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me23',blockType:rep,text:'create[a][b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me99',blockType:rep,text:'construct([a],[b],[c])',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
 {opcode:'me24',blockType:com0,text:'toStringTag[a]=[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'PersObj'}}},
 {opcode:'me67',blockType:rep,text:'structuredClone[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
@@ -215,7 +215,7 @@ me19(ar){return Object.assign(ar.a,ar.b);}
 me20(){return Objglob;}
 me21(ar){return Object.freeze(ar.a)}me21_2(ar){Object.freeze(ar.a)}
 me22(ar){return Object.isFrozen(ar.a)}
-me23(ar){return Object.create(ar.a);}
+me23(ar){return Object.create(ar.a,ar.b);}
 me24(ar){ar.a[Symbol.toStringTag]=ar.b.toString();}
 me25(ar){return vm.runtime.extensionStorage['exps'];}
 me26(ar){vm.runtime.extensionStorage['exps']={};}

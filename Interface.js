@@ -17,7 +17,7 @@ class Interfacepent{getInfo(){return {id:'Interfacepent',name:'Interface 1',colo
 {opcode:'clon',blockType:bol0,text:'clon?',filter:[Scratch.TargetType.SPRITE],disableMonitor:true},
 {opcode:'sieve',blockType:Scratch.BlockType.HAT,text:'Si [INPUT]',isEdgeActivated:true,arguments:{INPUT:{type:bol1,defaultValue:''}}},
 {opcode:'eve',blockType:rep0,text:'eval[a]',arguments:{a:{type:str0,defaultValue:'alert()'}}},
-{opcode:'eve2',blockType:rep0,text:'eval[a]x=[b]',arguments:{a:{type:str0,defaultValue:'alert()'},b:{type:str0,defaultValue:'100'}}},
+{opcode:'eve2',blockType:rep0,text:'eval[a]let x=[b]',arguments:{a:{type:str0,defaultValue:'alert()'},b:{type:str0,defaultValue:'100'}}},
 {opcode:'eve3',blockType:rep0,text:'eval?.[a]',arguments:{a:{type:str0,defaultValue:'alert()'}}},
 {opcode:'tgid',blockType:rep0,text:'ID',filter:[Scratch.TargetType.SPRITE],disableMonitor:true},
 {opcode:'drawID',blockType:rep0,text:'drawID',filter:[Scratch.TargetType.SPRITE],disableMonitor:true},
@@ -31,6 +31,8 @@ class Interfacepent{getInfo(){return {id:'Interfacepent',name:'Interface 1',colo
 {opcode:'NAN',blockType:rep0,text:'NaN',disableMonitor:true},
 {opcode:'itw',blockType:bol0,text:'isTouchingDrawables[a][b]',arguments:{a:{type:str0,defaultValue:'drawID'},b:{type:str0,defaultValue:'vector de drawId a detectar'}}},
 {opcode:'cdt',blockType:rep0,text:'candidatesTouching[a][b]',arguments:{a:{type:str0,defaultValue:'drawID'},b:{type:str0,defaultValue:'vector de drawId a detectar'}}},
+{opcode:'itwt',blockType:bol0,text:'this.isTouchingDrawables[b]',arguments:{b:{type:str0,defaultValue:'vector de drawId a detectar'}}},
+{opcode:'cdtt',blockType:rep0,text:'this.candidatesTouching[b]',arguments:{b:{type:str0,defaultValue:'vector de drawId a detectar'}}},
 {opcode:'func0',blockType:rep0,text:'drawableTouching[a][b][c][d][e]',arguments:{a:{type:str0,defaultValue:'drawID'},b:{type:str0,defaultValue:'10'},c:{type:str0,defaultValue:'10'},d:{type:str0,defaultValue:'0'},e:{type:str0,defaultValue:'0'}}},
 {opcode:'perm1',blockType:com0,text:'Datos persistentes=[a]',arguments:{a:{type:str0,defaultValue:'txt'}}},
 {opcode:'perm2',blockType:rep0,text:'Datos persistentes',disableMonitor:true},
@@ -50,7 +52,7 @@ nada(){}
 clon(args, util){if(util.target.isOriginal){return 0;}else{return 1;}}
 sieve(ar){return ar.INPUT}
 eve(ar,util){const wa=eval(ar.a);return wa;}
-eve2(ar,util){var x=ar.b;const wa=eval(ar.a);return wa;}
+eve2(ar,util){let x=ar.b;const wa=eval(ar.a);return wa;}
 eve3(ar,util){const wa=eval?.(ar.a);return wa;}
 tgid(ar,util){return util.target.id;}
 drawID(ar,util){return util.target.drawableID;}
@@ -61,8 +63,8 @@ nu(){return null;}
 un(){return ;}
 nlc(){return '\n';}
 NAN(){return NaN;}
-itw(ar,util){return vm.renderer.isTouchingDrawables(ar.a,ar.b);}
-cdt(ar,util){return vm.renderer._candidatesTouching(ar.a,ar.b);}
+itw(ar){return vm.renderer.isTouchingDrawables(ar.a,ar.b);}
+cdt(ar){return vm.renderer._candidatesTouching(ar.a,ar.b);}
 perm1(ar){vm.runtime.extensionStorage['Interfacepent']=ar.a}
 perm2(ar){return vm.runtime.extensionStorage['Interfacepent']}
 perm3(ar,util){util.target.extensionStorage.Interfacepent=ar.b}
@@ -71,4 +73,6 @@ proy({a}){vm.renderer._projection=[a[0],a[1],a[2],a[3],a[4],a[5],a[6],a[7],a[8],
 proy2(){return vm.renderer._projection}
 func0(ar){return vm.renderer.drawableTouching(ar.a,ar.b,ar.c,ar.d,ar.e)}
 func1(ar,util){return util.target.getBounds()}
+itwt(ar,util){return vm.renderer.isTouchingDrawables(util.target.drawableID,ar.b);}
+cdtt(ar,util){return vm.renderer._candidatesTouching(util.target,drawableID,ar.b);}
 }Scratch.extensions.register(new Interfacepent());})(Scratch);

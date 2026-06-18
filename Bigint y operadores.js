@@ -9,7 +9,7 @@ class BGI{getInfo(){return {id:'BGI',name:'BGI',color1:'#8923FF',color2:'#0F70A0
 {opcode:'a3',blockType:rep0,text:'[a]*[b]',arguments:{a:{type:str0,defaultValue:'10'},b:{type:str0,defaultValue:'10'}}},
 {opcode:'a4',blockType:rep0,text:'[a]/[b]',arguments:{a:{type:str0,defaultValue:'10'},b:{type:str0,defaultValue:'10'}}},
 {opcode:'a5',blockType:rep0,text:'[a]**[b]',arguments:{a:{type:str0,defaultValue:'10'},b:{type:str0,defaultValue:'10'}}},
-{opcode:'a21',blockType:rep0,text:'[a]%[b]',arguments:{a:{type:str0,defaultValue:'10'},b:{type:str0,defaultValue:'10'}}},
+{opcode:'a21',blockType:rep0,text:'[a] % [b]',arguments:{a:{type:str0,defaultValue:'10'},b:{type:str0,defaultValue:'10'}}},
 {opcode:'a6',blockType:bol0,text:'[a]>[b]',arguments:{a:{type:str0,defaultValue:'1'},b:{type:str0,defaultValue:'1'}}},
 {opcode:'a7',blockType:bol0,text:'[a]==[b]',arguments:{a:{type:str0,defaultValue:'1'},b:{type:str0,defaultValue:'1'}}},
 {opcode:'a20',blockType:bol0,text:'[a]===[b]',arguments:{a:{type:str0,defaultValue:'1'},b:{type:str0,defaultValue:'1'}}},
