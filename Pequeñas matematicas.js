@@ -50,6 +50,7 @@ class minmatespentaquark{getInfo(){return{id:'minmatespentaquark',name:'Pequeña
 {opcode:'sin',blockType:reportero,text:'sin[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'45'}}},
 {opcode:'cos',blockType:reportero,text:'cos[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'45'}}},
 {opcode:'clz32',blockType:reportero,text:'clz32[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'2'}}},
+{opcode:'imul',blockType:reportero,text:'imul[z][k]',hideFromPalette:ops,arguments:{z:{type:numero,defaultValue:'2'},k:{type:numero,defaultValue:'5'}}},
 {blockType:"label",text:"constantes",},//----------------------------------------------------------------------------------------------------------------------------------
  {func:'herram3',blockType:vgbb,hideFromPalette:!cons,text:'mostrar constantes',},{func:'herram4',blockType:vgbb,hideFromPalette:cons,text:'ocultar constantes',},
 {opcode:'c',blockType:reportero,text:'c',hideFromPalette:cons,disableMonitor:1},{opcode:'π',blockType:reportero,text:'π',hideFromPalette:cons,disableMonitor:1},
@@ -70,6 +71,7 @@ herram4(){cons=true;Scratch.vm.extensionManager.refreshBlocks();}
 herram5(){Ext=false;Scratch.vm.extensionManager.refreshBlocks();}
 herram6(){Ext=true;Scratch.vm.extensionManager.refreshBlocks();}
 //minimas matematicas----------------------------------------------------------------------------------------------------------
+imul(ar){return Math.imul(ar.z,ar.k)}
 clz32(ar){return Math.clz32(ar.k)}
 asin(ar){return Math.asin(ar.k)}
 acos(ar){return Math.acos(ar.k)}
@@ -112,8 +114,7 @@ gamma(ar){return Math.pow(2*3.14159265358979/ar.k,1/2)*Math.pow((1/2.71828182845
 mei(ar){return (ar.a>=ar.b);}
 mnei(ar){return (ar.a<=ar.b);}
 ni(ar){return (ar.a!=ar.b);}
-tetra(ar){var dat0=ar.a,i=0,n=ar.b-1;while(i<n){dat0=ar.a**dat0;i++;}
-return dat0;}
+tetra(ar){var dat0=ar.a,i=0,n=ar.b-1;while(i<n){dat0=ar.a**dat0;i++;}return dat0;}
 //constantes----------------------------------------------------------------------------------------------------------
 c(){return 299792458;}
 π(){return 3.14159265358979323846264338327950288419716939937510582097494459230781640628620;}//pi
