@@ -16,93 +16,93 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {func:'herr15',blockType:vgbb,hideFromPalette:!sed,text:'Mostrar Sedeniones',},{func:'herr16',blockType:vgbb,hideFromPalette:sed,text:'Ocultar Sedeniones',},
 {func:'herr17',blockType:vgbb,hideFromPalette:!geo,text:'Mostrar Detectores Geometricos',},{func:'herr18',blockType:vgbb,hideFromPalette:geo,text:'Ocultar Detectores Geometricos',},
 {blockType:"label",text:"Operadores matematicos",hideFromPalette:ops},//--------------------------------------------------------------------------------------------------------------------------------
-{opcode:'m',blockType:rep,text:'[a]+[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:''}}},
-{opcode:'r',blockType:rep,text:'[a]-[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:''}}},
-{opcode:'muVE',blockType:rep,text:'[a]*[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:'5'}}},
-{opcode:'prod',blockType:rep,text:'[a]•[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'cruz',blockType:rep,text:'3D[a]X[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:''}}},
-{opcode:'Hadamard',blockType:rep,text:'[a]⊙[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'invemul',blockType:rep,text:'[a]^-1',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'negvec',blockType:rep,text:'-[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'Kr',blockType:rep,text:'[a]⊗[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'dsit',blockType:rep,text:'[a]dist[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'dsit2',blockType:rep,text:'2D[a]dist[b]lista',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'[[],[]...]'}}},
-{opcode:'dsit3',blockType:rep,text:'punto[a]dist[b][c]linea',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
-{opcode:'pmedio',blockType:rep,text:'[a]punto medio[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'m',blockType:rep,text:'[a]+[b]',hideFromPalette:ops,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'r',blockType:rep,text:'[a]-[b]',hideFromPalette:ops,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'muVE',blockType:rep,text:'[a]*[b]',hideFromPalette:ops,arguments:{a:{type:txt},b:{type:num,defaultValue:'5'}}},
+{opcode:'prod',blockType:rep,text:'[a]•[b]',hideFromPalette:ops,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'cruz',blockType:rep,text:'3D[a]X[b]',hideFromPalette:ops,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'Hadamard',blockType:rep,text:'[a]⊙[b]',hideFromPalette:ops,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'invemul',blockType:rep,text:'[a]^-1',hideFromPalette:ops,arguments:{a:{type:txt}}},
+{opcode:'negvec',blockType:rep,text:'-[a]',hideFromPalette:ops,arguments:{a:{type:txt}}},
+{opcode:'Kr',blockType:rep,text:'[a]⊗[b]',hideFromPalette:ops,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'dsit',blockType:rep,text:'[a]dist[b]',hideFromPalette:ops,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'dsit2',blockType:rep,text:'2D[a]dist[b]lista',hideFromPalette:ops,arguments:{a:{type:txt},b:{type:txt,defaultValue:'[[],[]...]'}}},
+{opcode:'dsit3',blockType:rep,text:'punto[a]dist[b][c]linea',hideFromPalette:ops,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
+{opcode:'pmedio',blockType:rep,text:'[a]punto medio[b]',hideFromPalette:ops,arguments:{a:{type:txt},b:{type:txt}}},
 {opcode:'pmedioN',blockType:rep,text:'punto medio[a]N puntos',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:'[[],[]...]'}}},
-{opcode:'lerp',blockType:rep,text:'IterpoLineal[a][b]alpha[c]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:num,defaultValue:'0.5'}}},
-{opcode:'smdr',blockType:rep,text:'Σ[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'prto',blockType:rep,text:'∏[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'med1',blockType:rep,text:'media aritmetica[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'med2',blockType:rep,text:'media geometrica[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'med3',blockType:rep,text:'media armonica[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'med4',blockType:rep,text:'media cuadratica[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'med5',blockType:rep,text:'desviacion tipica[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'nor',blockType:rep,text:'||[a]||',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'unit',blockType:rep,text:'versor[a]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'angu',blockType:rep,text:'Θ°[a]',hideFromPalette:ops||1,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'Refj',blockType:rep,text:'Reflexion[a]normal[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:''}}},
-{opcode:'proyvec',blockType:rep,text:'Proyeccion vectorial[a][b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:''}}},
-{opcode:'proyesc',blockType:rep,text:'Proyeccion escalar[a][b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:''}}},
-{opcode:'Rotacion',blockType:rep,text:'3DRotar[a]en eje[b][c]grados',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:''},c:{type:num,defaultValue:'45'}}},
-{opcode:'Rotacion2',blockType:rep,text:'3DRotar lista[a]en eje[b][c]grados',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:''},c:{type:num,defaultValue:'45'}}},
+{opcode:'lerp',blockType:rep,text:'IterpoLineal[a][b]alpha[c]',hideFromPalette:ops,arguments:{a:{type:txt},b:{type:txt},c:{type:num,defaultValue:'0.5'}}},
+{opcode:'smdr',blockType:rep,text:'Σ[a]',hideFromPalette:ops,arguments:{a:{type:txt}}},
+{opcode:'prto',blockType:rep,text:'∏[a]',hideFromPalette:ops,arguments:{a:{type:txt}}},
+{opcode:'med1',blockType:rep,text:'media aritmetica[a]',hideFromPalette:ops,arguments:{a:{type:txt}}},
+{opcode:'med2',blockType:rep,text:'media geometrica[a]',hideFromPalette:ops,arguments:{a:{type:txt}}},
+{opcode:'med3',blockType:rep,text:'media armonica[a]',hideFromPalette:ops,arguments:{a:{type:txt}}},
+{opcode:'med4',blockType:rep,text:'media cuadratica[a]',hideFromPalette:ops,arguments:{a:{type:txt}}},
+{opcode:'med5',blockType:rep,text:'desviacion tipica[a]',hideFromPalette:ops,arguments:{a:{type:txt}}},
+{opcode:'nor',blockType:rep,text:'||[a]||',hideFromPalette:ops,arguments:{a:{type:txt}}},
+{opcode:'unit',blockType:rep,text:'versor[a]',hideFromPalette:ops,arguments:{a:{type:txt}}},
+{opcode:'angu',blockType:rep,text:'Θ°[a]',hideFromPalette:ops||1,arguments:{a:{type:txt}}},
+{opcode:'Refj',blockType:rep,text:'Reflexion[a]normal[b]',hideFromPalette:ops,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'proyvec',blockType:rep,text:'Proyeccion vectorial[a][b]',hideFromPalette:ops,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'proyesc',blockType:rep,text:'Proyeccion escalar[a][b]',hideFromPalette:ops,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'Rotacion',blockType:rep,text:'3DRotar[a]en eje[b][c]grados',hideFromPalette:ops,arguments:{a:{type:txt},b:{type:num},c:{type:num,defaultValue:'45'}}},
+{opcode:'Rotacion2',blockType:rep,text:'3DRotar lista[a]en eje[b][c]grados',hideFromPalette:ops,arguments:{a:{type:txt},b:{type:num},c:{type:num,defaultValue:'45'}}},
 {blockType:"label",text:"vectores",hideFromPalette:vecs},//--------------------------------------------------------------------------------------------------------------------------------
-{opcode:'pt',blockType:rep,text:'[a]〚[b]〛',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'2'}}},
-{opcode:'att',blockType:rep,text:'[a].at[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'2'}}},
-{opcode:'withh',blockType:rep,text:'[a].with[b][c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'0'},c:{type:txt,defaultValue:'2'}}},
+{opcode:'pt',blockType:rep,text:'[a]〚[b]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'2'}}},
+{opcode:'att',blockType:rep,text:'[a].at[b]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'2'}}},
+{opcode:'withh',blockType:rep,text:'[a].with[b][c]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'},c:{type:txt,defaultValue:'2'}}},
 {opcode:'arr',blockType:rep,text:'arr[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:'1,5,8'}}},
-{opcode:'arrf',blockType:rep,text:'Array.from[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'le',blockType:rep,text:'length[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'rpt',blockType:rep,text:'[a]〚[b]〛=[c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'0'},c:{type:txt,defaultValue:'10'}}},
-{opcode:'rpt2',blockType:com,text:'[a]〚[b]〛=[c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'0'},c:{type:txt,defaultValue:'10'}}},
-{opcode:'rpt3',blockType:com,text:'[a]〚[b]〛[tip][c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'0'},c:{type:txt,defaultValue:'10'},tip:{type:txt,menu:'Asig'}}},
+{opcode:'arrf',blockType:rep,text:'Array.from[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
+{opcode:'le',blockType:rep,text:'length[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
+{opcode:'rpt',blockType:rep,text:'[a]〚[b]〛=[c]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'},c:{type:txt,defaultValue:'10'}}},
+{opcode:'rpt2',blockType:com,text:'[a]〚[b]〛=[c]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'},c:{type:txt,defaultValue:'10'}}},
+{opcode:'rpt3',blockType:com,text:'[a]〚[b]〛[tip][c]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'},c:{type:txt,defaultValue:'10'},tip:{type:txt,menu:'Asig'}}},
 {opcode:'gen',blockType:rep,text:'Array[a]B[b]',hideFromPalette:vecs,arguments:{a:{type:num,defaultValue:'12'},b:{type:num,defaultValue:'3'}}},
 {opcode:'gen2',blockType:rep,text:'Array[a]rand B[b]C[c]',hideFromPalette:vecs,arguments:{a:{type:num,defaultValue:'12'},b:{type:num,defaultValue:'70'},c:{type:num,defaultValue:'10'}}},
-{opcode:'arentries',blockType:rep,text:'[a].entries',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'aritera',blockType:rep,text:'[a]〚Symbol.iterator〛()',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'arnex',blockType:rep,text:'[a].next',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'pu',blockType:com,text:'[a].push[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'9'}}},
-{opcode:'unsh',blockType:com,text:'[a].unshift[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'9'}}},
-{opcode:'sh',blockType:rep,text:'shift[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'po',blockType:rep,text:'pop[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'fl',blockType:rep,text:'[a].flat[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'5'}}},
-{opcode:'fill',blockType:rep,text:'[a].fill[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'5'}}},
-{opcode:'sl',blockType:rep,text:'[a].splice[b][c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:'1'},c:{type:num,defaultValue:'1'}}},
-{opcode:'sl2',blockType:com,text:'[a].splice[b][c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:'1'},c:{type:num,defaultValue:'1'}}},
-{opcode:'sli',blockType:rep,text:'[a].slice[b][c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:'1'},c:{type:num,defaultValue:'1'}}},
-{opcode:'in',blockType:rep,text:'[c].indexOf[a][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:'K'},b:{type:num,defaultValue:'0'},c:{type:txt,defaultValue:''}}},
-{opcode:'lain',blockType:rep,text:'[c].lastIndexOf[a][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:'K'},b:{type:num,defaultValue:'-1'},c:{type:txt,defaultValue:''}}},
-{opcode:'arrcopy',blockType:rep,text:'[a].copyWithin[b][c][d]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:'1'},c:{type:num,defaultValue:'1'},d:{type:num,defaultValue:'1'}}},
-{opcode:'ma',blockType:rep,text:'[a].map[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'outs'},b:{type:txt,defaultValue:'3'}}},
-{opcode:'fore',blockType:com,text:'[a].forEach[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'outs2'},b:{type:txt,defaultValue:'3'}}},
-{opcode:'Fil',blockType:rep,text:'[a].filter[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
-{opcode:'reduc',blockType:rep,text:'[a].reduce[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'redu'},b:{type:txt,defaultValue:'0'}}},
-{opcode:'some',blockType:rep,text:'[a].some[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
-{opcode:'every',blockType:rep,text:'[a].every[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
-{opcode:'find',blockType:rep,text:'[a].find[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
-{opcode:'findIndex',blockType:rep,text:'[a].findIndex[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
-{opcode:'findlast',blockType:rep,text:'[a].findLast[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
-{opcode:'findlastindex',blockType:rep,text:'[a].findLastIndex[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
-{opcode:'co',blockType:rep,text:'[a].concat[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'incl',blockType:rep,text:'[a].includes[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'5'}}},
-{opcode:'rev',blockType:rep,text:'[a].reverse',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'torev',blockType:rep,text:'[a].toReversed',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'join',blockType:rep,text:'[a].join[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'-'}}},
-{opcode:'sort',blockType:rep,text:'[a].sort',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'tosort',blockType:rep,text:'[a].toSorted',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'esarr',blockType:evaluador,text:'isArray[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'uin1',blockType:rep,text:'new Uint8Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'uin10',blockType:rep,text:'new Uint8ClampedArray[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'uin2',blockType:rep,text:'new Uint16Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'uin3',blockType:rep,text:'new Uint32Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'uin4',blockType:rep,text:'new int8Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'uin5',blockType:rep,text:'new int16Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'uin6',blockType:rep,text:'new int32Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'uin7',blockType:rep,text:'new Float16Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'uin8',blockType:rep,text:'new Float32Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'uin9',blockType:rep,text:'new Float64Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'uin11',blockType:rep,text:'new BigInt64Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'uin12',blockType:rep,text:'new BigUint64Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'arentries',blockType:rep,text:'[a].entries',hideFromPalette:vecs,arguments:{a:{type:txt}}},
+{opcode:'aritera',blockType:rep,text:'[a]〚Symbol.iterator〛()',hideFromPalette:vecs,arguments:{a:{type:txt}}},
+{opcode:'arnex',blockType:rep,text:'[a].next',hideFromPalette:vecs,arguments:{a:{type:txt}}},
+{opcode:'pu',blockType:com,text:'[a].push[b]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'9'}}},
+{opcode:'unsh',blockType:com,text:'[a].unshift[b]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'9'}}},
+{opcode:'sh',blockType:rep,text:'shift[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
+{opcode:'po',blockType:rep,text:'pop[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
+{opcode:'fl',blockType:rep,text:'[a].flat[b]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'5'}}},
+{opcode:'fill',blockType:rep,text:'[a].fill[b]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'5'}}},
+{opcode:'sl',blockType:rep,text:'[a].splice[b][c]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:num,defaultValue:'1'},c:{type:num,defaultValue:'1'}}},
+{opcode:'sl2',blockType:com,text:'[a].splice[b][c]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:num,defaultValue:'1'},c:{type:num,defaultValue:'1'}}},
+{opcode:'sli',blockType:rep,text:'[a].slice[b][c]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:num,defaultValue:'1'},c:{type:num,defaultValue:'1'}}},
+{opcode:'in',blockType:rep,text:'[c].indexOf[a][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:'K'},b:{type:num,defaultValue:'0'},c:{type:txt}}},
+{opcode:'lain',blockType:rep,text:'[c].lastIndexOf[a][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:'K'},b:{type:num,defaultValue:'-1'},c:{type:txt}}},
+{opcode:'arrcopy',blockType:rep,text:'[a].copyWithin[b][c][d]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:num,defaultValue:'1'},c:{type:num,defaultValue:'1'},d:{type:num,defaultValue:'1'}}},
+{opcode:'ma',blockType:rep,text:'[a].map[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'outs'},b:{type:txt,defaultValue:'3'}}},
+{opcode:'fore',blockType:com,text:'[a].forEach[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'outs2'},b:{type:txt,defaultValue:'3'}}},
+{opcode:'Fil',blockType:rep,text:'[a].filter[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
+{opcode:'reduc',blockType:rep,text:'[a].reduce[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'redu'},b:{type:txt,defaultValue:'0'}}},
+{opcode:'some',blockType:rep,text:'[a].some[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
+{opcode:'every',blockType:rep,text:'[a].every[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
+{opcode:'find',blockType:rep,text:'[a].find[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
+{opcode:'findIndex',blockType:rep,text:'[a].findIndex[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
+{opcode:'findlast',blockType:rep,text:'[a].findLast[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
+{opcode:'findlastindex',blockType:rep,text:'[a].findLastIndex[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
+{opcode:'co',blockType:rep,text:'[a].concat[b]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'incl',blockType:rep,text:'[a].includes[b]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'5'}}},
+{opcode:'rev',blockType:rep,text:'[a].reverse',hideFromPalette:vecs,arguments:{a:{type:txt}}},
+{opcode:'torev',blockType:rep,text:'[a].toReversed',hideFromPalette:vecs,arguments:{a:{type:txt}}},
+{opcode:'join',blockType:rep,text:'[a].join[b]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'-'}}},
+{opcode:'sort',blockType:rep,text:'[a].sort',hideFromPalette:vecs,arguments:{a:{type:txt}}},
+{opcode:'tosort',blockType:rep,text:'[a].toSorted',hideFromPalette:vecs,arguments:{a:{type:txt}}},
+{opcode:'esarr',blockType:evaluador,text:'isArray[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
+{opcode:'uin1',blockType:rep,text:'new Uint8Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
+{opcode:'uin10',blockType:rep,text:'new Uint8ClampedArray[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
+{opcode:'uin2',blockType:rep,text:'new Uint16Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
+{opcode:'uin3',blockType:rep,text:'new Uint32Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
+{opcode:'uin4',blockType:rep,text:'new int8Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
+{opcode:'uin5',blockType:rep,text:'new int16Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
+{opcode:'uin6',blockType:rep,text:'new int32Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
+{opcode:'uin7',blockType:rep,text:'new Float16Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
+{opcode:'uin8',blockType:rep,text:'new Float32Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
+{opcode:'uin9',blockType:rep,text:'new Float64Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
+{opcode:'uin11',blockType:rep,text:'new BigInt64Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
+{opcode:'uin12',blockType:rep,text:'new BigUint64Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
 {blockType:"label",text:"vectores-tuplas y accesores",hideFromPalette:vecs},//--------------------------------------------------------------------------------------------------------------------------------
 {opcode:'cu_i',blockType:rep,text:'i',hideFromPalette:vecs,disableMonitor:1},
 {opcode:'cu_j',blockType:rep,text:'j',hideFromPalette:vecs,disableMonitor:1},
@@ -115,22 +115,27 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'cu7',blockType:rep,text:'[a][b][c][d][e][f]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:'5'},b:{type:txt,defaultValue:'2'},c:{type:txt,defaultValue:'-1'},d:{type:txt,defaultValue:'-4'},e:{type:txt,defaultValue:'-9'},f:{type:txt,defaultValue:'7'}}},
 {opcode:'cu8',blockType:rep,text:'[a][b][c][d][e][f][g]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:'5'},b:{type:txt,defaultValue:'2'},c:{type:txt,defaultValue:'-1'},d:{type:txt,defaultValue:'-4'},e:{type:txt,defaultValue:'-9'},f:{type:txt,defaultValue:'7'},g:{type:txt,defaultValue:'0'}}},
 {opcode:'cu5',blockType:rep,text:'[a][b][c][d][e][f][g][h]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:'5'},b:{type:txt,defaultValue:'2'},c:{type:txt,defaultValue:'-1'},d:{type:txt,defaultValue:'-4'},e:{type:txt,defaultValue:'-9'},f:{type:txt,defaultValue:'7'},g:{type:txt,defaultValue:'0'},h:{type:txt,defaultValue:'8'}}},
-{opcode:'pt2',blockType:rep,text:'[a]〚[b]〛〚[c]〛',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'2'},c:{type:txt,defaultValue:'0'}}},
-{opcode:'pt3',blockType:rep,text:'[a]〚[b]〛〚[c]〛〚[d]〛',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'2'},c:{type:txt,defaultValue:'0'},d:{type:txt,defaultValue:'3'}}},
-{opcode:'pt4',blockType:rep,text:'[a]〚[b]〛〚[c]〛〚[d]〛〚[e]〛',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'2'},c:{type:txt,defaultValue:'0'},d:{type:txt,defaultValue:'3'},e:{type:txt,defaultValue:'7'}}},
-{opcode:'rpt4',blockType:com,text:'[a]〚[b]〛=[c],〚[d]〛=[e]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'2'},c:{type:txt,defaultValue:'0'},d:{type:txt,defaultValue:'1'},e:{type:txt,defaultValue:'255'}}},
-{opcode:'rpt5',blockType:com,text:'[a]〚[b]〛=[c],〚[d]〛=[e],〚[f]〛=[g]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'2'},c:{type:txt,defaultValue:'0'},d:{type:txt,defaultValue:'1'},e:{type:txt,defaultValue:'255'},f:{type:txt,defaultValue:'0'},g:{type:txt,defaultValue:'7'}}},
-{opcode:'rpt6',blockType:com,text:'[a]〚[b]〛=[c],〚[d]〛=[e],〚[f]〛=[g],〚[h]〛=[i]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'2'},c:{type:txt,defaultValue:'0'},d:{type:txt,defaultValue:'1'},e:{type:txt,defaultValue:'255'},f:{type:txt,defaultValue:'0'},g:{type:txt,defaultValue:'7'},h:{type:txt,defaultValue:'3'},i:{type:txt,defaultValue:'-10'}}},
+{opcode:'pt2',blockType:rep,text:'[a]〚[b]〛〚[c]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'2'},c:{type:txt,defaultValue:'0'}}},
+{opcode:'pt3',blockType:rep,text:'[a]〚[b]〛〚[c]〛〚[d]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'2'},c:{type:txt,defaultValue:'0'},d:{type:txt,defaultValue:'3'}}},
+{opcode:'pt4',blockType:rep,text:'[a]〚[b]〛〚[c]〛〚[d]〛〚[e]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'2'},c:{type:txt,defaultValue:'0'},d:{type:txt,defaultValue:'3'},e:{type:txt,defaultValue:'7'}}},
+{opcode:'rpt4',blockType:com,text:'[a]〚[b]〛=[c],〚[d]〛=[e]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'2'},c:{type:txt,defaultValue:'0'},d:{type:txt,defaultValue:'1'},e:{type:txt,defaultValue:'255'}}},
+{opcode:'rpt5',blockType:com,text:'[a]〚[b]〛=[c],〚[d]〛=[e],〚[f]〛=[g]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'2'},c:{type:txt,defaultValue:'0'},d:{type:txt,defaultValue:'1'},e:{type:txt,defaultValue:'255'},f:{type:txt,defaultValue:'0'},g:{type:txt,defaultValue:'7'}}},
+{opcode:'rpt6',blockType:com,text:'[a]〚[b]〛=[c],〚[d]〛=[e],〚[f]〛=[g],〚[h]〛=[i]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'2'},c:{type:txt,defaultValue:'0'},d:{type:txt,defaultValue:'1'},e:{type:txt,defaultValue:'255'},f:{type:txt,defaultValue:'0'},g:{type:txt,defaultValue:'7'},h:{type:txt,defaultValue:'3'},i:{type:txt,defaultValue:'-10'}}},
+{opcode:'rpt7',blockType:com,text:'〚...[a]〛=〚...[b]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'rpt8',blockType:rep,text:'++[a]〚[b]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'}}},
+{opcode:'rpt9',blockType:rep,text:'--[a]〚[b]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'}}},
+{opcode:'rpt10',blockType:rep,text:'[a]〚[b]〛++',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'}}},
+{opcode:'rpt11',blockType:rep,text:'[a]〚[b]〛--',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'}}},
 {blockType:"label",text:"Obj.vec o propiedad",hideFromPalette:prop},//--------------------------------------------------------------------------------------------------------------------------------
 {opcode:'tagtp1m',blockType:com,text:'añadir[t]tp1 NR',hideFromPalette:prop,arguments:{t:{type:txt,defaultValue:'K'}}},
 {opcode:'tagtp1mc',blockType:com,text:'añadir[t]tp1',hideFromPalette:prop,arguments:{t:{type:txt,defaultValue:'K'}}},
 {opcode:'tagtp1',blockType:rep,text:'tp1',hideFromPalette:prop,disableMonitor:1},
-{opcode:'tagtp1ig',blockType:com,text:'tp1=[t]',hideFromPalette:prop,arguments:{t:{type:txt,defaultValue:''}}},
-{opcode:'tagtp1c',blockType:evaluador,text:'contiene?[t]tp1',hideFromPalette:prop,arguments:{t:{type:txt,defaultValue:''}}},
+{opcode:'tagtp1ig',blockType:com,text:'tp1=[t]',hideFromPalette:prop,arguments:{t:{type:txt}}},
+{opcode:'tagtp1c',blockType:evaluador,text:'contiene?[t]tp1',hideFromPalette:prop,arguments:{t:{type:txt}}},
 {opcode:'s1',blockType:rep,text:'ID',hideFromPalette:prop,disableMonitor:1},
 {opcode:'s2',blockType:rep,text:'DRAWID',hideFromPalette:prop,disableMonitor:1},
 {opcode:'s12',blockType:rep,text:'Referencia object',hideFromPalette:prop,disableMonitor:1},
-{opcode:'s3',blockType:rep,text:'Obj.filter(ID)[a].tp1',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'s3',blockType:rep,text:'Obj.filter(ID)[a].tp1',hideFromPalette:prop,arguments:{a:{type:txt}}},
 {opcode:'s4',blockType:evaluador,text:'tocando Obj.tp1.includes[a]?',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'K'}}},
 {opcode:'s9',blockType:evaluador,text:'tocando Obj.tp1.includes[a]?de lista[targets]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'K'},targets:{type:txt,defaultValue:'[DrawID,...]'}}},
 {opcode:'s5',blockType:rep,text:'tp1 de toda cosa tocada',hideFromPalette:prop,disableMonitor:1},
@@ -141,8 +146,8 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {blockType:"label",text:"Control de referencias",hideFromPalette:prop},//--------------------------------------------------------------------------------------------------------------------------------
 {opcode:'s29',blockType:evaluador,text:'tocando [a]?',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
 {opcode:'s30',blockType:rep,text:'tocando de lista[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'[referencia,...]'}}},
-{opcode:'s10',blockType:com,text:'Ir multiples[b]a XY[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'[referencia,...]'}}},
-{opcode:'s11',blockType:com,text:'mover multiples[b] XY[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'[referencia,...]'}}},
+{opcode:'s10',blockType:com,text:'Ir multiples[b]a XY[a]',hideFromPalette:prop,arguments:{a:{type:txt},b:{type:txt,defaultValue:'[referencia,...]'}}},
+{opcode:'s11',blockType:com,text:'mover multiples[b] XY[a]',hideFromPalette:prop,arguments:{a:{type:txt},b:{type:txt,defaultValue:'[referencia,...]'}}},
 {opcode:'s16',blockType:com,text:'Ir a coord[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
 {opcode:'s19',blockType:com,text:'[a]ir a coord[b]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'},b:{type:txt,defaultValue:'[]'}}},
 {opcode:'s31',blockType:com,text:'[a]ir a[b]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'},b:{type:txt,defaultValue:'referencia'}}},
@@ -163,87 +168,94 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'Gv1',blockType:com,text:'push[t]Gv',hideFromPalette:glo,arguments:{t:{type:txt,defaultValue:'L'}}},
 {opcode:'Gv4',blockType:com,text:'concat[t]Gv',hideFromPalette:glo,arguments:{t:{type:txt,defaultValue:'L'}}},
 {opcode:'Gv2',blockType:rep,text:'Gv',hideFromPalette:glo,disableMonitor:1},
-{opcode:'Gv3',blockType:com,text:'Gv=[t]',hideFromPalette:glo,arguments:{t:{type:txt,defaultValue:''}}},
+{opcode:'Gv3',blockType:com,text:'Gv=[t]',hideFromPalette:glo,arguments:{t:{type:txt}}},
 {opcode:'Gv5',blockType:rep,text:'runtime Targets',hideFromPalette:glo,disableMonitor:1},
 {blockType:"label",text:"Vector global persistente",hideFromPalette:glo},//---------------------------------------------------------------------------------------------------------
 {opcode:'Gv6',blockType:com,text:'push[t]VGP',hideFromPalette:glo,arguments:{t:{type:txt,defaultValue:'L'}}},
 {opcode:'Gv8',blockType:rep,text:'VGP',hideFromPalette:glo,disableMonitor:1},
-{opcode:'Gv9',blockType:com,text:'VGP=[t]',hideFromPalette:glo,arguments:{t:{type:txt,defaultValue:''}}},
+{opcode:'Gv9',blockType:com,text:'VGP=[t]',hideFromPalette:glo,arguments:{t:{type:txt}}},
 {blockType:"label",text:"Complejos",hideFromPalette:cc},//--------------------------------------------------------------------------------------------------------------------------------
-{opcode:'cc1',blockType:rep,text:'ℂ[a]+[b]',hideFromPalette:cc,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'cc2',blockType:rep,text:'ℂ[a]-[b]',hideFromPalette:cc,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'cc3',blockType:rep,text:'ℂ[a]*[b]',hideFromPalette:cc,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'cc4',blockType:rep,text:'ℂ[a]/[b]',hideFromPalette:cc,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'cc6',blockType:rep,text:'ℂ conj[a]',hideFromPalette:cc,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'cc7',blockType:rep,text:'ℂ LN[a]',hideFromPalette:cc,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'cc8',blockType:rep,text:'ℂ e^[a]',hideFromPalette:cc,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'cc9',blockType:rep,text:'ℂ arg[a]',hideFromPalette:cc,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'cc11',blockType:rep,text:'ℂ ||[a]||',hideFromPalette:cc,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'cc10',blockType:evaluador,text:'¿[a]es ℂ?',hideFromPalette:cc,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'cc12',blockType:com,text:'ℂ[a]+[b]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
-{opcode:'cc13',blockType:com,text:'ℂ[a]-[b]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
-{opcode:'cc14',blockType:com,text:'ℂ[a]*[b]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
-{opcode:'cc15',blockType:com,text:'ℂ[a]/[b]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
-{opcode:'cc16',blockType:com,text:'ℂ conj[a]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
-{opcode:'cc17',blockType:com,text:'ℂ LN[a]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
-{opcode:'cc18',blockType:com,text:'ℂ e^[a]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
+{opcode:'cc1',blockType:rep,text:'ℂ[a]+[b]',hideFromPalette:cc,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'cc2',blockType:rep,text:'ℂ[a]-[b]',hideFromPalette:cc,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'cc3',blockType:rep,text:'ℂ[a]*[b]',hideFromPalette:cc,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'cc4',blockType:rep,text:'ℂ[a]/[b]',hideFromPalette:cc,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'cc6',blockType:rep,text:'ℂ conj[a]',hideFromPalette:cc,arguments:{a:{type:txt}}},
+{opcode:'cc7',blockType:rep,text:'ℂ LN[a]',hideFromPalette:cc,arguments:{a:{type:txt}}},
+{opcode:'cc8',blockType:rep,text:'ℂ e^[a]',hideFromPalette:cc,arguments:{a:{type:txt}}},
+{opcode:'cc9',blockType:rep,text:'ℂ arg[a]',hideFromPalette:cc,arguments:{a:{type:txt}}},
+{opcode:'cc11',blockType:rep,text:'ℂ ||[a]||',hideFromPalette:cc,arguments:{a:{type:txt}}},
+{opcode:'cc10',blockType:evaluador,text:'¿[a]es ℂ?',hideFromPalette:cc,arguments:{a:{type:txt}}},
+{opcode:'cc12',blockType:com,text:'ℂ[a]+[b]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
+{opcode:'cc13',blockType:com,text:'ℂ[a]-[b]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
+{opcode:'cc14',blockType:com,text:'ℂ[a]*[b]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
+{opcode:'cc15',blockType:com,text:'ℂ[a]/[b]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
+{opcode:'cc16',blockType:com,text:'ℂ conj[a]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt},c:{type:txt}}},
+{opcode:'cc17',blockType:com,text:'ℂ LN[a]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt},c:{type:txt}}},
+{opcode:'cc18',blockType:com,text:'ℂ e^[a]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt},c:{type:txt}}},
 {blockType:"label",text:"Cuaterniones",hideFromPalette:cuat},//--------------------------------------------------------------------------------------------------------------------------------
-{opcode:'cua1',blockType:rep,text:'ℍ[a]+[b]',hideFromPalette:cuat,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'cua2',blockType:rep,text:'ℍ[a]-[b]',hideFromPalette:cuat,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'cua3',blockType:rep,text:'ℍ[v1]*[v2]',hideFromPalette:cuat,arguments:{v1:{type:txt,defaultValue:''},v2:{type:txt,defaultValue:''}}},
-{opcode:'cua4',blockType:rep,text:'ℍ[v1]/[v2]',hideFromPalette:cuat,arguments:{v1:{type:txt,defaultValue:''},v2:{type:txt,defaultValue:''}}},
-{opcode:'cua6',blockType:rep,text:'ℍ conj[a]',hideFromPalette:cuat,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'cua7',blockType:rep,text:'ℍ LN[V]',hideFromPalette:cuat,arguments:{V:{type:txt,defaultValue:''}}},
-{opcode:'cua8',blockType:rep,text:'ℍ e^[V]',hideFromPalette:cuat,arguments:{V:{type:txt,defaultValue:''}}},
-{opcode:'cua10',blockType:rep,text:'ℍ ||[V]||',hideFromPalette:cuat,arguments:{V:{type:txt,defaultValue:''}}},
-{opcode:'cua9',blockType:evaluador,text:'¿[a]es ℍ?',hideFromPalette:cuat,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'cua11',blockType:com,text:'ℍ[a]+[b]_salida[c]',hideFromPalette:cuat,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
-{opcode:'cua12',blockType:com,text:'ℍ[a]-[b]_salida[c]',hideFromPalette:cuat,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
-{opcode:'cua13',blockType:com,text:'ℍ[v1]*[v2]_salida[c]',hideFromPalette:cuat,arguments:{v1:{type:txt,defaultValue:''},v2:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
-{opcode:'cua14',blockType:com,text:'ℍ[v1]/[v2]_salida[c]',hideFromPalette:cuat,arguments:{v1:{type:txt,defaultValue:''},v2:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
-{opcode:'cua15',blockType:com,text:'ℍ conj[a]_salida[c]',hideFromPalette:cuat,arguments:{a:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
-{opcode:'cua16',blockType:com,text:'ℍ LN[V]_salida[k]',hideFromPalette:cuat,arguments:{V:{type:txt,defaultValue:''},k:{type:txt,defaultValue:''}}},
-{opcode:'cua17',blockType:com,text:'ℍ e^[V]_salida[c]',hideFromPalette:cuat,arguments:{V:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
+{opcode:'cua1',blockType:rep,text:'ℍ[a]+[b]',hideFromPalette:cuat,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'cua2',blockType:rep,text:'ℍ[a]-[b]',hideFromPalette:cuat,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'cua3',blockType:rep,text:'ℍ[v1]*[v2]',hideFromPalette:cuat,arguments:{v1:{type:txt},v2:{type:txt}}},
+{opcode:'cua4',blockType:rep,text:'ℍ[v1]/[v2]',hideFromPalette:cuat,arguments:{v1:{type:txt},v2:{type:txt}}},
+{opcode:'cua6',blockType:rep,text:'ℍ conj[a]',hideFromPalette:cuat,arguments:{a:{type:txt}}},
+{opcode:'cua7',blockType:rep,text:'ℍ LN[V]',hideFromPalette:cuat,arguments:{V:{type:txt}}},
+{opcode:'cua8',blockType:rep,text:'ℍ e^[V]',hideFromPalette:cuat,arguments:{V:{type:txt}}},
+{opcode:'cua10',blockType:rep,text:'ℍ ||[V]||',hideFromPalette:cuat,arguments:{V:{type:txt}}},
+{opcode:'cua9',blockType:evaluador,text:'¿[a]es ℍ?',hideFromPalette:cuat,arguments:{a:{type:txt}}},
+{opcode:'cua11',blockType:com,text:'ℍ[a]+[b]_salida[c]',hideFromPalette:cuat,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
+{opcode:'cua12',blockType:com,text:'ℍ[a]-[b]_salida[c]',hideFromPalette:cuat,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
+{opcode:'cua13',blockType:com,text:'ℍ[v1]*[v2]_salida[c]',hideFromPalette:cuat,arguments:{v1:{type:txt},v2:{type:txt},c:{type:txt}}},
+{opcode:'cua14',blockType:com,text:'ℍ[v1]/[v2]_salida[c]',hideFromPalette:cuat,arguments:{v1:{type:txt},v2:{type:txt},c:{type:txt}}},
+{opcode:'cua15',blockType:com,text:'ℍ conj[a]_salida[c]',hideFromPalette:cuat,arguments:{a:{type:txt},c:{type:txt}}},
+{opcode:'cua16',blockType:com,text:'ℍ LN[V]_salida[k]',hideFromPalette:cuat,arguments:{V:{type:txt},k:{type:txt}}},
+{opcode:'cua17',blockType:com,text:'ℍ e^[V]_salida[c]',hideFromPalette:cuat,arguments:{V:{type:txt},c:{type:txt}}},
 {blockType:"label",text:"Octoniones",hideFromPalette:oct},//--------------------------------------------------------------------------------------------------------------------------------
-{opcode:'octa1',blockType:rep,text:'𝕆[a]+[b]',hideFromPalette:oct,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'octa2',blockType:rep,text:'𝕆[a]-[b]',hideFromPalette:oct,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'octa3',blockType:rep,text:'𝕆[v1]*[v2]',hideFromPalette:oct,arguments:{v1:{type:txt,defaultValue:''},v2:{type:txt,defaultValue:''}}},
-{opcode:'octa4',blockType:rep,text:'𝕆[v1]/[v2]',hideFromPalette:oct,arguments:{v1:{type:txt,defaultValue:''},v2:{type:txt,defaultValue:''}}},
-{opcode:'octa6',blockType:rep,text:'𝕆 conj[a]',hideFromPalette:oct,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'octa10',blockType:rep,text:'𝕆 LN[V]',hideFromPalette:oct,arguments:{V:{type:txt,defaultValue:''}}},
-{opcode:'octa8',blockType:rep,text:'𝕆 e^[v]',hideFromPalette:oct,arguments:{v:{type:txt,defaultValue:''}}},
-{opcode:'octa9',blockType:rep,text:'𝕆 ||[v]||',hideFromPalette:oct,arguments:{v:{type:txt,defaultValue:''}}},
-{opcode:'octa7',blockType:evaluador,text:'¿[a]es 𝕆?',hideFromPalette:oct,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'octa11',blockType:com,text:'𝕆[a]+[b]_salida[c]',hideFromPalette:oct,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
-{opcode:'octa12',blockType:com,text:'𝕆[a]-[b]_salida[c]',hideFromPalette:oct,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
-{opcode:'octa13',blockType:com,text:'𝕆[v1]*[v2]_salida[c]',hideFromPalette:oct,arguments:{v1:{type:txt,defaultValue:''},v2:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
-{opcode:'octa14',blockType:com,text:'𝕆[v1]/[v2]_salida[c]',hideFromPalette:oct,arguments:{v1:{type:txt,defaultValue:''},v2:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
-{opcode:'octa15',blockType:com,text:'𝕆 conj[a]_salida[c]',hideFromPalette:oct,arguments:{a:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
-{opcode:'octa16',blockType:com,text:'𝕆 LN[V]_salida[c]',hideFromPalette:oct,arguments:{V:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
-{opcode:'octa17',blockType:com,text:'𝕆 e^[v]_salida[k]',hideFromPalette:oct,arguments:{v:{type:txt,defaultValue:''},k:{type:txt,defaultValue:''}}},
+{opcode:'octa1',blockType:rep,text:'𝕆[a]+[b]',hideFromPalette:oct,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'octa2',blockType:rep,text:'𝕆[a]-[b]',hideFromPalette:oct,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'octa3',blockType:rep,text:'𝕆[v1]*[v2]',hideFromPalette:oct,arguments:{v1:{type:txt},v2:{type:txt}}},
+{opcode:'octa4',blockType:rep,text:'𝕆[v1]/[v2]',hideFromPalette:oct,arguments:{v1:{type:txt},v2:{type:txt}}},
+{opcode:'octa6',blockType:rep,text:'𝕆 conj[a]',hideFromPalette:oct,arguments:{a:{type:txt}}},
+{opcode:'octa10',blockType:rep,text:'𝕆 LN[V]',hideFromPalette:oct,arguments:{V:{type:txt}}},
+{opcode:'octa8',blockType:rep,text:'𝕆 e^[v]',hideFromPalette:oct,arguments:{v:{type:txt}}},
+{opcode:'octa9',blockType:rep,text:'𝕆 ||[v]||',hideFromPalette:oct,arguments:{v:{type:txt}}},
+{opcode:'octa7',blockType:evaluador,text:'¿[a]es 𝕆?',hideFromPalette:oct,arguments:{a:{type:txt}}},
+{opcode:'octa11',blockType:com,text:'𝕆[a]+[b]_salida[c]',hideFromPalette:oct,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
+{opcode:'octa12',blockType:com,text:'𝕆[a]-[b]_salida[c]',hideFromPalette:oct,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
+{opcode:'octa13',blockType:com,text:'𝕆[v1]*[v2]_salida[c]',hideFromPalette:oct,arguments:{v1:{type:txt},v2:{type:txt},c:{type:txt}}},
+{opcode:'octa14',blockType:com,text:'𝕆[v1]/[v2]_salida[c]',hideFromPalette:oct,arguments:{v1:{type:txt},v2:{type:txt},c:{type:txt}}},
+{opcode:'octa15',blockType:com,text:'𝕆 conj[a]_salida[c]',hideFromPalette:oct,arguments:{a:{type:txt},c:{type:txt}}},
+{opcode:'octa16',blockType:com,text:'𝕆 LN[V]_salida[c]',hideFromPalette:oct,arguments:{V:{type:txt},c:{type:txt}}},
+{opcode:'octa17',blockType:com,text:'𝕆 e^[v]_salida[k]',hideFromPalette:oct,arguments:{v:{type:txt},k:{type:txt}}},
 {blockType:"label",text:"Sedeniones",hideFromPalette:sed},//--------------------------------------------------------------------------------------------------------------------------------
-{opcode:'sed1',blockType:rep,text:'𝕊[v]+[w]',hideFromPalette:sed,arguments:{v:{type:txt,defaultValue:''},w:{type:txt,defaultValue:''}}},
-{opcode:'sed2',blockType:rep,text:'𝕊[v]-[w]',hideFromPalette:sed,arguments:{v:{type:txt,defaultValue:''},w:{type:txt,defaultValue:''}}},
-{opcode:'sed5',blockType:rep,text:'𝕊[v]*[k]',hideFromPalette:sed,arguments:{v:{type:txt,defaultValue:''},k:{type:txt,defaultValue:''}}},
-{opcode:'sed3',blockType:rep,text:'𝕊 conj[v]',hideFromPalette:sed,arguments:{v:{type:txt,defaultValue:''}}},
-{opcode:'sed4',blockType:evaluador,text:'¿[a]es 𝕊?',hideFromPalette:sed,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'sed6',blockType:com,text:'𝕊[v]+[w]_salida[c]',hideFromPalette:sed,arguments:{v:{type:txt,defaultValue:''},w:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
-{opcode:'sed7',blockType:com,text:'𝕊[v]-[w]_salida[c]',hideFromPalette:sed,arguments:{v:{type:txt,defaultValue:''},w:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
-{opcode:'sed8',blockType:com,text:'𝕊[v]*[k]_salida[c]',hideFromPalette:sed,arguments:{v:{type:txt,defaultValue:''},k:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
-{opcode:'sed9',blockType:com,text:'𝕊 conj[v]_salida[c]',hideFromPalette:sed,arguments:{v:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
+{opcode:'sed1',blockType:rep,text:'𝕊[v]+[w]',hideFromPalette:sed,arguments:{v:{type:txt},w:{type:txt}}},
+{opcode:'sed2',blockType:rep,text:'𝕊[v]-[w]',hideFromPalette:sed,arguments:{v:{type:txt},w:{type:txt}}},
+{opcode:'sed5',blockType:rep,text:'𝕊[v]*[k]',hideFromPalette:sed,arguments:{v:{type:txt},k:{type:txt}}},
+{opcode:'sed3',blockType:rep,text:'𝕊 conj[v]',hideFromPalette:sed,arguments:{v:{type:txt}}},
+{opcode:'sed4',blockType:evaluador,text:'¿[a]es 𝕊?',hideFromPalette:sed,arguments:{a:{type:txt}}},
+{opcode:'sed6',blockType:com,text:'𝕊[v]+[w]_salida[c]',hideFromPalette:sed,arguments:{v:{type:txt},w:{type:txt},c:{type:txt}}},
+{opcode:'sed7',blockType:com,text:'𝕊[v]-[w]_salida[c]',hideFromPalette:sed,arguments:{v:{type:txt},w:{type:txt},c:{type:txt}}},
+{opcode:'sed8',blockType:com,text:'𝕊[v]*[k]_salida[c]',hideFromPalette:sed,arguments:{v:{type:txt},k:{type:txt},c:{type:txt}}},
+{opcode:'sed9',blockType:com,text:'𝕊 conj[v]_salida[c]',hideFromPalette:sed,arguments:{v:{type:txt},c:{type:txt}}},
 {blockType:"label",text:"Deteccion Geometrica",hideFromPalette:geo},//--------------------------------------------------------------------------------------------------------------------------------
-{opcode:'ppoli',blockType:rep,text:'¿punto[P]en[polygon]poligono?',hideFromPalette:geo,arguments:{P:{type:txt,defaultValue:''},polygon:{type:txt,defaultValue:'[[],[]...]'}}},
-{opcode:'geo0',blockType:evaluador,text:'¿punto[a]en(x,y,r[b]circulo)?',hideFromPalette:geo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'geo1',blockType:evaluador,text:'¿punto[a]en(x,y,an,al[b]rectangulo)?',hideFromPalette:geo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'geo4',blockType:evaluador,text:'¿punto[a]en(x,y,l[b]cuadrado)?',hideFromPalette:geo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'geo2',blockType:evaluador,text:'¿punto[a]en(x,y,z,r[b]esfera)?',hideFromPalette:geo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'geo3',blockType:evaluador,text:'¿punto[a]en(x,y,z,an,al,pr[b]ortoedro)?',hideFromPalette:geo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'geo5',blockType:evaluador,text:'¿punto[a]en(x,y,z,l[b]cubo)?',hideFromPalette:geo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-
+{opcode:'ppoli',blockType:rep,text:'¿punto[P]en[polygon]poligono?',hideFromPalette:geo,arguments:{P:{type:txt},polygon:{type:txt,defaultValue:'[[],[]...]'}}},
+{opcode:'geo0',blockType:evaluador,text:'¿punto[a]en(x,y,r[b]circulo)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'geo1',blockType:evaluador,text:'¿punto[a]en(x,y,an,al[b]rectangulo)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'geo4',blockType:evaluador,text:'¿punto[a]en(x,y,l[b]cuadrado)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'geo2',blockType:evaluador,text:'¿punto[a]en(x,y,z,r[b]esfera)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'geo3',blockType:evaluador,text:'¿punto[a]en(x,y,z,an,al,pr[b]ortoedro)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'geo5',blockType:evaluador,text:'¿punto[a]en(x,y,z,l[b]cubo)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'geo6',blockType:evaluador,text:'punto[a]normal contra(x,y[b]circulo)',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'geo7',blockType:evaluador,text:'punto[a]normal contra(x,y,an,al[b]rectangulo)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'geo8',blockType:evaluador,text:'punto[a]normal contra(x,y,l[b]cuadrado)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'geo9',blockType:evaluador,text:'¿circulo[a]en[b]circulo (x,y,r)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'geo10',blockType:evaluador,text:'¿rectangulo[cu]en[du]rectangulo (x,y,an,al)?',hideFromPalette:geo,arguments:{cu:{type:txt},du:{type:txt}}},
+{opcode:'geo11',blockType:evaluador,text:'¿cuadrado[cu]en[du]cuadrado (x,y,l)?',hideFromPalette:geo,arguments:{cu:{type:txt},du:{type:txt}}},
+{opcode:'geo12',blockType:evaluador,text:'¿circulo[a]en[b]rectangulo?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'geo13',blockType:evaluador,text:'¿circulo[a]en[b]cuadrado?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
 
 ],menus:{
-outs:{acceptReporters:0,items:['+','-','*','/','**','%','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','|','&','^','~','<<','>>','>>>','tofixed','[x]','function->','parse','stringify']},
-outs2:{acceptReporters:0,items:['+','-','*','/','**','%','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','|','&','^','~','<<','>>','>>>','tofixed','function->']},
+outs:{acceptReporters:0,items:['+','-','*','/','**','%','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','Log2','|','&','^','~','<<','>>','>>>','tofixed','[x]','function->','parse','stringify','senh','cosh','tanh','asenh','acosh','atanh','min','max','fround','f16round','round','trunc']},
+outs2:{acceptReporters:0,items:['+','-','*','/','**','%','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','Log2','|','&','^','~','<<','>>','>>>','tofixed','function->','senh','cosh','tanh','asenh','acosh','atanh']},
 Filt:{acceptReporters:0,items:['==','===','<','>','>=','<=','!=','includes','!includes','Reflect.has','!Reflect.has','typeof','!isNaN','isNaN','[x]','function->']},
 Asig:{acceptReporters:1,items:['=','+=','-=','/=','*=','**=','<<=','??=','%=','>>=','>>>=','|=','&=','^=','||=','&&=']},
 redu:{acceptReporters:1,items:['+','-','*','/','**','|','&','^','max','min']}}
@@ -390,38 +402,32 @@ cc18(ar){const pa=Math.exp(ar.a[0]);ar.c[0]=(Math.cos(ar.a[1])*pa),ar.c[1]=(Math
 ma(ar){switch(ar.ou){
 case'+':return ar.a.map(k=>k*1+ar.b*1);case'-':return ar.a.map(k=>k-ar.b);case'*':return ar.a.map(k=>k*ar.b);case'/':return ar.a.map(k=>k/ar.b);
 case'**':return ar.a.map(k=>k**ar.b);case'%':return ar.a.map(k=>k%ar.b);case'LogB':return ar.a.map(k=>Math.log(k)/Math.log(ar.b));case'sen':return ar.a.map(Math.sin);case'cos':return ar.a.map(Math.cos);
-case'tan':return ar.a.map(Math.tan);case'sign':return ar.a.map(Math.sign);case'abs':return ar.a.map(Math.abs);case'rampa':return ar.a.map(k=>(k>0 ? k:0));
-case'lim+':return ar.a.map(k=>(k>ar.b ? ar.b:k));case'lim-':return ar.a.map(k=>(k<ar.b ? ar.b:k));case'int':return ar.a.map(Math.trunc);
-case'arcsen':return ar.a.map(Math.asin);case'arccos':return ar.a.map(Math.acos);case'arctan':return ar.a.map(Math.atan);case'e^':return ar.a.map(Math.exp);
-case'Ln':return ar.a.map(Math.log);case'Log10':return ar.a.map(Math.log10);case'|':return ar.a.map(k=>k|ar.b);case'&':return ar.a.map(k=>k&ar.b);
+case'tan':return ar.a.map(Math.tan);case'sign':return ar.a.map(Math.sign);case'abs':return ar.a.map(Math.abs);case'rampa':return ar.a.map(k=>(k>0 ? k:0));case'lim+':return ar.a.map(k=>(k>ar.b ? ar.b:k));
+case'lim-':return ar.a.map(k=>(k<ar.b ? ar.b:k));case'int':return ar.a.map(Math.trunc);case'arcsen':return ar.a.map(Math.asin);case'arccos':return ar.a.map(Math.acos);
+case'arctan':return ar.a.map(Math.atan);case'e^':return ar.a.map(Math.exp);case'Ln':return ar.a.map(Math.log);case'Log10':return ar.a.map(Math.log10);case'|':return ar.a.map(k=>k|ar.b);case'&':return ar.a.map(k=>k&ar.b);
 case'^':return ar.a.map(k=>k^ar.b);case'~':return ar.a.map(k=>~k);case'<<':return ar.a.map(k=>k<<ar.b);case'>>':return ar.a.map(k=>k>>ar.b);case'>>>':return ar.a.map(k=>k>>>ar.b);
 case'tofixed':return ar.a.map(k=>k.toFixed(ar.b));case'function->':return ar.a.map(ar.b);case'[x]':return ar.a.map(x=>x[ar.b]);case'parse':return ar.a.map(x=>JSON.parse(x));case'stringify':return ar.a.map(x=>JSON.stringify(x));
+case'senh':return ar.a.map(Math.sinh);case'cosh':return ar.a.map(Math.cosh);case'tanh':return ar.a.map(Math.tanh);case'asenh':return ar.a.map(Math.asinh);case'acosh':return ar.a.map(Math.acosh);case'atanh':return ar.a.map(Math.atanh);
+case'Log2':return ar.a.map(Math.log2);case'min':return ar.a.map(k=>Math.min(...k));case'max':return ar.a.map(k=>Math.max(...k));case'fround':return ar.a.map(k=>Math.fround(k));case'f16round':return ar.a.map(k=>Math.f16round(k));
+case'round':return ar.a.map(k=>Math.round(k));case'trunc':return ar.a.map(k=>Math.trunc(k));
 }}
 fore(ar){switch(ar.ou){
-case'+':ar.a.forEach((j,k,l)=>l[k]+=ar.b*1);break;case'-':ar.a.forEach((j,k,l)=>l[k]-=ar.b);break;
-case'*':ar.a.forEach((j,k,l)=>l[k]*=ar.b);break;case'/':ar.a.forEach((j,k,l)=>l[k]/=ar.b);break;
-case'**':ar.a.forEach((j,k,l)=>l[k]**=ar.b);case'%':ar.a.forEach((j,k,l)=>l[k]%=ar.b);break;case'LogB':ar.a.forEach((j,k,l)=>l[k]=Math.log(j)/Math.log(ar.b));break;
-case'sen':ar.a.forEach((j,k,l)=>l[k]=Math.sin(j));break;case'cos':ar.a.forEach((j,k,l)=>l[k]=Math.cos(j));break;
-case'tan':ar.a.forEach((j,k,l)=>l[k]=Math.tan(j));break;case'sign':ar.a.forEach((j,k,l)=>l[k]=Math.sign(j));break;
-case'abs':ar.a.forEach((j,k,l)=>l[k]=Math.abs(j));break;case'rampa':ar.a.forEach((j,k,l)=>l[k]=(j>0 ? j:0));break;
-case'lim+':ar.a.forEach((j,k,l)=>l[k]=(j>ar.b ? ar.b:j));break;case'lim-':ar.a.forEach((j,k,l)=>l[k]=(j<ar.b ? ar.b:j));break;
-case'int':ar.a.forEach((j,k,l)=>l[k]=Math.trunc(j));break;case'arcsen':ar.a.forEach((j,k,l)=>l[k]=Math.asin(j));break;
-case'arccos':ar.a.forEach((j,k,l)=>l[k]=Math.acos(j));break;case'arctan':ar.a.forEach((j,k,l)=>l[k]=Math.atan(j));break;
-case'e^':ar.a.forEach((j,k,l)=>l[k]=Math.exp(j));break;case'Ln':ar.a.forEach((j,k,l)=>l[k]=Math.log(j));break;
-case'Log10':ar.a.forEach((j,k,l)=>l[k]=Math.log10(j));break;case'|':ar.a.forEach((j,k,l)=>l[k]|=ar.b);break;
-case'&':ar.a.forEach((j,k,l)=>l[k]&=ar.b);break;case'^':ar.a.forEach((j,k,l)=>l[k]^=ar.b);break;
-case'~':ar.a.forEach((j,k,l)=>l[k]=~j);break;case'<<':ar.a.forEach((j,k,l)=>l[k]<<=ar.b);break;
-case'>>':ar.a.forEach((j,k,l)=>l[k]>>=ar.b);break;case'>>>':ar.a.forEach((j,k,l)=>l[k]>>>=ar.b);break;
-case'tofixed':ar.a.forEach((j,k,l)=>l[k]=j.toFixed(ar.b));break;case'function->':ar.a.forEach(ar.b);break;
+case'+':ar.a.forEach((j,k,l)=>l[k]+=ar.b*1);break;case'-':ar.a.forEach((j,k,l)=>l[k]-=ar.b);break;case'*':ar.a.forEach((j,k,l)=>l[k]*=ar.b);break;case'/':ar.a.forEach((j,k,l)=>l[k]/=ar.b);break;
+case'**':ar.a.forEach((j,k,l)=>l[k]**=ar.b);case'%':ar.a.forEach((j,k,l)=>l[k]%=ar.b);break;case'LogB':ar.a.forEach((j,k,l)=>l[k]=Math.log(j)/Math.log(ar.b));break;case'sen':ar.a.forEach((j,k,l)=>l[k]=Math.sin(j));break;case'cos':ar.a.forEach((j,k,l)=>l[k]=Math.cos(j));break;
+case'tan':ar.a.forEach((j,k,l)=>l[k]=Math.tan(j));break;case'sign':ar.a.forEach((j,k,l)=>l[k]=Math.sign(j));break;case'abs':ar.a.forEach((j,k,l)=>l[k]=Math.abs(j));break;case'rampa':ar.a.forEach((j,k,l)=>l[k]=(j>0 ? j:0));break;
+case'lim+':ar.a.forEach((j,k,l)=>l[k]=(j>ar.b ? ar.b:j));break;case'lim-':ar.a.forEach((j,k,l)=>l[k]=(j<ar.b ? ar.b:j));break;case'int':ar.a.forEach((j,k,l)=>l[k]=Math.trunc(j));break;case'arcsen':ar.a.forEach((j,k,l)=>l[k]=Math.asin(j));break;
+case'arccos':ar.a.forEach((j,k,l)=>l[k]=Math.acos(j));break;case'arctan':ar.a.forEach((j,k,l)=>l[k]=Math.atan(j));break;case'e^':ar.a.forEach((j,k,l)=>l[k]=Math.exp(j));break;case'Ln':ar.a.forEach((j,k,l)=>l[k]=Math.log(j));break;
+case'Log10':ar.a.forEach((j,k,l)=>l[k]=Math.log10(j));break;case'|':ar.a.forEach((j,k,l)=>l[k]|=ar.b);break;case'&':ar.a.forEach((j,k,l)=>l[k]&=ar.b);break;case'^':ar.a.forEach((j,k,l)=>l[k]^=ar.b);break;
+case'~':ar.a.forEach((j,k,l)=>l[k]=~j);break;case'<<':ar.a.forEach((j,k,l)=>l[k]<<=ar.b);break;case'>>':ar.a.forEach((j,k,l)=>l[k]>>=ar.b);break;case'>>>':ar.a.forEach((j,k,l)=>l[k]>>>=ar.b);break;
+case'tofixed':ar.a.forEach((j,k,l)=>l[k]=j.toFixed(ar.b));break;case'function->':ar.a.forEach(ar.b);break;case'senh':ar.a.forEach((j,k,l)=>l[k]=Math.sinh(j));break;case'cosh':ar.a.forEach((j,k,l)=>l[k]=Math.cosh(j));break;
+case'tanh':ar.a.forEach((j,k,l)=>l[k]=Math.tanh(j));break;case'asenh':ar.a.forEach((j,k,l)=>l[k]=Math.asinh(j));break;case'acosh':ar.a.forEach((j,k,l)=>l[k]=Math.acosh(j));break;case'atanh':ar.a.forEach((j,k,l)=>l[k]=Math.atanh(j));break;
+case'Log2':ar.a.forEach((j,k,l)=>l[k]=Math.Log2(j));break;
 }}
 Fil(ar){switch(ar.ou){
 case'==':return ar.a.filter(dat=>(dat==ar.b ? 1:0));case'===':return ar.a.filter(dat=>(dat===ar.b ? 1:0));case'isNaN':return ar.a.filter(k=>isNaN(k));
-case'<':return ar.a.filter(dat=>(dat<ar.b ? 1:0));case'>':return ar.a.filter(dat=>(dat>ar.b ? 1:0));
-case'>=':return ar.a.filter(dat=>(dat>=ar.b ? 1:0));case'<=':return ar.a.filter(dat=>(dat<=ar.b ? 1:0));
-case'!=':return ar.a.filter(dat=>(dat!=ar.b ? 1:0));case'includes':return ar.a.filter(dat=>dat.toString().includes(ar.b));
-case'!includes':return ar.a.filter(dat=>!(dat.toString().includes(ar.b)));case'Reflect.has':return ar.a.filter(dat=>Reflect.has(dat,ar.b));
-case'!Reflect.has':return ar.a.filter(dat=>!(Reflect.has(dat,ar.b)));case'typeof':return ar.a.filter(dat=>typeof(dat)==ar.b);case'!isNaN':return ar.a.filter(k=>!isNaN(k));
-case'function->':return ar.a.filter(ar.b);case'[x]':return ar.a.filter(k=>(k[ar.b]?true:false));
+case'<':return ar.a.filter(dat=>(dat<ar.b ? 1:0));case'>':return ar.a.filter(dat=>(dat>ar.b ? 1:0));case'>=':return ar.a.filter(dat=>(dat>=ar.b ? 1:0));case'<=':return ar.a.filter(dat=>(dat<=ar.b ? 1:0));
+case'!=':return ar.a.filter(dat=>(dat!=ar.b ? 1:0));case'includes':return ar.a.filter(dat=>dat.toString().includes(ar.b));case'!includes':return ar.a.filter(dat=>!(dat.toString().includes(ar.b)));case'Reflect.has':return ar.a.filter(dat=>Reflect.has(dat,ar.b));
+case'!Reflect.has':return ar.a.filter(dat=>!(Reflect.has(dat,ar.b)));case'typeof':return ar.a.filter(dat=>typeof(dat)==ar.b);case'!isNaN':return ar.a.filter(k=>!isNaN(k));case'function->':return ar.a.filter(ar.b);case'[x]':return ar.a.filter(k=>(k[ar.b]?true:false));
 }}
 reduc(ar){switch(ar.ou){
 case'+':return ar.a.reduce((ac,an)=>ac+an,ar.b);case'-':return ar.a.reduce((ac,an)=>ac-an,ar.b);case'*':return ar.a.reduce((ac,an)=>ac*an,ar.b);case'/':return ar.a.reduce((ac,an)=>ac/an,ar.b);
@@ -434,13 +440,8 @@ arr(ar){return Array.from(ar.a.split(','));}
 le(ar){return ar.a.length;}
 nor(ar){var i=0,b=0;while(i<ar.a.length){b+=ar.a[i++]**2}return b**0.5}
 unit(ar){var i=0,b=0;while(i<ar.a.length){b+=ar.a[i++]**2}b**=0.5;return ar.a.map(g=>g/b)}
-pt(ar){return ar.a[ar.b];}
-pt2(ar){return ar.a[ar.b][ar.c]}
-pt3(ar){return ar.a[ar.b][ar.c][ar.d]}
-pt4(ar){return ar.a[ar.b][ar.c][ar.d][ar.e]}
-prod(ar){var i=0,fin=0;while(i<(ar.a.length)){fin+=((ar.a[i])*(ar.b[i++]));}return fin;}
-rpt(ar){ar.a[ar.b]=ar.c;return ar.a;}
-rpt2(ar){ar.a[ar.b]=ar.c;}
+pt(ar){return ar.a[ar.b];}pt2(ar){return ar.a[ar.b][ar.c]}pt3(ar){return ar.a[ar.b][ar.c][ar.d]}pt4(ar){return ar.a[ar.b][ar.c][ar.d][ar.e]}
+prod(ar){var i=0,fin=0;while(i<(ar.a.length)){fin+=((ar.a[i])*(ar.b[i++]));}return fin;}rpt(ar){ar.a[ar.b]=ar.c;return ar.a;}rpt2(ar){ar.a[ar.b]=ar.c;}
 rpt3(ar){switch(ar.tip){case'=':ar.a[ar.b]=ar.c;break;case'+=':ar.a[ar.b]+=ar.c;break;case'-=':ar.a[ar.b]-=ar.c;break;case'/=':ar.a[ar.b]/=ar.c;break;case'&&=':ar.a[ar.b]&&=ar.c;break;
 case'*=':ar.a[ar.b]*=ar.c;break;case'**=':ar.a[ar.b]**=ar.c;break;case'<<=':ar.a[ar.b]<<=ar.c;break;case'>>=':ar.a[ar.b]>>=ar.c;break;case'^=':ar.a[ar.b]^=ar.c;break;case'||=':ar.a[ar.b]||=ar.c;break;
 case'>>>=':ar.a[ar.b]>>>=ar.c;break;case'??=':ar.a[ar.b]??=ar.c;break;case'%=':ar.a[ar.b]%=ar.c;break;case'|=':ar.a[ar.b]|=ar.c;break;case'&=':ar.a[ar.b]&=ar.c;break;
@@ -499,34 +500,23 @@ case'!includes':return ar.a.findLastIndex(dat=>!(dat.toString().includes(ar.b)))
 case'!Reflect.has':return ar.a.findLastIndex(dat=>!(Reflect.has(dat,ar.b)));case'typeof':return ar.a.findLastIndex(dat=>typeof(dat)==ar.b);case'!isNaN':return ar.a.findLastIndex(k=>!isNaN(k));
 case'function->':return ar.a.findLastIndex(ar.b);case'[x]':return ar.a.findLastIndex(k=>(k[ar.b]?true:false));
 }}
-rpt4(ar){ar.a[ar.b]=ar.c,ar.a[ar.d]=ar.e;}
-rpt5(ar){ar.a[ar.b]=ar.c,ar.a[ar.d]=ar.e,ar.a[ar.f]=ar.g;}
-rpt6(ar){ar.a[ar.b]=ar.c,ar.a[ar.d]=ar.e,ar.a[ar.f]=ar.g,ar.a[ar.h]=ar.i;}
-arrcopy(ar){return ar.a.copyWithin(ar.b,ar.c,ar.d)}
-arnex(ar){return ar.a.next()}
-aritera(ar){return ar.a[Symbol.iterator]()}
-arentries(ar){return ar.a.entries()}
-withh(ar){return ar.a.with(ar.b,ar.c)}
-att(ar){return ar.a.at(ar.b)}
-angu(ar){return Math.acos(ar.a[0]/Math.hypot(...ar.a))}
+rpt4(ar){ar.a[ar.b]=ar.c,ar.a[ar.d]=ar.e;}rpt5(ar){ar.a[ar.b]=ar.c,ar.a[ar.d]=ar.e,ar.a[ar.f]=ar.g;}rpt6(ar){ar.a[ar.b]=ar.c,ar.a[ar.d]=ar.e,ar.a[ar.f]=ar.g,ar.a[ar.h]=ar.i;}
+arrcopy(ar){return ar.a.copyWithin(ar.b,ar.c,ar.d)}arnex(ar){return ar.a.next()}aritera(ar){return ar.a[Symbol.iterator]()}
+arentries(ar){return ar.a.entries()}withh(ar){return ar.a.with(ar.b,ar.c)}
+att(ar){return ar.a.at(ar.b)}angu(ar){return Math.acos(ar.a[0]/Math.hypot(...ar.a))}
 m({a,b}){var i=0,fin=Array(a.length);while(i<(a.length)){fin[i]=a[i]*1+b[i++]*1;}return fin;}
 r({a,b}){var i=0,fin=Array(a.length);while(i<(a.length)){fin[i]=a[i]-b[i++];}return fin;}
 Hadamard({a,b}){var i=0,fin=Array(a.length);while(i<(fin.length)){fin[i]=(a[i]*b[i++]);}return fin;}
-invemul(ar){return ar.a.map(k=>1/k);}
-gen(ar){return Array(ar.a).fill(ar.b);}
+invemul(ar){return ar.a.map(k=>1/k);}gen(ar){return Array(ar.a).fill(ar.b);}
 gen2(ar){var i=0,fin=Array(ar.a);while(i<(ar.a)){fin[i++]=(Math.random()*(ar.b-ar.c)+ar.c);}return fin;}
 pu(ar){ar.a.push(ar.b);}sh(ar){return ar.a.shift();}po(ar){return ar.a.pop();}unsh(ar){ar.a.unshift(ar.b)}
 Kr({a,b}){var i=0,j=0,t=0,out=Array(a.length*b.length);while(i<a.length){j=0;while(j<b.length){out[t++]=a[i]*b[j++];}i++}return out;}
 tagtp1m(ar,util){if(!util.target.tag1){util.target.tag1=[];}if(util.target.tag1.includes(ar.t)||ar.t===''){return;}else{util.target.tag1.push(ar.t)};}
 tagtp1mc(ar,util){if(!util.target.tag1){util.target.tag1=[];}if(ar.t===''){return;}else{util.target.tag1.push(ar.t)};}
-tagtp1(ar,util){return util.target.tag1;}
-tagtp1c(ar,util){return (util.target.tag1.includes(ar.t) ? true:false);}
-tagtp1ig(ar,util){util.target.tag1=ar.t}
-sl(ar){return ar.a.splice(ar.b,ar.c);}sl2(ar){ar.a.splice(ar.b,ar.c);}
-fill(ar){return ar.a.fill(ar.b)}
-fl(ar){return ar.a.flat(ar.b);}
-s1(ar,util){return util.target.id;}
-s2(ar,util){return util.target.drawableID;}
+tagtp1(ar,util){return util.target.tag1;}tagtp1c(ar,util){return (util.target.tag1.includes(ar.t) ? true:false);}
+tagtp1ig(ar,util){util.target.tag1=ar.t}sl(ar){return ar.a.splice(ar.b,ar.c);}sl2(ar){ar.a.splice(ar.b,ar.c);}
+fill(ar){return ar.a.fill(ar.b)}fl(ar){return ar.a.flat(ar.b);}
+s1(ar,util){return util.target.id;}s2(ar,util){return util.target.drawableID;}
 s3(ar,util){var q=vm.runtime.targets.findIndex(dat=>{return dat.id==ar.a;});return vm.runtime.targets[q].tag1;}
 s4(ar,util){return vm.renderer.isTouchingDrawables(util.target.drawableID,vm.runtime.targets.filter(dat=>{return (dat.tag1 && dat.tag1.includes(ar.a));}).map(dat=>dat.drawableID));}
 s5(ar,util){var A=vm.renderer._candidatesTouching(util.target.drawableID,vm.renderer._drawList).map(dat=>dat.id);var k=[];var q=0;var i=0;while(A.length>i){if(vm.renderer.isTouchingDrawables(util.target.drawableID,[A[i]])){q=vm.runtime.targets.findIndex(dat=>dat.drawableID==A[i]);if(vm.runtime.targets[q].tag1){k=k.concat(vm.runtime.targets[q].tag1);};}else{}i++;}return k;}
@@ -534,41 +524,30 @@ s9(ar,util){return vm.renderer.isTouchingDrawables(util.target.drawableID,ar.tar
 Gv1(ar,util){Gvec.push(ar.t);}Gv4(ar,util){Gvec=Gvec.concat(ar.t);}Gv3(ar,util){Gvec=ar.t;if(Gvec==''){Gvec=[];}}Gv2(){return Gvec;}
 in(ar){return ar.c.indexOf(ar.a,ar.b);}co(ar){return ar.a.concat(ar.b);}Gv5(){return vm.runtime.targets;}
 Gv6(ar){vm.runtime.extensionStorage['vectorr'].push(ar.t)}Gv8(ar){return vm.runtime.extensionStorage['vectorr']}Gv9(ar){if(Array.isArray(ar.t)){vm.runtime.extensionStorage['vectorr']=ar.t}}
-s6(ar,util){return [util.target.x,util.target.y];}
-s7(ar,util){util.target.setXY(ar.a[0]*1,ar.a[1]*1);}
+s6(ar,util){return [util.target.x,util.target.y];}s7(ar,util){util.target.setXY(ar.a[0]*1,ar.a[1]*1);}
 s8(ar,util){util.target.setXY(util.target.x*1+ar.a[0]*1,util.target.y*1+ar.a[1]*1);}
 cu(ar){return [ar.a];}cu2(ar){return [ar.a,ar.b];}cu3(ar){return [ar.a,ar.b,ar.c];}cu4(ar){return [ar.a,ar.b,ar.c,ar.d];}cu5(ar){return [ar.a,ar.b,ar.c,ar.d,ar.e,ar.f,ar.g,ar.h];}
-cu6(ar){return Object.values(ar)}cu7(ar){return Object.values(ar)}cu8(ar){return Object.values(ar)}
-cu_i(){return iv}cu_j(){return jv}cu_k(){return kv}
+cu6(ar){return Object.values(ar)}cu7(ar){return Object.values(ar)}cu8(ar){return Object.values(ar)}cu_i(){return iv}cu_j(){return jv}cu_k(){return kv}
 uin1(ar){return new Uint8Array(ar.a);}uin2(ar){return new Uint16Array(ar.a);}uin10(ar){return new Uint8ClampedArray(ar.a);}
-uin3(ar){return new Uint32Array(ar.a);}uin4(ar){return new Int8Array(ar.a);}
-uin5(ar){return new Int16Array(ar.a);}uin6(ar){return new Int32Array(ar.a);}
-uin7(ar){return new Float16Array(ar.a);}uin8(ar){return new Float32Array(ar.a);}uin9(ar){return new Float64Array(ar.a);}
-uin11(ar){return new BigInt64Array(ar.a)}uin12(ar){return new BigUint64Array(ar.a)}
+uin3(ar){return new Uint32Array(ar.a);}uin4(ar){return new Int8Array(ar.a);}uin5(ar){return new Int16Array(ar.a);}uin6(ar){return new Int32Array(ar.a);}
+uin7(ar){return new Float16Array(ar.a);}uin8(ar){return new Float32Array(ar.a);}uin9(ar){return new Float64Array(ar.a);}uin11(ar){return new BigInt64Array(ar.a)}uin12(ar){return new BigUint64Array(ar.a)}
 dsit(ar){var i=0,out=Array(ar.a.length);while(i<ar.a.length){out[i]=ar.b[i]-ar.a[i++];}return Math.hypot(...out);}
 lerp(ar){var i=0,out=Array(ar.a.length);while(i<ar.a.length){out[i]=ar.a[i]*1+(ar.b[i]-ar.a[i++])*ar.c;}return out;}
-negvec(ar){return ar.a.map(k=>k*-1);}
-incl(ar){return ar.a.includes(ar.b)}
-smdr(ar){var i=0,out=0;while(i<ar.a.length){out+=ar.a[i++];}return out;}
+negvec(ar){return ar.a.map(k=>k*-1);}incl(ar){return ar.a.includes(ar.b)}smdr(ar){let i=0,out=0;while(i<ar.a.length){out+=ar.a[i++];}return out;}//Math.sumPrecise(ar.a);
 med1(ar){var i=0,out=0;while(i<ar.a.length){out+=ar.a[i++];}return out/ar.a.length;}
 med2(ar){var i=1,out=ar.a[0];while(i<ar.a.length){out*=ar.a[i++];}return out**(1/ar.a.length);}
 med3(ar){var i=0,out=0;while(i<ar.a.length){out+=1/ar.a[i++];}return ar.a.length/out;}
 med4(ar){const ve=ar.a.map(k=>k**2);var i=0,out=0;while(i<ve.length){out+=ve[i++];}return (out/ve.length)**0.5;}
 s10({a,b}){var i=0;while(i<b.length){b[i++].setXY(a[0]*1,a[1]*1)}}
-s11({a,b}){var i=0;while(i<b.length){b[i].setXY(b[i].x*1+a[0]*1,b[i++].y*1+a[1]*1)}}
-s12(ar,util){return util.target}
+s11({a,b}){var i=0;while(i<b.length){b[i].setXY(b[i].x*1+a[0]*1,b[i++].y*1+a[1]*1)}}s12(ar,util){return util.target}
 prto(ar){var i=0,out=1;while(i<ar.a.length){out*=ar.a[i++];}return out;}
 muVE(ar){var i=0,fin=Array(ar.a.length);while(i<fin.length){fin[i]=ar.a[i++]*ar.b}return fin;}
 cruz(ar){return [(ar.a[1]*ar.b[2])-(ar.a[2]*ar.b[1]),(ar.a[2]*ar.b[0])-(ar.a[0]*ar.b[2]),(ar.a[0]*ar.b[1])-(ar.a[1]*ar.b[0])]}
 Refj({a,b}){var i=0,fin=0,j=0;while(i<(a.length)){fin+=((a[i])*(b[i++]));}j=2*(fin/Math.hypot(...b)**2),i=0,fin=Array(a.length);while(i<(a.length)){fin[i]=a[i]-b[i++]*j;}return fin;}
 proyvec({a,b}){var i=0,fin=0;while(i<(a.length)){fin+=((a[i])*(b[i++]));}fin/=Math.hypot(...b)**2;return a.map(k=>k*fin);}
 proyesc({a,b}){var i=0,fin=0;while(i<(a.length)){fin+=((a[i])*(b[i++]));}return fin/=Math.hypot(...b)**2;}
-rev(ar){return ar.a.reverse()}torev(ar){return ar.a.toReversed()}
-join(ar){return ar.a.join(ar.b)}
-sort(ar){return ar.a.sort()}tosort(ar){return ar.a.toSorted()}
-lain(ar){return ar.c.lastIndexOf(ar.a,ar.b)}
-esarr(ar){return Array.isArray(ar.a)}
-arrf(ar){return Array.from(ar.a)}
+rev(ar){return ar.a.reverse()}torev(ar){return ar.a.toReversed()}join(ar){return ar.a.join(ar.b)}sort(ar){return ar.a.sort()}tosort(ar){return ar.a.toSorted()}
+lain(ar){return ar.c.lastIndexOf(ar.a,ar.b)}esarr(ar){return Array.isArray(ar.a)}arrf(ar){return Array.from(ar.a)}
 Rotacion({a,b,c}){var ct=Math.cos(c*grrad),st=Math.sin(c*grrad),cr=[((b[1]*a[2])-(b[2]*a[1]))*st,((b[2]*a[0])-(b[0]*a[2]))*st,((b[0]*a[1])-(b[1]*a[0]))*st],lod=(a[0]*b[0])+(a[1]*b[1])+(a[2]*b[2]),
 al=[b[0]*lod*(1-ct),b[1]*lod*(1-ct),b[2]*lod*(1-ct)];return[a[0]*ct+cr[0]+al[0],a[1]*ct+cr[1]+al[1],a[2]*ct+cr[2]+al[2]]}
 Rotacion2({a,b,c}){var cos=Math.cos((-c)*grrad),sen=Math.sin((-c)*grrad),
@@ -583,25 +562,15 @@ med5(ar){var i=0,out=0,k=0;while(i<ar.a.length){out+=ar.a[i++];}out/=ar.a.length
 sli(ar){return ar.a.slice(ar.b,ar.c);}
 s13(ar,util){return Math.hypot((ar.a.x-util.target.x),(ar.a.y-util.target.y))}
 s14(ar,util){const coord=[util.target.x,util.target.y];var arr=Array(ar.a.length),i=0;while(i<arr.length){arr[i]=Math.hypot(ar.a[i].x-coord[0],ar.a[i++].y-coord[1])}return arr}
-s15(ar){return Math.hypot((ar.a.x-ar.b.x),(ar.a.y-ar.b.y))}
-s16(ar,util){util.target.setXY(ar.a.x,ar.a.y)}
+s15(ar){return Math.hypot((ar.a.x-ar.b.x),(ar.a.y-ar.b.y))}s16(ar,util){util.target.setXY(ar.a.x,ar.a.y)}
 pmedio(ar){let arr=Array(ar.a.length),i=0;while(i<ar.a.length){arr[i]=(ar.a[i]+ar.b[i++])/2}return arr}
 pmedioN(ar){let arr=Array(ar.a[0].length).fill(0),i=0,j=0;while(j<ar.a.length){while(i<ar.a[0].length){arr[i]+=(ar.a[j][i++])/ar.a.length}j++;i=0;}return arr}
-s17(ar){return [(ar.a.x+ar.b.x)/2,(ar.a.y+ar.b.y)/2]}
-s18(ar){let arr=[0,0],i=0;while(i<ar.a.length){arr[0]+=ar.a[i].x/ar.a.length,arr[1]+=ar.a[i++].y/ar.a.length}return arr}
-s19(ar){ar.a.setXY(ar.b[0],ar.b[1])}
-s20(ar){ar.a.setDirection(ar.b)}
-s21(ar,util){util.target.setDirection(Math.atan2(ar.a.x-util.target.x,ar.a.y-util.target.y)*57.295779513082320876798154814105)}
-s22(ar,util){util.target.setDirection(ar.a.direction)}
-s23(ar){ar.b.setDirection(Math.atan2(ar.a.x-ar.b.x,ar.a.y-ar.b.y)*57.295779513082320876798154814105)}
-s24(ar){Scratch.vm.runtime.disposeTarget(ar.a)}
-s25(ar,util){util.target.setDirection(ar.a.direction);util.target.setXY(ar.a.x,ar.a.y)}
-s26(ar){ar.a.setVisible(true)}
-s27(ar){ar.a.setVisible(false)}
-s28(ar,util){util.target.setDirection(Math.atan2(ar.a[0]-util.target.x,ar.a[1]-util.target.y)*57.295779513082320876798154814105)}
-s29(ar,util){return vm.renderer.isTouchingDrawables(util.target.drawableID,[ar.a.drawableID]);}
-s30(ar,util){return ar.a.filter(z=>vm.renderer.isTouchingDrawables(util.target.drawableID,[z.drawableID]))}
-dsit2(ar){return ar.b.map(x=>Math.hypot(x[0]-ar.a[0],x[1]-ar.a[1]))}
+s17(ar){return [(ar.a.x+ar.b.x)/2,(ar.a.y+ar.b.y)/2]}s18(ar){let arr=[0,0],i=0;while(i<ar.a.length){arr[0]+=ar.a[i].x/ar.a.length,arr[1]+=ar.a[i++].y/ar.a.length}return arr}
+s19(ar){ar.a.setXY(ar.b[0],ar.b[1])}s20(ar){ar.a.setDirection(ar.b)}s21(ar,util){util.target.setDirection(Math.atan2(ar.a.x-util.target.x,ar.a.y-util.target.y)*57.295779513082320876798154814105)}
+s22(ar,util){util.target.setDirection(ar.a.direction)}s23(ar){ar.b.setDirection(Math.atan2(ar.a.x-ar.b.x,ar.a.y-ar.b.y)*57.295779513082320876798154814105)}
+s24(ar){Scratch.vm.runtime.disposeTarget(ar.a)}s25(ar,util){util.target.setDirection(ar.a.direction);util.target.setXY(ar.a.x,ar.a.y)}s26(ar){ar.a.setVisible(true)}s27(ar){ar.a.setVisible(false)}
+s28(ar,util){util.target.setDirection(Math.atan2(ar.a[0]-util.target.x,ar.a[1]-util.target.y)*57.295779513082320876798154814105)}s29(ar,util){return vm.renderer.isTouchingDrawables(util.target.drawableID,[ar.a.drawableID]);}
+s30(ar,util){return ar.a.filter(z=>vm.renderer.isTouchingDrawables(util.target.drawableID,[z.drawableID]))}dsit2(ar){return ar.b.map(x=>Math.hypot(x[0]-ar.a[0],x[1]-ar.a[1]))}
 ppoli({P,polygon}){const between=(p,a,b)=>(p>=a&&p<=b||p<=a&&p>=b);let inside=false,A,B,c;//modificacion de codigo en stack overflow por 'timeapp-> https://stackoverflow.com/users/2608744/timepp'
     for(let i=polygon.length-1,j=0;j<polygon.length;i=j,j++){A=polygon[i],B=polygon[j]
 	if(P[0]==A[0]&&P[1]==A[1]||P[0]==B[0]&&P[1]==B[1]){return 0}
@@ -612,11 +581,20 @@ ppoli({P,polygon}){const between=(p,a,b)=>(p>=a&&p<=b||p<=a&&p>=b);let inside=fa
 		if(c==0){return 0}if((A[1]<B[1])==(c>0)){inside=!inside}
 	}}return inside?1:-1}
 geo0({a,b}){return Math.hypot(a[0]-b[0],a[1]-b[1])<=b[2]}
-geo1({a,b}){return (a[0]>=b[0]&&a[0]<=(b[0]+b[2]))&&(a[1]<=b[1]&&a[1]>=(b[1]-b[3]))}
+geo1({a,b}){return (a[0]>=b[0]&&a[0]<=(b[0]+b[2]))&&(a[1]>=b[1]&&a[1]<=(b[1]+b[3]))}
 geo2({a,b}){return Math.hypot(a[0]-b[0],a[1]-b[1],a[2]-b[2])<=b[3]}
-geo3({a,b}){return (a[0]>=b[0]&&a[0]<=(b[0]+b[3]))&&(a[1]<=b[1]&&a[1]>=(b[1]-b[4]))&&(a[2]>=b[2]&&a[2]<=(b[2]+b[5]))}
+geo3({a,b}){return (a[0]>=b[0]&&a[0]<=(b[0]+b[3]))&&(a[1]>=b[1]&&a[1]<=(b[1]+b[4]))&&(a[2]>=b[2]&&a[2]<=(b[2]+b[5]))}
 dsit3({a,b,c}){let lin=[(b[1]-c[1])/(b[0]-c[0]),b[1]-(b[1]-c[1])/(b[0]-c[0])*b[0]];return Math.abs((lin[0]*a[0]-a[1]+lin[1])/Math.hypot(lin[0],-1))}
-geo4({a,b}){return (a[0]>=b[0]&&a[0]<=(b[0]+b[2]))&&(a[1]<=b[1]&&a[1]>=(b[1]-b[2]))}
-geo5({a,b}){return (a[0]>=b[0]&&a[0]<=(b[0]+b[3]))&&(a[1]<=b[1]&&a[1]>=(b[1]-b[3]))&&(a[2]>=b[3]&&a[2]<=(b[2]+b[3]))}
+geo4({a,b}){return (a[0]>=b[0]&&a[0]<=(b[0]+b[2]))&&(a[1]>=b[1]&&a[1]<=(b[1]+b[2]))}
+geo5({a,b}){return (a[0]>=b[0]&&a[0]<=(b[0]+b[3]))&&(a[1]>=b[1]&&a[1]<=(b[1]+b[3]))&&(a[2]>=b[3]&&a[2]<=(b[2]+b[3]))}
 s31(ar){return ar.a.setXY(ar.b.x,ar.b.y)}
+geo6({a,b}){let c=Math.atan2(a[0]-b[0],a[1]-b[1]);return [Math.sin(c),Math.cos(c),c*57.295779513082320876798154814105]}
+geo7({a,b}){let c=[b[0]+(b[2]/2),b[1]-(b[3]/2)];return (Math.abs(a[0]-c[0])<Math.abs(a[1]-c[1])?(a[1]<c[1]?[0,-1,180]:[0,1,0]):(a[0]<c[0]?[-1,0,-90]:[1,0,90]))}
+geo8({a,b}){let c=[b[0]+(b[2]/2),b[1]-(b[2]/2)];return (Math.abs(a[0]-c[0])<Math.abs(a[1]-c[1])?(a[1]<c[1]?[0,-1,180]:[0,1,0]):(a[0]<c[0]?[-1,0,-90]:[1,0,90]))}
+rpt7(ar){let i=0;while(i<ar.a.length){ar.a[i]=ar.b[i++]}}rpt8(ar){return ++ar.a[ar.b]}rpt9(ar){return --ar.a[ar.b]}rpt10(ar){return ar.a[ar.b]++}rpt11(ar){return ar.a[ar.b]--}
+geo9({a,b}){return Math.hypot(a[0]-b[0],a[1]-b[1])<=(b[2]+a[2])}
+geo10({cu,du}){return !(cu[0]>=du[0]+du[2])||(cu[0]+cu[2]<=du[0])||(cu[1]>=du[1]+du[3])||(cu[1]+cu[3]<=du[1])}
+geo11({cu,du}){return !(cu[0]>=du[0]+du[2])||(cu[0]+cu[2]<=du[0])||(cu[1]>=du[1]+du[2])||(cu[1]+cu[2]<=du[1])}
+geo12({a,b}){let pun=Array.from(a);pun[0]=(pun[0]<b[0]?b[0]:(pun[0]>b[0]+b[2]?b[0]+b[2]:pun[0])),pun[1]=(pun[1]<b[1]?b[1]:(pun[1]>b[1]+b[3]?b[1]+b[3]:pun[1]));return Math.hypot(a[0]-pun[0],a[1]-pun[1])<=a[2]}
+geo13({a,b}){let pun=Array.from(a);pun[0]=(pun[0]<b[0]?b[0]:(pun[0]>b[0]+b[2]?b[0]+b[2]:pun[0])),pun[1]=(pun[1]<b[1]?b[1]:(pun[1]>b[1]+b[2]?b[1]+b[2]:pun[1]));return Math.hypot(a[0]-pun[0],a[1]-pun[1])<=a[2]}
 }Scratch.extensions.register(new vectorr());})(Scratch);
