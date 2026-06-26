@@ -67,6 +67,7 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'po',blockType:rep,text:'pop[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
 {opcode:'fl',blockType:rep,text:'[a].flat[b]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'5'}}},
 {opcode:'fill',blockType:rep,text:'[a].fill[b]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'5'}}},
+{opcode:'fill2',blockType:com,text:'[a].fill[b]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'5'}}},
 {opcode:'sl',blockType:rep,text:'[a].splice[b][c]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:num,defaultValue:'1'},c:{type:num,defaultValue:'1'}}},
 {opcode:'sl2',blockType:com,text:'[a].splice[b][c]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:num,defaultValue:'1'},c:{type:num,defaultValue:'1'}}},
 {opcode:'sli',blockType:rep,text:'[a].slice[b][c]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:num,defaultValue:'1'},c:{type:num,defaultValue:'1'}}},
@@ -77,14 +78,14 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'fore',blockType:com,text:'[a].forEach[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'outs2'},b:{type:txt,defaultValue:'3'}}},
 {opcode:'Fil',blockType:rep,text:'[a].filter[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
 {opcode:'reduc',blockType:rep,text:'[a].reduce[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'redu'},b:{type:txt,defaultValue:'0'}}},
-{opcode:'some',blockType:rep,text:'[a].some[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
-{opcode:'every',blockType:rep,text:'[a].every[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
+{opcode:'some',blockType:evaluador,text:'[a].some[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
+{opcode:'every',blockType:evaluador,text:'[a].every[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
 {opcode:'find',blockType:rep,text:'[a].find[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
 {opcode:'findIndex',blockType:rep,text:'[a].findIndex[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
 {opcode:'findlast',blockType:rep,text:'[a].findLast[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
 {opcode:'findlastindex',blockType:rep,text:'[a].findLastIndex[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
 {opcode:'co',blockType:rep,text:'[a].concat[b]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt}}},
-{opcode:'incl',blockType:rep,text:'[a].includes[b]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'5'}}},
+{opcode:'incl',blockType:evaluador,text:'[a].includes[b]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'5'}}},
 {opcode:'rev',blockType:rep,text:'[a].reverse',hideFromPalette:vecs,arguments:{a:{type:txt}}},
 {opcode:'torev',blockType:rep,text:'[a].toReversed',hideFromPalette:vecs,arguments:{a:{type:txt}}},
 {opcode:'join',blockType:rep,text:'[a].join[b]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'-'}}},
@@ -126,6 +127,10 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'rpt9',blockType:rep,text:'--[a]〚[b]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'}}},
 {opcode:'rpt10',blockType:rep,text:'[a]〚[b]〛++',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'}}},
 {opcode:'rpt11',blockType:rep,text:'[a]〚[b]〛--',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'}}},
+{opcode:'rpt12',blockType:com,text:'++[a]〚[b]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'}}},
+{opcode:'rpt13',blockType:com,text:'--[a]〚[b]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'}}},
+{opcode:'rpt14',blockType:com,text:'[a]〚[b]〛++',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'}}},
+{opcode:'rpt15',blockType:com,text:'[a]〚[b]〛--',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'}}},
 {blockType:"label",text:"Obj.vec o propiedad",hideFromPalette:prop},//--------------------------------------------------------------------------------------------------------------------------------
 {opcode:'tagtp1m',blockType:com,text:'añadir[t]tp1 NR',hideFromPalette:prop,arguments:{t:{type:txt,defaultValue:'K'}}},
 {opcode:'tagtp1mc',blockType:com,text:'añadir[t]tp1',hideFromPalette:prop,arguments:{t:{type:txt,defaultValue:'K'}}},
@@ -515,7 +520,7 @@ tagtp1m(ar,util){if(!util.target.tag1){util.target.tag1=[];}if(util.target.tag1.
 tagtp1mc(ar,util){if(!util.target.tag1){util.target.tag1=[];}if(ar.t===''){return;}else{util.target.tag1.push(ar.t)};}
 tagtp1(ar,util){return util.target.tag1;}tagtp1c(ar,util){return (util.target.tag1.includes(ar.t) ? true:false);}
 tagtp1ig(ar,util){util.target.tag1=ar.t}sl(ar){return ar.a.splice(ar.b,ar.c);}sl2(ar){ar.a.splice(ar.b,ar.c);}
-fill(ar){return ar.a.fill(ar.b)}fl(ar){return ar.a.flat(ar.b);}
+fill(ar){return ar.a.fill(ar.b)}fl(ar){return ar.a.flat(ar.b);}fill2(ar){ar.a.fill(ar.b)}
 s1(ar,util){return util.target.id;}s2(ar,util){return util.target.drawableID;}
 s3(ar,util){var q=vm.runtime.targets.findIndex(dat=>{return dat.id==ar.a;});return vm.runtime.targets[q].tag1;}
 s4(ar,util){return vm.renderer.isTouchingDrawables(util.target.drawableID,vm.runtime.targets.filter(dat=>{return (dat.tag1 && dat.tag1.includes(ar.a));}).map(dat=>dat.drawableID));}
@@ -597,4 +602,5 @@ geo10({cu,du}){return !(cu[0]>=du[0]+du[2])||(cu[0]+cu[2]<=du[0])||(cu[1]>=du[1]
 geo11({cu,du}){return !(cu[0]>=du[0]+du[2])||(cu[0]+cu[2]<=du[0])||(cu[1]>=du[1]+du[2])||(cu[1]+cu[2]<=du[1])}
 geo12({a,b}){let pun=Array.from(a);pun[0]=(pun[0]<b[0]?b[0]:(pun[0]>b[0]+b[2]?b[0]+b[2]:pun[0])),pun[1]=(pun[1]<b[1]?b[1]:(pun[1]>b[1]+b[3]?b[1]+b[3]:pun[1]));return Math.hypot(a[0]-pun[0],a[1]-pun[1])<=a[2]}
 geo13({a,b}){let pun=Array.from(a);pun[0]=(pun[0]<b[0]?b[0]:(pun[0]>b[0]+b[2]?b[0]+b[2]:pun[0])),pun[1]=(pun[1]<b[1]?b[1]:(pun[1]>b[1]+b[2]?b[1]+b[2]:pun[1]));return Math.hypot(a[0]-pun[0],a[1]-pun[1])<=a[2]}
+rpt12(ar){++ar.a[ar.b]}rpt13(ar){--ar.a[ar.b]}rpt14(ar){ar.a[ar.b]++}rpt15(ar){ar.a[ar.b]--}
 }Scratch.extensions.register(new vectorr());})(Scratch);
