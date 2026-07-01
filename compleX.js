@@ -1,4 +1,4 @@
-(function(Scratch){'use strict';//por el (pentaquark neutro, penta quark neutro) y neutral auream
+(function(Scratch){'use strict';//por el (pentaquark neutro, penta quark neutro)
 var vgd1=Scratch.ArgumentType.NUMBER;var vgd2=Scratch.ArgumentType.STRING;var vgbt=Scratch.BlockType.REPORTER;var euler=2.718281828459045235360287;
 var vgbb=Scratch.BlockType.BUTTON;let opciones=false;let bloqueslentos=true;let complejos=true;let cuaterniones=true;let octaniones=true;
 if(!Scratch.extensions.unsandboxed){throw new Error('This extension must run unsandboxed');}class Complejospentaquark{getInfo(){return{id:'Complejospent',name:'Numeros Hiper Complejos',color1:'#555555',color2:'#ff00ff',color3:'#00ffff',blocks:[//circulo,anillo,bloque.
@@ -143,11 +143,11 @@ div(ar){return((((ar.A*ar.C)+(ar.BI*ar.DI))/((ar.C*ar.C)+(ar.DI*ar.DI)))+','+(((
 
 resta(ar){return((ar.A-ar.C)+','+(ar.BI-ar.DI));}
 
-mod(ar){return Math.sqrt((ar.A*ar.A)+(ar.BI*ar.BI));}
+mod(ar){return Math.sqrt((ar.A**2)+(ar.BI**2));}
 
 re(ar){return (ar.A.split(',')[0]);}
 
-mod2(ar){return Math.sqrt((ar.A.split(',')[0]*ar.A.split(',')[0])+(ar.A.split(',')[1]*ar.A.split(',')[1]));}
+mod2(ar){return Math.sqrt((ar.A.split(',')[0]**2)+(ar.A.split(',')[1]**2));}
 
 im(ar){return (ar.A.split(',')[1]);}
 
@@ -157,13 +157,13 @@ argz1(ar){return Math.atan2(ar.Bi,ar.A);}
 
 raiz(ar)
 {
-var dat0=Math.sqrt((ar.A*ar.A)+(ar.BI*ar.BI)),dat1=Math.atan2(ar.BI,ar.A),dat2=Math.pow(dat0,1/ar.N);
+var dat0=Math.sqrt((ar.A**2)+(ar.BI**2)),dat1=Math.atan2(ar.BI,ar.A),dat2=Math.pow(dat0,1/ar.N);
 return (Math.cos(((dat1+(360*ar.K*3.14159265358979/180))/ar.N)))*dat2+','+(Math.sin(((dat1+(360*ar.K*3.14159265358979/180))/ar.N)))*dat2;
 }
 
 exponente(ar)
 {
-var dat3=1/ar.N,dat0=Math.sqrt((ar.A*ar.A)+(ar.BI*ar.BI)),dat1=Math.atan2(ar.BI,ar.A),dat2=Math.pow(dat0,1/dat3);
+var dat3=1/ar.N,dat0=Math.sqrt((ar.A**2)+(ar.BI**2)),dat1=Math.atan2(ar.BI,ar.A),dat2=Math.pow(dat0,1/dat3);
 return (Math.cos((dat1)/dat3))*dat2+','+(Math.sin((dat1)/dat3))*dat2;
 }
 
@@ -173,48 +173,46 @@ und(ar){return ar.A+','+ar.BI;}
 
 numero_de_euler(){return euler;}
 
-numero_pi(){return 3.1415926535;}
+numero_pi(){return 3.1415926535897932384626433832795;}
 
 numero_aureo(){return 1.6180339887;}
 
 cef(){return 0.0072973525;}
 
 E_elev(ar){
-var elAi=ar.A.split(',')[1],pa1=Math.cos(elAi),pa3=Math.sin(elAi),pa2=Math.pow(euler,ar.A.split(',')[0]);
-return (pa1*pa2)+','+(pa3*pa2);}
+var elAi=ar.A.split(',')[1],pa2=Math.pow(euler,ar.A.split(',')[0]);
+return (Math.cos(elAi)*pa2)+','+(Math.sin(elAi)*pa2);}
 
 E_elev2(ar){
 var pa2=Math.pow(euler,ar.A);
 return (Math.cos(ar.BI)*pa2)+','+(Math.sin(ar.BI)*pa2);}
 
 sumadirecta(ar){
-var inp1=ar.A.split(',')[0]*1+ar.B.split(',')[0]*1,inp2=ar.A.split(',')[1]*1+ar.B.split(',')[1]*1;
-return (inp1+','+inp2);}
+return ((ar.A.split(',')[0]*1+ar.B.split(',')[0]*1)+','+(ar.A.split(',')[1]*1+ar.B.split(',')[1]*1));}
 
 restadirecta(ar){
-var inp1=ar.A.split(',')[0]-ar.B.split(',')[0],inp2=ar.A.split(',')[1]-ar.B.split(',')[1];
-return (inp1+','+inp2);}
+return ((ar.A.split(',')[0]-ar.B.split(',')[0])+','+(ar.A.split(',')[1]-ar.B.split(',')[1]));}
 
 multdir(ar){
-var c=ar.A.split(',')[0],d=ar.A.split(',')[1],e=ar.B.split(',')[0],f=ar.B.split(',')[1];
+var [c,d]=ar.A.split(','),[e,f]=ar.B.split(',');
 return (((c*e)-(d*f))+','+((c*f)+(d*e)));}
 
 Lnz(ar){
-var re=ar.A.split(',')[0],im=ar.A.split(',')[1],modz=Math.sqrt((re*re)+(im*im)),argz=Math.atan2(im,re);
-return Math.log(modz)+','+argz;}
+var [re,im]=ar.A.split(',');
+return Math.log(Math.sqrt((re**2)+(im**2)))+','+Math.atan2(im,re);}
 
 Lnz2(ar){
-return Math.log(Math.sqrt((ar.A*ar.A)+(ar.BI*ar.BI)))+','+Math.atan2(ar.BI,ar.A);}
+return Math.log(Math.sqrt((ar.A**2)+(ar.BI**2)))+','+Math.atan2(ar.BI,ar.A);}
 
 trgfun(ar){
-var mo=Math.sqrt((ar.A*ar.A)+(ar.BI*ar.BI)),arg=Math.atan2(ar.BI,ar.A);
+var mo=Math.sqrt((ar.A**2)+(ar.BI**2)),arg=Math.atan2(ar.BI,ar.A);
 if(ar.out==='polar'){return (mo+'e^'+arg+'i');}
 if(ar.out==='binomica'){if(ar.BI<0){return ar.A+(ar.BI+'i')}else{return ar.A+'+'+ar.BI+'i'};}
 if(ar.out==='trigonometrica'){return mo+'cos('+arg+')'+'+'+mo+'sen('+arg+')i';}
 }
 
 divdir(ar){
-var c=ar.A.split(',')[0],d=ar.A.split(',')[1],e=ar.B.split(',')[0],f=ar.B.split(',')[1],vadz=(e*e)+(f*f);
+var [c,d]=ar.A.split(','),[e,f]=ar.B.split(','),vadz=(e**2)+(f**2);
 return (((c*e)+(d*f))/vadz+','+((d*e)-(c*f))/vadz);}
 
 info3(){alert('Los quaterniones son pertenecientes al algebra abstracta con la forma (aR+bI+cJ+dK). \n actualmente funcionan de acuerdo a lo esperado. \n si encuentra errores notificame a traves de "herramientas".');}
@@ -243,39 +241,38 @@ herram0(){Scratch.openWindow('https://linktr.ee/Penta_quark_neutro');}
 
 sucuater(ar){return (ar.a+ar.ab)+','+(ar.i+ar.ib)+','+(ar.j+ar.jb)+','+(ar.k+ar.kb);}
 
-sumcuatco(ar){return (ar.q.split(',')[0]*1+ar.q2.split(',')[0]*1)+','+(ar.q.split(',')[1]*1+ar.q2.split(',')[1]*1)+','+(ar.q.split(',')[2]*1+ar.q2.split(',')[2]*1)+','+(ar.q.split(',')[3]*1+ar.q2.split(',')[3]*1);}
+sumcuatco(ar){var a=ar.q.split(','),b=ar.q2.split(',');
+return (a[0]*1+b[0]*1)+','+(a[1]*1+b[1]*1)+','+(a[2]*1+b[2]*1)+','+(a[3]*1+b[3]*1);}
 
 mulcuater(ar){
-var dat0=((ar.a*ar.ab)-(ar.i*ar.ib)-(ar.j*ar.jb)-(ar.k*ar.kb)),
-dat1=((ar.a*ar.ib)+(ar.i*ar.ab)+(ar.j*ar.kb)-(ar.k*ar.jb)),
-dat2=((ar.a*ar.jb)-(ar.i*ar.kb)+(ar.j*ar.ab)+(ar.k*ar.ib)),
-dat3=((ar.a*ar.kb)+(ar.i*ar.jb)-(ar.j*ar.ib)+(ar.k*ar.ab));
-return dat0+','+dat1+','+dat2+','+dat3;}
+return ((ar.a*ar.ab)-(ar.i*ar.ib)-(ar.j*ar.jb)-(ar.k*ar.kb))+','+
+((ar.a*ar.ib)+(ar.i*ar.ab)+(ar.j*ar.kb)-(ar.k*ar.jb))+','+
+((ar.a*ar.jb)-(ar.i*ar.kb)+(ar.j*ar.ab)+(ar.k*ar.ib))+','+
+((ar.a*ar.kb)+(ar.i*ar.jb)-(ar.j*ar.ib)+(ar.k*ar.ab));
+}
 
-mulcuatco(ar){var vec1=Array.from(ar.q.split(',')),vec2=Array.from(ar.q2.split(',')),
-dat0=((vec1[0]*vec2[0])-(vec1[1]*vec2[1])-(vec1[2]*vec2[2])-(vec1[3]*vec2[3])),
-dat1=((vec1[0]*vec2[1])+(vec1[1]*vec2[0])+(vec1[2]*vec2[3])-(vec1[3]*vec2[2])),
-dat2=((vec1[0]*vec2[2])-(vec1[1]*vec2[3])+(vec1[2]*vec2[0])+(vec1[3]*vec2[1])),
-dat3=((vec1[0]*vec2[3])+(vec1[1]*vec2[2])-(vec1[2]*vec2[1])+(vec1[3]*vec2[0]));
-return dat0+','+dat1+','+dat2+','+dat3;}
+mulcuatco(ar){var vec1=ar.q.split(','),vec2=ar.q2.split(',');
+return ((vec1[0]*vec2[0])-(vec1[1]*vec2[1])-(vec1[2]*vec2[2])-(vec1[3]*vec2[3]))+','+
+((vec1[0]*vec2[1])+(vec1[1]*vec2[0])+(vec1[2]*vec2[3])-(vec1[3]*vec2[2]))+','+
+((vec1[0]*vec2[2])-(vec1[1]*vec2[3])+(vec1[2]*vec2[0])+(vec1[3]*vec2[1]))+','+
+((vec1[0]*vec2[3])+(vec1[1]*vec2[2])-(vec1[2]*vec2[1])+(vec1[3]*vec2[0]));
+}
 
-divcuater(ar){
-var modb=(ar.ab*ar.ab)+(ar.ib*ar.ib)+(ar.jb*ar.jb)+(ar.kb*ar.kb),
-adat0=((ar.a*ar.ab)-(ar.i*-ar.ib)-(ar.j*-ar.jb)-(ar.k*-ar.kb))/modb,
-adat1=((ar.a*-ar.ib)+(ar.i*ar.ab)+(ar.j*-ar.kb)-(ar.k*-ar.jb))/modb,
-adat2=((ar.a*-ar.jb)-(ar.i*-ar.kb)+(ar.j*ar.ab)+(ar.k*-ar.ib))/modb,
-adat3=((ar.a*-ar.kb)+(ar.i*-ar.jb)-(ar.j*-ar.ib)+(ar.k*ar.ab))/modb;
-return adat0+','+adat1+','+adat2+','+adat3;}
+divcuater(ar){var modb=(ar.ab**2)+(ar.ib**2)+(ar.jb**2)+(ar.kb**2);
+return ((ar.a*ar.ab)-(ar.i*-ar.ib)-(ar.j*-ar.jb)-(ar.k*-ar.kb))/modb+','+
+((ar.a*-ar.ib)+(ar.i*ar.ab)+(ar.j*-ar.kb)-(ar.k*-ar.jb))/modb+','+
+((ar.a*-ar.jb)-(ar.i*-ar.kb)+(ar.j*ar.ab)+(ar.k*-ar.ib))/modb+','+
+((ar.a*-ar.kb)+(ar.i*-ar.jb)-(ar.j*-ar.ib)+(ar.k*ar.ab))/modb;
+}
 
-divcuatco(ar){var vec1=Array.from(ar.q.split(',')),vec2=Array.from(ar.q2.split(',')),
-modb=Math.pow(vec2[0],2)+(Math.pow(vec2[1],2))+(Math.pow(vec2[2],2))+(Math.pow(vec2[3],2)),
-dat0=((vec1[0]*vec2[0])-(vec1[1]*-vec2[1])-(vec1[2]*-vec2[2])-(vec1[3]*-vec2[3]))/modb,
-dat1=((vec1[0]*-vec2[1])+(vec1[1]*vec2[0])+(vec1[2]*-vec2[3])-(vec1[3]*-vec2[2]))/modb,
-dat2=((vec1[0]*-vec2[2])-(vec1[1]*-vec2[3])+(vec1[2]*vec2[0])+(vec1[3]*-vec2[1]))/modb,
-dat3=((vec1[0]*-vec2[3])+(vec1[1]*-vec2[2])-(vec1[2]*-vec2[1])+(vec1[3]*vec2[0]))/modb;
-return dat0+','+dat1+','+dat2+','+dat3;}
+divcuatco(ar){var vec1=ar.q.split(','),vec2=ar.q2.split(','),modb=(vec2[0]**2)+(vec2[1]**2)+(vec2[2]**2)+(vec2[3]**2);
+return ((vec1[0]*vec2[0])-(vec1[1]*-vec2[1])-(vec1[2]*-vec2[2])-(vec1[3]*-vec2[3]))/modb+','+
+((vec1[0]*-vec2[1])+(vec1[1]*vec2[0])+(vec1[2]*-vec2[3])-(vec1[3]*-vec2[2]))/modb+','+
+((vec1[0]*-vec2[2])-(vec1[1]*-vec2[3])+(vec1[2]*vec2[0])+(vec1[3]*-vec2[1]))/modb+','+
+((vec1[0]*-vec2[3])+(vec1[1]*-vec2[2])-(vec1[2]*-vec2[1])+(vec1[3]*vec2[0]))/modb;
+}
 
-modcuater(ar){return Math.sqrt((ar.a*ar.a)+(ar.i*ar.i)+(ar.j*ar.j)+(ar.k*ar.k));}
+modcuater(ar){return Math.sqrt((ar.a**2)+(ar.i**2)+(ar.j**2)+(ar.k**2));}
 
 modcuatco(ar){return Math.sqrt(Math.pow(ar.q.split(',')[0],2)+(Math.pow(ar.q.split(',')[1],2))+(Math.pow(ar.q.split(',')[2],2))+(Math.pow(ar.q.split(',')[3],2)));}
 
@@ -300,9 +297,7 @@ lio++;
 if(indent==1){if(lio==2){return 'ℂ';}else{if(lio==4){return 'H';}else{if(lio==8){return 'O';}else{if(lio==16){return 'S';}else{if(lio==32){return 'T';}else{return 'R'+lio;}}}}}}else{if(indent==0){return '???';}else{return 'error'+lets+lio;}}}else{var iden=dat0/dat0;
 if(iden==1||dat0==0){return 'R';}else{return '???';}}}
 
-part(ar){
-var dat0=(ar.z)-1;
-return (ar.q.split(',')[dat0]);}
+part(ar){return (ar.q.split(',')[(ar.z)-1]);}
 
 dimen(ar){
 var lo=ar.b;
@@ -369,88 +364,88 @@ return numF;
 }
 
 eelevcuater(ar){
-var rad=Math.sqrt((ar.i*ar.i)+(ar.j*ar.j)+(ar.k*ar.k)),senrad=Math.sin(rad)/rad,elev=Math.pow(euler,ar.a);
+var rad=Math.sqrt((ar.i**2)+(ar.j**2)+(ar.k**2)),senrad=Math.sin(rad)/rad,elev=Math.pow(euler,ar.a);
 return((elev*Math.cos(rad))+','+(senrad*ar.i)*elev+','+(senrad*ar.j)*elev+','+(senrad*ar.k)*elev);}
 
-eelevcuatco(ar){var vec1=Array.from(ar.q.split(',')),rad=Math.sqrt(Math.pow(vec1[1],2)+Math.pow(vec1[2],2)+Math.pow(vec1[3],2)),
+eelevcuatco(ar){var vec1=ar.q.split(','),rad=Math.sqrt(Math.pow(vec1[1],2)+Math.pow(vec1[2],2)+Math.pow(vec1[3],2)),
 senrad=Math.sin(rad)/rad,elev=Math.pow(euler,vec1[0]);
 return((elev*Math.cos(rad))+','+(senrad*vec1[1])*elev+','+(senrad*vec1[2])*elev+','+(senrad*vec1[3])*elev);}
 
 Lncuater(ar){
-var modq=Math.sqrt((ar.a*ar.a)+(ar.i*ar.i)+(ar.j*ar.j)+(ar.k*ar.k)),
-modv=Math.sqrt((ar.i*ar.i)+(ar.j*ar.j)+(ar.k*ar.k)),
-cdaq=Math.acos(ar.a/modq);
+var modq=Math.sqrt((ar.a**2)+(ar.i**2)+(ar.j**2)+(ar.k**2)),
+modv=Math.sqrt((ar.i**2)+(ar.j**2)+(ar.k**2)),cdaq=Math.acos(ar.a/modq);
 return (Math.log(modq)+','+(ar.i/modv*cdaq)+','+(ar.j/modv*cdaq)+','+(ar.k/modv*cdaq));}
 
-Lncuatco(ar){var vec1=Array.from(ar.a.split(',')),
+Lncuatco(ar){var vec1=ar.a.split(','),
 modq=Math.sqrt(Math.pow(vec1[0],2)+Math.pow(vec1[1],2)+Math.pow(vec1[2],2)+Math.pow(vec1[3],2)),
 modv=Math.sqrt(Math.pow(vec1[1],2)+Math.pow(vec1[2],2)+Math.pow(vec1[3],2)),
 cdaq=Math.acos(vec1[0]/modq);
 return (Math.log(modq)+','+(vec1[1]/modv*cdaq)+','+(vec1[2]/modv*cdaq)+','+(vec1[3]/modv*cdaq));}
 
-vercuatco(ar){var vec1=Array.from(ar.a.split(',')),
-mod=Math.sqrt(Math.pow(vec1[0],2)+Math.pow(vec1[1],2)+Math.pow(vec1[2],2)+Math.pow(vec1[3],2)),dat0=vec1[0]/mod,dat1=vec1[1]/mod,dat2=vec1[2]/mod,dat3=vec1[3]/mod;
-return (dat0+','+dat1+','+dat2+','+dat3);}
+vercuatco(ar){var vec1=ar.a.split(','),
+mod=Math.sqrt(Math.pow(vec1[0],2)+Math.pow(vec1[1],2)+Math.pow(vec1[2],2)+Math.pow(vec1[3],2));
+return ((vec1[0]/mod)+','+(vec1[1]/mod)+','+(vec1[2]/mod)+','+(vec1[3]/mod));}
 
 vercuater(ar){
-var mod=Math.sqrt((ar.a*ar.a)+(ar.i*ar.i)+(ar.j*ar.j)+(ar.k*ar.k)),dat0=ar.a/mod,dat1=ar.i/mod,dat2=ar.j/mod,dat3=ar.k/mod;
-return (dat0+','+dat1+','+dat2+','+dat3);}
+var mod=Math.sqrt((ar.a*ar.a)+(ar.i*ar.i)+(ar.j*ar.j)+(ar.k*ar.k));
+return ((ar.a/mod)+','+(ar.i/mod)+','+(ar.j/mod)+','+(ar.k/mod));}
 
 suoctonion(ar){return (ar.a1+ar.b1)+','+(ar.a2+ar.b2)+','+(ar.a3+ar.b3)+','+(ar.a4+ar.b4)+','+(ar.a5+ar.b5)+','+(ar.a6+ar.b6)+','+(ar.a7+ar.b7)+','+(ar.a8+ar.b8);}
 
-suoctonionrap(ar){var vec1=Array.from(ar.q.split(',')),vec2=Array.from(ar.w.split(','));
+suoctonionrap(ar){var vec1=ar.q.split(','),vec2=ar.w.split(',');
 return (vec1[0]*1+vec2[0]*1)+','+(vec1[1]*1+vec2[1]*1)+','+(vec1[2]*1+vec2[2]*1)+','+(vec1[3]*1+vec2[3]*1)+','+(vec1[4]*1+vec2[4]*1)+','+(vec1[5]*1+vec2[5]*1)+','+(vec1[6]*1+vec2[6]*1)+','+(vec1[7]*1+vec2[7]*1);}
 
 muloctonion(ar){
-var dat0=(ar.a1*ar.b1)-(ar.a2*ar.b2)-(ar.a3*ar.b3)-(ar.a4*ar.b4)-(ar.a5*ar.b5)-(ar.a6*ar.b6)-(ar.a7*ar.b7)-(ar.a8*ar.b8),
-dat1=(ar.a1*ar.b2)+(ar.a2*ar.b1)-(ar.a3*ar.b4)+(ar.a4*ar.b3)-(ar.a5*ar.b6)+(ar.a6*ar.b5)+(ar.a7*ar.b8)-(ar.a8*ar.b7),
-dat2=(ar.a1*ar.b3)+(ar.a2*ar.b4)+(ar.a3*ar.b1)-(ar.a4*ar.b2)-(ar.a5*ar.b7)-(ar.a6*ar.b8)+(ar.a7*ar.b5)+(ar.a8*ar.b6),
-dat3=(ar.a1*ar.b4)-(ar.a2*ar.b3)+(ar.a3*ar.b2)+(ar.a4*ar.b1)-(ar.a5*ar.b8)+(ar.a6*ar.b7)-(ar.a7*ar.b6)+(ar.a8*ar.b5),
-dat4=(ar.a1*ar.b5)+(ar.a2*ar.b6)+(ar.a3*ar.b7)+(ar.a4*ar.b8)+(ar.a5*ar.b1)-(ar.a6*ar.b2)-(ar.a7*ar.b3)-(ar.a8*ar.b4),
-dat5=(ar.a1*ar.b6)-(ar.a2*ar.b5)+(ar.a3*ar.b8)-(ar.a4*ar.b7)+(ar.a5*ar.b2)+(ar.a6*ar.b1)+(ar.a7*ar.b4)-(ar.a8*ar.b3),
-dat6=(ar.a1*ar.b7)-(ar.a2*ar.b8)-(ar.a3*ar.b5)+(ar.a4*ar.b6)+(ar.a5*ar.b3)-(ar.a6*ar.b4)+(ar.a7*ar.b1)+(ar.a8*ar.b2),
-dat7=(ar.a1*ar.b8)+(ar.a2*ar.b7)-(ar.a3*ar.b6)-(ar.a4*ar.b5)+(ar.a5*ar.b4)+(ar.a6*ar.b3)-(ar.a7*ar.b2)+(ar.a8*ar.b1);
-return dat0+','+dat1+','+dat2+','+dat3+','+dat4+','+dat5+','+dat6+','+dat7;}
+return ((ar.a1*ar.b1)-(ar.a2*ar.b2)-(ar.a3*ar.b3)-(ar.a4*ar.b4)-(ar.a5*ar.b5)-(ar.a6*ar.b6)-(ar.a7*ar.b7)-(ar.a8*ar.b8))+','+
+((ar.a1*ar.b2)+(ar.a2*ar.b1)-(ar.a3*ar.b4)+(ar.a4*ar.b3)-(ar.a5*ar.b6)+(ar.a6*ar.b5)+(ar.a7*ar.b8)-(ar.a8*ar.b7))+','+
+((ar.a1*ar.b3)+(ar.a2*ar.b4)+(ar.a3*ar.b1)-(ar.a4*ar.b2)-(ar.a5*ar.b7)-(ar.a6*ar.b8)+(ar.a7*ar.b5)+(ar.a8*ar.b6))+','+
+((ar.a1*ar.b4)-(ar.a2*ar.b3)+(ar.a3*ar.b2)+(ar.a4*ar.b1)-(ar.a5*ar.b8)+(ar.a6*ar.b7)-(ar.a7*ar.b6)+(ar.a8*ar.b5))+','+
+((ar.a1*ar.b5)+(ar.a2*ar.b6)+(ar.a3*ar.b7)+(ar.a4*ar.b8)+(ar.a5*ar.b1)-(ar.a6*ar.b2)-(ar.a7*ar.b3)-(ar.a8*ar.b4))+','+
+((ar.a1*ar.b6)-(ar.a2*ar.b5)+(ar.a3*ar.b8)-(ar.a4*ar.b7)+(ar.a5*ar.b2)+(ar.a6*ar.b1)+(ar.a7*ar.b4)-(ar.a8*ar.b3))+','+
+((ar.a1*ar.b7)-(ar.a2*ar.b8)-(ar.a3*ar.b5)+(ar.a4*ar.b6)+(ar.a5*ar.b3)-(ar.a6*ar.b4)+(ar.a7*ar.b1)+(ar.a8*ar.b2))+','+
+((ar.a1*ar.b8)+(ar.a2*ar.b7)-(ar.a3*ar.b6)-(ar.a4*ar.b5)+(ar.a5*ar.b4)+(ar.a6*ar.b3)-(ar.a7*ar.b2)+(ar.a8*ar.b1));
+}
 
-muloctonionrap(ar){var vec1=Array.from(ar.q.split(',')),vec2=Array.from(ar.w.split(',')),
-dat0=(vec1[0]*vec2[0])-(vec1[1]*vec2[1])-(vec1[2]*vec2[2])-(vec1[3]*vec2[3])-(vec1[4]*vec2[4])-(vec1[5]*vec2[5])-(vec1[6]*vec2[6])-(vec1[7]*vec2[7]),
-dat1=(vec1[0]*vec2[1])+(vec1[1]*vec2[0])-(vec1[2]*vec2[3])+(vec1[3]*vec2[2])-(vec1[4]*vec2[5])+(vec1[5]*vec2[4])+(vec1[6]*vec2[7])-(vec1[7]*vec2[6]),
-dat2=(vec1[0]*vec2[2])+(vec1[1]*vec2[3])+(vec1[2]*vec2[0])-(vec1[3]*vec2[1])-(vec1[4]*vec2[6])-(vec1[5]*vec2[7])+(vec1[6]*vec2[4])+(vec1[7]*vec2[5]),
-dat3=(vec1[0]*vec2[3])-(vec1[1]*vec2[2])+(vec1[2]*vec2[1])+(vec1[3]*vec2[0])-(vec1[4]*vec2[7])+(vec1[5]*vec2[6])-(vec1[6]*vec2[5])+(vec1[7]*vec2[4]),
-dat4=(vec1[0]*vec2[4])+(vec1[1]*vec2[5])+(vec1[2]*vec2[6])+(vec1[3]*vec2[7])+(vec1[4]*vec2[0])-(vec1[5]*vec2[1])-(vec1[6]*vec2[2])-(vec1[7]*vec2[3]),
-dat5=(vec1[0]*vec2[5])-(vec1[1]*vec2[4])+(vec1[2]*vec2[7])-(vec1[3]*vec2[6])+(vec1[4]*vec2[1])+(vec1[5]*vec2[0])+(vec1[6]*vec2[3])-(vec1[7]*vec2[2]),
-dat6=(vec1[0]*vec2[6])-(vec1[1]*vec2[7])-(vec1[2]*vec2[4])+(vec1[3]*vec2[5])+(vec1[4]*vec2[2])-(vec1[5]*vec2[3])+(vec1[6]*vec2[0])+(vec1[7]*vec2[1]),
-dat7=(vec1[0]*vec2[7])+(vec1[1]*vec2[6])-(vec1[2]*vec2[5])-(vec1[3]*vec2[4])+(vec1[4]*vec2[3])+(vec1[5]*vec2[2])-(vec1[6]*vec2[1])+(vec1[7]*vec2[0]);
-return dat0+','+dat1+','+dat2+','+dat3+','+dat4+','+dat5+','+dat6+','+dat7;}
+muloctonionrap(ar){var vec1=ar.q.split(','),vec2=ar.w.split(',');
+return ((vec1[0]*vec2[0])-(vec1[1]*vec2[1])-(vec1[2]*vec2[2])-(vec1[3]*vec2[3])-(vec1[4]*vec2[4])-(vec1[5]*vec2[5])-(vec1[6]*vec2[6])-(vec1[7]*vec2[7]))+','+
+((vec1[0]*vec2[1])+(vec1[1]*vec2[0])-(vec1[2]*vec2[3])+(vec1[3]*vec2[2])-(vec1[4]*vec2[5])+(vec1[5]*vec2[4])+(vec1[6]*vec2[7])-(vec1[7]*vec2[6]))+','+
+((vec1[0]*vec2[2])+(vec1[1]*vec2[3])+(vec1[2]*vec2[0])-(vec1[3]*vec2[1])-(vec1[4]*vec2[6])-(vec1[5]*vec2[7])+(vec1[6]*vec2[4])+(vec1[7]*vec2[5]))+','+
+((vec1[0]*vec2[3])-(vec1[1]*vec2[2])+(vec1[2]*vec2[1])+(vec1[3]*vec2[0])-(vec1[4]*vec2[7])+(vec1[5]*vec2[6])-(vec1[6]*vec2[5])+(vec1[7]*vec2[4]))+','+
+((vec1[0]*vec2[4])+(vec1[1]*vec2[5])+(vec1[2]*vec2[6])+(vec1[3]*vec2[7])+(vec1[4]*vec2[0])-(vec1[5]*vec2[1])-(vec1[6]*vec2[2])-(vec1[7]*vec2[3]))+','+
+((vec1[0]*vec2[5])-(vec1[1]*vec2[4])+(vec1[2]*vec2[7])-(vec1[3]*vec2[6])+(vec1[4]*vec2[1])+(vec1[5]*vec2[0])+(vec1[6]*vec2[3])-(vec1[7]*vec2[2]))+','+
+((vec1[0]*vec2[6])-(vec1[1]*vec2[7])-(vec1[2]*vec2[4])+(vec1[3]*vec2[5])+(vec1[4]*vec2[2])-(vec1[5]*vec2[3])+(vec1[6]*vec2[0])+(vec1[7]*vec2[1]))+','+
+((vec1[0]*vec2[7])+(vec1[1]*vec2[6])-(vec1[2]*vec2[5])-(vec1[3]*vec2[4])+(vec1[4]*vec2[3])+(vec1[5]*vec2[2])-(vec1[6]*vec2[1])+(vec1[7]*vec2[0]));
+}
 
-divoctonionrap(ar){var vec1=Array.from(ar.q.split(',')),vec2=Array.from(ar.w.split(',')),
-dat8=Math.pow(vec2[0],2)+Math.pow(vec2[1],2)+Math.pow(vec2[2],2)+Math.pow(vec2[3],2)+Math.pow(vec2[4],2)+Math.pow(vec2[5],2)+Math.pow(vec2[6],2)+Math.pow(vec2[7],2),
-dat0=((vec1[0]*vec2[0])-(vec1[1]*-vec2[1])-(vec1[2]*-vec2[2])-(vec1[3]*-vec2[3])-(vec1[4]*-vec2[4])-(vec1[5]*-vec2[5])-(vec1[6]*-vec2[6])-(vec1[7]*-vec2[7]))/dat8,
-dat1=((vec1[0]*-vec2[1])+(vec1[1]*vec2[0])-(vec1[2]*-vec2[3])+(vec1[3]*-vec2[2])-(vec1[4]*-vec2[5])+(vec1[5]*-vec2[4])+(vec1[6]*-vec2[7])-(vec1[7]*-vec2[6]))/dat8,
-dat2=((vec1[0]*-vec2[2])+(vec1[1]*-vec2[3])+(vec1[2]*vec2[0])-(vec1[3]*-vec2[1])-(vec1[4]*-vec2[6])-(vec1[5]*-vec2[7])+(vec1[6]*-vec2[4])+(vec1[7]*-vec2[5]))/dat8,
-dat3=((vec1[0]*-vec2[3])-(vec1[1]*-vec2[2])+(vec1[2]*-vec2[1])+(vec1[3]*vec2[0])-(vec1[4]*-vec2[7])+(vec1[5]*-vec2[6])-(vec1[6]*-vec2[5])+(vec1[7]*-vec2[4]))/dat8,
-dat4=((vec1[0]*-vec2[4])+(vec1[1]*-vec2[5])+(vec1[2]*-vec2[6])+(vec1[3]*-vec2[7])+(vec1[4]*vec2[0])-(vec1[5]*-vec2[1])-(vec1[6]*-vec2[2])-(vec1[7]*-vec2[3]))/dat8,
-dat5=((vec1[0]*-vec2[5])-(vec1[1]*-vec2[4])+(vec1[2]*-vec2[7])-(vec1[3]*-vec2[6])+(vec1[4]*-vec2[1])+(vec1[5]*vec2[0])+(vec1[6]*-vec2[3])-(vec1[7]*-vec2[2]))/dat8,
-dat6=((vec1[0]*-vec2[6])-(vec1[1]*-vec2[7])-(vec1[2]*-vec2[4])+(vec1[3]*-vec2[5])+(vec1[4]*-vec2[2])-(vec1[5]*-vec2[3])+(vec1[6]*vec2[0])+(vec1[7]*-vec2[1]))/dat8,
-dat7=((vec1[0]*-vec2[7])+(vec1[1]*-vec2[6])-(vec1[2]*-vec2[5])-(vec1[3]*-vec2[4])+(vec1[4]*-vec2[3])+(vec1[5]*-vec2[2])-(vec1[6]*-vec2[1])+(vec1[7]*vec2[0]))/dat8;
-return dat0+','+dat1+','+dat2+','+dat3+','+dat4+','+dat5+','+dat6+','+dat7;}
+divoctonionrap(ar){var vec1=ar.q.split(','),vec2=ar.w.split(','),
+dat8=Math.pow(vec2[0],2)+Math.pow(vec2[1],2)+Math.pow(vec2[2],2)+Math.pow(vec2[3],2)+Math.pow(vec2[4],2)+Math.pow(vec2[5],2)+Math.pow(vec2[6],2)+Math.pow(vec2[7],2);
+return ((vec1[0]*vec2[0])-(vec1[1]*-vec2[1])-(vec1[2]*-vec2[2])-(vec1[3]*-vec2[3])-(vec1[4]*-vec2[4])-(vec1[5]*-vec2[5])-(vec1[6]*-vec2[6])-(vec1[7]*-vec2[7]))/dat8+','+
+((vec1[0]*-vec2[1])+(vec1[1]*vec2[0])-(vec1[2]*-vec2[3])+(vec1[3]*-vec2[2])-(vec1[4]*-vec2[5])+(vec1[5]*-vec2[4])+(vec1[6]*-vec2[7])-(vec1[7]*-vec2[6]))/dat8+','+
+((vec1[0]*-vec2[2])+(vec1[1]*-vec2[3])+(vec1[2]*vec2[0])-(vec1[3]*-vec2[1])-(vec1[4]*-vec2[6])-(vec1[5]*-vec2[7])+(vec1[6]*-vec2[4])+(vec1[7]*-vec2[5]))/dat8+','+
+((vec1[0]*-vec2[3])-(vec1[1]*-vec2[2])+(vec1[2]*-vec2[1])+(vec1[3]*vec2[0])-(vec1[4]*-vec2[7])+(vec1[5]*-vec2[6])-(vec1[6]*-vec2[5])+(vec1[7]*-vec2[4]))/dat8+','+
+((vec1[0]*-vec2[4])+(vec1[1]*-vec2[5])+(vec1[2]*-vec2[6])+(vec1[3]*-vec2[7])+(vec1[4]*vec2[0])-(vec1[5]*-vec2[1])-(vec1[6]*-vec2[2])-(vec1[7]*-vec2[3]))/dat8+','+
+((vec1[0]*-vec2[5])-(vec1[1]*-vec2[4])+(vec1[2]*-vec2[7])-(vec1[3]*-vec2[6])+(vec1[4]*-vec2[1])+(vec1[5]*vec2[0])+(vec1[6]*-vec2[3])-(vec1[7]*-vec2[2]))/dat8+','+
+((vec1[0]*-vec2[6])-(vec1[1]*-vec2[7])-(vec1[2]*-vec2[4])+(vec1[3]*-vec2[5])+(vec1[4]*-vec2[2])-(vec1[5]*-vec2[3])+(vec1[6]*vec2[0])+(vec1[7]*-vec2[1]))/dat8+','+
+((vec1[0]*-vec2[7])+(vec1[1]*-vec2[6])-(vec1[2]*-vec2[5])-(vec1[3]*-vec2[4])+(vec1[4]*-vec2[3])+(vec1[5]*-vec2[2])-(vec1[6]*-vec2[1])+(vec1[7]*vec2[0]))/dat8;
+}
 
 divoctonion(ar){
-var dat8=Math.pow(ar.b1,2)+Math.pow(ar.b2,2)+Math.pow(ar.b3,2)+Math.pow(ar.b4,2)+Math.pow(ar.b5,2)+Math.pow(ar.b6,2)+Math.pow(ar.b7,2)+Math.pow(ar.b8,2),
-dat0=((ar.a1*ar.b1)-(ar.a2*-ar.b2)-(ar.a3*-ar.b3)-(ar.a4*-ar.b4)-(ar.a5*-ar.b5)-(ar.a6*-ar.b6)-(ar.a7*-ar.b7)-(ar.a8*-ar.b8))/dat8,
-dat1=((ar.a1*-ar.b2)+(ar.a2*ar.b1)-(ar.a3*-ar.b4)+(ar.a4*-ar.b3)-(ar.a5*-ar.b6)+(ar.a6*-ar.b5)+(ar.a7*-ar.b8)-(ar.a8*-ar.b7))/dat8,
-dat2=((ar.a1*-ar.b3)+(ar.a2*-ar.b4)+(ar.a3*ar.b1)-(ar.a4*-ar.b2)-(ar.a5*-ar.b7)-(ar.a6*-ar.b8)+(ar.a7*-ar.b5)+(ar.a8*-ar.b6))/dat8,
-dat3=((ar.a1*-ar.b4)-(ar.a2*-ar.b3)+(ar.a3*-ar.b2)+(ar.a4*ar.b1)-(ar.a5*-ar.b8)+(ar.a6*-ar.b7)-(ar.a7*-ar.b6)+(ar.a8*-ar.b5))/dat8,
-dat4=((ar.a1*-ar.b5)+(ar.a2*-ar.b6)+(ar.a3*-ar.b7)+(ar.a4*-ar.b8)+(ar.a5*ar.b1)-(ar.a6*-ar.b2)-(ar.a7*-ar.b3)-(ar.a8*-ar.b4))/dat8,
-dat5=((ar.a1*-ar.b6)-(ar.a2*-ar.b5)+(ar.a3*-ar.b8)-(ar.a4*-ar.b7)+(ar.a5*-ar.b2)+(ar.a6*ar.b1)+(ar.a7*-ar.b4)-(ar.a8*-ar.b3))/dat8,
-dat6=((ar.a1*-ar.b7)-(ar.a2*-ar.b8)-(ar.a3*-ar.b5)+(ar.a4*-ar.b6)+(ar.a5*-ar.b3)-(ar.a6*-ar.b4)+(ar.a7*ar.b1)+(ar.a8*-ar.b2))/dat8,
-dat7=((ar.a1*-ar.b8)+(ar.a2*-ar.b7)-(ar.a3*-ar.b6)-(ar.a4*-ar.b5)+(ar.a5*-ar.b4)+(ar.a6*-ar.b3)-(ar.a7*-ar.b2)+(ar.a8*ar.b1))/dat8;
-return dat0+','+dat1+','+dat2+','+dat3+','+dat4+','+dat5+','+dat6+','+dat7;}
+var dat8=Math.pow(ar.b1,2)+Math.pow(ar.b2,2)+Math.pow(ar.b3,2)+Math.pow(ar.b4,2)+Math.pow(ar.b5,2)+Math.pow(ar.b6,2)+Math.pow(ar.b7,2)+Math.pow(ar.b8,2);
+return ((ar.a1*ar.b1)-(ar.a2*-ar.b2)-(ar.a3*-ar.b3)-(ar.a4*-ar.b4)-(ar.a5*-ar.b5)-(ar.a6*-ar.b6)-(ar.a7*-ar.b7)-(ar.a8*-ar.b8))/dat8+','+
+((ar.a1*-ar.b2)+(ar.a2*ar.b1)-(ar.a3*-ar.b4)+(ar.a4*-ar.b3)-(ar.a5*-ar.b6)+(ar.a6*-ar.b5)+(ar.a7*-ar.b8)-(ar.a8*-ar.b7))/dat8+','+
+((ar.a1*-ar.b3)+(ar.a2*-ar.b4)+(ar.a3*ar.b1)-(ar.a4*-ar.b2)-(ar.a5*-ar.b7)-(ar.a6*-ar.b8)+(ar.a7*-ar.b5)+(ar.a8*-ar.b6))/dat8+','+
+((ar.a1*-ar.b4)-(ar.a2*-ar.b3)+(ar.a3*-ar.b2)+(ar.a4*ar.b1)-(ar.a5*-ar.b8)+(ar.a6*-ar.b7)-(ar.a7*-ar.b6)+(ar.a8*-ar.b5))/dat8+','+
+((ar.a1*-ar.b5)+(ar.a2*-ar.b6)+(ar.a3*-ar.b7)+(ar.a4*-ar.b8)+(ar.a5*ar.b1)-(ar.a6*-ar.b2)-(ar.a7*-ar.b3)-(ar.a8*-ar.b4))/dat8+','+
+((ar.a1*-ar.b6)-(ar.a2*-ar.b5)+(ar.a3*-ar.b8)-(ar.a4*-ar.b7)+(ar.a5*-ar.b2)+(ar.a6*ar.b1)+(ar.a7*-ar.b4)-(ar.a8*-ar.b3))/dat8+','+
+((ar.a1*-ar.b7)-(ar.a2*-ar.b8)-(ar.a3*-ar.b5)+(ar.a4*-ar.b6)+(ar.a5*-ar.b3)-(ar.a6*-ar.b4)+(ar.a7*ar.b1)+(ar.a8*-ar.b2))/dat8+','+
+((ar.a1*-ar.b8)+(ar.a2*-ar.b7)-(ar.a3*-ar.b6)-(ar.a4*-ar.b5)+(ar.a5*-ar.b4)+(ar.a6*-ar.b3)-(ar.a7*-ar.b2)+(ar.a8*ar.b1))/dat8;
+}
 
 conoctonion(ar){return (ar.q.split(',')[0])+','+(ar.q.split(',')[1]*-1)+','+(ar.q.split(',')[2]*-1)+','+(ar.q.split(',')[3]*-1)+','+(ar.q.split(',')[4]*-1)+','+(ar.q.split(',')[5]*-1)+','+(ar.q.split(',')[6]*-1)+','+(ar.q.split(',')[7]*-1);}
 
-modoctonion(ar){var vec1=Array.from(ar.q.split(','));
+modoctonion(ar){var vec1=ar.q.split(',');
 return Math.sqrt(Math.pow(vec1[0],2)+Math.pow(vec1[1],2)+Math.pow(vec1[2],2)+Math.pow(vec1[3],2)+Math.pow(vec1[4],2)+Math.pow(vec1[5],2)+Math.pow(vec1[6],2)+Math.pow(vec1[7],2));}
+
 fix(ar){if(ar.k>=0){return ar.z.toFixed(ar.k)*1;}else{return ar.z.toFixed(-ar.k)*1;}}
 
 GammaI(ar){
