@@ -1,5 +1,5 @@
 (function(Scratch) {'use strict';//por el (pentaquark neutro, penta quark neutro) y neutral auream
-const txt=Scratch.ArgumentType.STRING,rep=Scratch.BlockType.REPORTER,num=Scratch.ArgumentType.NUMBER,vgbb=Scratch.BlockType.BUTTON,evaluador=Scratch.BlockType.BOOLEAN,com=Scratch.BlockType.COMMAND;
+const txt=Scratch.ArgumentType.STRING,rep=Scratch.BlockType.REPORTER,num=Scratch.ArgumentType.NUMBER,vgbb=Scratch.BlockType.BUTTON,eva=Scratch.BlockType.BOOLEAN,com=Scratch.BlockType.COMMAND;
 const vm=Scratch.vm,runtime=vm.runtime,grrad=Math.PI/180,iv=[1,0,0],jv=[0,1,0],kv=[0,0,1];let Gvec=[],ops=1,vecs=1,prop=1,glo=1,cc=1,cuat=1,oct=1,sed=1,geo=1;
 function ref(){Scratch.vm.extensionManager.refreshBlocks();}
 if(!vm.runtime.extensionStorage['vectorr']){vm.runtime.extensionStorage['vectorr']=[]}
@@ -78,20 +78,20 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'fore',blockType:com,text:'[a].forEach[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'outs2'},b:{type:txt,defaultValue:'3'}}},
 {opcode:'Fil',blockType:rep,text:'[a].filter[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
 {opcode:'reduc',blockType:rep,text:'[a].reduce[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'redu'},b:{type:txt,defaultValue:'0'}}},
-{opcode:'some',blockType:evaluador,text:'[a].some[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
-{opcode:'every',blockType:evaluador,text:'[a].every[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
+{opcode:'some',blockType:eva,text:'[a].some[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
+{opcode:'every',blockType:eva,text:'[a].every[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
 {opcode:'find',blockType:rep,text:'[a].find[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
 {opcode:'findIndex',blockType:rep,text:'[a].findIndex[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
 {opcode:'findlast',blockType:rep,text:'[a].findLast[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
 {opcode:'findlastindex',blockType:rep,text:'[a].findLastIndex[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
 {opcode:'co',blockType:rep,text:'[a].concat[b]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt}}},
-{opcode:'incl',blockType:evaluador,text:'[a].includes[b]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'5'}}},
+{opcode:'incl',blockType:eva,text:'[a].includes[b]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'5'}}},
 {opcode:'rev',blockType:rep,text:'[a].reverse',hideFromPalette:vecs,arguments:{a:{type:txt}}},
 {opcode:'torev',blockType:rep,text:'[a].toReversed',hideFromPalette:vecs,arguments:{a:{type:txt}}},
 {opcode:'join',blockType:rep,text:'[a].join[b]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'-'}}},
 {opcode:'sort',blockType:rep,text:'[a].sort',hideFromPalette:vecs,arguments:{a:{type:txt}}},
 {opcode:'tosort',blockType:rep,text:'[a].toSorted',hideFromPalette:vecs,arguments:{a:{type:txt}}},
-{opcode:'esarr',blockType:evaluador,text:'isArray[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
+{opcode:'esarr',blockType:eva,text:'isArray[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
 {opcode:'uin1',blockType:rep,text:'new Uint8Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
 {opcode:'uin10',blockType:rep,text:'new Uint8ClampedArray[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
 {opcode:'uin2',blockType:rep,text:'new Uint16Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
@@ -136,20 +136,20 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'tagtp1mc',blockType:com,text:'añadir[t]tp1',hideFromPalette:prop,arguments:{t:{type:txt,defaultValue:'K'}}},
 {opcode:'tagtp1',blockType:rep,text:'tp1',hideFromPalette:prop,disableMonitor:1},
 {opcode:'tagtp1ig',blockType:com,text:'tp1=[t]',hideFromPalette:prop,arguments:{t:{type:txt}}},
-{opcode:'tagtp1c',blockType:evaluador,text:'contiene?[t]tp1',hideFromPalette:prop,arguments:{t:{type:txt}}},
+{opcode:'tagtp1c',blockType:eva,text:'contiene?[t]tp1',hideFromPalette:prop,arguments:{t:{type:txt}}},
 {opcode:'s1',blockType:rep,text:'ID',hideFromPalette:prop,disableMonitor:1},
 {opcode:'s2',blockType:rep,text:'DRAWID',hideFromPalette:prop,disableMonitor:1},
 {opcode:'s12',blockType:rep,text:'Referencia object',hideFromPalette:prop,disableMonitor:1},
 {opcode:'s3',blockType:rep,text:'Obj.filter(ID)[a].tp1',hideFromPalette:prop,arguments:{a:{type:txt}}},
-{opcode:'s4',blockType:evaluador,text:'tocando Obj.tp1.includes[a]?',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'K'}}},
-{opcode:'s9',blockType:evaluador,text:'tocando Obj.tp1.includes[a]?de lista[targets]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'K'},targets:{type:txt,defaultValue:'[DrawID,...]'}}},
+{opcode:'s4',blockType:eva,text:'tocando Obj.tp1.includes[a]?',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'K'}}},
+{opcode:'s9',blockType:eva,text:'tocando Obj.tp1.includes[a]?de lista[targets]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'K'},targets:{type:txt,defaultValue:'[DrawID,...]'}}},
 {opcode:'s5',blockType:rep,text:'tp1 de toda cosa tocada',hideFromPalette:prop,disableMonitor:1},
 {opcode:'s6',blockType:rep,text:'coordenadas',hideFromPalette:prop,disableMonitor:1},
 {opcode:'s7',blockType:com,text:'Ir a[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'[]'}}},
 {opcode:'s8',blockType:com,text:'mover[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'[]'}}},
 {opcode:'s28',blockType:com,text:'apuntar a[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'[]'}}},
 {blockType:"label",text:"Control de referencias",hideFromPalette:prop},//--------------------------------------------------------------------------------------------------------------------------------
-{opcode:'s29',blockType:evaluador,text:'tocando [a]?',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
+{opcode:'s29',blockType:eva,text:'tocando [a]?',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
 {opcode:'s30',blockType:rep,text:'tocando de lista[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'[referencia,...]'}}},
 {opcode:'s10',blockType:com,text:'Ir multiples[b]a XY[a]',hideFromPalette:prop,arguments:{a:{type:txt},b:{type:txt,defaultValue:'[referencia,...]'}}},
 {opcode:'s11',blockType:com,text:'mover multiples[b] XY[a]',hideFromPalette:prop,arguments:{a:{type:txt},b:{type:txt,defaultValue:'[referencia,...]'}}},
@@ -175,7 +175,7 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'Gv2',blockType:rep,text:'Gv',hideFromPalette:glo,disableMonitor:1},
 {opcode:'Gv3',blockType:com,text:'Gv=[t]',hideFromPalette:glo,arguments:{t:{type:txt}}},
 {opcode:'Gv5',blockType:rep,text:'runtime Targets',hideFromPalette:glo,disableMonitor:1},
-{blockType:"label",text:"Vector global persistente",hideFromPalette:glo},//---------------------------------------------------------------------------------------------------------
+{blockType:"label",text:"Vector global almacenado",hideFromPalette:glo},//---------------------------------------------------------------------------------------------------------
 {opcode:'Gv6',blockType:com,text:'push[t]VGP',hideFromPalette:glo,arguments:{t:{type:txt,defaultValue:'L'}}},
 {opcode:'Gv8',blockType:rep,text:'VGP',hideFromPalette:glo,disableMonitor:1},
 {opcode:'Gv9',blockType:com,text:'VGP=[t]',hideFromPalette:glo,arguments:{t:{type:txt}}},
@@ -189,7 +189,7 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'cc8',blockType:rep,text:'ℂ e^[a]',hideFromPalette:cc,arguments:{a:{type:txt}}},
 {opcode:'cc9',blockType:rep,text:'ℂ arg[a]',hideFromPalette:cc,arguments:{a:{type:txt}}},
 {opcode:'cc11',blockType:rep,text:'ℂ ||[a]||',hideFromPalette:cc,arguments:{a:{type:txt}}},
-{opcode:'cc10',blockType:evaluador,text:'¿[a]es ℂ?',hideFromPalette:cc,arguments:{a:{type:txt}}},
+{opcode:'cc10',blockType:eva,text:'¿[a]es ℂ?',hideFromPalette:cc,arguments:{a:{type:txt}}},
 {opcode:'cc12',blockType:com,text:'ℂ[a]+[b]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
 {opcode:'cc13',blockType:com,text:'ℂ[a]-[b]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
 {opcode:'cc14',blockType:com,text:'ℂ[a]*[b]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
@@ -206,7 +206,7 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'cua7',blockType:rep,text:'ℍ LN[V]',hideFromPalette:cuat,arguments:{V:{type:txt}}},
 {opcode:'cua8',blockType:rep,text:'ℍ e^[V]',hideFromPalette:cuat,arguments:{V:{type:txt}}},
 {opcode:'cua10',blockType:rep,text:'ℍ ||[V]||',hideFromPalette:cuat,arguments:{V:{type:txt}}},
-{opcode:'cua9',blockType:evaluador,text:'¿[a]es ℍ?',hideFromPalette:cuat,arguments:{a:{type:txt}}},
+{opcode:'cua9',blockType:eva,text:'¿[a]es ℍ?',hideFromPalette:cuat,arguments:{a:{type:txt}}},
 {opcode:'cua11',blockType:com,text:'ℍ[a]+[b]_salida[c]',hideFromPalette:cuat,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
 {opcode:'cua12',blockType:com,text:'ℍ[a]-[b]_salida[c]',hideFromPalette:cuat,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
 {opcode:'cua13',blockType:com,text:'ℍ[v1]*[v2]_salida[c]',hideFromPalette:cuat,arguments:{v1:{type:txt},v2:{type:txt},c:{type:txt}}},
@@ -223,7 +223,7 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'octa10',blockType:rep,text:'𝕆 LN[V]',hideFromPalette:oct,arguments:{V:{type:txt}}},
 {opcode:'octa8',blockType:rep,text:'𝕆 e^[v]',hideFromPalette:oct,arguments:{v:{type:txt}}},
 {opcode:'octa9',blockType:rep,text:'𝕆 ||[v]||',hideFromPalette:oct,arguments:{v:{type:txt}}},
-{opcode:'octa7',blockType:evaluador,text:'¿[a]es 𝕆?',hideFromPalette:oct,arguments:{a:{type:txt}}},
+{opcode:'octa7',blockType:eva,text:'¿[a]es 𝕆?',hideFromPalette:oct,arguments:{a:{type:txt}}},
 {opcode:'octa11',blockType:com,text:'𝕆[a]+[b]_salida[c]',hideFromPalette:oct,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
 {opcode:'octa12',blockType:com,text:'𝕆[a]-[b]_salida[c]',hideFromPalette:oct,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
 {opcode:'octa13',blockType:com,text:'𝕆[v1]*[v2]_salida[c]',hideFromPalette:oct,arguments:{v1:{type:txt},v2:{type:txt},c:{type:txt}}},
@@ -236,27 +236,28 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'sed2',blockType:rep,text:'𝕊[v]-[w]',hideFromPalette:sed,arguments:{v:{type:txt},w:{type:txt}}},
 {opcode:'sed5',blockType:rep,text:'𝕊[v]*[k]',hideFromPalette:sed,arguments:{v:{type:txt},k:{type:txt}}},
 {opcode:'sed3',blockType:rep,text:'𝕊 conj[v]',hideFromPalette:sed,arguments:{v:{type:txt}}},
-{opcode:'sed4',blockType:evaluador,text:'¿[a]es 𝕊?',hideFromPalette:sed,arguments:{a:{type:txt}}},
+{opcode:'sed4',blockType:eva,text:'¿[a]es 𝕊?',hideFromPalette:sed,arguments:{a:{type:txt}}},
 {opcode:'sed6',blockType:com,text:'𝕊[v]+[w]_salida[c]',hideFromPalette:sed,arguments:{v:{type:txt},w:{type:txt},c:{type:txt}}},
 {opcode:'sed7',blockType:com,text:'𝕊[v]-[w]_salida[c]',hideFromPalette:sed,arguments:{v:{type:txt},w:{type:txt},c:{type:txt}}},
 {opcode:'sed8',blockType:com,text:'𝕊[v]*[k]_salida[c]',hideFromPalette:sed,arguments:{v:{type:txt},k:{type:txt},c:{type:txt}}},
 {opcode:'sed9',blockType:com,text:'𝕊 conj[v]_salida[c]',hideFromPalette:sed,arguments:{v:{type:txt},c:{type:txt}}},
 {blockType:"label",text:"Deteccion Geometrica",hideFromPalette:geo},//--------------------------------------------------------------------------------------------------------------------------------
-{opcode:'ppoli',blockType:rep,text:'¿punto[P]en[polygon]poligono?',hideFromPalette:geo,arguments:{P:{type:txt},polygon:{type:txt,defaultValue:'[[],[]...]'}}},
-{opcode:'geo0',blockType:evaluador,text:'¿punto[a]en(x,y,r[b]circulo)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
-{opcode:'geo1',blockType:evaluador,text:'¿punto[a]en(x,y,an,al[b]rectangulo)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
-{opcode:'geo4',blockType:evaluador,text:'¿punto[a]en(x,y,l[b]cuadrado)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
-{opcode:'geo2',blockType:evaluador,text:'¿punto[a]en(x,y,z,r[b]esfera)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
-{opcode:'geo3',blockType:evaluador,text:'¿punto[a]en(x,y,z,an,al,pr[b]ortoedro)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
-{opcode:'geo5',blockType:evaluador,text:'¿punto[a]en(x,y,z,l[b]cubo)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
-{opcode:'geo6',blockType:evaluador,text:'punto[a]normal contra(x,y[b]circulo)',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
-{opcode:'geo7',blockType:evaluador,text:'punto[a]normal contra(x,y,an,al[b]rectangulo)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
-{opcode:'geo8',blockType:evaluador,text:'punto[a]normal contra(x,y,l[b]cuadrado)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
-{opcode:'geo9',blockType:evaluador,text:'¿circulo[a]en[b]circulo (x,y,r)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
-{opcode:'geo10',blockType:evaluador,text:'¿rectangulo[cu]en[du]rectangulo (x,y,an,al)?',hideFromPalette:geo,arguments:{cu:{type:txt},du:{type:txt}}},
-{opcode:'geo11',blockType:evaluador,text:'¿cuadrado[cu]en[du]cuadrado (x,y,l)?',hideFromPalette:geo,arguments:{cu:{type:txt},du:{type:txt}}},
-{opcode:'geo12',blockType:evaluador,text:'¿circulo[a]en[b]rectangulo?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
-{opcode:'geo13',blockType:evaluador,text:'¿circulo[a]en[b]cuadrado?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'ppoli',blockType:rep,text:'¿punto[P]en[polygon]poligono?',hideFromPalette:geo,arguments:{P:{type:txt},polygon:{type:txt,defaultValue:'[[x,y],[x,y]...]'}}},
+{opcode:'geo0',blockType:eva,text:'¿punto[a]en(x,y,r[b]circulo)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'geo1',blockType:eva,text:'¿punto[a]en(x,y,an,al[b]rectangulo)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'geo4',blockType:eva,text:'¿punto[a]en(x,y,l[b]cuadrado)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'geo2',blockType:eva,text:'¿punto[a]en(x,y,z,r[b]esfera)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'geo3',blockType:eva,text:'¿punto[a]en(x,y,z,an,al,pr[b]ortoedro)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'geo5',blockType:eva,text:'¿punto[a]en(x,y,z,l[b]cubo)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'geo6',blockType:rep,text:'punto[a]normal contra(x,y[b]circulo)',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'geo7',blockType:rep,text:'punto[a]normal contra(x,y,an,al[b]rectangulo)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'geo8',blockType:rep,text:'punto[a]normal contra(x,y,l[b]cuadrado)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'geo9',blockType:eva,text:'¿circulo[a]en[b]circulo (x,y,r)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'geo10',blockType:eva,text:'¿rectangulo[cu]en[du]rectangulo (x,y,an,al)?',hideFromPalette:geo,arguments:{cu:{type:txt},du:{type:txt}}},
+{opcode:'geo11',blockType:eva,text:'¿cuadrado[cu]en[du]cuadrado (x,y,l)?',hideFromPalette:geo,arguments:{cu:{type:txt},du:{type:txt}}},
+{opcode:'geo14',blockType:eva,text:'¿cuadrado[cu]en[du]rectangulo?',hideFromPalette:geo,arguments:{cu:{type:txt},du:{type:txt}}},
+{opcode:'geo12',blockType:eva,text:'¿circulo[a]en[b]rectangulo?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'geo13',blockType:eva,text:'¿circulo[a]en[b]cuadrado?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
 
 ],menus:{
 outs:{acceptReporters:0,items:['+','-','*','/','**','%','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','Log2','|','&','^','~','<<','>>','>>>','tofixed','[x]','function->','parse','stringify','senh','cosh','tanh','asenh','acosh','atanh','min','max','fround','f16round','round','trunc']},
@@ -561,8 +562,7 @@ matriz=[cos+(b[0]**2)*(1-cos),b[0]*b[1]*(1-cos)-b[2]*sen,b[0]*b[2]*(1-cos)+b[1]*
 	b[2]*b[0]*(1-cos)-b[1]*sen,b[2]*b[1]*(1-cos)+b[0]*sen,cos+(b[2]**2)*(1-cos)],i=0,nv=Array.from(a);
 while(i<a.length){nv[i]=[nv[i][0]*matriz[0]+nv[i][1]*matriz[3]+nv[i][2]*matriz[6],
 			 nv[i][0]*matriz[1]+nv[i][1]*matriz[4]+nv[i][2]*matriz[7],
-			 nv[i][0]*matriz[2]+nv[i][1]*matriz[5]+nv[i++][2]*matriz[8]];
-}return nv;}
+			 nv[i][0]*matriz[2]+nv[i][1]*matriz[5]+nv[i++][2]*matriz[8]];}return nv;}
 med5(ar){var i=0,out=0,k=0;while(i<ar.a.length){out+=ar.a[i++];}out/=ar.a.length;i=0;while(i<ar.a.length){k+=(ar.a[i++]-out)**2;}return (k/(ar.a.length-1))**0.5;}
 sli(ar){return ar.a.slice(ar.b,ar.c);}
 s13(ar,util){return Math.hypot((ar.a.x-util.target.x),(ar.a.y-util.target.y))}
@@ -598,9 +598,10 @@ geo7({a,b}){let c=[b[0]+(b[2]/2),b[1]-(b[3]/2)];return (Math.abs(a[0]-c[0])<Math
 geo8({a,b}){let c=[b[0]+(b[2]/2),b[1]-(b[2]/2)];return (Math.abs(a[0]-c[0])<Math.abs(a[1]-c[1])?(a[1]<c[1]?[0,-1,180]:[0,1,0]):(a[0]<c[0]?[-1,0,-90]:[1,0,90]))}
 rpt7(ar){let i=0;while(i<ar.a.length){ar.a[i]=ar.b[i++]}}rpt8(ar){return ++ar.a[ar.b]}rpt9(ar){return --ar.a[ar.b]}rpt10(ar){return ar.a[ar.b]++}rpt11(ar){return ar.a[ar.b]--}
 geo9({a,b}){return Math.hypot(a[0]-b[0],a[1]-b[1])<=(b[2]+a[2])}
-geo10({cu,du}){return !(cu[0]>=du[0]+du[2])||(cu[0]+cu[2]<=du[0])||(cu[1]>=du[1]+du[3])||(cu[1]+cu[3]<=du[1])}
-geo11({cu,du}){return !(cu[0]>=du[0]+du[2])||(cu[0]+cu[2]<=du[0])||(cu[1]>=du[1]+du[2])||(cu[1]+cu[2]<=du[1])}
+geo10({cu,du}){return !((cu[0]>=du[0]+du[2])||(cu[0]+cu[2]<=du[0])||(cu[1]>=du[1]+du[3])||(cu[1]+cu[3]<=du[1]))}
+geo11({cu,du}){return !((cu[0]>=du[0]+du[2])||(cu[0]+cu[2]<=du[0])||(cu[1]>=du[1]+du[2])||(cu[1]+cu[2]<=du[1]))}
 geo12({a,b}){let pun=Array.from(a);pun[0]=(pun[0]<b[0]?b[0]:(pun[0]>b[0]+b[2]?b[0]+b[2]:pun[0])),pun[1]=(pun[1]<b[1]?b[1]:(pun[1]>b[1]+b[3]?b[1]+b[3]:pun[1]));return Math.hypot(a[0]-pun[0],a[1]-pun[1])<=a[2]}
 geo13({a,b}){let pun=Array.from(a);pun[0]=(pun[0]<b[0]?b[0]:(pun[0]>b[0]+b[2]?b[0]+b[2]:pun[0])),pun[1]=(pun[1]<b[1]?b[1]:(pun[1]>b[1]+b[2]?b[1]+b[2]:pun[1]));return Math.hypot(a[0]-pun[0],a[1]-pun[1])<=a[2]}
 rpt12(ar){++ar.a[ar.b]}rpt13(ar){--ar.a[ar.b]}rpt14(ar){ar.a[ar.b]++}rpt15(ar){ar.a[ar.b]--}
+geo14({cu,du}){return !((cu[0]>=du[0]+du[2])||(cu[0]+cu[2]<=du[0])||(cu[1]>=du[1]+du[3])||(cu[1]+cu[2]<=du[1]))}
 }Scratch.extensions.register(new vectorr());})(Scratch);
