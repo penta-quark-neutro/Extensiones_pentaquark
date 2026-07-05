@@ -54,6 +54,8 @@ class Typedvectorr{getInfo(){return{id:'Typedvectorr',name:'Typedvectorr',color1
 {opcode:'view',blockType:rep,text:'new DataView[a][b][c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:'buffer'},b:{type:num,defaultValue:'0'},c:{type:num,defaultValue:'2'}}},
 {opcode:'setv',blockType:rep,text:'[c].[u][a][b][d]',hideFromPalette:vecs,arguments:{u:{type:txt,menu:'setm'},a:{type:num,defaultValue:'0'},b:{type:num,defaultValue:'5'},c:{type:txt,defaultValue:'DataView'},d:{type:bol1,defaultValue:''}}},
 {opcode:'props',blockType:rep,text:'[a].[u]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},u:{type:txt,menu:'pr'}}},
+{opcode:'rand',blockType:com,text:'valores aleatorios[a](bytes<65536)',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'rand2',blockType:com,text:'valores aleatorios[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
 {blockType:"label",text:"solo Uint8Array",hideFromPalette:vecs},//--------------------------------------------------------------------------------------------------------------------------------
 {opcode:'thex',blockType:rep,text:'[a].toHex',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'tb64',blockType:rep,text:'[a].toBase64',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
@@ -67,7 +69,7 @@ class Typedvectorr{getInfo(){return{id:'Typedvectorr',name:'Typedvectorr',color1
 {opcode:'mtx1',blockType:com,text:'mtz(3*3)[a]*Arr(3)[b]_salida[c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
 {opcode:'mtx2',blockType:com,text:'mtz(4*4)[a]*Arr(4)[b]_salida[c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
 ],menus:{
-outs:{acceptReporters:0,items:['+','-','*','/','**','%','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','&','|','^','<<','>>','>>>','~']},
+outs:{acceptReporters:0,items:['+','-','*','/','**','%','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','Log2','|','&','^','~','<<','>>','>>>','tofixed','senh','cosh','tanh','asenh','acosh','atanh','fround','f16round','round','trunc']},
 Filt:{acceptReporters:0,items:['==','===','<','>','>=','<=','!=']},
 Asig:{acceptReporters:0,items:['=','+=','-=','/=','*=','**=','<<=','??=','%=','>>=','>>>=','&=','|=','^=']},
 uins:{acceptReporters:0,items:['Uint8ClampedArray','Uint8Array','Uint16Array','Uint32Array','Int8Array','Int16Array','Int32Array','Float16Array','Float32Array','Float64Array','BigInt64Array','BigUint64Array']},
@@ -77,10 +79,12 @@ pr:{acceptReporters:0,items:['buffer','byteLength','byteOffset','detached']}
 ma(ar){switch(ar.ou){
 case'+':return ar.a.map(k=>k*1+ar.b*1);case'-':return ar.a.map(k=>k-ar.b);case'*':return ar.a.map(k=>k*ar.b);case'/':return ar.a.map(k=>k/ar.b);
 case'**':return ar.a.map(k=>k**ar.b);case'%':return ar.a.map(k=>k%ar.b);case'LogB':return ar.a.map(k=>Math.log(k)/Math.log(ar.b));case'sen':return ar.a.map(Math.sin);case'cos':return ar.a.map(Math.cos);
-case'tan':return ar.a.map(Math.tan);case'sign':return ar.a.map(Math.sign);case'abs':return ar.a.map(Math.abs);case'rampa':return ar.a.map(k=>(k>0 ? k:0));
-case'lim+':return ar.a.map(k=>(k>ar.b ? ar.b:k));case'lim-':return ar.a.map(k=>(k<ar.b ? ar.b:k));case'int':return ar.a.map(Math.trunc);
-case'arcsen':return ar.a.map(Math.asin);case'arccos':return ar.a.map(Math.acos);case'arctan':return ar.a.map(Math.atan);case'e^':return ar.a.map(Math.exp);
-case'Ln':return ar.a.map(Math.log);case'Log10':return ar.a.map(Math.log10);case'&':return ar.a.map(k=>k&ar.b);case'|':return ar.a.map(k=>k|ar.b);case'^':return ar.a.map(k=>k^ar.b);case'<<':return ar.a.map(k=>k<<ar.b);case'>>':return ar.a.map(k=>k>>ar.b);case'>>>':return ar.a.map(k=>k>>>ar.b);case'~':return ar.a.map(k=>~k);
+case'tan':return ar.a.map(Math.tan);case'sign':return ar.a.map(Math.sign);case'abs':return ar.a.map(Math.abs);case'rampa':return ar.a.map(k=>(k>0 ? k:0));case'lim+':return ar.a.map(k=>(k>ar.b ? ar.b:k));
+case'lim-':return ar.a.map(k=>(k<ar.b ? ar.b:k));case'int':return ar.a.map(Math.trunc);case'arcsen':return ar.a.map(Math.asin);case'arccos':return ar.a.map(Math.acos);
+case'arctan':return ar.a.map(Math.atan);case'e^':return ar.a.map(Math.exp);case'Ln':return ar.a.map(Math.log);case'Log10':return ar.a.map(Math.log10);case'|':return ar.a.map(k=>k|ar.b);case'&':return ar.a.map(k=>k&ar.b);
+case'^':return ar.a.map(k=>k^ar.b);case'~':return ar.a.map(k=>~k);case'<<':return ar.a.map(k=>k<<ar.b);case'>>':return ar.a.map(k=>k>>ar.b);case'>>>':return ar.a.map(k=>k>>>ar.b);
+case'tofixed':return ar.a.map(k=>k.toFixed(ar.b));case'senh':return ar.a.map(Math.sinh);case'cosh':return ar.a.map(Math.cosh);case'tanh':return ar.a.map(Math.tanh);case'asenh':return ar.a.map(Math.asinh);case'acosh':return ar.a.map(Math.acosh);case'atanh':return ar.a.map(Math.atanh);
+case'Log2':return ar.a.map(Math.log2);case'fround':return ar.a.map(k=>Math.fround(k));case'f16round':return ar.a.map(k=>Math.f16round(k));case'round':return ar.a.map(k=>Math.round(k));case'trunc':return ar.a.map(k=>Math.trunc(k));
 }}
 Fil(ar){switch(ar.ou){
 case'==':return ar.a.filter(dat=>(dat==ar.b ? 1:0));case'===':return ar.a.filter(dat=>(dat===ar.b ? 1:0));
@@ -154,4 +158,6 @@ mtxi0(){return [1,0,0,1]}mtxi1(){return [1,0,0,0,1,0,0,0,1]}mtxi2(){return [1,0,
 join(ar){return ar.a.join(ar.b)}
 isview(ar){return ArrayBuffer.isView(ar.a)}
 esTyped(ar){return  ar.a instanceof Uint8Array.__proto__}
+rand(ar){crypto.getRandomValues(ar.a)}
+rand2(ar){let i=0;while(i<=Math.ceil(ar.a.byteLength/(2**16))){crypto.getRandomValues(ar.a.subarray((2**16)*i,(2**16)*(1+(i++))))}}
 }Scratch.extensions.register(new Typedvectorr());})(Scratch);
