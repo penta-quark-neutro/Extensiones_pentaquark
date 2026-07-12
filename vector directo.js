@@ -40,8 +40,8 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'med5',blockType:rep,text:'desviacion tipica[a]',hideFromPalette:ops,arguments:{a:{type:txt}}},
 {opcode:'nor',blockType:rep,text:'||[a]||',hideFromPalette:ops,arguments:{a:{type:txt}}},
 {opcode:'unit',blockType:rep,text:'versor[a]',hideFromPalette:ops,arguments:{a:{type:txt}}},
-{opcode:'angu',blockType:rep,text:'Θ°[a]',hideFromPalette:ops||1,arguments:{a:{type:txt}}},
-{opcode:'Refj',blockType:rep,text:'Reflexion[a]normal[b]',hideFromPalette:ops,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'angu',blockType:rep,text:'Θ°[a]',hideFromPalette:ops,arguments:{a:{type:txt}}},
+{opcode:'Refj',blockType:rep,text:'Reflexion[a]normal[b]K[c]',hideFromPalette:ops,arguments:{a:{type:txt},b:{type:txt},c:{type:num,defaultValue:'2'}}},
 {opcode:'proyvec',blockType:rep,text:'Proyeccion vectorial[a][b]',hideFromPalette:ops,arguments:{a:{type:txt},b:{type:txt}}},
 {opcode:'proyesc',blockType:rep,text:'Proyeccion escalar[a][b]',hideFromPalette:ops,arguments:{a:{type:txt},b:{type:txt}}},
 {opcode:'Rotacion',blockType:rep,text:'3DRotar[a]en eje[b][c]grados',hideFromPalette:ops,arguments:{a:{type:txt},b:{type:num},c:{type:num,defaultValue:'45'}}},
@@ -509,7 +509,7 @@ case'function->':return ar.a.findLastIndex(ar.b);case'[x]':return ar.a.findLastI
 rpt4(ar){ar.a[ar.b]=ar.c,ar.a[ar.d]=ar.e;}rpt5(ar){ar.a[ar.b]=ar.c,ar.a[ar.d]=ar.e,ar.a[ar.f]=ar.g;}rpt6(ar){ar.a[ar.b]=ar.c,ar.a[ar.d]=ar.e,ar.a[ar.f]=ar.g,ar.a[ar.h]=ar.i;}
 arrcopy(ar){return ar.a.copyWithin(ar.b,ar.c,ar.d)}arnex(ar){return ar.a.next()}aritera(ar){return ar.a[Symbol.iterator]()}
 arentries(ar){return ar.a.entries()}withh(ar){return ar.a.with(ar.b,ar.c)}
-att(ar){return ar.a.at(ar.b)}angu(ar){return Math.acos(ar.a[0]/Math.hypot(...ar.a))}
+att(ar){return ar.a.at(ar.b)}angu(ar){return Math.atan2(ar.a[0],ar.a[1])}
 m({a,b}){var i=0,fin=Array(a.length);while(i<(a.length)){fin[i]=a[i]*1+b[i++]*1;}return fin;}
 r({a,b}){var i=0,fin=Array(a.length);while(i<(a.length)){fin[i]=a[i]-b[i++];}return fin;}
 Hadamard({a,b}){var i=0,fin=Array(a.length);while(i<(fin.length)){fin[i]=(a[i]*b[i++]);}return fin;}
@@ -549,7 +549,7 @@ s11({a,b}){var i=0;while(i<b.length){b[i].setXY(b[i].x*1+a[0]*1,b[i++].y*1+a[1]*
 prto(ar){var i=0,out=1;while(i<ar.a.length){out*=ar.a[i++];}return out;}
 muVE(ar){var i=0,fin=Array(ar.a.length);while(i<fin.length){fin[i]=ar.a[i++]*ar.b}return fin;}
 cruz(ar){return [(ar.a[1]*ar.b[2])-(ar.a[2]*ar.b[1]),(ar.a[2]*ar.b[0])-(ar.a[0]*ar.b[2]),(ar.a[0]*ar.b[1])-(ar.a[1]*ar.b[0])]}
-Refj({a,b}){var i=0,fin=0,j=0;while(i<(a.length)){fin+=((a[i])*(b[i++]));}j=2*(fin/Math.hypot(...b)**2),i=0,fin=Array(a.length);while(i<(a.length)){fin[i]=a[i]-b[i++]*j;}return fin;}
+Refj({a,b,c}){var i=0,fin=0,j=0;while(i<(a.length)){fin+=((a[i])*(b[i++]));}j=c*(fin/Math.hypot(...b)**2),i=0,fin=Array(a.length);while(i<(a.length)){fin[i]=a[i]-b[i++]*j;}return fin;}
 proyvec({a,b}){var i=0,fin=0;while(i<(a.length)){fin+=((a[i])*(b[i++]));}fin/=Math.hypot(...b)**2;return a.map(k=>k*fin);}
 proyesc({a,b}){var i=0,fin=0;while(i<(a.length)){fin+=((a[i])*(b[i++]));}return fin/=Math.hypot(...b)**2;}
 rev(ar){return ar.a.reverse()}torev(ar){return ar.a.toReversed()}join(ar){return ar.a.join(ar.b)}sort(ar){return ar.a.sort()}tosort(ar){return ar.a.toSorted()}

@@ -53,7 +53,7 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {func:'herr0',blockType:vgbb,text:'Redes pentaquark'},
 {func:'herr1',blockType:vgbb,hideFromPalette:!fun,text:'Mostrar funciones',},{func:'herr2',blockType:vgbb,hideFromPalette:fun,text:'Ocultar funciones'},
 {func:'herr3',blockType:vgbb,hideFromPalette:!dap,text:'Mostrar datos y propiedades',},{func:'herr4',blockType:vgbb,hideFromPalette:dap,text:'Ocultar datos y propiedades'},
-{func:'herr5',blockType:vgbb,hideFromPalette:!obs,text:'Mostrar Objetos',},{func:'herr6',blockType:vgbb,hideFromPalette:obs,text:'Ocultar Objetos'},
+{func:'herr5',blockType:vgbb,hideFromPalette:!obs,text:'Mostrar Objetos y utiles',},{func:'herr6',blockType:vgbb,hideFromPalette:obs,text:'Ocultar Objetos y utiles'},
 {blockType:"label",text:"Uso de funciones",hideFromPalette:fun},//--------------------------------------------------------------------------------------------------------------------------------
 {func:'herr7',blockType:vgbb,hideFromPalette:!pun||fun,text:'Ocultar punto funcion',},{func:'herr8',blockType:vgbb,hideFromPalette:pun||fun,text:'Mostrar punto funcion'},
 {func:'herr9',blockType:vgbb,hideFromPalette:!blo||fun,text:'Mostrar forma comando',},{func:'herr10',blockType:vgbb,hideFromPalette:blo||fun,text:'Ocultar forma comando'},
@@ -103,6 +103,9 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me40',blockType:rep,text:'AsyncFunction(...[a],[b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'Args'},b:{type:txt,defaultValue:'Estructura'}}},
 {opcode:'me42',blockType:rep,text:'GeneratorFunction(...[a],[b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'Args'},b:{type:txt,defaultValue:'Estructura'}}},
 {opcode:'me43',blockType:rep,text:'AsyncGeneratorFunction(...[a],[b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'Args'},b:{type:txt,defaultValue:'Estructura'}}},
+{opcode:'me125',blockType:rep,text:'class[a]extends[e]constructor[b][c]metodos[d]',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'prueba'},b:{type:txt,defaultValue:'A'},c:{type:txt,defaultValue:'super(A)'},d:{type:txt,defaultValue:'metodo(){return this}'},e:{type:txt,defaultValue:''}}},
+{opcode:'me123',blockType:rep,text:'class[a]constructor[b][c]metodos[d]',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'prueba'},b:{type:txt,defaultValue:'A'},c:{type:txt,defaultValue:'this.a=1'},d:{type:txt,defaultValue:'metodo(){return this.a}'}}},
+{opcode:'me124',blockType:rep,text:'class[a]metodos[d]',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'prueba'},d:{type:txt,defaultValue:'metodo(){return this.a}'}}},
 {opcode:'me44',blockType:rep,text:'[a].next([b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me45',blockType:rep,text:'[a].return([b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'0'}}},
 {opcode:'me46',blockType:rep,text:'[a].throw([b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'Error'}}},
@@ -158,6 +161,7 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me21_2',blockType:com0,text:'frezze[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me22',blockType:bol,text:'isFrozen[a]?',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me30',blockType:rep,text:'seal[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me122',blockType:com0,text:'seal[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me31',blockType:bol,text:'isSealed[a]?',hideFromPalette:dap,hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me23',blockType:rep,text:'create[a][b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me99',blockType:rep,text:'construct([a],[b],[c])',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
@@ -176,6 +180,7 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me92',blockType:bol,text:'[a]?[b]:[c]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'1'},c:{type:txt,defaultValue:'0'}}},
 {opcode:'me39',blockType:rep,text:'typeof[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me54',blockType:bol,text:'[a]instanceof[b]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me121',blockType:bol,text:'isNaN[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me41',blockType:com0,text:'[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me119',blockType:bol,text:'[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me71',blockType:rep,text:'Referencia variable[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'mi variable'}}},
@@ -184,14 +189,15 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me101',blockType:Scratch.BlockType.HAT,text:'Si[a]',hideFromPalette:obs,isEdgeActivated:true,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me104',blockType:bol,text:'void[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me118',blockType:com0,text:'throw[a]',isTerminal:1,hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me126',blockType:rep,text:'atob[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me127',blockType:rep,text:'btoa[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 
 ],menus:{pr:{acceptReporters:0,items:['value','writable','enumerable','configurable']},
-in:{acceptReporters:0,items:['vm','target','util','Scratch','Math','Atomics','Object','Symbol','Array','String','window','crypto','Map','Set','twgl','gl','Proxy','navigator','FloatCadenaMarkov']},
+in:{acceptReporters:0,items:['vm','target','util','Scratch','Math','Atomics','Reflect','Object','Symbol','Array','String','window','crypto','Map','Set','WeakMap','WeakSet','WeakRef','twgl','gl','Proxy','navigator','FloatCadenaMarkov','blockly','BigInt','ArrayBuffer','DataView','Number','Uint8ClampedArray','Uint8Array','Uint16Array','Uint32Array','Int8Array','Int16Array','Int32Array','Float16Array','Float32Array','Float64Array','BigInt64Array','BigUint64Array']},
 vals:{acceptReporters:0,items:['true','false','Undefined','NaN','null','Infinity']}}
 };}
 herr0(){Scratch.openWindow('https://linktr.ee/Penta_quark_neutro');}
-herr1(){fun=0;ref();}herr2(){fun=1;ref();}herr3(){dap=0;ref();}herr4(){dap=1;ref();}
-herr5(){obs=0;ref();}herr6(){obs=1;ref();}herr7(){pun=0;ref();}herr8(){pun=1;ref();}
+herr1(){fun=0;ref();}herr2(){fun=1;ref();}herr3(){dap=0;ref();}herr4(){dap=1;ref();}herr5(){obs=0;ref();}herr6(){obs=1;ref();}herr7(){pun=0;ref();}herr8(){pun=1;ref();}
 herr9(){blo=0;ref();}herr10(){blo=1;ref();}
 me00({a}){return [a];}me0({a,b}){return [a,b];}me01({a,b,c}){return [a,b,c];}me10({a,b,c,d}){return [a,b,c,d];}
 me1(){return {};}
@@ -204,7 +210,7 @@ me7_2({a,b,c}){a[b]=c}
 me8(ar){return ar.a in ar.b;}
 me9(ar){Reflect.deleteProperty(ar.a,ar.b);return ar.a;}me9_2(ar){Reflect.deleteProperty(ar.a,ar.b);}
 me11(ar){return JSON.stringify(ar.a);}
-me12(ar,util){switch(ar.a){case'vm':return Scratch.vm;case'target':return util.target;case'util':return util;case'Scratch':return Scratch;case'Math':return Math;case'Atomics':return Atomics;case'Object':return Object;case'Symbol':return Symbol;case'Array':return Array;case'String':return String;case'window':return window;case'crypto':return crypto;case'Map':return Map;case'Set':return Set;case'twgl':return vm.renderer.exports.twgl;case'gl':return vm.renderer._gl;case'Proxy':return Proxy;case'navigator':return navigator;case'FloatCadenaMarkov':return window.cadena;}}
+me12(ar,util,blk){switch(ar.a){case'vm':return Scratch.vm;case'target':return util.target;case'util':return util;case'Scratch':return Scratch;case'twgl':return vm.renderer.exports.twgl;case'gl':return vm.renderer._gl;case'blockly':return blk;case'FloatCadenaMarkov':return window.cadena;default:return window[ar.a]}}
 me13(ar){return JSON.parse(ar.a);}
 me14(ar){return Object.is(ar.a,ar.b);}
 me15({a,b,c}){return Reflect.apply(a,b,c);}me70({a,b,c}){Reflect.apply(a,b,c);}
@@ -280,4 +286,11 @@ me117(ar){return ar.a.call(ar.b,...ar.c)}
 me118(ar){throw ar.a}
 me119(ar){return ar.a}
 me120(ar){return a.isPrototypeOf(ar.b)}
+me121(ar){return isNaN(ar.a)}
+me122(ar){Object.seal(ar.a)}
+me123(ar){return (Function('return class '+ar.a+'{constructor('+ar.b+'){'+ar.c+'}'+ar.d+'}'))()}
+me124(ar){return (Function('return class '+ar.a+'{'+ar.d+'}'))()}
+me125(ar){return (Function('Ext','return class '+ar.a+' extends Ext {constructor('+ar.b+'){'+ar.c+'}'+ar.d+'}'))(ar.e)}
+me126(ar){return atob(ar.a)}
+me127(ar){return btoa(ar.a)}
 }Scratch.extensions.register(new exps());})(Scratch);
