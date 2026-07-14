@@ -116,12 +116,15 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'cu7',blockType:rep,text:'[a][b][c][d][e][f]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:'5'},b:{type:txt,defaultValue:'2'},c:{type:txt,defaultValue:'-1'},d:{type:txt,defaultValue:'-4'},e:{type:txt,defaultValue:'-9'},f:{type:txt,defaultValue:'7'}}},
 {opcode:'cu8',blockType:rep,text:'[a][b][c][d][e][f][g]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:'5'},b:{type:txt,defaultValue:'2'},c:{type:txt,defaultValue:'-1'},d:{type:txt,defaultValue:'-4'},e:{type:txt,defaultValue:'-9'},f:{type:txt,defaultValue:'7'},g:{type:txt,defaultValue:'0'}}},
 {opcode:'cu5',blockType:rep,text:'[a][b][c][d][e][f][g][h]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:'5'},b:{type:txt,defaultValue:'2'},c:{type:txt,defaultValue:'-1'},d:{type:txt,defaultValue:'-4'},e:{type:txt,defaultValue:'-9'},f:{type:txt,defaultValue:'7'},g:{type:txt,defaultValue:'0'},h:{type:txt,defaultValue:'8'}}},
-{opcode:'pt2',blockType:rep,text:'[a]〚[b]〛〚[c]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'2'},c:{type:txt,defaultValue:'0'}}},
-{opcode:'pt3',blockType:rep,text:'[a]〚[b]〛〚[c]〛〚[d]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'2'},c:{type:txt,defaultValue:'0'},d:{type:txt,defaultValue:'3'}}},
-{opcode:'pt4',blockType:rep,text:'[a]〚[b]〛〚[c]〛〚[d]〛〚[e]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'2'},c:{type:txt,defaultValue:'0'},d:{type:txt,defaultValue:'3'},e:{type:txt,defaultValue:'7'}}},
-{opcode:'rpt4',blockType:com,text:'[a]〚[b]〛=[c],〚[d]〛=[e]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'2'},c:{type:txt,defaultValue:'0'},d:{type:txt,defaultValue:'1'},e:{type:txt,defaultValue:'255'}}},
-{opcode:'rpt5',blockType:com,text:'[a]〚[b]〛=[c],〚[d]〛=[e],〚[f]〛=[g]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'2'},c:{type:txt,defaultValue:'0'},d:{type:txt,defaultValue:'1'},e:{type:txt,defaultValue:'255'},f:{type:txt,defaultValue:'0'},g:{type:txt,defaultValue:'7'}}},
-{opcode:'rpt6',blockType:com,text:'[a]〚[b]〛=[c],〚[d]〛=[e],〚[f]〛=[g],〚[h]〛=[i]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'2'},c:{type:txt,defaultValue:'0'},d:{type:txt,defaultValue:'1'},e:{type:txt,defaultValue:'255'},f:{type:txt,defaultValue:'0'},g:{type:txt,defaultValue:'7'},h:{type:txt,defaultValue:'3'},i:{type:txt,defaultValue:'-10'}}},
+{opcode:'pt2',blockType:rep,text:'[a]〚[b]〛〚[c]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
+{opcode:'pt3',blockType:rep,text:'[a]〚[b]〛〚[c]〛〚[d]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt}}},
+{opcode:'pt4',blockType:rep,text:'[a]〚[b]〛〚[c]〛〚[d]〛〚[e]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt}}},
+{opcode:'rpt4',blockType:com,text:'[a]〚[b]〛=[c],〚[d]〛=[e]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt}}},
+{opcode:'rpt5',blockType:com,text:'[a]〚[b]〛=[c],〚[d]〛=[e],〚[f]〛=[g]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt},f:{type:txt},g:{type:txt}}},
+{opcode:'rpt6',blockType:com,text:'[a]〚[b]〛=[c],〚[d]〛=[e],〚[f]〛=[g],〚[h]〛=[i]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt},f:{type:txt},g:{type:txt},h:{type:txt},i:{type:txt}}},
+{opcode:'rpt18',blockType:com,text:'[a]〚[b]〛〚[c]〛=[d]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt}}},
+{opcode:'rpt19',blockType:com,text:'[a]〚[b]〛〚[c]〛〚[d]〛=[e]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt}}},
+{opcode:'rpt20',blockType:com,text:'[a]〚[b]〛〚[c]〛〚[d]〛〚[e]〛=[f]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt},f:{type:txt}}},
 {opcode:'rpt7',blockType:com,text:'〚...[a]〛=〚...[b]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt}}},
 {opcode:'rpt8',blockType:rep,text:'++[a]〚[b]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'}}},
 {opcode:'rpt9',blockType:rep,text:'--[a]〚[b]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'}}},
@@ -131,6 +134,8 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'rpt13',blockType:com,text:'--[a]〚[b]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'}}},
 {opcode:'rpt14',blockType:com,text:'[a]〚[b]〛++',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'}}},
 {opcode:'rpt15',blockType:com,text:'[a]〚[b]〛--',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'}}},
+{opcode:'rpt16',blockType:rep,text:'lista[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:'lista_1'}}},
+{opcode:'rpt17',blockType:com,text:'lista[a]=[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:'lista_1'},b:{type:txt}}},
 {blockType:"label",text:"Obj.vec o propiedad",hideFromPalette:prop},//--------------------------------------------------------------------------------------------------------------------------------
 {opcode:'tagtp1m',blockType:com,text:'añadir[t]tp1 NR',hideFromPalette:prop,arguments:{t:{type:txt,defaultValue:'K'}}},
 {opcode:'tagtp1mc',blockType:com,text:'añadir[t]tp1',hideFromPalette:prop,arguments:{t:{type:txt,defaultValue:'K'}}},
@@ -258,12 +263,17 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'geo14',blockType:eva,text:'¿cuadrado[cu]en[du]rectangulo?',hideFromPalette:geo,arguments:{cu:{type:txt},du:{type:txt}}},
 {opcode:'geo12',blockType:eva,text:'¿circulo[a]en[b]rectangulo?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
 {opcode:'geo13',blockType:eva,text:'¿circulo[a]en[b]cuadrado?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'geo15',blockType:rep,text:'punto[a]en lista[b]de[c]',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt},c:{type:txt,menu:'figs'}}},
+{opcode:'geo16',blockType:rep,text:'circulo[a]en lista[b]de[c]',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt},c:{type:txt,menu:'figs'}}},
+{opcode:'geo17',blockType:rep,text:'cuadrado[a]en lista[b]de[c]',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt},c:{type:txt,menu:'figs'}}},
+{opcode:'geo18',blockType:rep,text:'rectangulo[a]en lista[b]de[c]',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt},c:{type:txt,menu:'figs'}}},
 
 ],menus:{
 outs:{acceptReporters:0,items:['+','-','*','/','**','%','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','Log2','|','&','^','~','<<','>>','>>>','tofixed','[x]','function->','parse','stringify','senh','cosh','tanh','asenh','acosh','atanh','min','max','fround','f16round','round','trunc']},
 outs2:{acceptReporters:0,items:['+','-','*','/','**','%','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','Log2','|','&','^','~','<<','>>','>>>','tofixed','function->','senh','cosh','tanh','asenh','acosh','atanh']},
 Filt:{acceptReporters:0,items:['==','===','<','>','>=','<=','!=','includes','!includes','Reflect.has','!Reflect.has','typeof','!isNaN','isNaN','[x]','function->']},
 Asig:{acceptReporters:1,items:['=','+=','-=','/=','*=','**=','<<=','??=','%=','>>=','>>>=','|=','&=','^=','||=','&&=']},
+figs:{acceptReporters:0,items:['circulos','cuadrados','rectangulos']},
 redu:{acceptReporters:1,items:['+','-','*','/','**','|','&','^','max','min']}}
 };}
 sed1({v,w}){return [v[0]*1+w[0]*1,v[1]*1+w[1]*1,v[2]*1+w[2]*1,v[3]*1+w[3]*1,v[4]*1+w[4]*1,v[5]*1+w[5]*1,v[6]*1+w[6]*1,v[7]*1+w[7]*1,v[8]*1+w[8]*1,v[9]*1+w[9]*1,v[10]*1+w[10]*1,v[11]*1+w[11]*1,v[12]*1+w[12]*1,v[13]*1+w[13]*1,v[14]*1+w[14]*1,v[15]*1+w[15]*1]}
@@ -419,7 +429,7 @@ case'round':return ar.a.map(k=>Math.round(k));case'trunc':return ar.a.map(k=>Mat
 }}
 fore(ar){switch(ar.ou){
 case'+':ar.a.forEach((j,k,l)=>l[k]+=ar.b*1);break;case'-':ar.a.forEach((j,k,l)=>l[k]-=ar.b);break;case'*':ar.a.forEach((j,k,l)=>l[k]*=ar.b);break;case'/':ar.a.forEach((j,k,l)=>l[k]/=ar.b);break;
-case'**':ar.a.forEach((j,k,l)=>l[k]**=ar.b);case'%':ar.a.forEach((j,k,l)=>l[k]%=ar.b);break;case'LogB':ar.a.forEach((j,k,l)=>l[k]=Math.log(j)/Math.log(ar.b));break;case'sen':ar.a.forEach((j,k,l)=>l[k]=Math.sin(j));break;case'cos':ar.a.forEach((j,k,l)=>l[k]=Math.cos(j));break;
+case'**':ar.a.forEach((j,k,l)=>l[k]**=ar.b);break;case'%':ar.a.forEach((j,k,l)=>l[k]%=ar.b);break;case'LogB':ar.a.forEach((j,k,l)=>l[k]=Math.log(j)/Math.log(ar.b));break;case'sen':ar.a.forEach((j,k,l)=>l[k]=Math.sin(j));break;case'cos':ar.a.forEach((j,k,l)=>l[k]=Math.cos(j));break;
 case'tan':ar.a.forEach((j,k,l)=>l[k]=Math.tan(j));break;case'sign':ar.a.forEach((j,k,l)=>l[k]=Math.sign(j));break;case'abs':ar.a.forEach((j,k,l)=>l[k]=Math.abs(j));break;case'rampa':ar.a.forEach((j,k,l)=>l[k]=(j>0 ? j:0));break;
 case'lim+':ar.a.forEach((j,k,l)=>l[k]=(j>ar.b ? ar.b:j));break;case'lim-':ar.a.forEach((j,k,l)=>l[k]=(j<ar.b ? ar.b:j));break;case'int':ar.a.forEach((j,k,l)=>l[k]=Math.trunc(j));break;case'arcsen':ar.a.forEach((j,k,l)=>l[k]=Math.asin(j));break;
 case'arccos':ar.a.forEach((j,k,l)=>l[k]=Math.acos(j));break;case'arctan':ar.a.forEach((j,k,l)=>l[k]=Math.atan(j));break;case'e^':ar.a.forEach((j,k,l)=>l[k]=Math.exp(j));break;case'Ln':ar.a.forEach((j,k,l)=>l[k]=Math.log(j));break;
@@ -427,7 +437,7 @@ case'Log10':ar.a.forEach((j,k,l)=>l[k]=Math.log10(j));break;case'|':ar.a.forEach
 case'~':ar.a.forEach((j,k,l)=>l[k]=~j);break;case'<<':ar.a.forEach((j,k,l)=>l[k]<<=ar.b);break;case'>>':ar.a.forEach((j,k,l)=>l[k]>>=ar.b);break;case'>>>':ar.a.forEach((j,k,l)=>l[k]>>>=ar.b);break;
 case'tofixed':ar.a.forEach((j,k,l)=>l[k]=j.toFixed(ar.b));break;case'function->':ar.a.forEach(ar.b);break;case'senh':ar.a.forEach((j,k,l)=>l[k]=Math.sinh(j));break;case'cosh':ar.a.forEach((j,k,l)=>l[k]=Math.cosh(j));break;
 case'tanh':ar.a.forEach((j,k,l)=>l[k]=Math.tanh(j));break;case'asenh':ar.a.forEach((j,k,l)=>l[k]=Math.asinh(j));break;case'acosh':ar.a.forEach((j,k,l)=>l[k]=Math.acosh(j));break;case'atanh':ar.a.forEach((j,k,l)=>l[k]=Math.atanh(j));break;
-case'Log2':ar.a.forEach((j,k,l)=>l[k]=Math.Log2(j));break;
+case'Log2':ar.a.forEach((j,k,l)=>l[k]=Math.log2(j));break;
 }}
 Fil(ar){switch(ar.ou){
 case'==':return ar.a.filter(dat=>(dat==ar.b ? 1:0));case'===':return ar.a.filter(dat=>(dat===ar.b ? 1:0));case'isNaN':return ar.a.filter(k=>isNaN(k));
@@ -604,4 +614,29 @@ geo12({a,b}){let pun=Array.from(a);pun[0]=(pun[0]<b[0]?b[0]:(pun[0]>b[0]+b[2]?b[
 geo13({a,b}){let pun=Array.from(a);pun[0]=(pun[0]<b[0]?b[0]:(pun[0]>b[0]+b[2]?b[0]+b[2]:pun[0])),pun[1]=(pun[1]<b[1]?b[1]:(pun[1]>b[1]+b[2]?b[1]+b[2]:pun[1]));return Math.hypot(a[0]-pun[0],a[1]-pun[1])<=a[2]}
 rpt12(ar){++ar.a[ar.b]}rpt13(ar){--ar.a[ar.b]}rpt14(ar){ar.a[ar.b]++}rpt15(ar){ar.a[ar.b]--}
 geo14({cu,du}){return !((cu[0]>=du[0]+du[2])||(cu[0]+cu[2]<=du[0])||(cu[1]>=du[1]+du[3])||(cu[1]+cu[2]<=du[1]))}
+geo15({a,b,c}){const px=a[0],py=a[1];let i=0,col=[];
+switch(c){case'circulos':while(i<b.length){if(Math.hypot(px-b[i][0],py-b[i][1])<=b[i][2]){col.push(i)}i++}return col;break;
+case'rectangulos':while(i<b.length){if((px>=b[i][0]&&px<=(b[i][0]+b[i][2]))&&(py>=b[i][1]&&py<=(b[i][1]+b[i][3]))){col.push(i)}i++}return col;break;
+case'cuadrados':while(i<b.length){if((px>=b[i][0]&&px<=(b[i][0]+b[i][2]))&&(py>=b[i][1]&&py<=(b[i][1]+b[i][2]))){col.push(i)}i++}return col;break;}}
+geo16({a,b,c}){const px=a[0],py=a[1],rd=a[2];let i=0,col=[],pun;
+switch(c){case'circulos':while(i<b.length){if(Math.hypot(px-b[i][0],py-b[i][1])<=(b[i][2]+rd)){col.push(i)}i++}return col;break;
+case'rectangulos':while(i<b.length){pun=[px,py];pun[0]=(pun[0]<b[i][0]?b[i][0]:(pun[0]>b[i][0]+b[i][2]?b[i][0]+b[i][2]:pun[0])),pun[1]=(pun[1]<b[i][1]?b[i][1]:(pun[1]>b[i][1]+b[i][3]?b[i][1]+b[i][3]:pun[1]));
+if(Math.hypot(px-pun[0],py-pun[1])<=rd){col.push(i)}i++}return col;break;
+case'cuadrados':while(i<b.length){pun=[px,py];pun[0]=(pun[0]<b[i][0]?b[i][0]:(pun[0]>b[i][0]+b[i][2]?b[i][0]+b[i][2]:pun[0])),pun[1]=(pun[1]<b[i][1]?b[i][1]:(pun[1]>b[i][1]+b[i][2]?b[i][1]+b[i][2]:pun[1]));
+if(Math.hypot(px-pun[0],py-pun[1])<=rd){col.push(i)}i++}return col;break;}}
+geo17({a,b,c}){const px=a[0],py=a[1],ld=a[2];let i=0,col=[],pun;
+switch(c){case'circulos':while(i<b.length){pun=[b[i][0],b[i][1]];pun[0]=(pun[0]<px?px:(pun[0]>px+ld?px+ld:pun[0])),pun[1]=(pun[1]<py?py:(pun[1]>py+ld?py+ld:pun[1]));
+if(Math.hypot(b[i][0]-pun[0],b[i][1]-pun[1])<=b[i][2]){col.push(i)}i++}return col;break;
+case'rectangulos':while(i<b.length){if(!((px>=b[i][0]+b[i][2])||(px+ld<=b[i][0])||(py>=b[i][1]+b[i][3])||(py+ld<=b[i][1]))){col.push(i)}i++}return col;break;
+case'cuadrados':while(i<b.length){if(!((px>=b[i][0]+b[i][2])||(px+ld<=b[i][0])||(py>=b[i][1]+b[i][2])||(py+ld<=b[i][1]))){col.push(i)}i++}return col;break;}}
+geo18({a,b,c}){const px=a[0],py=a[1],an=a[2],la=a[3];let i=0,col=[],pun;
+switch(c){case'circulos':while(i<b.length){pun=[b[i][0],b[i][1]];pun[0]=(pun[0]<px?px:(pun[0]>px+an?px+an:pun[0])),pun[1]=(pun[1]<py?py:(pun[1]>py+la?py+la:pun[1]));
+if(Math.hypot(b[i][0]-pun[0],b[i][1]-pun[1])<=b[i][2]){col.push(i)}i++}return col;break;
+case'rectangulos':while(i<b.length){if(!((px>=b[i][0]+b[i][2])||(px+an<=b[i][0])||(py>=b[i][1]+b[i][3])||(py+la<=b[i][1]))){col.push(i)}i++}return col;break;
+case'cuadrados':while(i<b.length){if(!((b[i][0]>=px+an)||(b[i][0]+b[i][2]<=px)||(b[i][1]>=py+la)||(b[i][1]+b[i][2]<=py))){col.push(i)}i++}return col;break;}}
+rpt16(ar,util){return util.target.lookupVariableByNameAndType(ar.a+'','list').value}
+rpt17(ar,util){util.target.lookupVariableByNameAndType(ar.a+'','list').value=ar.b}
+rpt18(ar){ar.a[ar.b][ar.c]=ar.d}
+rpt19(ar){ar.a[ar.b][ar.c][ar.d]=ar.e}
+rpt20(ar){ar.a[ar.b][ar.c][ar.d][ar.e]=ar.f}
 }Scratch.extensions.register(new vectorr());})(Scratch);
