@@ -42,11 +42,11 @@ una gran cantidad de metodos aritmeticos y gestion de referencias de Objetos del
 ademas de manejar numeros complejos,cuaterniones,octaniones y sedeniones.
 cuenta con deteccion de colicion geometrica basica.
 ⚠️permite ejecucion arbitraria de codigo.
-222 bloques, 202 acciones con menus.
++220 bloques, +200 acciones con menus.
 ## objetos
 es la mas potente extension hasta el momento.
 reintroduce toda la metaprogramacion de Js, en otros terminos: se puede volver a crear y ejecutar funciones de forma dinamica.
 ademas de una gran manejo de Object, tambien expone objetos internos de Turbowarp como VM, y da de foma rapida otros objetos imporatantes.
 tecnicamente con esta, se puede hacer todo lo que Js pueda hacer, pero recomiendo usarla junto a otras.
 ⚠️permite ejecucion arbitraria de codigo.
-125 bloques, 26 acciones de menus.
++120 bloques, +20 acciones de menus.
