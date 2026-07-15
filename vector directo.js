@@ -171,9 +171,12 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'s22',blockType:com,text:'dar direccion de[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
 {opcode:'s25',blockType:com,text:'dar direccion y posicion de[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
 {opcode:'s23',blockType:com,text:'[b]apuntar a[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'},b:{type:txt,defaultValue:'referencia'}}},
-{opcode:'s24',blockType:com,text:'Eliminar[a](clon)',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
+{opcode:'s24',blockType:com,text:'Eliminar[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
 {opcode:'s26',blockType:com,text:'mostrar[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
 {opcode:'s27',blockType:com,text:'esconder[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
+{opcode:'s32',blockType:com,text:'Detener[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
+{opcode:'s33',blockType:com,text:'Pausar[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
+{opcode:'s34',blockType:com,text:'Despausar[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
 {blockType:"label",text:"Global",hideFromPalette:glo},//--------------------------------------------------------------------------------------------------------------------------------
 {opcode:'Gv1',blockType:com,text:'push[t]Gv',hideFromPalette:glo,arguments:{t:{type:txt,defaultValue:'L'}}},
 {opcode:'Gv4',blockType:com,text:'concat[t]Gv',hideFromPalette:glo,arguments:{t:{type:txt,defaultValue:'L'}}},
@@ -634,9 +637,9 @@ switch(c){case'circulos':while(i<b.length){pun=[b[i][0],b[i][1]];pun[0]=(pun[0]<
 if(Math.hypot(b[i][0]-pun[0],b[i][1]-pun[1])<=b[i][2]){col.push(i)}i++}return col;break;
 case'rectangulos':while(i<b.length){if(!((px>=b[i][0]+b[i][2])||(px+an<=b[i][0])||(py>=b[i][1]+b[i][3])||(py+la<=b[i][1]))){col.push(i)}i++}return col;break;
 case'cuadrados':while(i<b.length){if(!((b[i][0]>=px+an)||(b[i][0]+b[i][2]<=px)||(b[i][1]>=py+la)||(b[i][1]+b[i][2]<=py))){col.push(i)}i++}return col;break;}}
-rpt16(ar,util){return util.target.lookupVariableByNameAndType(ar.a+'','list').value}
-rpt17(ar,util){util.target.lookupVariableByNameAndType(ar.a+'','list').value=ar.b}
-rpt18(ar){ar.a[ar.b][ar.c]=ar.d}
-rpt19(ar){ar.a[ar.b][ar.c][ar.d]=ar.e}
-rpt20(ar){ar.a[ar.b][ar.c][ar.d][ar.e]=ar.f}
+rpt16(ar,util){return util.target.lookupVariableByNameAndType(ar.a+'','list').value}rpt17(ar,util){util.target.lookupVariableByNameAndType(ar.a+'','list').value=ar.b}
+rpt18(ar){ar.a[ar.b][ar.c]=ar.d}rpt19(ar){ar.a[ar.b][ar.c][ar.d]=ar.e}rpt20(ar){ar.a[ar.b][ar.c][ar.d][ar.e]=ar.f}
+s32(ar){runtime.stopForTarget(ar.a)}
+s33(ar){runtime.threads.forEach(k=>{if(k.target.id===ar.a.id&&k.status!==1){k.status=1;}})}
+s34(ar){runtime.threads.forEach(k=>{if(k.target.id===ar.a.id&&k.status!==0){k.status=0;}})}
 }Scratch.extensions.register(new vectorr());})(Scratch);

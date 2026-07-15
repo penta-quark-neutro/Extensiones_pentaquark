@@ -95,6 +95,8 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me116',blockType:com0,text:'[a].[b]?.(...[c])',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:''}}},
 {opcode:'me37',blockType:rep,text:'try{[a](...[b])}',hideFromPalette:fun||pun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me98',blockType:rep,text:'try{[a].[b](...[c])}',hideFromPalette:fun||!pun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:''}}},
+{opcode:'me128',blockType:Scratch.BlockType.LOOP,text:['try{var [d]=[a](...[b])}catch[c]{','}'],isTerminal:0,branchCount:1,hideFromPalette:fun||pun,arguments:{a:{type:txt},b:{type:txt},c:{type:txt,defaultValue:'variable 2'},d:{type:txt,defaultValue:'variable'}}},
+{opcode:'me129',blockType:Scratch.BlockType.LOOP,text:['try{var [d]=[a].[e](...[b])}catch[c]{','}'],isTerminal:0,branchCount:1,hideFromPalette:fun||!pun,arguments:{a:{type:txt},b:{type:txt},c:{type:txt,defaultValue:'variable 2'},d:{type:txt,defaultValue:'variable'},e:{type:txt}}},
 {opcode:'me15',blockType:rep,text:'Apply[a][b][c]',hideFromPalette:fun||!blo,arguments:{a:{type:txt,defaultValue:'funcion'},b:{type:txt,defaultValue:'this'},c:{type:txt,defaultValue:'Array'}}},
 {opcode:'me70',blockType:com0,text:'Apply[a][b][c]',hideFromPalette:fun||blo,arguments:{a:{type:txt,defaultValue:'funcion'},b:{type:txt,defaultValue:'this'},c:{type:txt,defaultValue:'Array'}}},
 {opcode:'me73',blockType:rep,text:'[a].bind(...[b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
@@ -293,4 +295,7 @@ me124(ar){return (Function('return class '+ar.a+'{'+ar.d+'}'))()}
 me125(ar){return (Function('Ext','return class '+ar.a+' extends Ext {constructor('+ar.b+'){'+ar.c+'}'+ar.d+'}'))(ar.e)}
 me126(ar){return atob(ar.a)}
 me127(ar){return btoa(ar.a)}
+me128(ar,util){try{util.target.lookupVariableByNameAndType(ar.d+'','').value=ar.a(...ar.b)}catch(e){util.target.lookupVariableByNameAndType(ar.c+'','').value=e;util.startBranch(1,false)}}
+me129(ar,util){try{util.target.lookupVariableByNameAndType(ar.d+'','').value=ar.a[ar.e](...ar.b)}catch(e){util.target.lookupVariableByNameAndType(ar.c+'','').value=e;util.startBranch(1,false)}}
+
 }Scratch.extensions.register(new exps());})(Scratch);
