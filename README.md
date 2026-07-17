@@ -50,3 +50,5 @@ ademas de una gran manejo de Object, tambien expone objetos internos de Turbowar
 tecnicamente con esta, se puede hacer todo lo que Js pueda hacer, pero recomiendo usarla junto a otras.
 ⚠️permite ejecucion arbitraria de codigo.
 +120 bloques, +20 acciones de menus.
+### Decimal arbitrario
+es una extension para trabajar con numero decimales arbitrarios en su logitud, funciona en base a [Decimal.js](https://github.com/MikeMcl/decimal.js)
