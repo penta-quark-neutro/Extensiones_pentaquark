@@ -20,6 +20,7 @@ obtenerArray(){return [this.cadenas,this.distribucion,this.estado]}};}
 if(!vm.runtime.extensionStorage['exps']){vm.runtime.extensionStorage['exps']={};}
 var Objglob={},fun=1,dap=1,obs=1,pun=0,blo=1;const AsyncFunction=async function(){}.constructor,GeneratorFunction=function*(){}.constructor,AsyncGeneratorFunction=async function*(){}.constructor;
 function ref(){Scratch.vm.extensionManager.refreshBlocks();}
+
 function ExpsCadena(objetivo,vistor){let ff=new Set(vistor);//v1.0.5
 try{var gj=JSON.stringify(objetivo)}catch(sec){var gj='000XecjsEiC';}
 try{if(gj!='000XecjsEiC'&&!ff.has(objetivo)){if(typeof(objetivo)=="object"){
@@ -36,17 +37,20 @@ if(objetivo instanceof Object){ff.add(objetivo);let cad="{";for(const ENT in obj
 if(typeof(objetivo)=="function"){if((objetivo.toString()).includes("[native code]")){return '["[EII!]"]'}else{return '["[Fc]",'+JSON.stringify(objetivo.toString())+']'}}
 if(typeof(objetivo)=="number"){if(isFinite(objetivo)){return objetivo.toString()}else{if(!isNaN(objetivo)){return '"['+objetivo.toString()+']"'}else{return '"[Na]"'}}}else{
 if(typeof(objetivo)=="boolean"){return (objetivo?'true':'false')}else{return JSON.stringify((objetivo?objetivo?.toString():'[Udf]'))}}}}else{return '"DETENCION"'}ff=null;}catch(fail){return gj;console.log(fail)}}
+
 function reconstruccion(arg,func){//v1.0.1
 if(arg[0]=="[ui8a]"){return new Uint8Array(arg[1])}if(arg[0]=="[ui16a]"){return new Uint16Array(arg[1])}if(arg[0]=="[ui32a]"){return new Uint32Array(arg[1])}
 if(arg[0]=="[ui8ca]"){return new Uint8ClampedArray(arg[1])}if(arg[0]=="[i8a]"){return new Int8Array(arg[1])}if(arg[0]=="[i16a]"){return new Int16Array(arg[1])}
 if(arg[0]=="[i32a]"){return new Int32Array(arg[1])}if(arg[0]=="[f16a]"){return new Float16Array(arg[1])}if(arg[0]=="[f32a]"){return new Float32Array(arg[1])}
 if(arg[0]=="[f64a]"){return new Float64Array(arg[1])}if(arg[0]=="[ga]"){return arg[1].map(k=>(typeof(k)=='object'?ExpsParseCadena(k,true,func):k))}if(arg[0]=="[Mp]"){return new Map(arg[1].map(k=>(typeof(k)=='object'?ExpsParseCadena(k,true,func):k)))}
 if(arg[0]=="[St]"){return new Set(arg[1].map(k=>(typeof(k)=='object'?ExpsParseCadena(k,true,func):k)))}if(arg[0]=="[dt]"){return new Date(arg[1])}if(arg[0]=='[Fc]'){return (func?eval("const h="+arg[1]+";h"):arg[1])}if(true){return arg}}
+
 function ExpsParseCadena(Cadena,omitir,trusted){var cad2=(omitir?Cadena:JSON.parse(Cadena));if(typeof(cad2)=='object'&&!Array.isArray(cad2)){for(const props in cad2){if(Array.isArray(cad2[props])){cad2[props]=reconstruccion(cad2[props],trusted)}else{
 if(cad2[props]=='[EII!]'){Reflect.deleteProperty(cad2,props)}if(cad2[props]=='[Infinity]'){cad2[props]=Infinity}if(cad2[props]=='[-Infinity]'){cad2[props]=-Infinity}if(cad2[props]=='[Na]'){cad2[props]=NaN}
 if(cad2[props]=='[Udf]'){cad2[props]=undefined}}
 }}else{if(Array.isArray(cad2)){cad2=reconstruccion(cad2,trusted)}else{
 if(cad2=='[Infinity]'){cad2=Infinity}if(cad2=='[-Infinity]'){cad2=-Infinity}if(cad2=='[Na]'){cad2=NaN}if(cad2=='[Udf]'){cad2=undefined}}}return cad2}
+
 const com0=Scratch.BlockType.COMMAND,vgbb=Scratch.BlockType.BUTTON,str0=Scratch.ArgumentType.STRING,bol=Scratch.BlockType.BOOLEAN,rep=Scratch.BlockType.REPORTER,bol1=Scratch.ArgumentType.BOOLEAN,txt=Scratch.ArgumentType.STRING;
 if(!Scratch.extensions.unsandboxed){throw new Error('This extension must run unsandboxed');}
 class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763613',color3:'#e39668',blocks: [
@@ -95,8 +99,10 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me116',blockType:com0,text:'[a].[b]?.(...[c])',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:''}}},
 {opcode:'me37',blockType:rep,text:'try{[a](...[b])}',hideFromPalette:fun||pun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 {opcode:'me98',blockType:rep,text:'try{[a].[b](...[c])}',hideFromPalette:fun||!pun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:''}}},
-{opcode:'me128',blockType:Scratch.BlockType.LOOP,text:['try{var [d]=[a](...[b])}catch[c]{','}'],isTerminal:0,branchCount:1,hideFromPalette:fun||pun,arguments:{a:{type:txt},b:{type:txt},c:{type:txt,defaultValue:'variable 2'},d:{type:txt,defaultValue:'variable'}}},
-{opcode:'me129',blockType:Scratch.BlockType.LOOP,text:['try{var [d]=[a].[e](...[b])}catch[c]{','}'],isTerminal:0,branchCount:1,hideFromPalette:fun||!pun,arguments:{a:{type:txt},b:{type:txt},c:{type:txt,defaultValue:'variable 2'},d:{type:txt,defaultValue:'variable'},e:{type:txt}}},
+{opcode:'me128',blockType:Scratch.BlockType.LOOP,text:['try{[d]=[a](...[b])}catch[c]{','}'],isTerminal:0,branchCount:1,hideFromPalette:fun||pun,arguments:{a:{type:txt},b:{type:txt},c:{type:txt,defaultValue:'variable 2'},d:{type:txt,defaultValue:'variable'}}},
+{opcode:'me129',blockType:Scratch.BlockType.LOOP,text:['try{[d]=[a].[e](...[b])}catch[c]{','}'],isTerminal:0,branchCount:1,hideFromPalette:fun||!pun,arguments:{a:{type:txt},b:{type:txt},c:{type:txt,defaultValue:'variable 2'},d:{type:txt,defaultValue:'variable'},e:{type:txt}}},
+{opcode:'me130',blockType:Scratch.BlockType.LOOP,text:['try{[a](...[b])}catch[c]{','}'],isTerminal:0,branchCount:1,hideFromPalette:fun||pun,arguments:{a:{type:txt},b:{type:txt},c:{type:txt,defaultValue:'variable'}}},
+{opcode:'me131',blockType:Scratch.BlockType.LOOP,text:['try{[a].[e](...[b])}catch[c]{','}'],isTerminal:0,branchCount:1,hideFromPalette:fun||!pun,arguments:{a:{type:txt},b:{type:txt},c:{type:txt,defaultValue:'variable'},e:{type:txt}}},
 {opcode:'me15',blockType:rep,text:'Apply[a][b][c]',hideFromPalette:fun||!blo,arguments:{a:{type:txt,defaultValue:'funcion'},b:{type:txt,defaultValue:'this'},c:{type:txt,defaultValue:'Array'}}},
 {opcode:'me70',blockType:com0,text:'Apply[a][b][c]',hideFromPalette:fun||blo,arguments:{a:{type:txt,defaultValue:'funcion'},b:{type:txt,defaultValue:'this'},c:{type:txt,defaultValue:'Array'}}},
 {opcode:'me73',blockType:rep,text:'[a].bind(...[b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
@@ -177,8 +183,8 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me38',blockType:bol,text:'[a]',hideFromPalette:obs,disableMonitor:1,arguments:{a:{type:txt,menu:'vals'}}},
 {opcode:'me12',blockType:rep,text:'interno[a]',hideFromPalette:obs,disableMonitor:1,arguments:{a:{type:txt,menu:'in'}}},
 {opcode:'me20',blockType:rep,text:'Objeto Global',hideFromPalette:obs,disableMonitor:1},
-{opcode:'me25',blockType:rep,text:'Objeto Global Permanente',hideFromPalette:obs,disableMonitor:1},
-{opcode:'me26',blockType:com0,text:'Vaciar Objeto Global Permanente',hideFromPalette:obs,disableMonitor:1},
+{opcode:'me25',blockType:rep,text:'Objeto extensionStorage',hideFromPalette:obs,disableMonitor:1},
+{opcode:'me26',blockType:com0,text:'Vaciar Objeto extensionStorage',hideFromPalette:obs,disableMonitor:1},
 {opcode:'me92',blockType:bol,text:'[a]?[b]:[c]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'1'},c:{type:txt,defaultValue:'0'}}},
 {opcode:'me39',blockType:rep,text:'typeof[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me54',blockType:bol,text:'[a]instanceof[b]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
@@ -193,6 +199,16 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me118',blockType:com0,text:'throw[a]',isTerminal:1,hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me126',blockType:rep,text:'atob[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me127',blockType:rep,text:'btoa[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me132',blockType:Scratch.BlockType.LOOP,text:['do{','}while[a]'],isTerminal:0,branchCount:1,hideFromPalette:obs,arguments:{a:{type:txt}}},
+{opcode:'me133',blockType:Scratch.BlockType.LOOP,text:['for(var[a]of[b]){','}'],isTerminal:0,branchCount:1,hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'variable'},b:{type:txt}}},
+{opcode:'me134',blockType:com0,text:'Notification[a][b]click[c]close[d]error[e]var[f]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'titulo'},b:{type:txt,defaultValue:'{opciones}'},c:{type:txt,defaultValue:'ƒ'},d:{type:txt,defaultValue:'ƒ'},e:{type:txt,defaultValue:'ƒ'},f:{type:txt,defaultValue:'variable'}}},
+{blockType:"label",text:"Avanzados",hideFromPalette:obs},//--------------------------------------------------------------------------------------------------------------------------------
+{opcode:'me135',blockType:rep,text:'Buscar procedimiento de hilo: pista[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'nombre o parte del nombre de la funcion'}}},
+{opcode:'me136',blockType:com0,text:'remplazar procedimiento de hilo: pista[a] rem[b]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'nombre o parte del nombre de la funcion'},b:{type:txt,defaultValue:'ƒ'}}},
+{opcode:'me139',blockType:rep,text:'Buscar procedimiento en [c]: pista[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'nombre o parte del nombre de la funcion'},c:{type:txt,defaultValue:'thread'}}},
+{opcode:'me140',blockType:com0,text:'remplazar procedimiento en [c]: pista[a] rem[b]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'nombre o parte del nombre de la funcion'},b:{type:txt,defaultValue:'ƒ'},c:{type:txt,defaultValue:'thread'}}},
+{opcode:'me137',blockType:rep,text:'thread',hideFromPalette:obs,disableMonitor:1},
+{opcode:'me138',blockType:rep,text:'threads',hideFromPalette:obs,disableMonitor:1},
 
 ],menus:{pr:{acceptReporters:0,items:['value','writable','enumerable','configurable']},
 in:{acceptReporters:0,items:['vm','target','util','Scratch','Math','Atomics','Reflect','Object','Symbol','Array','String','window','crypto','Map','Set','WeakMap','WeakSet','WeakRef','twgl','gl','Proxy','navigator','FloatCadenaMarkov','blockly','BigInt','ArrayBuffer','DataView','Number','Uint8ClampedArray','Uint8Array','Uint16Array','Uint32Array','Int8Array','Int16Array','Int32Array','Float16Array','Float32Array','Float64Array','BigInt64Array','BigUint64Array']},
@@ -297,5 +313,21 @@ me126(ar){return atob(ar.a)}
 me127(ar){return btoa(ar.a)}
 me128(ar,util){try{util.target.lookupVariableByNameAndType(ar.d+'','').value=ar.a(...ar.b)}catch(e){util.target.lookupVariableByNameAndType(ar.c+'','').value=e;util.startBranch(1,false)}}
 me129(ar,util){try{util.target.lookupVariableByNameAndType(ar.d+'','').value=ar.a[ar.e](...ar.b)}catch(e){util.target.lookupVariableByNameAndType(ar.c+'','').value=e;util.startBranch(1,false)}}
-
+me130(ar,util){try{ar.a(...ar.b)}catch(e){util.target.lookupVariableByNameAndType(ar.c+'','').value=e;util.startBranch(1,false)}}
+me131(ar,util){try{ar.a[ar.e](...ar.b)}catch(e){util.target.lookupVariableByNameAndType(ar.c+'','').value=e;util.startBranch(1,false)}}
+me132(ar,util){if(ar.a){util.startBranch(1,true);util.thread.pst=1;}else{if(!util.thread.pst){util.startBranch(1,false)}else{util.thread.pst=null}}}
+me133(ar,util){if(!util.thread.frdt){util.thread.frdt=[Object.keys(ar.b),0]}
+if(util.thread.frdt[0].length>util.thread.frdt[1]){util.target.lookupVariableByNameAndType(ar.a+'','').value=ar.b[util.thread.frdt[0][util.thread.frdt[1]]];util.thread.frdt[1]++;util.startBranch(1,true);}else
+{util.thread.frdt=null;}}
+me134(ar,util){let j=util.target.lookupVariableByNameAndType(ar.f+'',''),k=new Notification(ar.a,ar.b);
+k.addEventListener("click",(event)=>{if(typeof(ar.c)=='function'){j.value=ar.c()}else{j.value=ar.c}});
+k.addEventListener("close",(event)=>{if(typeof(ar.d)=='function'){j.value=ar.d()}else{j.value=ar.d}});
+k.addEventListener("error",(event)=>{if(typeof(ar.e)=='function'){j.value=ar.e()}else{j.value=ar.e}});
+}
+me135(ar,util){let i=util.thread.procedures;return (Object.keys(i).length>0?i[Object.keys(i).find(s=>(s).includes(ar.a))]:undefined)}
+me136(ar,util){let i=util.thread.procedures;i[Object.keys(i).find(s=>(s).includes(ar.a))]=ar.b}
+me137(ar,util){return util.thread}
+me138(ar,util){return Scratch.vm.runtime.threads}
+me139(ar,util){let i=ar.c.procedures;return (Object.keys(i).length>0?i[Object.keys(i).find(s=>(s).includes(ar.a))]:undefined)}
+me140(ar,util){let i=ar.c.procedures;i[Object.keys(i).find(s=>(s).includes(ar.a))]=ar.b}
 }Scratch.extensions.register(new exps());})(Scratch);
