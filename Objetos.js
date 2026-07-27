@@ -21,34 +21,44 @@ if(!vm.runtime.extensionStorage['exps']){vm.runtime.extensionStorage['exps']={};
 var Objglob={},fun=1,dap=1,obs=1,pun=0,blo=1;const AsyncFunction=async function(){}.constructor,GeneratorFunction=function*(){}.constructor,AsyncGeneratorFunction=async function*(){}.constructor;
 function ref(){Scratch.vm.extensionManager.refreshBlocks();}
 
-function ExpsCadena(objetivo,vistor){let ff=new Set(vistor);//v1.0.5
-try{var gj=JSON.stringify(objetivo)}catch(sec){var gj='000XecjsEiC';}
-try{if(gj!='000XecjsEiC'&&!ff.has(objetivo)){if(typeof(objetivo)=="object"){
+function ExpsCadena(objetivo,vistor){let ff=new Set(vistor);//v1.0.6
+try{var gj=JSON.stringify(objetivo)}catch(sec){console.warn(gj);var gj='000XecjsEiC';}
+try{if(!ff.has(objetivo)){if(typeof(objetivo)=="object"){
 if(objetivo===null){return '"[null]"'}
+if(objetivo instanceof Iterator){return '["[it]",['+objetivo.toArray().map(t=>ExpsCadena(t))+"]]"}
+if(objetivo instanceof BigInt64Array){return '["[bi64a]","'+new Uint8Array(objetivo.buffer).toBase64()+'"]'}
+if(objetivo instanceof BigUint64Array){return '["[bui64a]","'+new Uint8Array(objetivo.buffer).toBase64()+'"]'}
+if(objetivo instanceof ArrayBuffer){return '["[arb]","'+new Uint8Array(objetivo).toHex()+'"]'}
 if(objetivo instanceof Uint8Array){return '["[ui8a]",['+objetivo.toString()+"]]"}if(objetivo instanceof Uint16Array){return '["[ui16a]",['+objetivo.toString()+"]]"}
 if(objetivo instanceof Uint32Array){return '["[ui32a]",['+objetivo.toString()+"]]"}if(objetivo instanceof Uint8ClampedArray){return '["[ui8ca]",['+objetivo.toString()+"]]"}
 if(objetivo instanceof Int8Array){return '["[i8a]",['+objetivo.toString()+"]]"}if(objetivo instanceof Int16Array){return '["[i16a]",['+objetivo.toString()+"]]"}
 if(objetivo instanceof Int32Array){return '["[i32a]",['+objetivo.toString()+"]]"}if(objetivo instanceof Float16Array){return '["[f16a]",['+objetivo.toString()+"]]"}
 if(objetivo instanceof Float32Array){return '["[f32a]",['+objetivo.toString()+"]]"}if(objetivo instanceof Float64Array){return '["[f64a]",['+objetivo.toString()+"]]"}
 if(objetivo instanceof Array){return '["[ga]",['+objetivo.map(t=>ExpsCadena(t))+"]]"}if(objetivo instanceof Map){return '["[Mp]",['+Array.from(objetivo).map(t=>ExpsCadena(t))+"]]"}
-if(objetivo instanceof Set){return '["[St]",['+Array.from(objetivo).map(t=>ExpsCadena(t))+"]]"}if(objetivo instanceof Date){return '["[dt]",'+'["'+objetivo.toISOString()+'"]'}
+if(objetivo instanceof Set){return '["[St]",['+Array.from(objetivo).map(t=>ExpsCadena(t))+"]]"}if(objetivo instanceof Date){return '["[dt]",'+'"'+objetivo.toISOString()+'"'}
 if(objetivo instanceof Object){ff.add(objetivo);let cad="{";for(const ENT in objetivo){cad+=","+JSON.stringify(ENT)+":"+ExpsCadena(objetivo[ENT],ff)}return cad.replace(',','')+"}"}
 }else{
+if(typeof(objetivo)=="bigint"){return '["[bi]","'+objetivo.toString(16)+'"]'}
 if(typeof(objetivo)=="function"){if((objetivo.toString()).includes("[native code]")){return '["[EII!]"]'}else{return '["[Fc]",'+JSON.stringify(objetivo.toString())+']'}}
 if(typeof(objetivo)=="number"){if(isFinite(objetivo)){return objetivo.toString()}else{if(!isNaN(objetivo)){return '"['+objetivo.toString()+']"'}else{return '"[Na]"'}}}else{
-if(typeof(objetivo)=="boolean"){return (objetivo?'true':'false')}else{return JSON.stringify((objetivo?objetivo?.toString():'[Udf]'))}}}}else{return '"DETENCION"'}ff=null;}catch(fail){return gj;console.log(fail)}}
+if(typeof(objetivo)=="boolean"){return (objetivo?'true':'false')}else{return JSON.stringify((objetivo?objetivo?.toString?.():'[Udf]'))}}}}else{return '"DETENCION"'}ff=null;}catch(fail){console.error(fail);return gj;}}
 
-function reconstruccion(arg,func){//v1.0.1
+function reconstruccion(arg,func){//v1.0.3
+if(arg[0]=="[it]"){return Iterator.from(arg[1].map(k=>ExpsParseCadena(k,true,func)))}
+if(arg[0]=="[bi64a]"){return new BigInt64Array(Uint8Array.fromBase64(arg[1]).buffer)}
+if(arg[0]=="[bui64a]"){return new BigUint64Array(Uint8Array.fromBase64(arg[1]).buffer)}
+if(arg[0]=="[bi]"){return (arg[1].includes('-')?-BigInt('0x'+arg[1].replace('-','')):BigInt('0x'+arg[1]))}
+if(arg[0]=="[arb]"){return Uint8Array.fromHex(arg[1]).buffer}
 if(arg[0]=="[ui8a]"){return new Uint8Array(arg[1])}if(arg[0]=="[ui16a]"){return new Uint16Array(arg[1])}if(arg[0]=="[ui32a]"){return new Uint32Array(arg[1])}
 if(arg[0]=="[ui8ca]"){return new Uint8ClampedArray(arg[1])}if(arg[0]=="[i8a]"){return new Int8Array(arg[1])}if(arg[0]=="[i16a]"){return new Int16Array(arg[1])}
 if(arg[0]=="[i32a]"){return new Int32Array(arg[1])}if(arg[0]=="[f16a]"){return new Float16Array(arg[1])}if(arg[0]=="[f32a]"){return new Float32Array(arg[1])}
-if(arg[0]=="[f64a]"){return new Float64Array(arg[1])}if(arg[0]=="[ga]"){return arg[1].map(k=>(typeof(k)=='object'?ExpsParseCadena(k,true,func):k))}if(arg[0]=="[Mp]"){return new Map(arg[1].map(k=>(typeof(k)=='object'?ExpsParseCadena(k,true,func):k)))}
-if(arg[0]=="[St]"){return new Set(arg[1].map(k=>(typeof(k)=='object'?ExpsParseCadena(k,true,func):k)))}if(arg[0]=="[dt]"){return new Date(arg[1])}if(arg[0]=='[Fc]'){return (func?eval("const h="+arg[1]+";h"):arg[1])}if(true){return arg}}
+if(arg[0]=="[f64a]"){return new Float64Array(arg[1])}if(arg[0]=="[ga]"){return arg[1].map(k=>ExpsParseCadena(k,true,func))}if(arg[0]=="[Mp]"){return new Map(arg[1].map(k=>ExpsParseCadena(k,true,func)))}
+if(arg[0]=="[St]"){return new Set(arg[1].map(k=>ExpsParseCadena(k,true,func)))}if(arg[0]=="[dt]"){return new Date(arg[1])}if(arg[0]=='[Fc]'){return (func?eval("const h="+arg[1]+";h"):arg[1])}if(true){return arg}}
 
 function ExpsParseCadena(Cadena,omitir,trusted){var cad2=(omitir?Cadena:JSON.parse(Cadena));if(typeof(cad2)=='object'&&!Array.isArray(cad2)){for(const props in cad2){if(Array.isArray(cad2[props])){cad2[props]=reconstruccion(cad2[props],trusted)}else{
 if(cad2[props]=='[EII!]'){Reflect.deleteProperty(cad2,props)}if(cad2[props]=='[Infinity]'){cad2[props]=Infinity}if(cad2[props]=='[-Infinity]'){cad2[props]=-Infinity}if(cad2[props]=='[Na]'){cad2[props]=NaN}
-if(cad2[props]=='[Udf]'){cad2[props]=undefined}}
-}}else{if(Array.isArray(cad2)){cad2=reconstruccion(cad2,trusted)}else{
+if(cad2[props]=='[Udf]'){cad2[props]=undefined}if(cad2[props]=='[null]'){cad2[props]=null}}
+}}else{if(Array.isArray(cad2)){cad2=reconstruccion(cad2,trusted)}else{if(cad2=='[null]'){cad2=null}
 if(cad2=='[Infinity]'){cad2=Infinity}if(cad2=='[-Infinity]'){cad2=-Infinity}if(cad2=='[Na]'){cad2=NaN}if(cad2=='[Udf]'){cad2=undefined}}}return cad2}
 
 const com0=Scratch.BlockType.COMMAND,vgbb=Scratch.BlockType.BUTTON,str0=Scratch.ArgumentType.STRING,bol=Scratch.BlockType.BOOLEAN,rep=Scratch.BlockType.REPORTER,bol1=Scratch.ArgumentType.BOOLEAN,txt=Scratch.ArgumentType.STRING;
@@ -111,6 +121,8 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me40',blockType:rep,text:'AsyncFunction(...[a],[b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'Args'},b:{type:txt,defaultValue:'Estructura'}}},
 {opcode:'me42',blockType:rep,text:'GeneratorFunction(...[a],[b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'Args'},b:{type:txt,defaultValue:'Estructura'}}},
 {opcode:'me43',blockType:rep,text:'AsyncGeneratorFunction(...[a],[b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'Args'},b:{type:txt,defaultValue:'Estructura'}}},
+{opcode:'me142',blockType:bol,text:'([a])=>[b]',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'a,b'},b:{type:txt,defaultValue:'a*b'}}},
+{opcode:'me143',blockType:bol,text:'async ([a])=>[b]',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'a,b'},b:{type:txt,defaultValue:'a*b'}}},
 {opcode:'me125',blockType:rep,text:'class[a]extends[e]constructor[b][c]metodos[d]',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'prueba'},b:{type:txt,defaultValue:'A'},c:{type:txt,defaultValue:'super(A)'},d:{type:txt,defaultValue:'metodo(){return this}'},e:{type:txt,defaultValue:''}}},
 {opcode:'me123',blockType:rep,text:'class[a]constructor[b][c]metodos[d]',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'prueba'},b:{type:txt,defaultValue:'A'},c:{type:txt,defaultValue:'this.a=1'},d:{type:txt,defaultValue:'metodo(){return this.a}'}}},
 {opcode:'me124',blockType:rep,text:'class[a]metodos[d]',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'prueba'},d:{type:txt,defaultValue:'metodo(){return this.a}'}}},
@@ -209,9 +221,11 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me140',blockType:com0,text:'remplazar procedimiento en [c]: pista[a] rem[b]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'nombre o parte del nombre de la funcion'},b:{type:txt,defaultValue:'ƒ'},c:{type:txt,defaultValue:'thread'}}},
 {opcode:'me137',blockType:rep,text:'thread',hideFromPalette:obs,disableMonitor:1},
 {opcode:'me138',blockType:rep,text:'threads',hideFromPalette:obs,disableMonitor:1},
+{opcode:'me141',blockType:rep,text:'exps',hideFromPalette:obs,disableMonitor:1},
+
 
 ],menus:{pr:{acceptReporters:0,items:['value','writable','enumerable','configurable']},
-in:{acceptReporters:0,items:['vm','target','util','Scratch','Math','Atomics','Reflect','Object','Symbol','Array','String','window','crypto','Map','Set','WeakMap','WeakSet','WeakRef','twgl','gl','Proxy','navigator','FloatCadenaMarkov','blockly','BigInt','ArrayBuffer','DataView','Number','Uint8ClampedArray','Uint8Array','Uint16Array','Uint32Array','Int8Array','Int16Array','Int32Array','Float16Array','Float32Array','Float64Array','BigInt64Array','BigUint64Array']},
+in:{acceptReporters:0,items:['vm','target','util','Scratch','Math','Atomics','Reflect','Object','Symbol','Array','String','window','crypto','Map','Set','WeakMap','WeakSet','WeakRef','twgl','gl','Proxy','navigator','FloatCadenaMarkov','blockly','BigInt','ArrayBuffer','DataView','Number','Uint8ClampedArray','Uint8Array','Uint16Array','Uint32Array','Int8Array','Int16Array','Int32Array','Float16Array','Float32Array','Float64Array','BigInt64Array','BigUint64Array','Iterator']},
 vals:{acceptReporters:0,items:['true','false','Undefined','NaN','null','Infinity']}}
 };}
 herr0(){Scratch.openWindow('https://linktr.ee/Penta_quark_neutro');}
@@ -330,4 +344,7 @@ me137(ar,util){return util.thread}
 me138(ar,util){return Scratch.vm.runtime.threads}
 me139(ar,util){let i=ar.c.procedures;return (Object.keys(i).length>0?i[Object.keys(i).find(s=>(s).includes(ar.a))]:undefined)}
 me140(ar,util){let i=ar.c.procedures;i[Object.keys(i).find(s=>(s).includes(ar.a))]=ar.b}
+me141(){return exps}
+me142(ar){return Function('return ('+ar.a+')=>'+ar.b)()}
+me143(ar){return Function('return async ('+ar.a+')=>'+ar.b)()}
 }Scratch.extensions.register(new exps());})(Scratch);
