@@ -52,3 +52,6 @@ tecnicamente con esta, se puede hacer todo lo que Js pueda hacer, pero recomiend
 +120 bloques, +20 acciones de menus.
 ### Decimal arbitrario
 es una extension para trabajar con numero decimales arbitrarios en su logitud, funciona en base a [Decimal.js](https://github.com/MikeMcl/decimal.js)
+### Iterador
+Da facilidad de uso a Iteradores, y sus metodos.
+⚠️permite ejecucion arbitraria de codigo.
