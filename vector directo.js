@@ -125,7 +125,7 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'rpt18',blockType:com,text:'[a]〚[b]〛〚[c]〛=[d]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt}}},
 {opcode:'rpt19',blockType:com,text:'[a]〚[b]〛〚[c]〛〚[d]〛=[e]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt}}},
 {opcode:'rpt20',blockType:com,text:'[a]〚[b]〛〚[c]〛〚[d]〛〚[e]〛=[f]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt},f:{type:txt}}},
-{opcode:'rpt7',blockType:com,text:'〚...[a]〛=〚...[b]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'rpt7',blockType:com,text:'〚...[a]〛=〚...[b]〛',hideFromPalette:true,arguments:{a:{type:txt},b:{type:txt}}},
 {opcode:'rpt8',blockType:rep,text:'++[a]〚[b]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'}}},
 {opcode:'rpt9',blockType:rep,text:'--[a]〚[b]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'}}},
 {opcode:'rpt10',blockType:rep,text:'[a]〚[b]〛++',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'}}},
@@ -172,6 +172,7 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'s25',blockType:com,text:'dar direccion y posicion de[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
 {opcode:'s23',blockType:com,text:'[b]apuntar a[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'},b:{type:txt,defaultValue:'referencia'}}},
 {opcode:'s24',blockType:com,text:'Eliminar[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
+{opcode:'s38',blockType:com,text:'Eliminar lista[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'[referencia,...]'}}},
 {opcode:'s26',blockType:com,text:'mostrar[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
 {opcode:'s27',blockType:com,text:'esconder[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
 {opcode:'s32',blockType:com,text:'Detener[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
@@ -180,6 +181,12 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'s35',blockType:com,text:'Detener lista[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'[referencia,...]'}}},
 {opcode:'s36',blockType:com,text:'Pausar lista[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'[referencia,...]'}}},
 {opcode:'s37',blockType:com,text:'Despausar lista[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'[referencia,...]'}}},
+{opcode:'s39',blockType:com,text:'Pausar todo excepto[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
+{opcode:'s40',blockType:com,text:'Pausar todo excepto lista[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'[referencia,...]'}}},
+{opcode:'s41',blockType:com,text:'Detener todo excepto[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
+{opcode:'s42',blockType:com,text:'Detener todo excepto lista[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'[referencia,...]'}}},
+{opcode:'s43',blockType:com,text:'Despausar todo',hideFromPalette:prop},
+{opcode:'s44',blockType:com,text:'Despausar todo excepto lista[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'[referencia,...]'}}},
 {blockType:"label",text:"Global",hideFromPalette:glo},//--------------------------------------------------------------------------------------------------------------------------------
 {opcode:'Gv1',blockType:com,text:'push[t]Gv',hideFromPalette:glo,arguments:{t:{type:txt,defaultValue:'L'}}},
 {opcode:'Gv4',blockType:com,text:'concat[t]Gv',hideFromPalette:glo,arguments:{t:{type:txt,defaultValue:'L'}}},
@@ -253,7 +260,7 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'sed8',blockType:com,text:'𝕊[v]*[k]_salida[c]',hideFromPalette:sed,arguments:{v:{type:txt},k:{type:txt},c:{type:txt}}},
 {opcode:'sed9',blockType:com,text:'𝕊 conj[v]_salida[c]',hideFromPalette:sed,arguments:{v:{type:txt},c:{type:txt}}},
 {blockType:"label",text:"Deteccion Geometrica",hideFromPalette:geo},//--------------------------------------------------------------------------------------------------------------------------------
-{opcode:'ppoli',blockType:rep,text:'¿punto[P]en[polygon]poligono?',hideFromPalette:geo,arguments:{P:{type:txt},polygon:{type:txt,defaultValue:'[[x,y],[x,y]...]'}}},
+{opcode:'ppoli',blockType:rep,text:'¿punto[P]en[polygon]poligono?',hideFromPalette:geo,arguments:{P:{type:txt},polygon:{type:txt,defaultValue:'[[x,y],[x,y],...]'}}},
 {opcode:'geo0',blockType:eva,text:'¿punto[a]en(x,y,r[b]circulo)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
 {opcode:'geo1',blockType:eva,text:'¿punto[a]en(x,y,an,al[b]rectangulo)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
 {opcode:'geo4',blockType:eva,text:'¿punto[a]en(x,y,l[b]cuadrado)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
@@ -651,4 +658,11 @@ s35(ar){let i=0;while(i<ar.a.length){runtime.stopForTarget(ar.a[i++])}}
 s36(ar){const ids=ar.a.map(k=>k.id);runtime.threads.forEach(k=>{if(ids.includes(k.target.id)&&k.status!==1){k.status=1;}})}
 s37(ar){const ids=ar.a.map(k=>k.id);runtime.threads.forEach(k=>{if(ids.includes(k.target.id)&&k.status!==0){k.status=0;}})}
 tvectorr(){return vectorr}
+s38(ar){ar.a.map(k=>Scratch.vm.runtime.disposeTarget(k));ar.a.forEach((j,k,l)=>l[k]=null)}
+s39(ar){runtime.threads.forEach(k=>{if(k.target.id!==ar.a.id&&k.status!==1){k.status=1;}})}
+s40(ar){const ids=ar.a.map(k=>k.id);runtime.threads.forEach(k=>{if(!ids.includes(k.target.id)&&k.status!==1){k.status=1;}})}
+s41(ar){runtime.targets.forEach(k=>{if(!Object.is(ar.a,k)){runtime.stopForTarget(k)}})}
+s42(ar){runtime.targets.forEach(k=>{if(!ar.a.includes(k)){runtime.stopForTarget(k)}})}
+s43(){runtime.threads.forEach(k=>{if(k.status!==0){k.status=0;}})}
+s43(ar){var ids=ar.a.map(k=>k.id);runtime.threads.forEach(k=>{if(!ids.includes(k.target.id)&&k.status!==0){k.status=0;}})}
 }Scratch.extensions.register(new vectorr());})(Scratch);
