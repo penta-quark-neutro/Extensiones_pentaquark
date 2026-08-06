@@ -222,6 +222,8 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me137',blockType:rep,text:'thread',hideFromPalette:obs,disableMonitor:1},
 {opcode:'me138',blockType:rep,text:'threads',hideFromPalette:obs,disableMonitor:1},
 {opcode:'me141',blockType:rep,text:'exps',hideFromPalette:obs,disableMonitor:1},
+{opcode:'me144',blockType:com0,text:'remplazar Generador con[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'[object Generator] o ƒ o txt'}}},
+{opcode:'me145',blockType:com0,text:'retirar thread[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 
 
 ],menus:{pr:{acceptReporters:0,items:['value','writable','enumerable','configurable']},
@@ -347,4 +349,11 @@ me140(ar,util){let i=ar.c.procedures;i[Object.keys(i).find(s=>(s).includes(ar.a)
 me141(){return exps}
 me142(ar){return Function('return ('+ar.a+')=>'+ar.b)()}
 me143(ar){return Function('return async ('+ar.a+')=>'+ar.b)()}
+me144(ar,util){
+if(typeof(ar.a)=='string'){util.thread.generator=(GeneratorFunction('a0','a1',ar.a))(util.thread,Scratch.vm)}
+if(typeof(ar.a)=='object'){util.thread.generator=ar.a}
+if(typeof(ar.a)=='function'){util.thread.generator=ar.a(util.thread,Scratch.vm)}
+}
+me145(ar){Scratch.vm.runtime.sequencer.retireThread(ar.a);}
+
 }Scratch.extensions.register(new exps());})(Scratch);
