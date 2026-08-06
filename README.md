@@ -38,7 +38,8 @@ tambien es util con 'RSA'.
 ## vector directo
 es una de las potentes, permite usar Arrays y TypedArray (pero menos flexible que 'Typedvector')
 con la mayoria de metodos de Array, muchos metodos para ahorrar espacio de bloques y eficiencia.
-una gran cantidad de metodos aritmeticos y gestion de referencias de Objetos del editor (Sprites).
+una gran cantidad de métodos aritméticos y gestión de referencias de Objetos del editor (Sprites), que esto
+incluye modificacion de posicion, direccion visibilidad, pausar, detener y despausar.
 ademas de manejar numeros complejos,cuaterniones,octaniones y sedeniones.
 cuenta con deteccion de colicion geometrica basica.
 ⚠️permite ejecucion arbitraria de codigo.
@@ -48,6 +49,7 @@ es la mas potente extension hasta el momento.
 reintroduce toda la metaprogramacion de Js, en otros terminos: se puede volver a crear y ejecutar funciones de forma dinamica.
 ademas de una gran manejo de Object, tambien expone objetos internos de Turbowarp como VM, y da de foma rapida otros objetos imporatantes.
 tecnicamente con esta, se puede hacer todo lo que Js pueda hacer, pero recomiendo usarla junto a otras.
+ademas de facilitar el remplazo de código generado por turbowarp con propio.
 ⚠️permite ejecucion arbitraria de codigo.
 +120 bloques, +20 acciones de menus.
 ### Decimal arbitrario
