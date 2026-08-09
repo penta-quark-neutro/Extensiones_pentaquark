@@ -18,9 +18,9 @@ class minmatespentaquark{getInfo(){return{id:'minmatespentaquark',name:'Pequeña
 {opcode:'vacio',blockType:evaluador,text:'Ø[a]?',hideFromPalette:ops,arguments:{a:{type:Scratch.ArgumentType.STRING,defaultValue:''}}},
 {opcode:'divisorinfinito',blockType:reportero,text:'[a]/[b] 0=xlim->0,∞=xlim->∞',hideFromPalette:ops,arguments:{a:{type:numero,defaultValue:'0'},b:{type:numero,defaultValue:'0'}}},
 {opcode:'neg',blockType:reportero,text:'-[x]',hideFromPalette:ops,arguments:{x:{type:numero,defaultValue:'1'}}},
-{opcode:'neg2',blockType:evaluador,text:'¬[x]',hideFromPalette:ops,arguments:{x:{type:Scratch.ArgumentType.BOOLEAN,defaultValue:''}}},
+{opcode:'neg2',blockType:evaluador,text:'¬[x]',hideFromPalette:1,arguments:{x:{type:Scratch.ArgumentType.BOOLEAN,defaultValue:''}}},
 {opcode:'devo',blockType:evaluador,text:'[x]',hideFromPalette:ops,arguments:{x:{type:txt,defaultValue:''}}},
-{opcode:'fix',blockType:reportero,text:'redondeo[z]limite[k]',hideFromPalette:ops,arguments:{z:{type:numero,defaultValue:'1.9389834346'},k:{type:numero,defaultValue:'5'}}},
+{opcode:'fix',blockType:reportero,text:'fix[z][k]',hideFromPalette:ops,arguments:{z:{type:numero,defaultValue:'1.9389834346'},k:{type:numero,defaultValue:'5'}}},
 {opcode:'expo',blockType:reportero,text:'[z]^[k]',hideFromPalette:ops,arguments:{z:{type:numero,defaultValue:'1.9'},k:{type:numero,defaultValue:'5'}}},
 {opcode:'atn2',blockType:reportero,text:'atan2 [z][k]',hideFromPalette:ops,arguments:{z:{type:numero,defaultValue:'3'},k:{type:numero,defaultValue:'8'}}},
 {opcode:'sinc',blockType:reportero,text:'sincN[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'5'}}},
@@ -38,19 +38,26 @@ class minmatespentaquark{getInfo(){return{id:'minmatespentaquark',name:'Pequeña
 {opcode:'atan',blockType:reportero,text:'atan[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'0.7'}}},
 {opcode:'escalon',blockType:reportero,text:'Escalon[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'5'}}},
 {opcode:'fract',blockType:reportero,text:'fract[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'5.5656'}}},
-{opcode:'enter',blockType:reportero,text:'int[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'5.5656'}}},
+{opcode:'enter',blockType:reportero,text:'trunc[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'5.5656'}}},
 {opcode:'Logx',blockType:reportero,text:'Log b[k]n[x]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'100'},x:{type:numero,defaultValue:'10000'}}},
+{opcode:'log2',blockType:reportero,text:'Log2[x]',hideFromPalette:ops,arguments:{x:{type:numero,defaultValue:'1024'}}},
 {opcode:'fact',blockType:reportero,text:'[k]!',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'5'}}},
 {opcode:'gamma',blockType:reportero,text:'Γ[k]≈',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'5'}}},
+{opcode:'cbrt',blockType:reportero,text:'cbrt[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'100'}}},
 {opcode:'mei',blockType:evaluador,text:'[a]≥[b]',hideFromPalette:ops,arguments:{a:{type:numero,defaultValue:'2'},b:{type:numero,defaultValue:'5'}}},
 {opcode:'mnei',blockType:evaluador,text:'[a]≤[b]',hideFromPalette:ops,arguments:{a:{type:numero,defaultValue:'2'},b:{type:numero,defaultValue:'5'}}},
 {opcode:'ni',blockType:evaluador,text:'[a]≠[b]',hideFromPalette:ops,arguments:{a:{type:numero,defaultValue:'2'},b:{type:numero,defaultValue:'5'}}},
 {opcode:'tetra',blockType:reportero,text:'[a]↑↑[b]',hideFromPalette:ops,arguments:{a:{type:numero,defaultValue:'3'},b:{type:numero,defaultValue:'3'}}},
 {opcode:'prse',blockType:evaluador,text:'[x]%',hideFromPalette:ops,arguments:{x:{type:numero,defaultValue:'0.34'}}},
-{opcode:'sin',blockType:reportero,text:'sin[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'45'}}},
-{opcode:'cos',blockType:reportero,text:'cos[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'45'}}},
 {opcode:'clz32',blockType:reportero,text:'clz32[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'2'}}},
 {opcode:'imul',blockType:reportero,text:'imul[z][k]',hideFromPalette:ops,arguments:{z:{type:numero,defaultValue:'2'},k:{type:numero,defaultValue:'5'}}},
+{opcode:'fround',blockType:reportero,text:'fround[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'2.21321545195161'}}},
+{opcode:'f16round',blockType:reportero,text:'f16round[k]',hideFromPalette:ops,arguments:{k:{type:numero,defaultValue:'2.21321545195161'}}},
+{opcode:'max',blockType:reportero,text:'max[k]',hideFromPalette:ops,arguments:{k:{type:txt,defaultValue:'lista, [...]'}}},
+{opcode:'min',blockType:reportero,text:'min[k]',hideFromPalette:ops,arguments:{k:{type:txt,defaultValue:'lista, [...]'}}},
+{opcode:'hypot',blockType:reportero,text:'hypot[k]',hideFromPalette:ops,arguments:{k:{type:txt,defaultValue:'lista, [...]'}}},
+{opcode:'sumPrecise',blockType:reportero,text:'sumPrecise[k]',hideFromPalette:ops,arguments:{k:{type:txt,defaultValue:'lista, [...]'}}},
+{opcode:'spl',blockType:reportero,text:'[k].split[h]',hideFromPalette:ops,arguments:{k:{type:txt,defaultValue:'345,356,468'},h:{type:txt,defaultValue:','}}},
 {blockType:"label",text:"constantes",},//----------------------------------------------------------------------------------------------------------------------------------
  {func:'herram3',blockType:vgbb,hideFromPalette:!cons,text:'mostrar constantes',},{func:'herram4',blockType:vgbb,hideFromPalette:cons,text:'ocultar constantes',},
 {opcode:'c',blockType:reportero,text:'c',hideFromPalette:cons,disableMonitor:1},{opcode:'π',blockType:reportero,text:'π',hideFromPalette:cons,disableMonitor:1},
@@ -115,6 +122,15 @@ mei(ar){return (ar.a>=ar.b);}
 mnei(ar){return (ar.a<=ar.b);}
 ni(ar){return (ar.a!=ar.b);}
 tetra(ar){var dat0=ar.a,i=0,n=ar.b-1;while(i<n){dat0=ar.a**dat0;i++;}return dat0;}
+log2(ar){return Math.log2(ar.x)}
+fround(ar){return Math.fround(ar.k)}
+f16round(ar){return Math.f16round(ar.k)}
+max(ar,util){if(Array.isArray(ar.k)){return Math.max(...ar.k)}else{return Math.max(...util.target.lookupVariableByNameAndType(ar.k+'','list').value)}}
+min(ar,util){if(Array.isArray(ar.k)){return Math.min(...ar.k)}else{return Math.min(...util.target.lookupVariableByNameAndType(ar.k+'','list').value)}}
+hypot(ar,util){if(Array.isArray(ar.k)){return Math.hypot(...ar.k)}else{return Math.hypot(...util.target.lookupVariableByNameAndType(ar.k+'','list').value)}}
+sumPrecise(ar,util){if(Array.isArray(ar.k)){return Math.sumPrecise(ar.k.map(k=>+k))}else{return Math.sumPrecise(util.target.lookupVariableByNameAndType(ar.k+'','list').value)}}
+cbrt(ar){return Math.cbrt(ar.k)}
+spl(ar){return ar.k.split(ar.h)}
 //constantes----------------------------------------------------------------------------------------------------------
 c(){return 299792458;}
 π(){return 3.14159265358979323846264338327950288419716939937510582097494459230781640628620;}//pi

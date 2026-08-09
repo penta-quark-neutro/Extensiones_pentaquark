@@ -56,6 +56,7 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'rpt',blockType:rep,text:'[a]〚[b]〛=[c]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'},c:{type:txt,defaultValue:'10'}}},
 {opcode:'rpt2',blockType:com,text:'[a]〚[b]〛=[c]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'},c:{type:txt,defaultValue:'10'}}},
 {opcode:'rpt3',blockType:com,text:'[a]〚[b]〛[tip][c]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'},c:{type:txt,defaultValue:'10'},tip:{type:txt,menu:'Asig'}}},
+{opcode:'gen0',blockType:rep,text:'Array[a]',hideFromPalette:vecs,arguments:{a:{type:num,defaultValue:'12'}}},
 {opcode:'gen',blockType:rep,text:'Array[a]B[b]',hideFromPalette:vecs,arguments:{a:{type:num,defaultValue:'12'},b:{type:num,defaultValue:'3'}}},
 {opcode:'gen2',blockType:rep,text:'Array[a]rand B[b]C[c]',hideFromPalette:vecs,arguments:{a:{type:num,defaultValue:'12'},b:{type:num,defaultValue:'70'},c:{type:num,defaultValue:'10'}}},
 {opcode:'arentries',blockType:rep,text:'[a].entries',hideFromPalette:vecs,arguments:{a:{type:txt}}},
@@ -663,6 +664,7 @@ s39(ar){runtime.threads.forEach(k=>{if(k.target.id!==ar.a.id&&k.status!==1){k.st
 s40(ar){const ids=ar.a.map(k=>k.id);runtime.threads.forEach(k=>{if(!ids.includes(k.target.id)&&k.status!==1){k.status=1;}})}
 s41(ar){runtime.targets.forEach(k=>{if(!Object.is(ar.a,k)){runtime.stopForTarget(k)}})}
 s42(ar){runtime.targets.forEach(k=>{if(!ar.a.includes(k)){runtime.stopForTarget(k)}})}
-s43(){runtime.threads.forEach(k=>{if(k.status!==0){k.status=0;}})}
-s43(ar){var ids=ar.a.map(k=>k.id);runtime.threads.forEach(k=>{if(!ids.includes(k.target.id)&&k.status!==0){k.status=0;}})}
+s43(ar){runtime.threads.forEach(k=>{if(k.status!==0){k.status=0;}})}
+s44(ar){var ids=ar.a.map(k=>k.id);runtime.threads.forEach(k=>{if(!ids.includes(k.target.id)&&k.status!==0){k.status=0;}})}
+gen0(ar){return Array(ar.a)}
 }Scratch.extensions.register(new vectorr());})(Scratch);
