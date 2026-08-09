@@ -56,6 +56,12 @@ class Typedvectorr{getInfo(){return{id:'Typedvectorr',name:'Typedvectorr',color1
 {opcode:'props',blockType:rep,text:'[a].[u]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},u:{type:txt,menu:'pr'}}},
 {opcode:'rand',blockType:com,text:'valores aleatorios[a](bytes<65536)',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'rand2',blockType:com,text:'valores aleatorios[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'arror',blockType:rep,text:'[a]|[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'arrand',blockType:rep,text:'[a]&[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'arrxor',blockType:rep,text:'[a]^[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'arrors',blockType:com,text:'[a]|[b]_salida[c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
+{opcode:'arrands',blockType:com,text:'[a]&[b]_salida[c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
+{opcode:'arrxors',blockType:com,text:'[a]^[b]_salida[c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
 {blockType:"label",text:"solo Uint8Array",hideFromPalette:vecs},//--------------------------------------------------------------------------------------------------------------------------------
 {opcode:'thex',blockType:rep,text:'[a].toHex',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'tb64',blockType:rep,text:'[a].toBase64',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
@@ -160,4 +166,26 @@ isview(ar){return ArrayBuffer.isView(ar.a)}
 esTyped(ar){return  ar.a instanceof Uint8Array.__proto__}
 rand(ar){crypto.getRandomValues(ar.a)}
 rand2(ar){let i=0;while(i<=Math.ceil(ar.a.byteLength/(2**16))){crypto.getRandomValues(ar.a.subarray((2**16)*i,(2**16)*(1+(i++))))}}
+arror({a,b}){if(!(a instanceof Uint8Array.__proto__&&b instanceof Uint8Array.__proto__)){throw 'Se esperaban TypedArrays'}
+	a=new Uint8Array(a.buffer),b=new Uint8Array(b.buffer);let i=0,tam=Math.max(a.length,b.length),res=new Uint8Array(tam);
+	while(i<tam){res[i]=a[i]|b[i++]}return res;}
+arrand({a,b}){if(!(a instanceof Uint8Array.__proto__&&b instanceof Uint8Array.__proto__)){throw 'Se esperaban TypedArrays'}
+	a=new Uint8Array(a.buffer),b=new Uint8Array(b.buffer);let i=0,tam=Math.max(a.length,b.length),res=new Uint8Array(tam);
+	while(i<tam){res[i]=a[i]&b[i++]}return res;}
+arrxor({a,b}){if(!(a instanceof Uint8Array.__proto__&&b instanceof Uint8Array.__proto__)){throw 'Se esperaban TypedArrays'}
+	a=new Uint8Array(a.buffer),b=new Uint8Array(b.buffer);let i=0,tam=Math.max(a.length,b.length),res=new Uint8Array(tam);
+	while(i<tam){res[i]=a[i]^b[i++]}return res;}
+arrors({a,b,c}){if(!(a instanceof Uint8Array.__proto__&&b instanceof Uint8Array.__proto__)){throw 'Se esperaban TypedArrays'}
+	if(!(c instanceof Uint8Array||c instanceof Uint8ClampedArray)){throw 'La salida debe ser un Uint8Array o Uint8ClampedArray'}
+	a=new Uint8Array(a.buffer),b=new Uint8Array(b.buffer);let i=0,tam=Math.max(a.length,b.length,c.length);
+	while(i<tam){c[i]=a[i]|b[i++]}}
+arrands({a,b,c}){if(!(a instanceof Uint8Array.__proto__&&b instanceof Uint8Array.__proto__)){throw 'Se esperaban TypedArrays'}
+	if(!(c instanceof Uint8Array||c instanceof Uint8ClampedArray)){throw 'La salida debe ser un Uint8Array o Uint8ClampedArray'}
+	a=new Uint8Array(a.buffer),b=new Uint8Array(b.buffer);let i=0,tam=Math.max(a.length,b.length,c.length);
+	while(i<tam){c[i]=a[i]|b[i++]}}
+arrxors({a,b,c}){if(!(a instanceof Uint8Array.__proto__&&b instanceof Uint8Array.__proto__)){throw 'Se esperaban TypedArrays'}
+	if(!(c instanceof Uint8Array||c instanceof Uint8ClampedArray)){throw 'La salida debe ser un Uint8Array o Uint8ClampedArray'}
+	a=new Uint8Array(a.buffer),b=new Uint8Array(b.buffer);let i=0,tam=Math.max(a.length,b.length,c.length);
+	while(i<tam){c[i]=a[i]|b[i++]}}
+
 }Scratch.extensions.register(new Typedvectorr());})(Scratch);

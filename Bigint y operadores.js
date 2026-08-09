@@ -29,6 +29,7 @@ class BGI{getInfo(){return {id:'BGI',name:'BGI',color1:'#8923FF',color2:'#0F70A0
 {opcode:'a18',blockType:rep0,text:'~[a]',arguments:{a:{type:str0,defaultValue:'10'}}},
 {opcode:'a24',blockType:rep0,text:'parseInt[a][b]',arguments:{a:{type:str0,defaultValue:'ff'},b:{type:str0,defaultValue:'16'}}},
 {opcode:'a25',blockType:rep0,text:'[a].toString([b])',arguments:{a:{type:str0,defaultValue:'255'},b:{type:str0,defaultValue:'16'}}},
+{opcode:'a26',blockType:bol0,text:'[a]^^[b]',arguments:{a:{type:str0},b:{type:str0}}},
 ],};}
 a0(ar){return BigInt(ar.a);}
 a1(ar){return ar.a+ar.b;}
@@ -56,4 +57,5 @@ a22(ar){return ar.a!==ar.b}
 a23(ar){return Number(ar.a)}
 a24(ar){return Number.parseInt(ar.a,ar.b)}
 a25(ar){return ar.a.toString(ar.b)}
+a26(ar){return (!ar.a)^(!ar.b)}
 }Scratch.extensions.register(new BGI());})(Scratch);
