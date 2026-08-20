@@ -3,7 +3,8 @@ const com0=Scratch.BlockType.COMMAND;const str0=Scratch.ArgumentType.STRING;
 const bol0=Scratch.BlockType.BOOLEAN;const rep0=Scratch.BlockType.REPORTER;
 const bol1=Scratch.ArgumentType.BOOLEAN;const vm=Scratch.vm;const runtime=vm.runtime;
 const renderer=vm.renderer;const gl=renderer._gl;const twgl=renderer.exports.twgl;
-const canvas=renderer.canvas;
+const canvas=renderer.canvas;var estadoCPU=0;
+const obser=(PressureObserver?new PressureObserver(x=>{estadoCPU=x[0].state;}):null);obser.observe('cpu',{sampleInterval:1000});
 if(!Scratch.extensions.unsandboxed){throw new Error('This extension must run unsandboxed');}
 class Interfacepent{getInfo(){return {id:'Interfacepent',name:'Interface 1',color1:'#444444',color2:'#ff0000',color3:'#ffff00',blocks: [
 {opcode:'informacion',blockType:com0,text:'msg[string]',arguments:{string:{type:str0,defaultValue: 'info'}}},
@@ -34,12 +35,15 @@ class Interfacepent{getInfo(){return {id:'Interfacepent',name:'Interface 1',colo
 {opcode:'itwt',blockType:bol0,text:'this.isTouchingDrawables[b]',arguments:{b:{type:str0,defaultValue:'vector de drawId a detectar'}}},
 {opcode:'cdtt',blockType:rep0,text:'this.candidatesTouching[b]',arguments:{b:{type:str0,defaultValue:'vector de drawId a detectar'}}},
 {opcode:'func0',blockType:rep0,text:'drawableTouching[a][b][c][d][e]',arguments:{a:{type:str0,defaultValue:'drawID'},b:{type:str0,defaultValue:'10'},c:{type:str0,defaultValue:'10'},d:{type:str0,defaultValue:'0'},e:{type:str0,defaultValue:'0'}}},
-{opcode:'perm1',blockType:com0,text:'Datos persistentes=[a]',arguments:{a:{type:str0,defaultValue:'txt'}}},
-{opcode:'perm2',blockType:rep0,text:'Datos persistentes',disableMonitor:true},
+{opcode:'perm1',blockType:com0,text:'extensionStorage=[a]',arguments:{a:{type:str0,defaultValue:'txt'}}},
+{opcode:'perm2',blockType:rep0,text:'extensionStorage',disableMonitor:true},
 {opcode:'perm3',blockType:com0,text:'Para target,Dato persistente=[b]',arguments:{b:{type:str0,defaultValue:'datos'}}},
 {opcode:'perm4',blockType:rep0,text:'Dato persistente de target',disableMonitor:true},
 {opcode:'proy',blockType:com0,text:'_projection[a]update',arguments:{a:{type:str0,defaultValue:'vector de 16 parametros'}}},
 {opcode:'proy2',blockType:rep0,text:'_projection',disableMonitor:true},
+{opcode:'svf0',blockType:com0,text:'guardar archivo[x]',arguments:{x:{type:str0,defaultValue:'blob'}}},
+{opcode:'carg0',blockType:rep0,text:'cargar archivo',disableMonitor:true},
+{opcode:'cpust',blockType:rep0,text:'estado cpu'},
 ],};}
 informacion(args){alert(args.string);}
 entrada_de_datos(args){return prompt(args.STRING);}
@@ -74,5 +78,9 @@ proy2(){return vm.renderer._projection}
 func0(ar){return vm.renderer.drawableTouching(ar.a,ar.b,ar.c,ar.d,ar.e)}
 func1(ar,util){return util.target.getBounds()}
 itwt(ar,util){return vm.renderer.isTouchingDrawables(util.target.drawableID,ar.b);}
-cdtt(ar,util){return vm.renderer._candidatesTouching(util.target,drawableID,ar.b);}
+cdtt(ar,util){return vm.renderer._candidatesTouching(util.target.drawableID,ar.b);}
+async svf0(ar){const newHandle=await window.showSaveFilePicker();const writableStream=await newHandle.createWritable();await writableStream.write(ar.a);await writableStream.close();}
+async carg0(ar){const[fileHandle]=await window.showOpenFilePicker();const file=await fileHandle.getFile();return file;}
+cpust(){return estadoCPU;}
+
 }Scratch.extensions.register(new Interfacepent());})(Scratch);
