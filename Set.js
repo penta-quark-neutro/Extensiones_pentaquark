@@ -12,15 +12,17 @@ class SET{getInfo(){return {id:'SET',name:'SET',color1:'#0092a0',color2:'#b3680f
 {opcode:'a3',blockType:com0,text:'clear[a]',arguments:{a:{type:str0,defaultValue:''}}},
 {opcode:'a4_2',blockType:bol0,text:'[a].delete[b]',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:'txt'}}},
 {opcode:'a4',blockType:com0,text:'[a].delete[b]',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:'txt'}}},
-{opcode:'a5',blockType:rep0,text:'[a]difference[b]A∖B',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:''}}},
-{opcode:'a6',blockType:rep0,text:'entradas[a]',arguments:{a:{type:str0,defaultValue:''}}},
+{opcode:'a5',blockType:rep0,text:'[a].difference[b]A∖B',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:''}}},
+{opcode:'a6',blockType:rep0,text:'[a].entries',arguments:{a:{type:str0,defaultValue:''}}},
 {opcode:'a7',blockType:rep0,text:'[a].intersection[b]A∩B',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:''}}},
 {opcode:'a8',blockType:bol0,text:'[a].isDisjointFrom[b]',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:''}}},
 {opcode:'a9',blockType:bol0,text:'[a].isSubsetOf[b]A⊆B',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:''}}},
 {opcode:'a10',blockType:bol0,text:'[a].isSupersetOf[b]A⊇B',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:''}}},
 {opcode:'a11',blockType:rep0,text:'[a].symmetricDifference[b]A⊖B',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:''}}},
 {opcode:'a12',blockType:rep0,text:'[a].union[b]A∪B',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:''}}},
+{opcode:'a25',blockType:com0,text:'[a].forEach[b]',arguments:{a:{type:str0,defaultValue:''},b:{type:str0,defaultValue:'ƒ'}}},
 {opcode:'a13',blockType:rep0,text:'[a].size',arguments:{a:{type:str0,defaultValue:''}}},
+{opcode:'a24',blockType:rep0,text:'¿[a]esSet?',arguments:{a:{type:str0,defaultValue:''}}},
 {opcode:'a14',blockType:com0,text:'añadir a etiqueta[a]',arguments:{a:{type:str0,defaultValue:'coli'}}},
 {opcode:'a17',blockType:com0,text:'eliminar de etiqueta[a]',arguments:{a:{type:str0,defaultValue:'coli'}}},
 {opcode:'a20',blockType:rep0,text:'¿tiene etiqueta[a]?',arguments:{a:{type:str0,defaultValue:'coli'}}},
@@ -39,7 +41,7 @@ a3(ar){ar.a.clear()}
 a4(ar){ar.a.delete(ar.b);}
 a4_2(ar){return ar.a.delete(ar.b);}
 a5(ar){return ar.a.difference(ar.b);}
-a6(ar){var j=[];for(const entry of ar.a.entries()){j.push(entry[0]);}return j;}
+a6(ar){return ar.a.entries()}
 a7(ar){return ar.a.intersection(ar.b);}
 a8(ar){return ar.a.isDisjointFrom(ar.b);}
 a9(ar){return ar.a.isSubsetOf(ar.b);}
@@ -57,4 +59,6 @@ a20(ar,util){if(util.target.tag2){return util.target.tag2.has(ar.a);}}
 a21(ar){return new WeakSet(ar.a);}
 a22(ar){return JSON.stringify(Array.from(ar.a))}
 a23(ar){return new Set(JSON.parse(ar.a))}
+a24(ar){return ar.a instanceof Set}
+a25(ar){ar.a.forEach(ar.b)}
 }Scratch.extensions.register(new SET());})(Scratch);
