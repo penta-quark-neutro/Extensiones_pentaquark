@@ -30,7 +30,7 @@ da disponibilidad a los primitivos Symbol.
 ### compleX
 es una decente extensión para cálculos de números complejos,cuaterniones y octaniones.
 es menos eficiente que vector directo que también incluye esto, pero esta extensión es muy
-accesible y fácil de usar para dichos cálculos.
+accesible y fácil de usar para dichos cálculos, ademas de mas completa.
 ### Typedvector
 es una potente extensión para usar los TypedVector, ArrayBuffer y DataView.
 ademas de otro calculo aritmético.
