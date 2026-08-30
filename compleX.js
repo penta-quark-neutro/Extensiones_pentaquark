@@ -1,6 +1,7 @@
 (function(Scratch){'use strict';//por el (pentaquark neutro, penta quark neutro)
 var vgd1=Scratch.ArgumentType.NUMBER;var vgd2=Scratch.ArgumentType.STRING;var vgbt=Scratch.BlockType.REPORTER;var euler=2.718281828459045235360287;
 var vgbb=Scratch.BlockType.BUTTON;let opciones=false;let bloqueslentos=true;let complejos=true;let cuaterniones=true;let octaniones=true;
+function unosobrez(RE,IM){return [(((1*RE))/((RE*RE)+(IM*IM))),((-(1*IM))/((RE*RE)+(IM*IM)))];}
 if(!Scratch.extensions.unsandboxed){throw new Error('This extension must run unsandboxed');}class Complejospentaquark{getInfo(){return{id:'Complejospent',name:'Numeros Hiper Complejos',color1:'#555555',color2:'#ff00ff',color3:'#00ffff',blocks:[//circulo,anillo,bloque.
 {blockType:"label",text:"Herramientas",},
 {func:'herram1',blockType:vgbb,hideFromPalette:!bloqueslentos||opciones,text:'Ver operadores compactos',},{func:'herram2',blockType:vgbb,hideFromPalette:bloqueslentos||opciones,text:'ocultar operadores compactos',},
@@ -86,36 +87,36 @@ suma(ar){return((ar.A+ar.C)+','+(ar.BI+ar.DI));}
 mult(ar){return(((ar.A*ar.C)-(ar.BI*ar.DI))+','+((ar.A*ar.DI)+(ar.C*ar.BI)));}
 div(ar){return((((ar.A*ar.C)+(ar.BI*ar.DI))/((ar.C*ar.C)+(ar.DI*ar.DI)))+','+(((ar.BI*ar.C)-(ar.A*ar.DI))/((ar.C*ar.C)+(ar.DI*ar.DI))));}
 resta(ar){return((ar.A-ar.C)+','+(ar.BI-ar.DI));}
-mod(ar){return Math.sqrt((ar.A**2)+(ar.BI**2));}
+mod(ar){return Math.hypot(ar.A,ar.BI**2);}
 re(ar){return (ar.A.split(',')[0]);}
 mod2(ar){return Math.sqrt((ar.A.split(',')[0]**2)+(ar.A.split(',')[1]**2));}
 im(ar){return (ar.A.split(',')[1]);}
 argz(ar){return Math.atan2(ar.A.split(',')[1],ar.A.split(',')[0]);}
 argz1(ar){return Math.atan2(ar.Bi,ar.A);}
-raiz(ar){var dat0=Math.sqrt((ar.A**2)+(ar.BI**2)),dat1=Math.atan2(ar.BI,ar.A),dat2=Math.pow(dat0,1/ar.N);
-return (Math.cos(((dat1+(360*ar.K*3.14159265358979/180))/ar.N)))*dat2+','+(Math.sin(((dat1+(360*ar.K*3.14159265358979/180))/ar.N)))*dat2;
+raiz(ar){var dat0=Math.hypot(ar.A,ar.BI),dat1=Math.atan2(ar.BI,ar.A),dat2=Math.pow(dat0,1/ar.N);
+return (Math.cos(((dat1+(360*ar.K*Math.PI/180))/ar.N)))*dat2+','+(Math.sin(((dat1+(360*ar.K*Math.PI/180))/ar.N)))*dat2;
 }
-exponente(ar){var dat3=1/ar.N,dat0=Math.sqrt((ar.A**2)+(ar.BI**2)),dat1=Math.atan2(ar.BI,ar.A),dat2=Math.pow(dat0,1/dat3);
+exponente(ar){var dat3=1/ar.N,dat0=Math.hypot(ar.A,ar.BI),dat1=Math.atan2(ar.BI,ar.A),dat2=Math.pow(dat0,1/dat3);
 return (Math.cos((dat1)/dat3))*dat2+','+(Math.sin((dat1)/dat3))*dat2;
 }
 conj(ar){return (ar.A.split(',')[0])+','+(ar.A.split(',')[1]*-1);}
 und(ar){return ar.A+','+ar.BI;}
-numero_de_euler(){return euler;}
-numero_pi(){return 3.1415926535897932384626433832795;}
+numero_de_euler(){return Math.E;}
+numero_pi(){return Math.PI;}
 numero_aureo(){return 1.6180339887;}
 cef(){return 0.0072973525;}
-E_elev(ar){var elAi=ar.A.split(',')[1],pa2=Math.pow(euler,ar.A.split(',')[0]);
+E_elev(ar){var elAi=ar.A.split(',')[1],pa2=Math.exp(ar.A.split(',')[0]);
 return (Math.cos(elAi)*pa2)+','+(Math.sin(elAi)*pa2);}
-E_elev2(ar){var pa2=Math.pow(euler,ar.A);
+E_elev2(ar){var pa2=Math.exp(ar.A);
 return (Math.cos(ar.BI)*pa2)+','+(Math.sin(ar.BI)*pa2);}
 sumadirecta(ar){return ((ar.A.split(',')[0]*1+ar.B.split(',')[0]*1)+','+(ar.A.split(',')[1]*1+ar.B.split(',')[1]*1));}
 restadirecta(ar){return ((ar.A.split(',')[0]-ar.B.split(',')[0])+','+(ar.A.split(',')[1]-ar.B.split(',')[1]));}
 multdir(ar){var [c,d]=ar.A.split(','),[e,f]=ar.B.split(',');
 return (((c*e)-(d*f))+','+((c*f)+(d*e)));}
 Lnz(ar){var [re,im]=ar.A.split(',');
-return Math.log(Math.sqrt((re**2)+(im**2)))+','+Math.atan2(im,re);}
-Lnz2(ar){return Math.log(Math.sqrt((ar.A**2)+(ar.BI**2)))+','+Math.atan2(ar.BI,ar.A);}
-trgfun(ar){var mo=Math.sqrt((ar.A**2)+(ar.BI**2)),arg=Math.atan2(ar.BI,ar.A);
+return Math.log(Math.hypot(re,im))+','+Math.atan2(im,re);}
+Lnz2(ar){return Math.log(Math.hypot(ar.A,ar.BI))+','+Math.atan2(ar.BI,ar.A);}
+trgfun(ar){var mo=Math.hypot(ar.A,ar.BI),arg=Math.atan2(ar.BI,ar.A);
 if(ar.out==='polar'){return (mo+'e^'+arg+'i');}
 if(ar.out==='binomica'){if(ar.BI<0){return ar.A+(ar.BI+'i')}else{return ar.A+'+'+ar.BI+'i'};}
 if(ar.out==='trigonometrica'){return mo+'cos('+arg+')'+'+'+mo+'sen('+arg+')i';}
@@ -161,14 +162,14 @@ return ((vec1[0]*vec2[0])-(vec1[1]*-vec2[1])-(vec1[2]*-vec2[2])-(vec1[3]*-vec2[3
 ((vec1[0]*-vec2[2])-(vec1[1]*-vec2[3])+(vec1[2]*vec2[0])+(vec1[3]*-vec2[1]))/modb+','+
 ((vec1[0]*-vec2[3])+(vec1[1]*-vec2[2])-(vec1[2]*-vec2[1])+(vec1[3]*vec2[0]))/modb;
 }
-modcuater(ar){return Math.sqrt((ar.a**2)+(ar.i**2)+(ar.j**2)+(ar.k**2));}
-modcuatco(ar){return Math.sqrt(Math.pow(ar.q.split(',')[0],2)+(Math.pow(ar.q.split(',')[1],2))+(Math.pow(ar.q.split(',')[2],2))+(Math.pow(ar.q.split(',')[3],2)));}
+modcuater(ar){return Math.hypot(ar.a,ar.i,ar.j,ar.k);}
+modcuatco(ar){return Math.hypot(ar.q.split(',')[0],ar.q.split(',')[1],ar.q.split(',')[2],ar.q.split(',')[3]);}
 conjcuater(ar){return (ar.q.split(',')[0])+','+(ar.q.split(',')[1]*-1)+','+(ar.q.split(',')[2]*-1)+','+(ar.q.split(',')[3]*-1);}
 esccuater(ar){return (ar.q.split(',')[0]);}
 veccuater(ar){return (ar.q.split(',')[1])+','+(ar.q.split(',')[2])+','+(ar.q.split(',')[3]);}
 perte(ar){var dat0=ar.z.toString().split(',').map(k=>k*1);
 if(dat0.every(k=>!isNaN(k))){dat0=dat0.length;
-if(dat0==2){return 'C'}if(dat0==4){return 'H'}if(dat0==8){return O}if(dat0==16){return S}if(dat0==32){return T}else{return 'R'+dat0}
+if(dat0==2){return 'C'}if(dat0==4){return 'H'}if(dat0==8){return 'O'}if(dat0==16){return 'S'}if(dat0==32){return 'T'}else{return 'R'+dat0}
 }else{return '???'}}
 part(ar){return (ar.q.split(',')[(ar.z)-1]);}
 dimen(ar){return Array(ar.a).fill(ar.b).join()}
@@ -181,23 +182,23 @@ dimenpor(ar){var dat0=ar.a.split(',').map(k=>k*1),dat1=ar.b.split(',').map(k=>k*
 if(dat0.length<dat1.length){
 while(dat0.length>i){dat0[i]*=dat1[i++]}return dat0.join()}else{
 while(dat1.length>i){dat1[i]*=dat0[i++]}return dat1.join()}}
-eelevcuater(ar){var rad=Math.sqrt((ar.i**2)+(ar.j**2)+(ar.k**2)),senrad=Math.sin(rad)/rad,elev=Math.pow(euler,ar.a);
+eelevcuater(ar){var rad=Math.hypot(ar.i,ar.j,ar.k),senrad=Math.sin(rad)/rad,elev=Math.exp(ar.a);
 return((elev*Math.cos(rad))+','+(senrad*ar.i)*elev+','+(senrad*ar.j)*elev+','+(senrad*ar.k)*elev);}
-eelevcuatco(ar){var vec1=ar.q.split(','),rad=Math.sqrt(Math.pow(vec1[1],2)+Math.pow(vec1[2],2)+Math.pow(vec1[3],2)),
-senrad=Math.sin(rad)/rad,elev=Math.pow(euler,vec1[0]);
+eelevcuatco(ar){var vec1=ar.q.split(','),rad=Math.hypot(vec1[1],vec1[2],vec1[3]),
+senrad=Math.sin(rad)/rad,elev=Math.exp(vec1[0]);
 return((elev*Math.cos(rad))+','+(senrad*vec1[1])*elev+','+(senrad*vec1[2])*elev+','+(senrad*vec1[3])*elev);}
-Lncuater(ar){var modq=Math.sqrt((ar.a**2)+(ar.i**2)+(ar.j**2)+(ar.k**2)),
-modv=Math.sqrt((ar.i**2)+(ar.j**2)+(ar.k**2)),cdaq=Math.acos(ar.a/modq);
+Lncuater(ar){var modq=Math.hypot(ar.a,ar.i,ar.j,ar.k),
+modv=Math.hypot(ar.i,ar.j,ar.k),cdaq=Math.acos(ar.a/modq);
 return (Math.log(modq)+','+(ar.i/modv*cdaq)+','+(ar.j/modv*cdaq)+','+(ar.k/modv*cdaq));}
 Lncuatco(ar){var vec1=ar.a.split(','),
-modq=Math.sqrt(Math.pow(vec1[0],2)+Math.pow(vec1[1],2)+Math.pow(vec1[2],2)+Math.pow(vec1[3],2)),
-modv=Math.sqrt(Math.pow(vec1[1],2)+Math.pow(vec1[2],2)+Math.pow(vec1[3],2)),
+modq=Math.hypot(vec1[0],vec1[1],vec1[2],vec1[3]),
+modv=Math.hypot(vec1[1],vec1[2],vec1[3]),
 cdaq=Math.acos(vec1[0]/modq);
 return (Math.log(modq)+','+(vec1[1]/modv*cdaq)+','+(vec1[2]/modv*cdaq)+','+(vec1[3]/modv*cdaq));}
 vercuatco(ar){var vec1=ar.a.split(','),
 mod=Math.sqrt(Math.pow(vec1[0],2)+Math.pow(vec1[1],2)+Math.pow(vec1[2],2)+Math.pow(vec1[3],2));
 return ((vec1[0]/mod)+','+(vec1[1]/mod)+','+(vec1[2]/mod)+','+(vec1[3]/mod));}
-vercuater(ar){var mod=Math.sqrt((ar.a*ar.a)+(ar.i*ar.i)+(ar.j*ar.j)+(ar.k*ar.k));
+vercuater(ar){var mod=Math.hypot(ar.a,ar.i,ar.j,ar.k);
 return ((ar.a/mod)+','+(ar.i/mod)+','+(ar.j/mod)+','+(ar.k/mod));}
 suoctonion(ar){return (ar.a1+ar.b1)+','+(ar.a2+ar.b2)+','+(ar.a3+ar.b3)+','+(ar.a4+ar.b4)+','+(ar.a5+ar.b5)+','+(ar.a6+ar.b6)+','+(ar.a7+ar.b7)+','+(ar.a8+ar.b8);}
 suoctonionrap(ar){var vec1=ar.q.split(','),vec2=ar.w.split(',');
@@ -247,13 +248,14 @@ return (vec[0])+','+(vec[1]*-1)+','+(vec[2]*-1)+','+(vec[3]*-1)+','+(vec[4]*-1)+
 modoctonion(ar){var vec1=ar.q.split(',');
 return Math.sqrt(Math.pow(vec1[0],2)+Math.pow(vec1[1],2)+Math.pow(vec1[2],2)+Math.pow(vec1[3],2)+Math.pow(vec1[4],2)+Math.pow(vec1[5],2)+Math.pow(vec1[6],2)+Math.pow(vec1[7],2));}
 fix(ar){if(ar.k>=0){return ar.z.toFixed(ar.k)*1;}else{return ar.z.toFixed(-ar.k)*1;}}
-GammaI(ar){function unosobrez(RE,IM){return ((((1*RE)+(0))/((RE*RE)+(IM*IM)))+','+(((0)-(1*IM))/((RE*RE)+(IM*IM))));}
-var Z1=unosobrez(ar.A*10,ar.BI*10),Z2=((ar.A*12)-(Z1.split(',')[0]*1))+','+((ar.BI*12)-(Z1.split(',')[1]*1)),Z3=unosobrez((Z2.split(',')[0]*1),(Z2.split(',')[1]*1));
-var Z4=((ar.A+(Z3.split(',')[0]*1))*(1/euler))+','+((ar.BI+(Z3.split(',')[1]*1))*(1/euler)),reg2=Z4.split(',')[0],img2=Z4.split(',')[1];
-var modz=Math.sqrt((reg2*reg2)+(img2*img2)),argz=Math.atan2(img2,reg2),Z5=Math.log(modz)+','+argz;
-var reg3=((ar.A*Z5.split(',')[0])-(ar.BI*Z5.split(',')[1])),img3=((ar.A*Z5.split(',')[1])+(Z5.split(',')[0]*ar.BI));
-var ARC=unosobrez(ar.A,ar.BI),reg1=(ARC.split(',')[0]*2*3.14159265358979),img1=(ARC.split(',')[1]*2*3.14159265358979);
-var dat0=Math.sqrt((reg1*reg1)+(img1*img1)),dat1=Math.atan2(img1,reg1),dat2=Math.pow(dat0,1/2),pa3=Math.pow(euler,reg3);
-var Z6=(Math.cos(img3)*pa3)+','+(Math.sin(img3)*pa3),Z7=(Math.cos(((dat1+(0/180))/2)))*dat2+','+(Math.sin(((dat1+(0/180))/2)))*dat2;
-return (((Z7.split(',')[0]*Z6.split(',')[0])-(Z7.split(',')[1]*Z6.split(',')[1]))+','+((Z7.split(',')[0]*Z6.split(',')[1])+(Z6.split(',')[0]*Z7.split(',')[1])));
-}}Scratch.extensions.register(new Complejospentaquark());})(Scratch);
+
+GammaI(ar){
+var Z1=unosobrez(ar.A*10,ar.BI*10),Z2=[((ar.A*12)-(Z1[0])),((ar.BI*12)-(Z1[1]))],Z3=unosobrez(Z2[0],Z2[1]);
+var Z4=[((ar.A+(Z3[0]))*(1/euler)),((ar.BI+(Z3[1]))*(1/euler))],Z5=[Math.log(Math.hypot(Z4[0],Z4[1])),Math.atan2(Z4[1],Z4[0])];
+var img3=((ar.A*Z5[1])+(Z5[0]*ar.BI)),ARC=unosobrez(ar.A,ar.BI);
+var dat1=Math.atan2((ARC[1]*6.283185307179586),(ARC[0]*6.283185307179586)),dat2=Math.pow(Math.hypot((ARC[0]*6.283185307179586),(ARC[1]*6.283185307179586)),0.5),pa3=Math.exp((ar.A*Z5[0])-(ar.BI*Z5[1]));
+var Z6=[(Math.cos(img3)*pa3),(Math.sin(img3)*pa3)],Z7=[(Math.cos(((dat1)/2)))*dat2,(Math.sin(((dat1)/2)))*dat2];
+return (((Z7[0]*Z6[0])-(Z7[1]*Z6[1]))+','+((Z7[0]*Z6[1])+(Z6[0]*Z7[1])));
+}
+
+}Scratch.extensions.register(new Complejospentaquark());})(Scratch);

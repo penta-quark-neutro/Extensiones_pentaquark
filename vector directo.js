@@ -52,6 +52,7 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'withh',blockType:rep,text:'[a].with[b][c]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'},c:{type:txt,defaultValue:'2'}}},
 {opcode:'arr',blockType:rep,text:'arr[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:'1,5,8'}}},
 {opcode:'arrf',blockType:rep,text:'Array.from[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
+{opcode:'arrfA',blockType:rep,text:'Array.fromAsync[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
 {opcode:'le',blockType:rep,text:'length[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
 {opcode:'rpt',blockType:rep,text:'[a]〚[b]〛=[c]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'},c:{type:txt,defaultValue:'10'}}},
 {opcode:'rpt2',blockType:com,text:'[a]〚[b]〛=[c]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'},c:{type:txt,defaultValue:'10'}}},
@@ -419,17 +420,17 @@ cc2(ar){return [ar.a[0]-ar.b[0],ar.a[1]-ar.b[1]]}
 cc3(ar){return [(ar.a[0]*ar.b[0])-ar.a[1]*ar.b[1],ar.a[0]*ar.b[1]+ar.b[0]*ar.a[1]]}
 cc4({a,b}){const G=(b[0]**2)+(b[1]**2);return [((a[0]*b[0])+a[1]*b[1])/G,(b[0]*a[1]-a[0]*b[1])/G]}
 cc6(ar){return [ar.a[0],-ar.a[1]]}
-cc7(ar){return [Math.log(Math.hypot(...ar.a)),Math.atan2(ar.a[1],ar.a[0])]}
+cc7(ar){return [Math.log(Math.hypot(ar.a[1],ar.a[0])),Math.atan2(ar.a[1],ar.a[0])]}
 cc8(ar){const pa=Math.exp(ar.a[0]);return [(Math.cos(ar.a[1])*pa),(Math.sin(ar.a[1])*pa)]}
 cc9(ar){return Math.atan2(ar.a[1],ar.a[0]);}
 cc10(ar){return (ar.a.length==2&&!isNaN(Number(ar.a[0]))&&!isNaN(Number(ar.a[1])))}
-cc11(ar){return (ar.a[0]**2+ar.a[1]**2)**0.5}
+cc11(ar){return Math.hypot(ar.a[0],ar.a[1])}
 cc12(ar){ar.c[0]=ar.a[0]*1+1*ar.b[0],ar.c[1]=ar.a[1]*1+ar.b[1]*1;}
 cc13(ar){ar.c[0]=ar.a[0]-ar.b[0],ar.c[1]=ar.a[1]-ar.b[1];}
 cc14(ar){ar.c[0]=(ar.a[0]*ar.b[0])-ar.a[1]*ar.b[1],ar.c[1]=ar.a[0]*ar.b[1]+ar.b[0]*ar.a[1];}
 cc15({a,b,c}){const G=(b[0]**2)+(b[1]**2);c[0]=((a[0]*b[0])+a[1]*b[1])/G,c[1]=(b[0]*a[1]-a[0]*b[1])/G;}
 cc16(ar){ar.c[0]=ar.a[0],ar.c[1]=-ar.a[1];}
-cc17(ar){ar.c[0]=Math.log(Math.hypot(...ar.a)),ar.c[1]=Math.atan2(ar.a[1],ar.a[0]);}
+cc17(ar){ar.c[0]=Math.log(Math.hypot(ar.a[0],ar.a[1])),ar.c[1]=Math.atan2(ar.a[1],ar.a[0]);}
 cc18(ar){const pa=Math.exp(ar.a[0]);ar.c[0]=(Math.cos(ar.a[1])*pa),ar.c[1]=(Math.sin(ar.a[1])*pa);}
 ma(ar){switch(ar.ou){
 case'+':return ar.a.map(k=>k*1+ar.b*1);case'-':return ar.a.map(k=>k-ar.b);case'*':return ar.a.map(k=>k*ar.b);case'/':return ar.a.map(k=>k/ar.b);
@@ -667,4 +668,5 @@ s42(ar){runtime.targets.forEach(k=>{if(!ar.a.includes(k)){runtime.stopForTarget(
 s43(ar){runtime.threads.forEach(k=>{if(k.status!==0){k.status=0;}})}
 s44(ar){var ids=ar.a.map(k=>k.id);runtime.threads.forEach(k=>{if(!ids.includes(k.target.id)&&k.status!==0){k.status=0;}})}
 gen0(ar){return Array(ar.a)}
+async arrfA(ar){return await Array.fromAsync(ar.a)}
 }Scratch.extensions.register(new vectorr());})(Scratch);
