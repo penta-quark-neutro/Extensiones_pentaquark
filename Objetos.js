@@ -18,7 +18,8 @@ nPasos(k){let i=0,st=Array(k);while(i<k){this.paso();st[i++]=this.estado;}return
 obtenerArray(){return [this.cadenas,this.distribucion,this.estado]}};}
 (function(Scratch) {'use strict';//por el (pentaquark neutro, penta quark neutro) y neutral auream
 if(!vm.runtime.extensionStorage['exps']){vm.runtime.extensionStorage['exps']={};}
-var Objglob={},fun=1,dap=1,obs=1,pun=0,blo=1;const AsyncFunction=async function(){}.constructor,GeneratorFunction=function*(){}.constructor,AsyncGeneratorFunction=async function*(){}.constructor;
+var Objglob={},fun=1,dap=1,obs=1,pun=0,blo=1,adv=1;
+const AsyncFunction=async function(){}.constructor,GeneratorFunction=function*(){}.constructor,AsyncGeneratorFunction=async function*(){}.constructor;
 function ref(){Scratch.vm.extensionManager.refreshBlocks();}
 
 function ExpsCadena(objetivo,vistor){let ff=new Set(vistor);//v1.0.6
@@ -60,7 +61,6 @@ if(cad2[props]=='[EII!]'){Reflect.deleteProperty(cad2,props)}if(cad2[props]=='[I
 if(cad2[props]=='[Udf]'){cad2[props]=undefined}if(cad2[props]=='[null]'){cad2[props]=null}}
 }}else{if(Array.isArray(cad2)){cad2=reconstruccion(cad2,trusted)}else{if(cad2=='[null]'){cad2=null}
 if(cad2=='[Infinity]'){cad2=Infinity}if(cad2=='[-Infinity]'){cad2=-Infinity}if(cad2=='[Na]'){cad2=NaN}if(cad2=='[Udf]'){cad2=undefined}}}return cad2}
-
 //---------------------------------codigo de prueba
 //codigo extraido y modificado de una extencion de SharkPool apoyada por FurryR, de github...
 const exports=vm.exports.i_will_not_ask_for_help_when_these_break();
@@ -71,16 +71,22 @@ ScriptTreeGenerator.prototype.descendStackedBlock=function(block){switch(block.o
 case"exps_me147":return{kind:"exps.me147",id:block.id};
 case"exps_me148":return{kind:"exps.me148",id:block.id};
 case"exps_me149":return{kind:"exps.me149",id:block.id};
+case"exps_me150":return{kind:"exps.me150",id:block.id};
+case"exps_me152":return{kind:"exps.me152",id:block.id};
+case"exps_me153":return{kind:"exps.me153",id:block.id};
 default:return _ogIRdescendStack.call(this, block);}};
 const _ogJSdescendStack = JSGenerator.prototype.descendStackedBlock;
 JSGenerator.prototype.descendStackedBlock=function(node){switch(node.kind){
 case"exps.me147":{this.source+="break;\n";break;}
 case"exps.me148":{this.source+="continue;\n";break;}
 case"exps.me149":{this.source+="yield;\n";break;}
+case"exps.me150":{this.source+="debugger;\n";break;}
+case"exps.me152":{let yy=JSON.parse(((this.source.split('yield* executeInCompatibilityLayer(')).pop()).split(',}, ')[0]+'}').Z;
+this.source=this.source.split('yield* executeInCompatibilityLayer(').slice(0,-1).join('');
+this.source+=yy;break;}
+case"exps.me153":{this.source+="\n";break;}
 default:return _ogJSdescendStack.call(this, node);}};}
-
 //---------------------------------fin de codigo de prueba 
-
 const com0=Scratch.BlockType.COMMAND,vgbb=Scratch.BlockType.BUTTON,str0=Scratch.ArgumentType.STRING,bol=Scratch.BlockType.BOOLEAN,rep=Scratch.BlockType.REPORTER,bol1=Scratch.ArgumentType.BOOLEAN,txt=Scratch.ArgumentType.STRING;
 if(!Scratch.extensions.unsandboxed){throw new Error('This extension must run unsandboxed');}
 class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763613',color3:'#e39668',blocks: [
@@ -88,6 +94,7 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {func:'herr1',blockType:vgbb,hideFromPalette:!fun,text:'Mostrar funciones',},{func:'herr2',blockType:vgbb,hideFromPalette:fun,text:'Ocultar funciones'},
 {func:'herr3',blockType:vgbb,hideFromPalette:!dap,text:'Mostrar datos y propiedades',},{func:'herr4',blockType:vgbb,hideFromPalette:dap,text:'Ocultar datos y propiedades'},
 {func:'herr5',blockType:vgbb,hideFromPalette:!obs,text:'Mostrar Objetos y utiles',},{func:'herr6',blockType:vgbb,hideFromPalette:obs,text:'Ocultar Objetos y utiles'},
+{func:'herr11',blockType:vgbb,hideFromPalette:!adv,text:'Mostrar Avanzados',},{func:'herr12',blockType:vgbb,hideFromPalette:adv,text:'Ocultar Avanzados'},
 {blockType:"label",text:"Uso de funciones",hideFromPalette:fun},//--------------------------------------------------------------------------------------------------------------------------------
 {func:'herr7',blockType:vgbb,hideFromPalette:!pun||fun,text:'Ocultar punto funcion',},{func:'herr8',blockType:vgbb,hideFromPalette:pun||fun,text:'Mostrar punto funcion'},
 {func:'herr9',blockType:vgbb,hideFromPalette:!blo||fun,text:'Mostrar forma comando',},{func:'herr10',blockType:vgbb,hideFromPalette:blo||fun,text:'Ocultar forma comando'},
@@ -235,19 +242,23 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me133',blockType:Scratch.BlockType.LOOP,text:['for(var[a]of[b]){','}'],isTerminal:0,branchCount:1,hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'variable'},b:{type:txt}}},
 {opcode:'me134',blockType:com0,text:'Notification[a][b]click[c]close[d]error[e]var[f]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'titulo'},b:{type:txt,defaultValue:'{opciones}'},c:{type:txt,defaultValue:'ƒ'},d:{type:txt,defaultValue:'ƒ'},e:{type:txt,defaultValue:'ƒ'},f:{type:txt,defaultValue:'variable'}}},
 {opcode:'me147',blockType:com0,text:'break',hideFromPalette:obs,isTerminal:1},
-{opcode:'me148',blockType:com0,text:'continue',hideFromPalette:obs,isTerminal:1},
-{opcode:'me149',blockType:com0,text:'yield',hideFromPalette:obs},
-{blockType:"label",text:"Avanzados",hideFromPalette:obs},//--------------------------------------------------------------------------------------------------------------------------------
-{opcode:'me135',blockType:rep,text:'Buscar procedimiento de hilo: pista[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'nombre o parte del nombre de la funcion'}}},
-{opcode:'me136',blockType:com0,text:'remplazar procedimiento de hilo:pista[a] rem[b]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'nombre o parte del nombre de la funcion'},b:{type:txt,defaultValue:'ƒ'}}},
-{opcode:'me139',blockType:rep,text:'Buscar procedimiento en[c]:pista[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'nombre o parte del nombre de la funcion'},c:{type:txt,defaultValue:'thread'}}},
-{opcode:'me140',blockType:com0,text:'remplazar procedimiento en[c]:pista[a] rem[b]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'nombre o parte del nombre de la funcion'},b:{type:txt,defaultValue:'ƒ'},c:{type:txt,defaultValue:'thread'}}},
-{opcode:'me137',blockType:rep,text:'thread',hideFromPalette:obs,disableMonitor:1},
-{opcode:'me138',blockType:rep,text:'todos los threads',hideFromPalette:obs,disableMonitor:1},
-{opcode:'me146',blockType:rep,text:'threads de este objeto',hideFromPalette:obs,disableMonitor:1},
-{opcode:'me141',blockType:rep,text:'exps',hideFromPalette:obs,disableMonitor:1},
-{opcode:'me144',blockType:com0,text:'remplazar Generador con[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'[object Generator] o ƒ o txt'}}},
-{opcode:'me145',blockType:com0,text:'retirar thread[a]',isTerminal:1,hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me148',blockType:com0,text:'continue;',hideFromPalette:obs,isTerminal:1},
+{opcode:'me149',blockType:com0,text:'yield;',hideFromPalette:obs},
+{blockType:"label",text:"Avanzados",hideFromPalette:adv},//--------------------------------------------------------------------------------------------------------------------------------
+{opcode:'me135',blockType:rep,text:'Buscar procedimiento de hilo: pista[a]',hideFromPalette:adv,arguments:{a:{type:txt,defaultValue:'nombre o parte del nombre de la funcion'}}},
+{opcode:'me136',blockType:com0,text:'remplazar procedimiento de hilo:pista[a] rem[b]',hideFromPalette:adv,arguments:{a:{type:txt,defaultValue:'nombre o parte del nombre de la funcion'},b:{type:txt,defaultValue:'ƒ'}}},
+{opcode:'me139',blockType:rep,text:'Buscar procedimiento en[c]:pista[a]',hideFromPalette:adv,arguments:{a:{type:txt,defaultValue:'nombre o parte del nombre de la funcion'},c:{type:txt,defaultValue:'thread'}}},
+{opcode:'me140',blockType:com0,text:'remplazar procedimiento en[c]:pista[a] rem[b]',hideFromPalette:adv,arguments:{a:{type:txt,defaultValue:'nombre o parte del nombre de la funcion'},b:{type:txt,defaultValue:'ƒ'},c:{type:txt,defaultValue:'thread'}}},
+{opcode:'me137',blockType:rep,text:'thread',hideFromPalette:adv,disableMonitor:1},
+{opcode:'me138',blockType:rep,text:'todos los threads',hideFromPalette:adv,disableMonitor:1},
+{opcode:'me146',blockType:rep,text:'threads de este objeto',hideFromPalette:adv,disableMonitor:1},
+{opcode:'me141',blockType:rep,text:'exps',hideFromPalette:adv,disableMonitor:1},
+{opcode:'me144',blockType:com0,text:'remplazar Generador con[a]',hideFromPalette:adv,arguments:{a:{type:txt,defaultValue:'[object Generator] o ƒ o txt'}}},
+{opcode:'me145',blockType:com0,text:'retirar thread[a]',isTerminal:1,hideFromPalette:adv,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me151',blockType:com0,text:'carga util[Z]',hideFromPalette:adv,arguments:{Z:{type:txt,defaultValue:'target.mira="funciona";'}}},
+{opcode:'me152',blockType:com0,text:'inyectar',hideFromPalette:adv},
+{opcode:'me153',blockType:com0,text:'/ n',hideFromPalette:adv},
+{opcode:'me150',blockType:com0,text:'debugger;',hideFromPalette:adv},
 
 
 ],menus:{pr:{acceptReporters:0,items:['value','writable','enumerable','configurable']},
@@ -256,7 +267,7 @@ vals:{acceptReporters:0,items:['true','false','Undefined','NaN','null','Infinity
 };}
 herr0(){Scratch.openWindow('https://linktr.ee/Penta_quark_neutro');}
 herr1(){fun=0;ref();}herr2(){fun=1;ref();}herr3(){dap=0;ref();}herr4(){dap=1;ref();}herr5(){obs=0;ref();}herr6(){obs=1;ref();}herr7(){pun=0;ref();}herr8(){pun=1;ref();}
-herr9(){blo=0;ref();}herr10(){blo=1;ref();}
+herr9(){blo=0;ref();}herr10(){blo=1;ref();}herr11(){adv=0;ref();}herr12(){adv=1;ref();}
 me00({a}){return [a];}me0({a,b}){return [a,b];}me01({a,b,c}){return [a,b,c];}me10({a,b,c,d}){return [a,b,c,d];}
 me1(){return {};}
 me2(ar){return Object.fromEntries(ar.a);}
@@ -380,6 +391,6 @@ if(typeof(ar.a)=='function'){util.thread.generator=ar.a(util.thread,Scratch.vm)}
 }
 me145(ar){Scratch.vm.runtime.sequencer.retireThread(ar.a);}
 me146(ar,util){return Scratch.vm.runtime.threads.filter(k=>k.target.id==util.target.id)}
-me147(){}me148(){}me149(){}
+me147(){}me148(){}me149(){}me150(){}me151(ar){}me152(){}me153(){}
 
 }Scratch.extensions.register(new exps());})(Scratch);
