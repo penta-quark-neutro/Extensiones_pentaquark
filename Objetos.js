@@ -61,19 +61,18 @@ if(cad2[props]=='[EII!]'){Reflect.deleteProperty(cad2,props)}if(cad2[props]=='[I
 if(cad2[props]=='[Udf]'){cad2[props]=undefined}if(cad2[props]=='[null]'){cad2[props]=null}}
 }}else{if(Array.isArray(cad2)){cad2=reconstruccion(cad2,trusted)}else{if(cad2=='[null]'){cad2=null}
 if(cad2=='[Infinity]'){cad2=Infinity}if(cad2=='[-Infinity]'){cad2=-Infinity}if(cad2=='[Na]'){cad2=NaN}if(cad2=='[Udf]'){cad2=undefined}}}return cad2}
-//---------------------------------codigo de prueba
+//---------------------------------bloques de inyeccion y alteracion de fuente
 //codigo extraido y modificado de una extencion de SharkPool apoyada por FurryR, de github...
 const exports=vm.exports.i_will_not_ask_for_help_when_these_break();
 if(exports){
 const {JSGenerator,ScriptTreeGenerator}=exports;
 const _ogIRdescendStack=ScriptTreeGenerator.prototype.descendStackedBlock;
 ScriptTreeGenerator.prototype.descendStackedBlock=function(block){switch(block.opcode){
-case"exps_me147":return{kind:"exps.me147",id:block.id};
-case"exps_me148":return{kind:"exps.me148",id:block.id};
-case"exps_me149":return{kind:"exps.me149",id:block.id};
-case"exps_me150":return{kind:"exps.me150",id:block.id};
-case"exps_me152":return{kind:"exps.me152",id:block.id};
-case"exps_me153":return{kind:"exps.me153",id:block.id};
+case"exps_me147":return{kind:"exps.me147",id:block.id};case"exps_me148":return{kind:"exps.me148",id:block.id};
+case"exps_me149":return{kind:"exps.me149",id:block.id};case"exps_me150":return{kind:"exps.me150",id:block.id};
+case"exps_me152":return{kind:"exps.me152",id:block.id};case"exps_me153":return{kind:"exps.me153",id:block.id};
+case"exps_me154":return{kind:"exps.me154",id:block.id};case"exps_me155":return{kind:"exps.me155",id:block.id};
+case"exps_me158":return{kind:"exps.me158",id:block.id};case"exps_me159":return{kind:"exps.me159",id:block.id};
 default:return _ogIRdescendStack.call(this, block);}};
 const _ogJSdescendStack = JSGenerator.prototype.descendStackedBlock;
 JSGenerator.prototype.descendStackedBlock=function(node){switch(node.kind){
@@ -82,13 +81,25 @@ case"exps.me148":{this.source+="continue;\n";break;}
 case"exps.me149":{this.source+="yield;\n";break;}
 case"exps.me150":{this.source+="debugger;\n";break;}
 case"exps.me152":{let yy=JSON.parse(((this.source.split('yield* executeInCompatibilityLayer(')).pop()).split(',}, ')[0]+'}').Z;
-this.source=this.source.split('yield* executeInCompatibilityLayer(').slice(0,-1).join('');
+this.source=this.source.split('yield* executeInCompatibilityLayer(').slice(0,-1).join('yield* executeInCompatibilityLayer(');
 this.source+=yy;break;}
 case"exps.me153":{this.source+="\n";break;}
+case"exps.me154":{window.fuenteTw=this.source;break;}
+case"exps.me155":{let func=(((this.source.split('yield* executeInCompatibilityLayer(')).pop()).split('}, ')[1]+'}').split(',')[0]+'(';
+let args=((this.source.split('yield* executeInCompatibilityLayer(')).pop()).split('}, ')[0]+'}'+')';
+this.source=this.source.split('yield* executeInCompatibilityLayer(').slice(0,-1).join('yield* executeInCompatibilityLayer(');
+this.source+=(func+args+(this.source.endsWith(':(')?'),':(this.source.endsWith('(')?')':'')));
+this.source+=(this.source.endsWith(',')?'});':';');break;}
+case"exps.me158":{let yy=JSON.parse(((this.source.split('yield* executeInCompatibilityLayer(')).pop()).split(',}, ')[0]+'}').Z;
+this.source=this.source.split('yield* executeInCompatibilityLayer(').slice(0,-1).join('yield* executeInCompatibilityLayer(');
+this.source+=vm.runtime.getTargetForStage().lookupVariableByNameAndType(yy+'','').value;break;}
+case"exps.me159":{let yy=JSON.parse(((this.source.split('yield* executeInCompatibilityLayer(')).pop()).split(',}, ')[0]+'}').Z.split(',');
+this.source=this.source.split('yield* executeInCompatibilityLayer(').slice(0,-1).join('yield* executeInCompatibilityLayer(');
+this.source+=vm.runtime.getTargetForStage().lookupVariableByNameAndType(yy[0]+'','list').value[yy[1]];break;}
 default:return _ogJSdescendStack.call(this, node);}};}
 //---------------------------------fin de codigo de prueba 
 const com0=Scratch.BlockType.COMMAND,vgbb=Scratch.BlockType.BUTTON,str0=Scratch.ArgumentType.STRING,bol=Scratch.BlockType.BOOLEAN,rep=Scratch.BlockType.REPORTER,bol1=Scratch.ArgumentType.BOOLEAN,txt=Scratch.ArgumentType.STRING;
-if(!Scratch.extensions.unsandboxed){throw new Error('This extension must run unsandboxed');}
+if(!Scratch.extensions.unsandboxed){throw new Error('Esta extension solo funcion sin "sandbox"');}
 class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763613',color3:'#e39668',blocks: [
 {func:'herr0',blockType:vgbb,text:'Redes pentaquark'},
 {func:'herr1',blockType:vgbb,hideFromPalette:!fun,text:'Mostrar funciones',},{func:'herr2',blockType:vgbb,hideFromPalette:fun,text:'Ocultar funciones'},
@@ -256,9 +267,15 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me144',blockType:com0,text:'remplazar Generador con[a]',hideFromPalette:adv,arguments:{a:{type:txt,defaultValue:'[object Generator] o ƒ o txt'}}},
 {opcode:'me145',blockType:com0,text:'retirar thread[a]',isTerminal:1,hideFromPalette:adv,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me151',blockType:com0,text:'carga util[Z]',hideFromPalette:adv,arguments:{Z:{type:txt,defaultValue:'target.mira="funciona";'}}},
+{opcode:'me156',blockType:com0,text:'carga util var[Z]',hideFromPalette:adv,arguments:{Z:{type:txt,defaultValue:'variable'}}},
+{opcode:'me157',blockType:com0,text:'carga util lista[Z]',hideFromPalette:adv,arguments:{Z:{type:txt,defaultValue:'lista1,0'}}},
 {opcode:'me152',blockType:com0,text:'inyectar',hideFromPalette:adv},
+{opcode:'me158',blockType:com0,text:'inyectar var',hideFromPalette:adv},
+{opcode:'me159',blockType:com0,text:'inyectar lista',hideFromPalette:adv},
 {opcode:'me153',blockType:com0,text:'/ n',hideFromPalette:adv},
 {opcode:'me150',blockType:com0,text:'debugger;',hideFromPalette:adv},
+{opcode:'me154',blockType:com0,text:'extraer codigo asta este punto en window.fuenteTw',hideFromPalette:adv},
+{opcode:'me155',blockType:com0,text:'romper capa de compatibilidad para bloque (Alpha)',hideFromPalette:adv},
 
 
 ],menus:{pr:{acceptReporters:0,items:['value','writable','enumerable','configurable']},
@@ -367,9 +384,10 @@ me129(ar,util){try{util.target.lookupVariableByNameAndType(ar.d+'','').value=ar.
 me130(ar,util){try{ar.a(...ar.b)}catch(e){util.target.lookupVariableByNameAndType(ar.c+'','').value=e;util.startBranch(1,false)}}
 me131(ar,util){try{ar.a[ar.e](...ar.b)}catch(e){util.target.lookupVariableByNameAndType(ar.c+'','').value=e;util.startBranch(1,false)}}
 me132(ar,util){if(ar.a){util.startBranch(1,true);util.thread.pst=1;}else{if(!util.thread.pst){util.startBranch(1,false)}else{util.thread.pst=null}}}
-me133(ar,util){if(!util.thread.frdt){util.thread.frdt=[Object.keys(ar.b),0]}
-if(util.thread.frdt[0].length>util.thread.frdt[1]){util.target.lookupVariableByNameAndType(ar.a+'','').value=ar.b[util.thread.frdt[0][util.thread.frdt[1]]];util.thread.frdt[1]++;util.startBranch(1,true);}else
-{util.thread.frdt=null;}}
+me133(ar,util){let Ident=util.thread.peekStack();
+if(!util.thread[Ident]){util.thread[Ident]=[Object.keys(ar.b),0]}
+if(util.thread[Ident][0].length>util.thread[Ident][1]){util.target.lookupVariableByNameAndType(ar.a+'','').value=ar.b[util.thread[Ident][0][util.thread[Ident][1]++]];util.startBranch(1,true);}else
+{delete util.thread[Ident];}}
 me134(ar,util){let j=util.target.lookupVariableByNameAndType(ar.f+'',''),k=new Notification(ar.a,ar.b);
 k.addEventListener("click",(event)=>{if(typeof(ar.c)=='function'){j.value=ar.c()}else{j.value=ar.c}});
 k.addEventListener("close",(event)=>{if(typeof(ar.d)=='function'){j.value=ar.d()}else{j.value=ar.d}});
@@ -391,6 +409,6 @@ if(typeof(ar.a)=='function'){util.thread.generator=ar.a(util.thread,Scratch.vm)}
 }
 me145(ar){Scratch.vm.runtime.sequencer.retireThread(ar.a);}
 me146(ar,util){return Scratch.vm.runtime.threads.filter(k=>k.target.id==util.target.id)}
-me147(){}me148(){}me149(){}me150(){}me151(ar){}me152(){}me153(){}
+me147(){}me148(){}me149(){}me150(){}me151(ar){}me152(){}me153(){}me154(){}me155(){}me156(){}me157(){}me158(){}me159(){}
 
 }Scratch.extensions.register(new exps());})(Scratch);
