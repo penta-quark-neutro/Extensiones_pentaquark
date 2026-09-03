@@ -1,6 +1,11 @@
 (function(Scratch) {'use strict';//por el (pentaquark neutro, penta quark neutro) y neutral auream
 const txt=Scratch.ArgumentType.STRING,rep=Scratch.BlockType.REPORTER,num=Scratch.ArgumentType.NUMBER,vgbb=Scratch.BlockType.BUTTON,eva=Scratch.BlockType.BOOLEAN,com=Scratch.BlockType.COMMAND;
 const vm=Scratch.vm,runtime=vm.runtime,grrad=Math.PI/180,iv=[1,0,0],jv=[0,1,0],kv=[0,0,1];let Gvec=[],ops=1,vecs=1,prop=1,glo=1,cc=1,cuat=1,oct=1,sed=1,geo=1;
+function unosobrez(RE,IM){return [(((1*RE))/((RE*RE)+(IM*IM))),((-(1*IM))/((RE*RE)+(IM*IM)))];}
+function expz(z){let p=Math.exp(z[0]);return [(Math.cos(z[1])*p),(Math.sin(z[1])*p)];}
+function multz(z1,z2){return [((z1[0]*z2[0])-(z1[1]*z2[1])),((z1[0]*z2[1])+(z1[1]*z2[0]))];}
+function divz(z1,z2){var vadz=(z2[0]**2)+(z2[1]**2);return [((z1[0]*z2[0])+(z1[1]*z2[1]))/vadz,((z1[1]*z2[0])-(z1[0]*z2[1]))/vadz];}
+function zelevN(z,N){let dat3=1/N,dat1=Math.atan2(z[1],z[0]),dat2=Math.pow(Math.hypot(z[0],z[1]),1/dat3);return [(Math.cos((dat1)/dat3))*dat2,(Math.sin((dat1)/dat3))*dat2];}
 function ref(){Scratch.vm.extensionManager.refreshBlocks();}
 if(!vm.runtime.extensionStorage['vectorr']){vm.runtime.extensionStorage['vectorr']=[]}
 if(!Scratch.extensions.unsandboxed){throw new Error('unsandboxed');}
@@ -209,6 +214,13 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'cc8',blockType:rep,text:'ℂ e^[a]',hideFromPalette:cc,arguments:{a:{type:txt}}},
 {opcode:'cc9',blockType:rep,text:'ℂ arg[a]',hideFromPalette:cc,arguments:{a:{type:txt}}},
 {opcode:'cc11',blockType:rep,text:'ℂ ||[a]||',hideFromPalette:cc,arguments:{a:{type:txt}}},
+{opcode:'cc19',blockType:rep,text:'ℂ Gamma[a]',hideFromPalette:cc,arguments:{a:{type:txt}}},
+{opcode:'cc21',blockType:rep,text:'ℂ seno[a]',hideFromPalette:cc,arguments:{a:{type:txt}}},
+{opcode:'cc22',blockType:rep,text:'ℂ coseno[a]',hideFromPalette:cc,arguments:{a:{type:txt}}},
+{opcode:'cc23',blockType:rep,text:'ℂ tangente[a]',hideFromPalette:cc,arguments:{a:{type:txt}}},
+{opcode:'cc24',blockType:rep,text:'ℂ arcsen[a]',hideFromPalette:cc,arguments:{a:{type:txt}}},
+{opcode:'cc25',blockType:rep,text:'ℂ arccos[a]',hideFromPalette:cc,arguments:{a:{type:txt}}},
+{opcode:'cc26',blockType:rep,text:'ℂ arctan[a]',hideFromPalette:cc,arguments:{a:{type:txt}}},
 {opcode:'cc10',blockType:eva,text:'¿[a]es ℂ?',hideFromPalette:cc,arguments:{a:{type:txt}}},
 {opcode:'cc12',blockType:com,text:'ℂ[a]+[b]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
 {opcode:'cc13',blockType:com,text:'ℂ[a]-[b]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
@@ -217,6 +229,7 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'cc16',blockType:com,text:'ℂ conj[a]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt},c:{type:txt}}},
 {opcode:'cc17',blockType:com,text:'ℂ LN[a]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt},c:{type:txt}}},
 {opcode:'cc18',blockType:com,text:'ℂ e^[a]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt},c:{type:txt}}},
+{opcode:'cc20',blockType:com,text:'ℂ Gamma[a]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt},c:{type:txt}}},
 {blockType:"label",text:"Cuaterniones",hideFromPalette:cuat},//--------------------------------------------------------------------------------------------------------------------------------
 {opcode:'cua1',blockType:rep,text:'ℍ[a]+[b]',hideFromPalette:cuat,arguments:{a:{type:txt},b:{type:txt}}},
 {opcode:'cua2',blockType:rep,text:'ℍ[a]-[b]',hideFromPalette:cuat,arguments:{a:{type:txt},b:{type:txt}}},
@@ -669,4 +682,30 @@ s43(ar){runtime.threads.forEach(k=>{if(k.status!==0){k.status=0;}})}
 s44(ar){var ids=ar.a.map(k=>k.id);runtime.threads.forEach(k=>{if(!ids.includes(k.target.id)&&k.status!==0){k.status=0;}})}
 gen0(ar){return Array(ar.a)}
 async arrfA(ar){return await Array.fromAsync(ar.a)}
+cc19(ar){let vec0=ar.a;
+var Z1=unosobrez(vec0[0]*10,vec0[1]*10),Z3=unosobrez(((vec0[0]*12)-(Z1[0])),((vec0[1]*12)-(Z1[1]))),Z4=[((vec0[0]+(Z3[0]))*(1/2.7182818284590452)),((vec0[1]+(Z3[1]))*(1/2.7182818284590452))],Z5=[Math.log(Math.hypot(Z4[0],Z4[1])),Math.atan2(Z4[1],Z4[0])];
+var img3=((vec0[0]*Z5[1])+(Z5[0]*vec0[1])),ARC=unosobrez(vec0[0],vec0[1]),dat1=Math.atan2((ARC[1]*6.283185307179586),(ARC[0]*6.283185307179586)),dat2=Math.pow(Math.hypot((ARC[0]*6.283185307179586),(ARC[1]*6.283185307179586)),0.5),pa3=Math.exp((vec0[0]*Z5[0])-(vec0[1]*Z5[1]));
+var Z6=[(Math.cos(img3)*pa3),(Math.sin(img3)*pa3)],Z7=[(Math.cos(((dat1)/2)))*dat2,(Math.sin(((dat1)/2)))*dat2];
+return [((Z7[0]*Z6[0])-(Z7[1]*Z6[1])),((Z7[0]*Z6[1])+(Z6[0]*Z7[1]))];}
+cc20(ar){let vec0=ar.a;
+var Z1=unosobrez(vec0[0]*10,vec0[1]*10),Z3=unosobrez(((vec0[0]*12)-(Z1[0])),((vec0[1]*12)-(Z1[1]))),Z4=[((vec0[0]+(Z3[0]))*(1/2.7182818284590452)),((vec0[1]+(Z3[1]))*(1/2.7182818284590452))],Z5=[Math.log(Math.hypot(Z4[0],Z4[1])),Math.atan2(Z4[1],Z4[0])];
+var img3=((vec0[0]*Z5[1])+(Z5[0]*vec0[1])),ARC=unosobrez(vec0[0],vec0[1]),dat1=Math.atan2((ARC[1]*6.283185307179586),(ARC[0]*6.283185307179586)),dat2=Math.pow(Math.hypot((ARC[0]*6.283185307179586),(ARC[1]*6.283185307179586)),0.5),pa3=Math.exp((vec0[0]*Z5[0])-(vec0[1]*Z5[1]));
+var Z6=[(Math.cos(img3)*pa3),(Math.sin(img3)*pa3)],Z7=[(Math.cos(((dat1)/2)))*dat2,(Math.sin(((dat1)/2)))*dat2];
+Z1=[((Z7[0]*Z6[0])-(Z7[1]*Z6[1])),((Z7[0]*Z6[1])+(Z6[0]*Z7[1]))];ar.c[0]=Z1[0],ar.c[1]=Z1[1]}
+cc21(ar){let z1=expz(multz(ar.a,[0,1])),z2=expz(multz(ar.a,[0,-1]));
+return divz([z1[0]-z2[0],z1[1]-z2[1]],[0,2])}
+cc22(ar){let z1=expz(multz(ar.a,[0,1])),z2=expz(multz(ar.a,[0,-1]));
+return divz([z1[0]+z2[0],z1[1]+z2[1]],[2,0])}
+cc23(ar){let z1=expz(multz(ar.a,[0,1])),z2=expz(multz(ar.a,[0,-1]));
+return divz(divz([z1[0]-z2[0],z1[1]-z2[1]],[0,2]),divz([z1[0]+z2[0],z1[1]+z2[1]],[2,0]))}
+cc24(ar){let z1=multz(ar.a,ar.a),z2=multz(ar.a,[0,1]);
+z1=zelevN([1-z1[0],-z1[1]],0.5);z1[0]=z1[0]+z2[0],z1[1]=z1[1]+z2[1];
+return multz([Math.log(Math.hypot(z1[0],z1[1])),Math.atan2(z1[1],z1[0])],[0,-1])}
+cc25(ar){let z1=multz(ar.a,ar.a);
+z1=multz(zelevN([1-z1[0],-z1[1]],0.5),[0,1]);z1[0]=ar.a[0]+z1[0],z1[1]=ar.a[1]+z1[1];
+return multz([Math.log(Math.hypot(z1[0],z1[1])),Math.atan2(z1[1],z1[0])],[0,-1])}
+cc26(ar){let z1=divz([-ar.a[0],1-ar.a[1]],[ar.a[0],1+ar.a[1]]);
+return multz([Math.log(Math.hypot(z1[0],z1[1])),Math.atan2(z1[1],z1[0])],[0,-0.5])}
+
+
 }Scratch.extensions.register(new vectorr());})(Scratch);

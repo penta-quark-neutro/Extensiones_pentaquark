@@ -1,5 +1,5 @@
 (function(Scratch){'use strict';//por el (pentaquark neutro, penta quark neutro)
-var vgd1=Scratch.ArgumentType.NUMBER;var vgd2=Scratch.ArgumentType.STRING;var vgbt=Scratch.BlockType.REPORTER;var euler=2.718281828459045235360287;
+var vgd1=Scratch.ArgumentType.NUMBER;var vgd2=Scratch.ArgumentType.STRING;var vgbt=Scratch.BlockType.REPORTER;
 var vgbb=Scratch.BlockType.BUTTON;let opciones=false;let BLOLE=true;let complejos=true;let cuaterniones=true;let octaniones=true;
 function unosobrez(RE,IM){return [(((1*RE))/((RE*RE)+(IM*IM))),((-(1*IM))/((RE*RE)+(IM*IM)))];}
 function expz(z){let p=Math.exp(z[0]);return [(Math.cos(z[1])*p),(Math.sin(z[1])*p)];}
@@ -262,7 +262,7 @@ fix(ar){if(ar.k>=0){return ar.z.toFixed(ar.k)*1;}else{return ar.z.toFixed(-ar.k)
 
 GammaI(ar){
 var Z1=unosobrez(ar.A*10,ar.BI*10),Z2=[((ar.A*12)-(Z1[0])),((ar.BI*12)-(Z1[1]))],Z3=unosobrez(Z2[0],Z2[1]);
-var Z4=[((ar.A+(Z3[0]))*(1/euler)),((ar.BI+(Z3[1]))*(1/euler))],Z5=[Math.log(Math.hypot(Z4[0],Z4[1])),Math.atan2(Z4[1],Z4[0])];
+var Z4=[((ar.A+(Z3[0]))*(1/2.7182818284590452)),((ar.BI+(Z3[1]))*(1/2.7182818284590452))],Z5=[Math.log(Math.hypot(Z4[0],Z4[1])),Math.atan2(Z4[1],Z4[0])];
 var img3=((ar.A*Z5[1])+(Z5[0]*ar.BI)),ARC=unosobrez(ar.A,ar.BI);
 var dat1=Math.atan2((ARC[1]*6.283185307179586),(ARC[0]*6.283185307179586)),dat2=Math.pow(Math.hypot((ARC[0]*6.283185307179586),(ARC[1]*6.283185307179586)),0.5),pa3=Math.exp((ar.A*Z5[0])-(ar.BI*Z5[1]));
 var Z6=[(Math.cos(img3)*pa3),(Math.sin(img3)*pa3)],Z7=[(Math.cos(((dat1)/2)))*dat2,(Math.sin(((dat1)/2)))*dat2];
@@ -270,7 +270,7 @@ return (((Z7[0]*Z6[0])-(Z7[1]*Z6[1]))+','+((Z7[0]*Z6[1])+(Z6[0]*Z7[1])));
 }
 GammaI2(ar){let vec0=ar.A.split(',').map(x=>x*1);
 var Z1=unosobrez(vec0[0]*10,vec0[1]*10),Z2=[((vec0[0]*12)-(Z1[0])),((vec0[1]*12)-(Z1[1]))],Z3=unosobrez(Z2[0],Z2[1]);
-var Z4=[((vec0[0]+(Z3[0]))*(1/euler)),((vec0[1]+(Z3[1]))*(1/euler))],Z5=[Math.log(Math.hypot(Z4[0],Z4[1])),Math.atan2(Z4[1],Z4[0])];
+var Z4=[((vec0[0]+(Z3[0]))*(1/2.7182818284590452)),((vec0[1]+(Z3[1]))*(1/2.7182818284590452))],Z5=[Math.log(Math.hypot(Z4[0],Z4[1])),Math.atan2(Z4[1],Z4[0])];
 var img3=((vec0[0]*Z5[1])+(Z5[0]*vec0[1])),ARC=unosobrez(vec0[0],vec0[1]);
 var dat1=Math.atan2((ARC[1]*6.283185307179586),(ARC[0]*6.283185307179586)),dat2=Math.pow(Math.hypot((ARC[0]*6.283185307179586),(ARC[1]*6.283185307179586)),0.5),pa3=Math.exp((vec0[0]*Z5[0])-(vec0[1]*Z5[1]));
 var Z6=[(Math.cos(img3)*pa3),(Math.sin(img3)*pa3)],Z7=[(Math.cos(((dat1)/2)))*dat2,(Math.sin(((dat1)/2)))*dat2];
