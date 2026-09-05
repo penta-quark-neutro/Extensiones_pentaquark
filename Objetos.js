@@ -249,10 +249,11 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me118',blockType:com0,text:'throw[a]',isTerminal:1,hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me126',blockType:rep,text:'atob[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me127',blockType:rep,text:'btoa[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me160',blockType:Scratch.BlockType.LOOP,text:['Iniciar en nuevo hilo',''],isTerminal:0,branchCount:1,hideFromPalette:obs},
 {opcode:'me132',blockType:Scratch.BlockType.LOOP,text:['do{','}while[a]'],isTerminal:0,branchCount:1,hideFromPalette:obs,arguments:{a:{type:txt}}},
 {opcode:'me133',blockType:Scratch.BlockType.LOOP,text:['for(var[a]of[b]){','}'],isTerminal:0,branchCount:1,hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'variable'},b:{type:txt}}},
 {opcode:'me134',blockType:com0,text:'Notification[a][b]click[c]close[d]error[e]var[f]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'titulo'},b:{type:txt,defaultValue:'{opciones}'},c:{type:txt,defaultValue:'ƒ'},d:{type:txt,defaultValue:'ƒ'},e:{type:txt,defaultValue:'ƒ'},f:{type:txt,defaultValue:'variable'}}},
-{opcode:'me147',blockType:com0,text:'break',hideFromPalette:obs,isTerminal:1},
+{opcode:'me147',blockType:com0,text:'break;',hideFromPalette:obs,isTerminal:1},
 {opcode:'me148',blockType:com0,text:'continue;',hideFromPalette:obs,isTerminal:1},
 {opcode:'me149',blockType:com0,text:'yield;',hideFromPalette:obs},
 {blockType:"label",text:"Avanzados",hideFromPalette:adv},//--------------------------------------------------------------------------------------------------------------------------------
@@ -410,5 +411,6 @@ if(typeof(ar.a)=='function'){util.thread.generator=ar.a(util.thread,Scratch.vm)}
 me145(ar){Scratch.vm.runtime.sequencer.retireThread(ar.a);}
 me146(ar,util){return Scratch.vm.runtime.threads.filter(k=>k.target.id==util.target.id)}
 me147(){}me148(){}me149(){}me150(){}me151(ar){}me152(){}me153(){}me154(){}me155(){}me156(){}me157(){}me158(){}me159(){}
+me160(ar,util){if(util.thread.target.blocks.getBranch(util.thread.peekStack(), 0)){util.sequencer.runtime._pushThread(util.thread.target.blocks.getBranch(util.thread.peekStack(), 0),util.target,{});}}//sacado de controlPLus de CubesterYT en github
 
 }Scratch.extensions.register(new exps());})(Scratch);
