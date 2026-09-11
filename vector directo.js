@@ -52,8 +52,8 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'Rotacion',blockType:rep,text:'3DRotar[a]en eje[b][c]grados',hideFromPalette:ops,arguments:{a:{type:txt},b:{type:num},c:{type:num,defaultValue:'45'}}},
 {opcode:'Rotacion2',blockType:rep,text:'3DRotar lista[a]en eje[b][c]grados',hideFromPalette:ops,arguments:{a:{type:txt},b:{type:num},c:{type:num,defaultValue:'45'}}},
 {blockType:"label",text:"vectores",hideFromPalette:vecs},//--------------------------------------------------------------------------------------------------------------------------------
-{opcode:'pt',blockType:rep,text:'[a]〚[b]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'2'}}},
-{opcode:'att',blockType:rep,text:'[a].at[b]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'2'}}},
+{opcode:'pt',blockType:eva,text:'[a]〚[b]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'2'}}},
+{opcode:'att',blockType:eva,text:'[a].at[b]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'2'}}},
 {opcode:'withh',blockType:rep,text:'[a].with[b][c]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'0'},c:{type:txt,defaultValue:'2'}}},
 {opcode:'arr',blockType:rep,text:'arr[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:'1,5,8'}}},
 {opcode:'arrf',blockType:rep,text:'Array.from[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
@@ -82,9 +82,11 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'lain',blockType:rep,text:'[c].lastIndexOf[a][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:'K'},b:{type:num,defaultValue:'-1'},c:{type:txt}}},
 {opcode:'arrcopy',blockType:rep,text:'[a].copyWithin[b][c][d]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:num,defaultValue:'1'},c:{type:num,defaultValue:'1'},d:{type:num,defaultValue:'1'}}},
 {opcode:'ma',blockType:rep,text:'[a].map[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'outs'},b:{type:txt,defaultValue:'3'}}},
+{opcode:'flma',blockType:rep,text:'[a].flatMap[b]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt,defaultValue:'ƒ'}}},
 {opcode:'fore',blockType:com,text:'[a].forEach[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'outs2'},b:{type:txt,defaultValue:'3'}}},
 {opcode:'Fil',blockType:rep,text:'[a].filter[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
 {opcode:'reduc',blockType:rep,text:'[a].reduce[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'redu'},b:{type:txt,defaultValue:'0'}}},
+{opcode:'reducR',blockType:rep,text:'[a].reduceRigth[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'redu'},b:{type:txt,defaultValue:'0'}}},
 {opcode:'some',blockType:eva,text:'[a].some[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
 {opcode:'every',blockType:eva,text:'[a].every[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
 {opcode:'find',blockType:rep,text:'[a].find[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
@@ -157,6 +159,7 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'s9',blockType:eva,text:'tocando Obj.tp1.includes[a]?de lista[targets]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'K'},targets:{type:txt,defaultValue:'[DrawID,...]'}}},
 {opcode:'s5',blockType:rep,text:'tp1 de toda cosa tocada',hideFromPalette:prop,disableMonitor:1},
 {opcode:'s6',blockType:rep,text:'coordenadas',hideFromPalette:prop,disableMonitor:1},
+{opcode:'s45',blockType:rep,text:'coordenadas de[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'referencia'}}},
 {opcode:'s7',blockType:com,text:'Ir a[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'[]'}}},
 {opcode:'s8',blockType:com,text:'mover[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'[]'}}},
 {opcode:'s28',blockType:com,text:'apuntar a[a]',hideFromPalette:prop,arguments:{a:{type:txt,defaultValue:'[]'}}},
@@ -457,6 +460,7 @@ case'senh':return ar.a.map(Math.sinh);case'cosh':return ar.a.map(Math.cosh);case
 case'Log2':return ar.a.map(Math.log2);case'min':return ar.a.map(k=>Math.min(...k));case'max':return ar.a.map(k=>Math.max(...k));case'fround':return ar.a.map(k=>Math.fround(k));case'f16round':return ar.a.map(k=>Math.f16round(k));
 case'round':return ar.a.map(k=>Math.round(k));case'trunc':return ar.a.map(k=>Math.trunc(k));
 }}
+flma(ar){return ar.a.flatMap(ar.b)}
 fore(ar){switch(ar.ou){
 case'+':ar.a.forEach((j,k,l)=>l[k]+=ar.b*1);break;case'-':ar.a.forEach((j,k,l)=>l[k]-=ar.b);break;case'*':ar.a.forEach((j,k,l)=>l[k]*=ar.b);break;case'/':ar.a.forEach((j,k,l)=>l[k]/=ar.b);break;
 case'**':ar.a.forEach((j,k,l)=>l[k]**=ar.b);break;case'%':ar.a.forEach((j,k,l)=>l[k]%=ar.b);break;case'LogB':ar.a.forEach((j,k,l)=>l[k]=Math.log(j)/Math.log(ar.b));break;case'sen':ar.a.forEach((j,k,l)=>l[k]=Math.sin(j));break;case'cos':ar.a.forEach((j,k,l)=>l[k]=Math.cos(j));break;
@@ -479,6 +483,37 @@ reduc(ar){switch(ar.ou){
 case'+':return ar.a.reduce((ac,an)=>ac+an,ar.b);case'-':return ar.a.reduce((ac,an)=>ac-an,ar.b);case'*':return ar.a.reduce((ac,an)=>ac*an,ar.b);case'/':return ar.a.reduce((ac,an)=>ac/an,ar.b);
 case'**':return ar.a.reduce((ac,an)=>ac**an,ar.b);case'|':return ar.a.reduce((ac,an)=>ac|an,ar.b);case'&':return ar.a.reduce((ac,an)=>ac&an,ar.b);case'^':return ar.a.reduce((ac,an)=>ac^an,ar.b);
 case'max':return ar.a.reduce((ac,an)=>Math.max(ac,an),-Infinity);case'min':return ar.a.reduce((ac,an)=>Math.min(ac,an),Infinity);default:return ar.a.reduce(ar.ou,ar.b);}}
+reducR(ar){switch(ar.ou){
+case'+':return ar.a.reduceRight((ac,an)=>ac+an,ar.b);case'-':return ar.a.reduceRight((ac,an)=>ac-an,ar.b);case'*':return ar.a.reduceRight((ac,an)=>ac*an,ar.b);case'/':return ar.a.reduceRight((ac,an)=>ac/an,ar.b);
+case'**':return ar.a.reduceRight((ac,an)=>ac**an,ar.b);case'|':return ar.a.reduceRight((ac,an)=>ac|an,ar.b);case'&':return ar.a.reduceRight((ac,an)=>ac&an,ar.b);case'^':return ar.a.reduceRight((ac,an)=>ac^an,ar.b);
+case'max':return ar.a.reduceRight((ac,an)=>Math.max(ac,an),-Infinity);case'min':return ar.a.reduceRight((ac,an)=>Math.min(ac,an),Infinity);default:return ar.a.reduceRight(ar.ou,ar.b);}}
+
+herr0(){Scratch.openWindow('https://linktr.ee/Penta_quark_neutro');}
+herr1(){ops=0;ref();}herr2(){ops=1;ref();}herr3(){vecs=0;ref();}herr4(){vecs=1;ref();}herr5(){prop=0;ref();}herr6(){prop=1;ref();}herr7(){glo=0;ref();}herr8(){glo=1;ref();}
+herr9(){cc=0;ref();}herr10(){cc=1;ref();}herr11(){cuat=0;ref();}herr12(){cuat=1;ref();}herr13(){oct=0;ref();}herr14(){oct=1;ref();}herr15(){sed=0;ref();}herr16(){sed=1;ref();}herr17(){geo=0;ref();}herr18(){geo=1;ref();}
+arr(ar){return Array.from(ar.a.split(','));}
+le(ar){return ar.a.length;}
+nor(ar){var i=0,b=0;while(i<ar.a.length){b+=ar.a[i++]**2}return b**0.5}
+unit(ar){var i=0,b=0;while(i<ar.a.length){b+=ar.a[i++]**2}b**=0.5;return ar.a.map(g=>g/b)}
+pt(ar){return ar.a[ar.b];}pt2(ar){return ar.a[ar.b][ar.c]}pt3(ar){return ar.a[ar.b][ar.c][ar.d]}pt4(ar){return ar.a[ar.b][ar.c][ar.d][ar.e]}
+prod(ar){var i=0,fin=0;while(i<(ar.a.length)){fin+=((ar.a[i])*(ar.b[i++]));}return fin;}rpt(ar){ar.a[ar.b]=ar.c;return ar.a;}rpt2(ar){ar.a[ar.b]=ar.c;}
+rpt3(ar){switch(ar.tip){case'=':ar.a[ar.b]=ar.c;break;case'+=':ar.a[ar.b]+=ar.c;break;case'-=':ar.a[ar.b]-=ar.c;break;case'/=':ar.a[ar.b]/=ar.c;break;case'&&=':ar.a[ar.b]&&=ar.c;break;
+case'*=':ar.a[ar.b]*=ar.c;break;case'**=':ar.a[ar.b]**=ar.c;break;case'<<=':ar.a[ar.b]<<=ar.c;break;case'>>=':ar.a[ar.b]>>=ar.c;break;case'^=':ar.a[ar.b]^=ar.c;break;case'||=':ar.a[ar.b]||=ar.c;break;
+case'>>>=':ar.a[ar.b]>>>=ar.c;break;case'??=':ar.a[ar.b]??=ar.c;break;case'%=':ar.a[ar.b]%=ar.c;break;case'|=':ar.a[ar.b]|=ar.c;break;case'&=':ar.a[ar.b]&=ar.c;break;
+}}
+herr0(){Scratch.openWindow('https://linktr.ee/Penta_quark_neutro');}
+herr1(){ops=0;ref();}herr2(){ops=1;ref();}herr3(){vecs=0;ref();}herr4(){vecs=1;ref();}herr5(){prop=0;ref();}herr6(){prop=1;ref();}herr7(){glo=0;ref();}herr8(){glo=1;ref();}
+herr9(){cc=0;ref();}herr10(){cc=1;ref();}herr11(){cuat=0;ref();}herr12(){cuat=1;ref();}herr13(){oct=0;ref();}herr14(){oct=1;ref();}herr15(){sed=0;ref();}herr16(){sed=1;ref();}herr17(){geo=0;ref();}herr18(){geo=1;ref();}
+arr(ar){return Array.from(ar.a.split(','));}
+le(ar){return ar.a.length;}
+nor(ar){var i=0,b=0;while(i<ar.a.length){b+=ar.a[i++]**2}return b**0.5}
+unit(ar){var i=0,b=0;while(i<ar.a.length){b+=ar.a[i++]**2}b**=0.5;return ar.a.map(g=>g/b)}
+pt(ar){return ar.a[ar.b];}pt2(ar){return ar.a[ar.b][ar.c]}pt3(ar){return ar.a[ar.b][ar.c][ar.d]}pt4(ar){return ar.a[ar.b][ar.c][ar.d][ar.e]}
+prod(ar){var i=0,fin=0;while(i<(ar.a.length)){fin+=((ar.a[i])*(ar.b[i++]));}return fin;}rpt(ar){ar.a[ar.b]=ar.c;return ar.a;}rpt2(ar){ar.a[ar.b]=ar.c;}
+rpt3(ar){switch(ar.tip){case'=':ar.a[ar.b]=ar.c;break;case'+=':ar.a[ar.b]+=ar.c;break;case'-=':ar.a[ar.b]-=ar.c;break;case'/=':ar.a[ar.b]/=ar.c;break;case'&&=':ar.a[ar.b]&&=ar.c;break;
+case'*=':ar.a[ar.b]*=ar.c;break;case'**=':ar.a[ar.b]**=ar.c;break;case'<<=':ar.a[ar.b]<<=ar.c;break;case'>>=':ar.a[ar.b]>>=ar.c;break;case'^=':ar.a[ar.b]^=ar.c;break;case'||=':ar.a[ar.b]||=ar.c;break;
+case'>>>=':ar.a[ar.b]>>>=ar.c;break;case'??=':ar.a[ar.b]??=ar.c;break;case'%=':ar.a[ar.b]%=ar.c;break;case'|=':ar.a[ar.b]|=ar.c;break;case'&=':ar.a[ar.b]&=ar.c;break;
+}}
 herr0(){Scratch.openWindow('https://linktr.ee/Penta_quark_neutro');}
 herr1(){ops=0;ref();}herr2(){ops=1;ref();}herr3(){vecs=0;ref();}herr4(){vecs=1;ref();}herr5(){prop=0;ref();}herr6(){prop=1;ref();}herr7(){glo=0;ref();}herr8(){glo=1;ref();}
 herr9(){cc=0;ref();}herr10(){cc=1;ref();}herr11(){cuat=0;ref();}herr12(){cuat=1;ref();}herr13(){oct=0;ref();}herr14(){oct=1;ref();}herr15(){sed=0;ref();}herr16(){sed=1;ref();}herr17(){geo=0;ref();}herr18(){geo=1;ref();}
@@ -706,6 +741,7 @@ z1=multz(zelevN([1-z1[0],-z1[1]],0.5),[0,1]);z1[0]=ar.a[0]+z1[0],z1[1]=ar.a[1]+z
 return multz([Math.log(Math.hypot(z1[0],z1[1])),Math.atan2(z1[1],z1[0])],[0,-1])}
 cc26(ar){let z1=divz([-ar.a[0],1-ar.a[1]],[ar.a[0],1+ar.a[1]]);
 return multz([Math.log(Math.hypot(z1[0],z1[1])),Math.atan2(z1[1],z1[0])],[0,-0.5])}
+s45(ar){return [ar.a.x,ar.a.y]}
 
 
 }Scratch.extensions.register(new vectorr());})(Scratch);

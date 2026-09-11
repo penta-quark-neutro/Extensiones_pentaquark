@@ -17,7 +17,7 @@ class minmatespentaquark{getInfo(){return{id:'minmatespentaquark',name:'Pequeña
 {opcode:'prsx_y',blockType:reportero,text:'[x]es % de[y]',hideFromPalette:ops,arguments:{x:{type:numero,defaultValue:'1'},y:{type:numero,defaultValue:'10'}}},
 {opcode:'vacio',blockType:evaluador,text:'Ø[a]?',hideFromPalette:ops,arguments:{a:{type:Scratch.ArgumentType.STRING,defaultValue:''}}},
 {opcode:'divisorinfinito',blockType:reportero,text:'[a]/[b] 0=xlim->0,∞=xlim->∞',hideFromPalette:ops,arguments:{a:{type:numero,defaultValue:'0'},b:{type:numero,defaultValue:'0'}}},
-{opcode:'neg',blockType:reportero,text:'-[x]',hideFromPalette:ops,arguments:{x:{type:numero,defaultValue:'1'}}},
+{opcode:'neg',blockType:reportero,text:'-[x]',hideFromPalette:1,arguments:{x:{type:numero,defaultValue:'1'}}},
 {opcode:'neg2',blockType:evaluador,text:'¬[x]',hideFromPalette:1,arguments:{x:{type:Scratch.ArgumentType.BOOLEAN,defaultValue:''}}},
 {opcode:'devo',blockType:evaluador,text:'[x]',hideFromPalette:ops,arguments:{x:{type:txt,defaultValue:''}}},
 {opcode:'fix',blockType:reportero,text:'fix[z][k]',hideFromPalette:ops,arguments:{z:{type:numero,defaultValue:'1.9389834346'},k:{type:numero,defaultValue:'5'}}},
@@ -92,19 +92,19 @@ asinh(ar){return Math.asinh(ar.k)}
 acosh(ar){return Math.acosh(ar.k)}
 atanh(ar){return Math.atanh(ar.k)}
 tanh(ar){return Math.tanh(ar.k)}
-delta_dirac(ar){if(ar.a==ar.x){return 1/0;}else{return 0;}}
+delta_dirac(ar){if(ar.a==ar.x){return Infinity;}else{return 0;}}
 signo_x(ar){return Math.sign(ar.x)}
 rampa_de_x(ar){if(ar.x<0){return 0;}else{return ar.x}}
-sen_prob(ar){return ((Math.pow(Math.sin(ar.x),2)+1)/(Math.pow(Math.pow(ar.x,2),1/4)+1))*100;}
+sen_prob(ar){return ((Math.pow(Math.sin(ar.x),2)+1)/(Math.pow(Math.pow(ar.x,2),0.25)+1))*100;}
 tendlim(ar){if(ar.x>=ar.y){return ar.y;}else{if(ar.x<=ar.z){return ar.z;}else{return ar.x;}}}
 tendlim2(ar){if(ar.x>=ar.y){return ar.y;}else{return ar.x}}
 tendlim3(ar){if(ar.x<=ar.z){return ar.z;}else{return ar.x}}
 prsx_y(ar){return (ar.x/ar.y)*100;}
 vacio(ar){return (ar.a===''||ar.a==null);}
-divisorinfinito(ar){var infinity=1/0;
-if(ar.a==0 && ar.b==0){return 1;}else{if(ar.a==infinity && ar.b==infinity || ar.a==-infinity && ar.b==-infinity){return 1;}else{
-if(ar.a==-infinity && ar.b==infinity || ar.a==infinity && ar.b==-infinity){return -1;}else{if(ar.a==infinity && ar.b==0 || ar.a==-infinity && ar.b==0){return 0;}else{
-if(ar.a==0 && ar.b==infinity || ar.a==0 && ar.b==-infinity){return 0;}else{return ar.a/ar.b;}}}}}}
+divisorinfinito(ar){
+if(ar.a==0 && ar.b==0){return 1;}else{if(ar.a==Infinity && ar.b==Infinity || ar.a==-Infinity && ar.b==-Infinity){return 1;}else{
+if(ar.a==-Infinity && ar.b==Infinity || ar.a==Infinity && ar.b==-Infinity){return -1;}else{if(ar.a==Infinity && ar.b==0 || ar.a==-Infinity && ar.b==0){return 0;}else{
+if(ar.a==0 && ar.b==Infinity || ar.a==0 && ar.b==-Infinity){return 0;}else{return ar.a/ar.b;}}}}}}
 neg(ar){return -ar.x;}
 neg2(ar){return !(ar.x==true);}
 devo(ar){return ar.x;}
@@ -117,7 +117,7 @@ fract(ar){if(ar.k>=0){return ar.k-Math.floor(ar.k);}else{return ar.k-Math.ceil(a
 enter(ar){return Math.trunc(ar.k);}
 Logx(ar){return Math.log(ar.x)/Math.log(ar.k);}
 fact(ar){let num=1,num2=1;for(num=1;num<=ar.k;num++){num2*=num;}return num2;}
-gamma(ar){return Math.pow(2*3.14159265358979/ar.k,1/2)*Math.pow((1/2.71828182845905*(ar.k+(1/(12*ar.k-(1/(10*ar.k)))))),ar.k);}
+gamma(ar){return Math.pow(6.2831853071795864/ar.k,0.5)*Math.pow((1/2.71828182845905*(ar.k+(1/(12*ar.k-(1/(10*ar.k)))))),ar.k);}
 mei(ar){return (ar.a>=ar.b);}
 mnei(ar){return (ar.a<=ar.b);}
 ni(ar){return (ar.a!=ar.b);}
@@ -128,7 +128,7 @@ f16round(ar){return Math.f16round(ar.k)}
 max(ar,util){if(Array.isArray(ar.k)){return Math.max(...ar.k)}else{return Math.max(...util.target.lookupVariableByNameAndType(ar.k+'','list').value)}}
 min(ar,util){if(Array.isArray(ar.k)){return Math.min(...ar.k)}else{return Math.min(...util.target.lookupVariableByNameAndType(ar.k+'','list').value)}}
 hypot(ar,util){if(Array.isArray(ar.k)){return Math.hypot(...ar.k)}else{return Math.hypot(...util.target.lookupVariableByNameAndType(ar.k+'','list').value)}}
-sumPrecise(ar,util){if(Array.isArray(ar.k)){return Math.sumPrecise(ar.k.map(k=>+k))}else{return Math.sumPrecise(util.target.lookupVariableByNameAndType(ar.k+'','list').value)}}
+sumPrecise(ar,util){if(Array.isArray(ar.k)){return Math.sumPrecise(ar.k.map(k=>+k))}else{return Math.sumPrecise(util.target.lookupVariableByNameAndType(ar.k+'','list').value.map(k=>+k))}}
 cbrt(ar){return Math.cbrt(ar.k)}
 spl(ar){return ar.k.split(ar.h)}
 //constantes----------------------------------------------------------------------------------------------------------
@@ -144,8 +144,8 @@ Na(){return 6.02214129*Math.pow(10,23);}//numero de avogadro
 E(){return 1.602176565*Math.pow(10,-19);}
 φ0(){return 2.067833758*Math.pow(10,-15);}
 µ0(){return 0.000001256637061;}
-inf0(){return 1/0;}
-inf1(){return -(1/0);}
+inf0(){return Infinity;}
+inf1(){return -Infinity;}
 γ(){return 0.577215664901632;}
 //Azar----------------------------------------------------------------------------------------------------------
 prse(ar){return (ar.x>Math.random());}

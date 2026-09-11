@@ -230,6 +230,10 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me102',blockType:rep,text:'Object.preventExtensions[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:''}}},
 {blockType:"label",text:"Objetos y utiles",hideFromPalette:obs},//--------------------------------------------------------------------------------------------------------------------------------
 {opcode:'me1',blockType:rep,text:'{}',hideFromPalette:obs,disableMonitor:1},
+{opcode:'me161',blockType:rep,text:'{[a]:[b]}',hideFromPalette:obs,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'me162',blockType:rep,text:'{[a]:[b],[c]:[d]}',hideFromPalette:obs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt}}},
+{opcode:'me163',blockType:rep,text:'{[a]:[b],[c]:[d],[e]:[f]}',hideFromPalette:obs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt},f:{type:txt}}},
+{opcode:'me164',blockType:rep,text:'{[a]:[b],[c]:[d],[e]:[f],[g]:[h]}',hideFromPalette:obs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt},f:{type:txt},g:{type:txt},h:{type:txt}}},
 {opcode:'me38',blockType:bol,text:'[a]',hideFromPalette:obs,disableMonitor:1,arguments:{a:{type:txt,menu:'vals'}}},
 {opcode:'me12',blockType:rep,text:'interno[a]',hideFromPalette:obs,disableMonitor:1,arguments:{a:{type:txt,menu:'in'}}},
 {opcode:'me20',blockType:rep,text:'Objeto Global',hideFromPalette:obs,disableMonitor:1},
@@ -249,7 +253,7 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me118',blockType:com0,text:'throw[a]',isTerminal:1,hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me126',blockType:rep,text:'atob[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
 {opcode:'me127',blockType:rep,text:'btoa[a]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'me160',blockType:Scratch.BlockType.LOOP,text:['Iniciar en nuevo hilo',''],isTerminal:0,branchCount:1,hideFromPalette:obs},
+{opcode:'me160',blockType:Scratch.BlockType.LOOP,text:['Iniciar en nuevo hilo'],isTerminal:0,branchCount:1,hideFromPalette:obs},
 {opcode:'me132',blockType:Scratch.BlockType.LOOP,text:['do{','}while[a]'],isTerminal:0,branchCount:1,hideFromPalette:obs,arguments:{a:{type:txt}}},
 {opcode:'me133',blockType:Scratch.BlockType.LOOP,text:['for(var[a]of[b]){','}'],isTerminal:0,branchCount:1,hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'variable'},b:{type:txt}}},
 {opcode:'me134',blockType:com0,text:'Notification[a][b]click[c]close[d]error[e]var[f]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'titulo'},b:{type:txt,defaultValue:'{opciones}'},c:{type:txt,defaultValue:'ƒ'},d:{type:txt,defaultValue:'ƒ'},e:{type:txt,defaultValue:'ƒ'},f:{type:txt,defaultValue:'variable'}}},
@@ -276,7 +280,7 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me153',blockType:com0,text:'/ n',hideFromPalette:adv},
 {opcode:'me150',blockType:com0,text:'debugger;',hideFromPalette:adv},
 {opcode:'me154',blockType:com0,text:'extraer codigo asta este punto en window.fuenteTw',hideFromPalette:adv},
-{opcode:'me155',blockType:com0,text:'romper capa de compatibilidad para bloque (Alpha)',hideFromPalette:adv},
+{opcode:'me155',blockType:com0,text:'romper capa de compatibilidad(Alpha)',hideFromPalette:adv},
 
 
 ],menus:{pr:{acceptReporters:0,items:['value','writable','enumerable','configurable']},
@@ -384,7 +388,7 @@ me128(ar,util){try{util.target.lookupVariableByNameAndType(ar.d+'','').value=ar.
 me129(ar,util){try{util.target.lookupVariableByNameAndType(ar.d+'','').value=ar.a[ar.e](...ar.b)}catch(e){util.target.lookupVariableByNameAndType(ar.c+'','').value=e;util.startBranch(1,false)}}
 me130(ar,util){try{ar.a(...ar.b)}catch(e){util.target.lookupVariableByNameAndType(ar.c+'','').value=e;util.startBranch(1,false)}}
 me131(ar,util){try{ar.a[ar.e](...ar.b)}catch(e){util.target.lookupVariableByNameAndType(ar.c+'','').value=e;util.startBranch(1,false)}}
-me132(ar,util){if(ar.a){util.startBranch(1,true);util.thread.pst=1;}else{if(!util.thread.pst){util.startBranch(1,false)}else{util.thread.pst=null}}}
+me132(ar,util){if(ar.a){util.startBranch(1,true);util.thread[util.thread.peekStack()]=1;}else{if(!util.thread[util.thread.peekStack()]){util.startBranch(1,false)}else{delete util.thread[util.thread.peekStack()]}}}
 me133(ar,util){let Ident=util.thread.peekStack();
 if(!util.thread[Ident]){util.thread[Ident]=[Object.keys(ar.b),0]}
 if(util.thread[Ident][0].length>util.thread[Ident][1]){util.target.lookupVariableByNameAndType(ar.a+'','').value=ar.b[util.thread[Ident][0][util.thread[Ident][1]++]];util.startBranch(1,true);}else
@@ -412,5 +416,9 @@ me145(ar){Scratch.vm.runtime.sequencer.retireThread(ar.a);}
 me146(ar,util){return Scratch.vm.runtime.threads.filter(k=>k.target.id==util.target.id)}
 me147(){}me148(){}me149(){}me150(){}me151(ar){}me152(){}me153(){}me154(){}me155(){}me156(){}me157(){}me158(){}me159(){}
 me160(ar,util){if(util.thread.target.blocks.getBranch(util.thread.peekStack(), 0)){util.sequencer.runtime._pushThread(util.thread.target.blocks.getBranch(util.thread.peekStack(), 0),util.target,{});}}//sacado de controlPLus de CubesterYT en github
+me161(ar){return {[ar.a]:ar.b}}
+me162(ar){return {[ar.a]:ar.b,[ar.c]:ar.d}}
+me163(ar){return {[ar.a]:ar.b,[ar.c]:ar.d,[ar.e]:ar.f}}
+me164(ar){return {[ar.a]:ar.b,[ar.c]:ar.d,[ar.e]:ar.f,[ar.g]:ar.h}}
 
 }Scratch.extensions.register(new exps());})(Scratch);
