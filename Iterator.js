@@ -10,14 +10,19 @@ class IteratorN{getInfo(){return {id:'Iterador',name:'Iterador',color1:'#a5aefc'
 {opcode:'it6',blockType:rep,text:'[a].forEach[b]',arguments:{a:{type:txt},b:{type:txt,defaultValue:'ƒ'}}},
 {opcode:'it7',blockType:rep,text:'[a].map[b]',arguments:{a:{type:txt},b:{type:txt,defaultValue:'ƒ'}}},
 {opcode:'it8',blockType:rep,text:'[a].reduce[b]',arguments:{a:{type:txt},b:{type:txt,defaultValue:'ƒ'}}},
+{opcode:'it19',blockType:rep,text:'[a].reduce[b][c]',arguments:{a:{type:txt},b:{type:txt,defaultValue:'ƒ'},c:{type:txt,defaultValue:'ƒ'}}},
 {opcode:'it9',blockType:bol,text:'[a].some[b]',arguments:{a:{type:txt},b:{type:txt,defaultValue:'ƒ'}}},
 {opcode:'it2',blockType:bol,text:'[a].every[b]',arguments:{a:{type:txt},b:{type:txt,defaultValue:'ƒ'}}},
 {opcode:'it10',blockType:rep,text:'[a].take[b]',arguments:{a:{type:txt},b:{type:txt,defaultValue:0}}},
+{opcode:'it23',blockType:rep,text:'[a].join[b]',arguments:{a:{type:txt},b:{type:txt,defaultValue:','}}},
 {opcode:'it11',blockType:rep,text:'[a].toArray()',arguments:{a:{type:txt}}},
 {opcode:'it17',blockType:rep,text:'concat[a][b]',arguments:{a:{type:txt},b:{type:txt}}},
 {opcode:'it12',blockType:rep,text:'[a].next()',arguments:{a:{type:txt}}},
 {opcode:'it13',blockType:bol,text:'[a].value',arguments:{a:{type:txt}}},
 {opcode:'it14',blockType:bol,text:'[a].done',arguments:{a:{type:txt}}},
+{opcode:'it20',blockType:bol,text:'Iterator.zip[a][b]',arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'it21',blockType:bol,text:'Iterator.zipKeyed[a][b]',arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'it22',blockType:bol,text:'Iterator.concat(...[a])',arguments:{a:{type:txt}}},
 {opcode:'it15',blockType:bol,text:'¿Iterador[a]?',arguments:{a:{type:txt}}},
 {opcode:'it16',blockType:bol,text:'¿Iterable[a]?',arguments:{a:{type:txt}}},
 {opcode:'it18',blockType:bol,text:'([a])=>[b]',arguments:{a:{type:txt,defaultValue:'a,b'},b:{type:txt,defaultValue:'a*b'}}},
@@ -42,5 +47,10 @@ it15(ar){return ar.a instanceof Iterator}
 it16(ar){return !!(ar.a?.[Symbol.iterator])}
 it17(ar){return Iterator.concat(ar.a,ar.b)}
 it18(ar){return Function('return ('+ar.a+')=>'+ar.b)()}
+it19(ar){return ar.a.reduce(ar.b,ar.c)}
+it20(ar){return Iterator.zip(ar.a,(typeof(ar.b)=='string'?undefined:ar.b))}
+it21(ar){return Iterator.zipKeyed(ar.a,(typeof(ar.b)=='string'?{undefined:ar.b))}
+it22(ar){return Iterator.concat(...ar.a)}
+it23(ar){return ar.a.join(ar.b)}
 
 }Scratch.extensions.register(new IteratorN());})(Scratch);

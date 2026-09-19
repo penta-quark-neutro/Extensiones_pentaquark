@@ -97,7 +97,26 @@ case"exps.me159":{let yy=JSON.parse(((this.source.split('yield* executeInCompati
 this.source=this.source.split('yield* executeInCompatibilityLayer(').slice(0,-1).join('yield* executeInCompatibilityLayer(');
 this.source+=vm.runtime.getTargetForStage().lookupVariableByNameAndType(yy[0]+'','list').value[yy[1]];break;}
 default:return _ogJSdescendStack.call(this, node);}};}
-//---------------------------------fin de codigo de prueba 
+//---------------------------------fin de codigo de prueba
+
+/*esto es experimental y aun no funciona
+Object.defineProperties(ScratchBlocks.Blocks,{exps_me0:function a(){
+              this.jsonInit({
+                type: 'exps_0',
+                inputsInline: true,
+                category: 'exps',
+                colour: '#984905',
+                output: 'String',
+                outputShape: 2,
+                args0: [
+                  {type: 'input_value',name: 'a'},{type: 'input_value',name: 'b'}
+                ],
+                message0: 'array%1%2',
+                tooltip:'prueba'
+		})}
+		})
+*/
+
 const com0=Scratch.BlockType.COMMAND,vgbb=Scratch.BlockType.BUTTON,str0=Scratch.ArgumentType.STRING,bol=Scratch.BlockType.BOOLEAN,rep=Scratch.BlockType.REPORTER,bol1=Scratch.ArgumentType.BOOLEAN,txt=Scratch.ArgumentType.STRING;
 if(!Scratch.extensions.unsandboxed){throw new Error('Esta extension solo funcion sin "sandbox"');}
 class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763613',color3:'#e39668',blocks: [
