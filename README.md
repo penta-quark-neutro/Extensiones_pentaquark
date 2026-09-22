@@ -66,3 +66,6 @@ ademas de unos bloques de acceso y ejecución de código.
 ### Logica trivalente
 parecido y compatible con Boolean.
 es una lógica que tiene los valores verdadero, falso y desconocido.
+## Uniones
+es una extension basica en desarrollo que permite crear uniones entre objetos, estas uniones son de coordenadas.
+por el momento cuneta con 11 modos de uniones.
