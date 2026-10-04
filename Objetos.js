@@ -111,7 +111,7 @@ Object.defineProperties(ScratchBlocks.Blocks,{exps_me0:function a(){
                 args0: [
                   {type: 'input_value',name: 'a'},{type: 'input_value',name: 'b'}
                 ],
-                message0: 'array%1%2',
+                message0: '[%1%2]',
                 tooltip:'prueba'
 		})}
 		})
@@ -190,7 +190,7 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me75',blockType:rep,text:'JS a scriptURL[a]',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'self.addEventListener("message", function(e){const resultado=1+1;self.postMessage(resultado);});'}}},
 {opcode:'me91',blockType:com0,text:'revokeObjectURL[a]',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:''}}},
 {blockType:"label",text:"datos y propiedades",hideFromPalette:dap},//----------------------------------------------------------------------------------------------------------------------
-{opcode:'me00',blockType:rep,text:'array[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:'tr'}}},
+{opcode:'me00',blockType:rep,text:'array[a]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:'tr'}},tooltip:'test'},
 {opcode:'me0',blockType:rep,text:'array[a],[b]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:'tr'},b:{type:txt,defaultValue:'45'}}},
 {opcode:'me01',blockType:rep,text:'array[a],[b],[c]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:'tr'},b:{type:txt,defaultValue:'45'},c:{type:txt,defaultValue:'jk'}}},
 {opcode:'me10',blockType:rep,text:'array[a],[b],[c],[d]',hideFromPalette:dap,arguments:{a:{type:txt,defaultValue:'1'},b:{type:txt,defaultValue:'2'},c:{type:txt,defaultValue:'3'},d:{type:txt,defaultValue:'4'}}},
@@ -303,7 +303,7 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 
 
 ],menus:{pr:{acceptReporters:0,items:['value','writable','enumerable','configurable']},
-in:{acceptReporters:0,items:['vm','target','util','Scratch','Math','Atomics','Reflect','Object','Symbol','Array','String','window','crypto','Map','Set','WeakMap','WeakSet','WeakRef','twgl','gl','Proxy','navigator','FloatCadenaMarkov','blockly','BigInt','ArrayBuffer','DataView','Number','Uint8ClampedArray','Uint8Array','Uint16Array','Uint32Array','Int8Array','Int16Array','Int32Array','Float16Array','Float32Array','Float64Array','BigInt64Array','BigUint64Array','Iterator']},
+in:{acceptReporters:0,items:['vm','target','util','Scratch','Math','Atomics','Reflect','Object','Symbol','Array','String','window','crypto','Map','Set','WeakMap','WeakSet','WeakRef','twgl','gl','Proxy','navigator','FloatCadenaMarkov','blockly','BigInt','ArrayBuffer','DataView','Number','Uint8ClampedArray','Uint8Array','Uint16Array','Uint32Array','Int8Array','Int16Array','Int32Array','Float16Array','Float32Array','Float64Array','BigInt64Array','BigUint64Array','Iterator','Function','Blob','Date']},
 vals:{acceptReporters:0,items:['true','false','Undefined','NaN','null','Infinity']}}
 };}
 herr0(){Scratch.openWindow('https://linktr.ee/Penta_quark_neutro');}
@@ -379,7 +379,7 @@ me100(ar){return Object.assign(ar.a,...ar.b)}
 me101(ar){return ar.a}
 me102(ar){return Object.preventExtensions(ar.a)}
 async me103(ar){return await ar.a;}
-me104(ar){void ar.a}//no se para que recontra carajos alguien quiere esto.
+me104(ar){void ar.a}
 me105(ar){return ar.a?.(ar.b)}
 me106(ar){return ar.a?.(...ar.b)}
 me107(ar){return ar.a?.()}

@@ -71,9 +71,14 @@ class Typedvectorr{getInfo(){return{id:'Typedvectorr',name:'Typedvectorr',color1
 {opcode:'mtxi0',blockType:rep,text:'i(2x2)',hideFromPalette:vecs,disableMonitor:1},
 {opcode:'mtxi1',blockType:rep,text:'i(3x3)',hideFromPalette:vecs,disableMonitor:1},
 {opcode:'mtxi2',blockType:rep,text:'i(4x4)',hideFromPalette:vecs,disableMonitor:1},
-{opcode:'mtx0',blockType:com,text:'mtz(2*2)[a]*Arr(2)[b]_salida[c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
-{opcode:'mtx1',blockType:com,text:'mtz(3*3)[a]*Arr(3)[b]_salida[c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
-{opcode:'mtx2',blockType:com,text:'mtz(4*4)[a]*Arr(4)[b]_salida[c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
+{opcode:'mtx0',blockType:com,text:'mtz(2x2)[a]*vec(2)[b]_salida[c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
+{opcode:'mtx1',blockType:com,text:'mtz(3x3)[a]*vec(3)[b]_salida[c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
+{opcode:'mtx2',blockType:com,text:'mtz(4x4)[a]*vec(4)[b]_salida[c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
+{opcode:'mtx3',blockType:com,text:'mtz(2x2)[a]*mtz(2x2)[b]_salida[c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
+{opcode:'mtx4',blockType:com,text:'mtz(3x3)[a]*mtz(3x3)[b]_salida[c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
+{opcode:'mtx5',blockType:com,text:'mtz(2x2)_[c]T',hideFromPalette:vecs,arguments:{c:{type:txt,defaultValue:''}}},
+{opcode:'mtx6',blockType:com,text:'mtz(3x3)_[c]T',hideFromPalette:vecs,arguments:{c:{type:txt,defaultValue:''}}},
+{opcode:'mtx7',blockType:com,text:'mtz(4x4)_[c]T',hideFromPalette:vecs,arguments:{c:{type:txt,defaultValue:''}}},
 ],menus:{
 outs:{acceptReporters:0,items:['+','-','*','/','**','%','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','Log2','|','&','^','~','<<','>>','>>>','tofixed','senh','cosh','tanh','asenh','acosh','atanh','fround','f16round','round','trunc']},
 Filt:{acceptReporters:0,items:['==','===','<','>','>=','<=','!=']},
@@ -187,5 +192,13 @@ arrxors({a,b,c}){if(!(a instanceof Uint8Array.__proto__&&b instanceof Uint8Array
 	if(!(c instanceof Uint8Array||c instanceof Uint8ClampedArray)){throw 'La salida debe ser un Uint8Array o Uint8ClampedArray'}
 	a=new Uint8Array(a.buffer),b=new Uint8Array(b.buffer);let i=0,tam=Math.max(a.length,b.length,c.length);
 	while(i<tam){c[i]=a[i]|b[i++]}}
+mtx3({a,b,c}){c[0]=a[0]*b[0]+a[1]*b[2],c[1]=a[0]*b[1]+a[1]*b[3],c[2]=a[2]*b[0]+a[3]*b[2],c[3]=a[2]*b[1]+a[3]*b[3]}
+mtx4({a,b,c}){
+c[0]=(a[2]*b[6]+a[1]*b[3]+a[0]*b[0]),c[1]=(a[2]*b[7]+a[1]*b[4]+a[0]+b[1]),c[2]=(a[2]*b[8]+a[1]*b[5]+a[0]*b[2]),
+c[3]=(a[3]*b[0]+a[4]*b[3]+a[5]*b[6]),c[4]=(a[3]*b[1]+a[4]*b[4]+a[5]*b[7]),c[5]=(a[3]*b[2]+a[4]*b[5]+a[5]*b[8]),
+c[6]=(a[6]*b[0]+a[7]*b[3]+a[8]*b[6]),c[7]=(a[6]*b[1]+a[7]*b[4]+a[8]*b[7]),c[8]=(a[6]*b[2]+a[7]*b[5]+a[8]*b[8])}
+mtx5({c}){let a=c[1];c[1]=c[2],c[2]=a;}
+mtx6({c}){let a=[c[1],c[2],c[5]];c[1]=c[3],c[2]=c[6],c[5]=c[7],c[3]=a[0],c[6]=a[1],c[7]=a[2]}
+mtx7({c}){let a=[c[1],c[2],c[3],c[6],c[7],c[11]];c[1]=c[4],c[2]=c[8],c[6]=c[9],c[3]=c[12],c[7]=c[13],c[11]=c[14],c[4]=a[0],c[8]=a[1],c[9]=a[3],c[12]=a[2],c[13]=a[4],c[14]=a[5]}
 
 }Scratch.extensions.register(new Typedvectorr());})(Scratch);

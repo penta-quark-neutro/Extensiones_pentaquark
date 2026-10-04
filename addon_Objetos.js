@@ -37,6 +37,14 @@ cd({text:'[a].[b]?.([c][d][e])'},'e51',com,fu,df('abcde')),
 cd({text:'[a]?([b]?[d]:[e]):[c]'},'e37',bol,fu,df('abcde')),
 cd({text:'[a]?[b]:([c]?[d]:[e])'},'e38',bol,fu,df('abcde')),
 cd({text:'[a]?([b]?[d]:[e]):([c]?[f]:[g])'},'e39',bol,fu,df('abcdefg')),
+cd({text:'array[a][b][c][d][e]'},'e118',bol,fu,df('abcde')),
+cd({text:'array[a][b][c][d][e][f]'},'e119',bol,fu,df('abcdef')),
+cd({text:'array[a][b][c][d][e][f][g]'},'e120',bol,fu,df('abcdefg')),
+cd({text:'array[a][b][c][d][e][f][g][h]'},'e121',bol,fu,df('abcdefgh')),
+cd({text:'{[a]:[b],[c]:[d],[e]:[f],[g]:[h],[i]:[j]}'},'e122',bol,fu,df('abcdefghij')),
+cd({text:'{[a]:[b],[c]:[d],[e]:[f],[g]:[h],[i]:[j],[k]:[l]}'},'e123',bol,fu,df('abcdefghijkl')),
+cd({text:'{[a]:[b],[c]:[d],[e]:[f],[g]:[h],[i]:[j],[k]:[l],[m]:[n]}'},'e124',bol,fu,df('abcdefghijklmn')),
+cd({text:'{[a]:[b],[c]:[d],[e]:[f],[g]:[h],[i]:[j],[k]:[l],[m]:[n],[o]:[p]}'},'e125',bol,fu,df('abcdefghijklmnop')),
 {blockType:"label",text:"accesores",hideFromPalette:da},//----------------------------------------------------------------------------------------------------------------------
 cd({text:'[a].[b].[c].[d].[e]'},'e13',bol,da,df('abcde')),
 cd({text:'[a].[b].[c].[d].[e].[f]'},'e14',bol,da,df('abcdef')),
@@ -251,4 +259,14 @@ e114({a,b,c,d,e}){a[b]??=c,a[d]??=e}
 e115({a,b,c,d,e,f,g}){a[b]??=c,a[d]??=e,a[f]??=g}
 e116({a,b,c,d,e,f,g,h,i}){a[b]??=c,a[d]??=e,a[f]??=g,a[h]??=i}
 e117({a,b,c,d,e,f,g,h,i,j,k}){a[b]??=c,a[d]??=e,a[f]??=g,a[h]??=i,a[j]??=k}
+e118(ar){return [ar.a,ar.b,ar.c,ar.d,ar.e]}
+e119(ar){return [ar.a,ar.b,ar.c,ar.d,ar.e,ar.f]}
+e120(ar){return [ar.a,ar.b,ar.c,ar.d,ar.e,ar.f,ar.g]}
+e121(ar){return [ar.a,ar.b,ar.c,ar.d,ar.e,ar.f,ar.g,ar.h]}
+e122({a,b,c,d,e,f,g,h,i,j}){return {[a]:b,[c]:d,[e]:f,[g]:h,[i]:j}}
+e123({a,b,c,d,e,f,g,h,i,j,k,l}){return {[a]:b,[c]:d,[e]:f,[g]:h,[i]:j,[k]:l}}
+e124({a,b,c,d,e,f,g,h,i,j,k,l,m,n}){return {[a]:b,[c]:d,[e]:f,[g]:h,[i]:j,[k]:l,[m]:n}}
+e125({a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p}){return {[a]:b,[c]:d,[e]:f,[g]:h,[i]:j,[k]:l,[m]:n,[o]:p}}
+
+
 }Scratch.extensions.register(new expsext());})(Scratch);

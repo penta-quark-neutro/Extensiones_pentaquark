@@ -598,14 +598,14 @@ tagtp1(ar,util){return util.target.tag1;}tagtp1c(ar,util){return (util.target.ta
 tagtp1ig(ar,util){util.target.tag1=ar.t}sl(ar){return ar.a.splice(ar.b,ar.c);}sl2(ar){ar.a.splice(ar.b,ar.c);}
 fill(ar){return ar.a.fill(ar.b)}fl(ar){return ar.a.flat(ar.b);}fill2(ar){ar.a.fill(ar.b)}
 s1(ar,util){return util.target.id;}s2(ar,util){return util.target.drawableID;}
-s3(ar,util){var q=vm.runtime.targets.findIndex(dat=>{return dat.id==ar.a;});return vm.runtime.targets[q].tag1;}
+s3(ar,util){return vm.runtime.targets[vm.runtime.targets.findIndex(dat=>{return dat.id==ar.a;})].tag1;}
 s4(ar,util){return vm.renderer.isTouchingDrawables(util.target.drawableID,vm.runtime.targets.filter(dat=>{return (dat.tag1 && dat.tag1.includes(ar.a));}).map(dat=>dat.drawableID));}
-s5(ar,util){var A=vm.renderer._candidatesTouching(util.target.drawableID,vm.renderer._drawList).map(dat=>dat.id);var k=[];var q=0;var i=0;while(A.length>i){if(vm.renderer.isTouchingDrawables(util.target.drawableID,[A[i]])){q=vm.runtime.targets.findIndex(dat=>dat.drawableID==A[i]);if(vm.runtime.targets[q].tag1){k=k.concat(vm.runtime.targets[q].tag1);};}else{}i++;}return k;}
+s5(ar,util){var A=vm.renderer._candidatesTouching(util.target.drawableID,vm.renderer._drawList).map(dat=>dat.id),k=[],q=0,i=0;while(A.length>i){if(vm.renderer.isTouchingDrawables(util.target.drawableID,[A[i]])){q=vm.runtime.targets.findIndex(dat=>dat.drawableID==A[i]);if(vm.runtime.targets[q].tag1){k=k.concat(vm.runtime.targets[q].tag1);};}else{}i++;}return k;}
 s9(ar,util){return vm.renderer.isTouchingDrawables(util.target.drawableID,ar.targets.filter(dat=>{return (dat.tag1 && dat.tag1.includes(ar.a));}).map(dat=>dat.drawableID));}
 Gv1(ar,util){Gvec.push(ar.t);}Gv4(ar,util){Gvec=Gvec.concat(ar.t);}Gv3(ar,util){Gvec=ar.t;if(Gvec==''){Gvec=[];}}Gv2(){return Gvec;}
 in(ar){return ar.c.indexOf(ar.a,ar.b);}co(ar){return ar.a.concat(ar.b);}Gv5(){return vm.runtime.targets;}
 Gv6(ar){vm.runtime.extensionStorage['vectorr'].push(ar.t)}Gv8(ar){return vm.runtime.extensionStorage['vectorr']}Gv9(ar){if(Array.isArray(ar.t)){vm.runtime.extensionStorage['vectorr']=ar.t}}
-s6(ar,util){return [util.target.x,util.target.y];}s7(ar,util){util.target.setXY(ar.a[0]*1,ar.a[1]*1);}
+s6(ar,util){return [util.target.x,util.target.y];}s7(ar,util){util.target.setXY(ar.a[0],ar.a[1]);}
 s8(ar,util){util.target.setXY(util.target.x*1+ar.a[0]*1,util.target.y*1+ar.a[1]*1);}
 cu(ar){return [ar.a];}cu2(ar){return [ar.a,ar.b];}cu3(ar){return [ar.a,ar.b,ar.c];}cu4(ar){return [ar.a,ar.b,ar.c,ar.d];}cu5(ar){return [ar.a,ar.b,ar.c,ar.d,ar.e,ar.f,ar.g,ar.h];}
 cu6(ar){return Object.values(ar)}cu7(ar){return Object.values(ar)}cu8(ar){return Object.values(ar)}cu_i(){return iv}cu_j(){return jv}cu_k(){return kv}
@@ -614,7 +614,7 @@ uin3(ar){return new Uint32Array(ar.a);}uin4(ar){return new Int8Array(ar.a);}uin5
 uin7(ar){return new Float16Array(ar.a);}uin8(ar){return new Float32Array(ar.a);}uin9(ar){return new Float64Array(ar.a);}uin11(ar){return new BigInt64Array(ar.a)}uin12(ar){return new BigUint64Array(ar.a)}
 dsit(ar){var i=0,out=Array(ar.a.length);while(i<ar.a.length){out[i]=ar.b[i]-ar.a[i++];}return Math.hypot(...out);}
 lerp(ar){var i=0,out=Array(ar.a.length);while(i<ar.a.length){out[i]=ar.a[i]*1+(ar.b[i]-ar.a[i++])*ar.c;}return out;}
-negvec(ar){return ar.a.map(k=>k*-1);}incl(ar){return ar.a.includes(ar.b)}smdr(ar){let i=0,out=0;while(i<ar.a.length){out+=ar.a[i++];}return out;}//Math.sumPrecise(ar.a);
+negvec(ar){return ar.a.map(k=>-k);}incl(ar){return ar.a.includes(ar.b)}smdr(ar){let i=0,out=0;while(i<ar.a.length){out+=ar.a[i++];}return out;}//Math.sumPrecise(ar.a);
 med1(ar){var i=0,out=0;while(i<ar.a.length){out+=ar.a[i++];}return out/ar.a.length;}
 med2(ar){var i=1,out=ar.a[0];while(i<ar.a.length){out*=ar.a[i++];}return out**(1/ar.a.length);}
 med3(ar){var i=0,out=0;while(i<ar.a.length){out+=1/ar.a[i++];}return ar.a.length/out;}
@@ -641,7 +641,7 @@ while(i<a.length){nv[i]=[nv[i][0]*matriz[0]+nv[i][1]*matriz[3]+nv[i][2]*matriz[6
 med5(ar){var i=0,out=0,k=0;while(i<ar.a.length){out+=ar.a[i++];}out/=ar.a.length;i=0;while(i<ar.a.length){k+=(ar.a[i++]-out)**2;}return (k/(ar.a.length-1))**0.5;}
 sli(ar){return ar.a.slice(ar.b,ar.c);}
 s13(ar,util){return Math.hypot((ar.a.x-util.target.x),(ar.a.y-util.target.y))}
-s14(ar,util){const coord=[util.target.x,util.target.y];var arr=Array(ar.a.length),i=0;while(i<arr.length){arr[i]=Math.hypot(ar.a[i].x-coord[0],ar.a[i++].y-coord[1])}return arr}
+s14(ar,util){var arr=Array(ar.a.length),i=0;while(i<arr.length){arr[i]=Math.hypot(ar.a[i].x-util.target.x,ar.a[i++].y-util.target.y)}return arr}
 s15(ar){return Math.hypot((ar.a.x-ar.b.x),(ar.a.y-ar.b.y))}s16(ar,util){util.target.setXY(ar.a.x,ar.a.y)}
 pmedio(ar){let arr=Array(ar.a.length),i=0;while(i<ar.a.length){arr[i]=(ar.a[i]+ar.b[i++])/2}return arr}
 pmedioN(ar){let arr=Array(ar.a[0].length).fill(0),i=0,j=0;while(j<ar.a.length){while(i<ar.a[0].length){arr[i]+=(ar.a[j][i++])/ar.a.length}j++;i=0;}return arr}
