@@ -286,7 +286,7 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'geo3',blockType:eva,text:'¿punto[a]en(x,y,z,an,al,pr[b]ortoedro)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
 {opcode:'geo5',blockType:eva,text:'¿punto[a]en(x,y,z,l[b]cubo)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
 {opcode:'geo6',blockType:rep,text:'punto[a]normal contra(x,y[b]circulo)',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
-{opcode:'geo7',blockType:rep,text:'punto[a]normal contra(x,y,an,al[b]rectangulo)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'geo7',blockType:rep,text:'punto[as]normal contra(x,y,an,al[bs]rectangulo)?',hideFromPalette:geo,arguments:{as:{type:txt},bs:{type:txt}}},
 {opcode:'geo8',blockType:rep,text:'punto[a]normal contra(x,y,l[b]cuadrado)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
 {opcode:'geo9',blockType:eva,text:'¿circulo[a]en[b]circulo (x,y,r)?',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt}}},
 {opcode:'geo10',blockType:eva,text:'¿rectangulo[cu]en[du]rectangulo (x,y,an,al)?',hideFromPalette:geo,arguments:{cu:{type:txt},du:{type:txt}}},
@@ -669,8 +669,9 @@ geo4({a,b}){return (a[0]>=b[0]&&a[0]<=(b[0]+b[2]))&&(a[1]>=b[1]&&a[1]<=(b[1]+b[2
 geo5({a,b}){return (a[0]>=b[0]&&a[0]<=(b[0]+b[3]))&&(a[1]>=b[1]&&a[1]<=(b[1]+b[3]))&&(a[2]>=b[3]&&a[2]<=(b[2]+b[3]))}
 s31(ar){return ar.a.setXY(ar.b.x,ar.b.y)}
 geo6({a,b}){let c=Math.atan2(a[0]-b[0],a[1]-b[1]);return [Math.sin(c),Math.cos(c),c*57.295779513082320876798154814105]}
-geo7({a,b}){let c=[b[0]+(b[2]/2),b[1]-(b[3]/2)];return (Math.abs(a[0]-c[0])<Math.abs(a[1]-c[1])?(a[1]<c[1]?[0,-1,180]:[0,1,0]):(a[0]<c[0]?[-1,0,-90]:[1,0,90]))}
-geo8({a,b}){let c=[b[0]+(b[2]/2),b[1]-(b[2]/2)];return (Math.abs(a[0]-c[0])<Math.abs(a[1]-c[1])?(a[1]<c[1]?[0,-1,180]:[0,1,0]):(a[0]<c[0]?[-1,0,-90]:[1,0,90]))}
+geo7({as,bs}){let PC=[bs[0]+(bs[2]/2),bs[1]+(bs[3]/2)],rect1=as[1]>((bs[1]-PC[1])/(bs[0]-PC[0])*as[0]+(PC[1]-(bs[1]-PC[1])/(bs[0]-PC[0])*PC[0])),
+rect2=as[1]>((bs[1]-PC[1])/(bs[0]+bs[2]-PC[0])*as[0]+(PC[1]-(bs[1]-PC[1])/(bs[0]+bs[2]-PC[0])*PC[0]));if(rect1){return (rect2?[0,1,0]:[-1,0,-90])}else{return (rect2?[1,0,90]:[0,-1,180])}}
+geo8({a,b}){let c=[b[0]+(b[2]/2),b[1]+(b[2]/2)];return (Math.abs(a[0]-c[0])<Math.abs(a[1]-c[1])?(a[1]<c[1]?[0,-1,180]:[0,1,0]):(a[0]<c[0]?[-1,0,-90]:[1,0,90]))}
 rpt7(ar){let i=0;while(i<ar.a.length){ar.a[i]=ar.b[i++]}}rpt8(ar){return ++ar.a[ar.b]}rpt9(ar){return --ar.a[ar.b]}rpt10(ar){return ar.a[ar.b]++}rpt11(ar){return ar.a[ar.b]--}
 geo9({a,b}){return Math.hypot(a[0]-b[0],a[1]-b[1])<=(b[2]+a[2])}
 geo10({cu,du}){return !((cu[0]>=du[0]+du[2])||(cu[0]+cu[2]<=du[0])||(cu[1]>=du[1]+du[3])||(cu[1]+cu[3]<=du[1]))}
