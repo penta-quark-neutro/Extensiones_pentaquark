@@ -298,6 +298,8 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'geo16',blockType:rep,text:'circulo[a]en lista[b]de[c]',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt},c:{type:txt,menu:'figs'}}},
 {opcode:'geo17',blockType:rep,text:'cuadrado[a]en lista[b]de[c]',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt},c:{type:txt,menu:'figs'}}},
 {opcode:'geo18',blockType:rep,text:'rectangulo[a]en lista[b]de[c]',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt},c:{type:txt,menu:'figs'}}},
+{opcode:'geo19',blockType:rep,text:'interseccion recta([a][b])recta([c][d])',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt}}},
+{opcode:'geo20',blockType:rep,text:'interseccion SegRect([a][b])SegRect([c][d])',hideFromPalette:geo,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt}}},
 {blockType:"label",text:"para exps",hideFromPalette:!Array.from(vm.extensionManager._loadedExtensions.keys()).includes('exps')},//--------------------------------------------------------------------------------------------------------------------------------
 {opcode:'tvectorr',blockType:rep,text:'vectorr',hideFromPalette:!Array.from(vm.extensionManager._loadedExtensions.keys()).includes('exps'),disableMonitor:1},
 
@@ -728,21 +730,17 @@ var Z1=unosobrez(vec0[0]*10,vec0[1]*10),Z3=unosobrez(((vec0[0]*12)-(Z1[0])),((ve
 var img3=((vec0[0]*Z5[1])+(Z5[0]*vec0[1])),ARC=unosobrez(vec0[0],vec0[1]),dat1=Math.atan2((ARC[1]*6.283185307179586),(ARC[0]*6.283185307179586)),dat2=Math.pow(Math.hypot((ARC[0]*6.283185307179586),(ARC[1]*6.283185307179586)),0.5),pa3=Math.exp((vec0[0]*Z5[0])-(vec0[1]*Z5[1]));
 var Z6=[(Math.cos(img3)*pa3),(Math.sin(img3)*pa3)],Z7=[(Math.cos(((dat1)/2)))*dat2,(Math.sin(((dat1)/2)))*dat2];
 Z1=[((Z7[0]*Z6[0])-(Z7[1]*Z6[1])),((Z7[0]*Z6[1])+(Z6[0]*Z7[1]))];ar.c[0]=Z1[0],ar.c[1]=Z1[1]}
-cc21(ar){let z1=expz(multz(ar.a,[0,1])),z2=expz(multz(ar.a,[0,-1]));
-return divz([z1[0]-z2[0],z1[1]-z2[1]],[0,2])}
-cc22(ar){let z1=expz(multz(ar.a,[0,1])),z2=expz(multz(ar.a,[0,-1]));
-return divz([z1[0]+z2[0],z1[1]+z2[1]],[2,0])}
-cc23(ar){let z1=expz(multz(ar.a,[0,1])),z2=expz(multz(ar.a,[0,-1]));
-return divz(divz([z1[0]-z2[0],z1[1]-z2[1]],[0,2]),divz([z1[0]+z2[0],z1[1]+z2[1]],[2,0]))}
+cc21(ar){let z1=expz(multz(ar.a,[0,1])),z2=expz(multz(ar.a,[0,-1]));return divz([z1[0]-z2[0],z1[1]-z2[1]],[0,2])}
+cc22(ar){let z1=expz(multz(ar.a,[0,1])),z2=expz(multz(ar.a,[0,-1]));return divz([z1[0]+z2[0],z1[1]+z2[1]],[2,0])}
+cc23(ar){let z1=expz(multz(ar.a,[0,1])),z2=expz(multz(ar.a,[0,-1]));return divz(divz([z1[0]-z2[0],z1[1]-z2[1]],[0,2]),divz([z1[0]+z2[0],z1[1]+z2[1]],[2,0]))}
 cc24(ar){let z1=multz(ar.a,ar.a),z2=multz(ar.a,[0,1]);
-z1=zelevN([1-z1[0],-z1[1]],0.5);z1[0]=z1[0]+z2[0],z1[1]=z1[1]+z2[1];
-return multz([Math.log(Math.hypot(z1[0],z1[1])),Math.atan2(z1[1],z1[0])],[0,-1])}
-cc25(ar){let z1=multz(ar.a,ar.a);
-z1=multz(zelevN([1-z1[0],-z1[1]],0.5),[0,1]);z1[0]=ar.a[0]+z1[0],z1[1]=ar.a[1]+z1[1];
-return multz([Math.log(Math.hypot(z1[0],z1[1])),Math.atan2(z1[1],z1[0])],[0,-1])}
-cc26(ar){let z1=divz([-ar.a[0],1-ar.a[1]],[ar.a[0],1+ar.a[1]]);
-return multz([Math.log(Math.hypot(z1[0],z1[1])),Math.atan2(z1[1],z1[0])],[0,-0.5])}
+z1=zelevN([1-z1[0],-z1[1]],0.5);z1[0]=z1[0]+z2[0],z1[1]=z1[1]+z2[1];return multz([Math.log(Math.hypot(z1[0],z1[1])),Math.atan2(z1[1],z1[0])],[0,-1])}
+cc25(ar){let z1=multz(ar.a,ar.a);z1=multz(zelevN([1-z1[0],-z1[1]],0.5),[0,1]);z1[0]=ar.a[0]+z1[0],z1[1]=ar.a[1]+z1[1];return multz([Math.log(Math.hypot(z1[0],z1[1])),Math.atan2(z1[1],z1[0])],[0,-1])}
+cc26(ar){let z1=divz([-ar.a[0],1-ar.a[1]],[ar.a[0],1+ar.a[1]]);return multz([Math.log(Math.hypot(z1[0],z1[1])),Math.atan2(z1[1],z1[0])],[0,-0.5])}
 s45(ar){return [ar.a.x,ar.a.y]}
-
+geo19({a,b,c,d}){let rect1=[(a[1]-b[1])/(a[0]-b[0]),b[1]-((a[1]-b[1])/(a[0]-b[0]))*b[0]],rect2=[(c[1]-d[1])/(c[0]-d[0]),d[1]-((c[1]-d[1])/(c[0]-d[0]))*d[0]];
+return [(rect2[1]-rect1[1])/(rect1[0]-rect2[0]),(rect1[0]*rect2[1]-rect2[0]*rect1[1])/(rect1[0]-rect2[0])];}
+geo20({a,b,c,d}){let rect1=[(a[1]-b[1])/(a[0]-b[0]),b[1]-((a[1]-b[1])/(a[0]-b[0]))*b[0]],rect2=[(c[1]-d[1])/(c[0]-d[0]),d[1]-((c[1]-d[1])/(c[0]-d[0]))*d[0]],PS=[(rect2[1]-rect1[1])/(rect1[0]-rect2[0]),(rect1[0]*rect2[1]-rect2[0]*rect1[1])/(rect1[0]-rect2[0])];
+if((Math.hypot(PS[0]-a[0],PS[1]-a[1])+Math.hypot(PS[0]-b[0],PS[1]-b[1])<=Math.hypot(a[0]-b[0],a[1]-b[1]))&&(Math.hypot(PS[0]-c[0],PS[1]-c[1])+Math.hypot(PS[0]-d[0],PS[1]-d[1])<=Math.hypot(c[0]-d[0],c[1]-d[1]))){return PS}else{return [NaN,NaN]}}
 
 }Scratch.extensions.register(new vectorr());})(Scratch);
