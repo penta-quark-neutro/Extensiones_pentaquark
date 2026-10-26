@@ -52,7 +52,7 @@ ademas de una gran manejo de Object, también expone objetos internos de Turbowa
 técnicamente con esta, se puede hacer todo lo que Js pueda hacer, pero recomiendo usarla junto a otras.
 ademas de facilitar el remplazo de código generado por turbowarp con propio.
 ⚠️permite ejecución arbitraria de código.
-+120 bloques, +20 acciones de menús.
++160 bloques, +20 acciones de menús.
 ### Decimal arbitrario
 es una extensión para trabajar con numero decimales arbitrarios en su longitud, funciona en base a [Decimal.js](https://github.com/MikeMcl/decimal.js)
 ### Iterador
@@ -67,5 +67,5 @@ ademas de unos bloques de acceso y ejecución de código.
 parecido y compatible con Boolean.
 es una lógica que tiene los valores verdadero, falso y desconocido.
 ## Uniones
-es una extension basica en desarrollo que permite crear uniones entre objetos, estas uniones son de coordenadas.
-por el momento cuneta con 11 modos de uniones.
+es una extensión básica en desarrollo que permite crear uniones entre objetos, estas uniones son de coordenadas o direccion.
+por el momento cuenta con 12 modos de uniones.
