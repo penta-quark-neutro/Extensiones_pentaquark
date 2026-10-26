@@ -44,7 +44,7 @@ incluye modificación de posición, dirección visibilidad, pausar, detener y de
 ademas de manejar números complejos,cuaterniones,octaniones y sedeniones.
 cuenta con detección de colicion geométrica básica.
 ⚠️permite ejecución arbitraria de código.
-+220 bloques, +200 acciones con menús.
++270 bloques, +200 acciones con menús.
 ## objetos
 es la mas potente extensión hasta el momento.
 reintroduce toda la metaprogramacion de Js, en otros términos: se puede volver a crear y ejecutar funciones de forma dinámica.
