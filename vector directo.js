@@ -250,7 +250,7 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'cua7',blockType:rep,text:'ℍ LN[V]',hideFromPalette:cuat,arguments:{V:{type:txt}}},
 {opcode:'cua8',blockType:rep,text:'ℍ e^[V]',hideFromPalette:cuat,arguments:{V:{type:txt}}},
 {opcode:'cua10',blockType:rep,text:'ℍ ||[V]||',hideFromPalette:cuat,arguments:{V:{type:txt}}},
-{opcode:'cua18',blockType:rep,text:'ℍ Dg[a][b]',hideFromPalette:cuat,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'cua18',blockType:rep,text:'ℍ Distg[a][b]',hideFromPalette:cuat,arguments:{a:{type:txt},b:{type:txt}}},
 {opcode:'cua9',blockType:eva,text:'¿[a]es ℍ?',hideFromPalette:cuat,arguments:{a:{type:txt}}},
 {opcode:'cua11',blockType:com,text:'ℍ[a]+[b]_salida[c]',hideFromPalette:cuat,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
 {opcode:'cua12',blockType:com,text:'ℍ[a]-[b]_salida[c]',hideFromPalette:cuat,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
@@ -386,7 +386,7 @@ octa6({a}){return [a[0],-a[1],-a[2],-a[3],-a[4],-a[5],-a[6],-a[7]]}
 octa7({a}){return (a.length==8&&!isNaN(Number(a[0]))&&!isNaN(Number(a[1]))&&!isNaN(Number(a[2]))&&!isNaN(Number(a[3]))&&!isNaN(Number(a[4]))&&!isNaN(Number(a[5]))&&!isNaN(Number(a[6]))&&!isNaN(Number(a[7])))}
 octa8({v}){const mo=Math.hypot(v[1],v[2],v[3],v[4],v[5],v[6],v[7]),s=Math.sin(mo)*Math.exp(v[0]);return [Math.cos(mo)*Math.exp(v[0]),s*v[1]/mo,s*v[2]/mo,s*v[3]/mo,s*v[4]/mo,s*v[5]/mo,s*v[6]/mo,s*v[7]/mo]}
 octa9({v}){return (v[0]**2+v[1]**2+v[2]**2+v[3]**2+v[4]**2+v[5]**2+v[6]**2+v[7]**2)**0.5}
-octa10({V}){const M=((V[1]**2)+(V[2]**2)+(V[3]**2)+(V[4]**2)+(V[5]**2)+(V[6]**2)+(V[7]**2))**0.5,c=Math.acos(V[0]/Math.hypot(...V));return [Math.log(Math.hypot(...V)),(V[1]/M*c),(V[2]/M*c),(V[3]/M*c),(V[4]/M*c),(V[5]/M*c),(V[6]/M*c),(V[7]/M*c)]}
+octa10({V}){const M=((V[1]**2)+(V[2]**2)+(V[3]**2)+(V[4]**2)+(V[5]**2)+(V[6]**2)+(V[7]**2))**0.5,c=Math.acos(V[0]/Math.hypot(V[0],V[1],V[2],V[3],V[4],V[5],V[6],V[7]));return [Math.log(Math.hypot(V[0],V[1],V[2],V[3],V[4],V[5],V[6],V[7])),(V[1]/M*c),(V[2]/M*c),(V[3]/M*c),(V[4]/M*c),(V[5]/M*c),(V[6]/M*c),(V[7]/M*c)]}
 octa11({a,b,c}){c[0]=a[0]*1+1*b[0],c[1]=a[1]*1+b[1]*1,c[2]=a[2]*1+b[2]*1,c[3]=a[3]*1+b[3]*1,c[4]=a[4]*1+b[4]*1,c[5]=a[5]*1+b[5]*1,c[6]=a[6]*1+b[6]*1,c[7]=a[7]*1+b[7]*1;}
 octa12({a,b,c}){c[0]=a[0]-b[0],c[1]=a[1]-b[1],c[2]=a[2]-b[2],c[3]=a[3]-b[3],c[4]=a[4]-b[4],c[5]=a[5]-b[5],c[6]=a[6]-b[6],c[7]=a[7]-b[7];}
 octa13({v1,v2,c}){
@@ -409,7 +409,7 @@ c[6]=((v1[0]*-v2[6])-(v1[1]*-v2[7])-(v1[2]*-v2[4])+(v1[3]*-v2[5])+(v1[4]*-v2[2])
 c[7]=((v1[0]*-v2[7])+(v1[1]*-v2[6])-(v1[2]*-v2[5])-(v1[3]*-v2[4])+(v1[4]*-v2[3])+(v1[5]*-v2[2])-(v1[6]*-v2[1])+(v1[7]*v2[0]))/v3;}
 octa15({a,c}){c[0]=a[0],c[1]=-a[1],c[2]=-a[2],c[3]=-a[3],c[4]=-a[4],c[5]=-a[5],c[6]=-a[6],c[7]=-a[7]}
 octa17({v,c}){const mo=Math.hypot(v[1],v[2],v[3],v[4],v[5],v[6],v[7]),s=Math.sin(mo)*Math.exp(v[0]);c[0]=Math.cos(mo)*Math.exp(v[0]),c[1]=s*v[1]/mo,c[2]=s*v[2]/mo,c[3]=s*v[3]/mo,c[4]=s*v[4]/mo,c[5]=s*v[5]/mo,c[6]=s*v[6]/mo,c[7]=s*v[7]/mo}
-octa16({V,k}){const M=((V[1]**2)+(V[2]**2)+(V[3]**2)+(V[4]**2)+(V[5]**2)+(V[6]**2)+(V[7]**2))**0.5,c=Math.acos(V[0]/Math.hypot(...V));k[0]=Math.log(Math.hypot(...V)),k[1]=(V[1]/M*c),k[2]=(V[2]/M*c),k[3]=(V[3]/M*c),k[4]=(V[4]/M*c),k[5]=(V[5]/M*c),k[6]=(V[6]/M*c),k[7]=(V[7]/M*c)}
+octa16({V,k}){const M=((V[1]**2)+(V[2]**2)+(V[3]**2)+(V[4]**2)+(V[5]**2)+(V[6]**2)+(V[7]**2))**0.5,c=Math.acos(V[0]/Math.hypot(V[0],V[1],V[2],V[3],V[4],V[5],V[6],V[7]));k[0]=Math.log(Math.hypot(V[0],V[1],V[2],V[3],V[4],V[5],V[6],V[7])),k[1]=(V[1]/M*c),k[2]=(V[2]/M*c),k[3]=(V[3]/M*c),k[4]=(V[4]/M*c),k[5]=(V[5]/M*c),k[6]=(V[6]/M*c),k[7]=(V[7]/M*c)}
 cua1({a,b}){return [a[0]*1+1*b[0],a[1]*1+b[1]*1,a[2]*1+b[2]*1,a[3]*1+b[3]*1]}
 cua2({a,b}){return [a[0]-b[0],a[1]-b[1],a[2]-b[2],a[3]-b[3]]}
 cua3({v1,v2}){return [
@@ -423,7 +423,7 @@ cua4({v1,v2}){const mo=(v2[0]**2)+(v2[1]**2)+(v2[2]**2)+(v2[3]**2);return [
 ((v1[0]*-v2[2])-(v1[1]*-v2[3])+(v1[2]*v2[0])+(v1[3]*-v2[1]))/mo,
 ((v1[0]*-v2[3])+(v1[1]*-v2[2])-(v1[2]*-v2[1])+(v1[3]*v2[0]))/mo];}
 cua6({a}){return [a[0],-a[1],-a[2],-a[3]]}
-cua7({V}){const M=((V[1]**2)+(V[2]**2)+(V[3]**2))**0.5,c=Math.acos(V[0]/Math.hypot(...V));return [Math.log(Math.hypot(...V)),(V[1]/M*c),(V[2]/M*c),(V[3]/M*c)]}
+cua7({V}){const M=((V[1]**2)+(V[2]**2)+(V[3]**2))**0.5,c=Math.acos(V[0]/Math.hypot(V[0],V[1],V[2],V[3]));return [Math.log(Math.hypot(V[0],V[1],V[2],V[3])),(V[1]/M*c),(V[2]/M*c),(V[3]/M*c)]}
 cua8({V}){const r=((V[1]**2)+(V[2]**2)+(V[3]**2))**0.5,srad=Math.sin(r)/r*Math.exp(V[0]);return [(Math.exp(V[0])*Math.cos(r)),srad*V[1],srad*V[2],srad*V[3]]}
 cua9({a}){return (a.length==4&&!isNaN(Number(a[0]))&&!isNaN(Number(a[1]))&&!isNaN(Number(a[2]))&&!isNaN(Number(a[3])))}
 cua10({V}){return (V[0]**2+V[1]**2+V[2]**2+V[3]**2)**0.5}
@@ -440,7 +440,7 @@ c[1]=((v1[0]*-v2[1])+(v1[1]*v2[0])+(v1[2]*-v2[3])-(v1[3]*-v2[2]))/mo,
 c[2]=((v1[0]*-v2[2])-(v1[1]*-v2[3])+(v1[2]*v2[0])+(v1[3]*-v2[1]))/mo,
 c[3]=((v1[0]*-v2[3])+(v1[1]*-v2[2])-(v1[2]*-v2[1])+(v1[3]*v2[0]))/mo;}
 cua15({a,c}){c[0]=a[0],c[1]=-a[1],c[2]=-a[2],c[3]=-a[3]}
-cua16({V,k}){const M=((V[1]**2)+(V[2]**2)+(V[3]**2))**0.5,c=Math.acos(V[0]/Math.hypot(...V));k[0]=Math.log(Math.hypot(...V)),k[1]=(V[1]/M*c),k[2]=(V[2]/M*c),k[3]=(V[3]/M*c)}
+cua16({V,k}){const M=((V[1]**2)+(V[2]**2)+(V[3]**2))**0.5,c=Math.acos(V[0]/Math.hypot(V[0],V[1],V[2],V[3]));k[0]=Math.log(Math.hypot(V[0],V[1],V[2],V[3])),k[1]=(V[1]/M*c),k[2]=(V[2]/M*c),k[3]=(V[3]/M*c)}
 cua17({V,c}){const r=((V[1]**2)+(V[2]**2)+(V[3]**2))**0.5,srad=Math.sin(r)/r*Math.exp(V[0]);c[0]=(Math.exp(V[0])*Math.cos(r)),c[1]=srad*V[1],c[2]=srad*V[2],c[3]=srad*V[3]}
 cua18({a,b}){return Math.acos(2*((a[0]*b[0]+a[1]*b[1]+a[2]*b[2]+a[3]*b[3])**2)-1)}
 cc1(ar){return [ar.a[0]*1+1*ar.b[0],ar.a[1]*1+ar.b[1]*1]}
