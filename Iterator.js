@@ -23,7 +23,7 @@ class IteratorN{getInfo(){return {id:'Iterador',name:'Iterador',color1:'#a5aefc'
 {opcode:'it20',blockType:bol,text:'Iterator.zip[a][b]',arguments:{a:{type:txt},b:{type:txt}}},
 {opcode:'it21',blockType:bol,text:'Iterator.zipKeyed[a][b]',arguments:{a:{type:txt},b:{type:txt}}},
 {opcode:'it22',blockType:bol,text:'Iterator.concat(...[a])',arguments:{a:{type:txt}}},
-{opcode:'it15',blockType:bol,text:'¿Iterador[a]?',arguments:{a:{type:txt}}},
+{opcode:'it15',blockType:bol,text:'¿Iterator[a]?',arguments:{a:{type:txt}}},
 {opcode:'it16',blockType:bol,text:'¿Iterable[a]?',arguments:{a:{type:txt}}},
 {opcode:'it18',blockType:bol,text:'([a])=>[b]',arguments:{a:{type:txt,defaultValue:'a,b'},b:{type:txt,defaultValue:'a*b'}}},
 ],
@@ -44,12 +44,12 @@ it12(ar){return ar.a.next()}
 it13(ar){return ar.a.value}
 it14(ar){return ar.a.done}
 it15(ar){return ar.a instanceof Iterator}
-it16(ar){return !!(ar.a?.[Symbol.iterator])}
+it16(ar){return (!!(ar.a?.[Symbol.iterator]))||(ar.a?.[Symbol.asyncIterator])}
 it17(ar){return Iterator.concat(ar.a,ar.b)}
 it18(ar){return Function('return ('+ar.a+')=>'+ar.b)()}
 it19(ar){return ar.a.reduce(ar.b,ar.c)}
 it20(ar){return Iterator.zip(ar.a,(typeof(ar.b)=='string'?undefined:ar.b))}
-it21(ar){return Iterator.zipKeyed(ar.a,(typeof(ar.b)=='string'?{undefined:ar.b))}
+it21(ar){return Iterator.zipKeyed(ar.a,(typeof(ar.b)=='string'?undefined:ar.b))}
 it22(ar){return Iterator.concat(...ar.a)}
 it23(ar){return ar.a.join(ar.b)}
 

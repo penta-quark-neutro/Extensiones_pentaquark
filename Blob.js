@@ -1,6 +1,5 @@
 (function(Scratch) {'use strict';//por el (pentaquark neutro, penta quark neutro) y neutral auream
 const com=Scratch.BlockType.COMMAND,str=Scratch.ArgumentType.STRING,bol=Scratch.BlockType.BOOLEAN,rep=Scratch.BlockType.REPORTER;
-let regWork=Object.create(null),regSWork=Object.create(null),regMc=Object.create(null);
 class Blobs{getInfo(){return {id:'Blob',name:'Blob',color1:'#600680',color2:'#4f0f00',color3:'#992299',blocks:[
 {opcode:'bl0',blockType:rep,text:'new Blob[a]',arguments:{a:{type:str,defaultValue:'[datos]'}}},
 {opcode:'bl1',blockType:rep,text:'new Blob[a][b]',arguments:{a:{type:str,defaultValue:'[datos]'},b:{type:str,defaultValue:'{opciones}'}}},
