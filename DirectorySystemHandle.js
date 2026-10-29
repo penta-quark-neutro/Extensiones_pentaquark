@@ -4,6 +4,7 @@ class FilSYS{getInfo(){return {id:'FileSYS',name:'FileSystemHandle',color1:'#f00
 {opcode:'fs0',blockType:rep,text:'showDirectoryPicker[a]',arguments:{a:{type:str,defaultValue:'documents'}}},
 {opcode:'fs1',blockType:rep,text:'[a].values()',arguments:{a:{type:str}}},
 {opcode:'fs4',blockType:rep,text:'[a].next()',arguments:{a:{type:str}}},
+{opcode:'fs19',blockType:rep,text:'[a].entries()',arguments:{a:{type:str}}},
 {opcode:'fs5',blockType:rep,text:'for await[a]array',arguments:{a:{type:str}}},
 {opcode:'fs2',blockType:rep,text:'[c].getDirectoryHandle(dirN[a]create[b])',arguments:{a:{type:str},b:{type:str,defaultValue:'0'},c:{type:str}}},
 {opcode:'fs3',blockType:rep,text:'[c].getFileHandle(fileN[a]create[b])',arguments:{a:{type:str},b:{type:str,defaultValue:'0'},c:{type:str}}},
@@ -15,6 +16,12 @@ class FilSYS{getInfo(){return {id:'FileSYS',name:'FileSystemHandle',color1:'#f00
 {opcode:'fs13',blockType:com,text:'[a].seek([b])',arguments:{a:{type:str},b:{type:str,defaultValue:'0'}}},
 {opcode:'fs9',blockType:com,text:'[a].close()',arguments:{a:{type:str}}},
 {opcode:'fs10',blockType:bol,text:'[a].[b]',arguments:{a:{type:str},b:{type:str}}},
+{opcode:'fs14',blockType:com,text:'[a].remove()',arguments:{a:{type:str}}},
+{blockType:"label",text:"para Directorios o Arrays con contenido"},//---------------------------------------------------------------
+{opcode:'fs15',blockType:rep,text:'Directorios de[a]',arguments:{a:{type:str}}},
+{opcode:'fs16',blockType:rep,text:'Archivos de[a]',arguments:{a:{type:str}}},
+{opcode:'fs17',blockType:rep,text:'Archivos de[a],extension[b]',arguments:{a:{type:str},b:{type:str,defaultValue:'.txt'}}},
+{opcode:'fs18',blockType:rep,text:'nombres del contenido de[a]',arguments:{a:{type:str}}},
 
 ],menus:{}
 };}
@@ -32,5 +39,11 @@ async fs10(ar){return ar.a[ar.b]}
 fs11(ar){return ar.a.text()}
 async fs12(ar){return await ar.a.truncate(ar.b)}
 async fs13(ar){return await ar.a.seek(ar.b)}
+async fs14(ar){return await ar.a.remove(ar.b)}
+async fs15(ar){let A=[],B=(ar.a.values?ar.a.values():ar.a);for await(const val of B){if(val.kind=='directory'){A.push(val)}}return A}
+async fs16(ar){let A=[],B=(ar.a.values?ar.a.values():ar.a);for await(const val of B){if(val.kind=='file'){A.push(val)}}return A}
+async fs17(ar){let A=[],B=(ar.a.values?ar.a.values():ar.a);for await(const val of B){if(val.kind=='file'&&val.name.endsWith(ar.b)){A.push(val)}}return A}
+async fs18(ar){let A=[],B=(ar.a.values?ar.a.values():ar.a);for await(const val of B){A.push(val.name)}return A}
+fs19(ar){return ar.a.entries()}
 
 }Scratch.extensions.register(new FilSYS());})(Scratch);
