@@ -69,7 +69,7 @@ es una lógica que tiene los valores verdadero, falso y desconocido.
 ## Uniones
 es una extensión básica en desarrollo que permite crear uniones entre objetos, estas uniones son de coordenadas o direccion.
 por el momento cuenta con 12 modos de uniones.
-###DirectorySystemHandle
+### DirectorySystemHandle
 usando DirectorySystemHandle, es capas de accede a arboles de directorios, capaz de crear y leer archivos y directorios.
 y solo requiere una vez el acceso para manipular continuamente el directorio abierto y su contenido.
 recomiendo usarlo junto a Blob.
