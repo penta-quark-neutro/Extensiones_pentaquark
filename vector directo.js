@@ -219,10 +219,12 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'cc1',blockType:rep,text:'ℂ[a]+[b]',hideFromPalette:cc,arguments:{a:{type:txt},b:{type:txt}}},
 {opcode:'cc2',blockType:rep,text:'ℂ[a]-[b]',hideFromPalette:cc,arguments:{a:{type:txt},b:{type:txt}}},
 {opcode:'cc3',blockType:rep,text:'ℂ[a]*[b]',hideFromPalette:cc,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'cc27',blockType:rep,text:'ℂ[a]*[b]',hideFromPalette:cc,arguments:{a:{type:txt},b:{type:num}}},
 {opcode:'cc4',blockType:rep,text:'ℂ[a]/[b]',hideFromPalette:cc,arguments:{a:{type:txt},b:{type:txt}}},
 {opcode:'cc6',blockType:rep,text:'ℂ conj[a]',hideFromPalette:cc,arguments:{a:{type:txt}}},
 {opcode:'cc7',blockType:rep,text:'ℂ LN[a]',hideFromPalette:cc,arguments:{a:{type:txt}}},
 {opcode:'cc8',blockType:rep,text:'ℂ e^[a]',hideFromPalette:cc,arguments:{a:{type:txt}}},
+{opcode:'cc29',blockType:rep,text:'ℂ e^iθ[a]',hideFromPalette:cc,arguments:{a:{type:txt}}},
 {opcode:'cc9',blockType:rep,text:'ℂ arg[a]',hideFromPalette:cc,arguments:{a:{type:txt}}},
 {opcode:'cc11',blockType:rep,text:'ℂ ||[a]||',hideFromPalette:cc,arguments:{a:{type:txt}}},
 {opcode:'cc19',blockType:rep,text:'ℂ Gamma[a]',hideFromPalette:cc,arguments:{a:{type:txt}}},
@@ -236,10 +238,12 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'cc12',blockType:com,text:'ℂ[a]+[b]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
 {opcode:'cc13',blockType:com,text:'ℂ[a]-[b]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
 {opcode:'cc14',blockType:com,text:'ℂ[a]*[b]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
+{opcode:'cc28',blockType:com,text:'ℂ[a]*[b]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt},b:{type:num},c:{type:txt}}},
 {opcode:'cc15',blockType:com,text:'ℂ[a]/[b]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
 {opcode:'cc16',blockType:com,text:'ℂ conj[a]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt},c:{type:txt}}},
 {opcode:'cc17',blockType:com,text:'ℂ LN[a]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt},c:{type:txt}}},
 {opcode:'cc18',blockType:com,text:'ℂ e^[a]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt},c:{type:txt}}},
+{opcode:'cc30',blockType:com,text:'ℂ e^iθ[a]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt},c:{type:txt}}},
 {opcode:'cc20',blockType:com,text:'ℂ Gamma[a]_salida[c]',hideFromPalette:cc,arguments:{a:{type:txt},c:{type:txt}}},
 {blockType:"label",text:"Cuaterniones",hideFromPalette:cuat},//--------------------------------------------------------------------------------------------------------------------------------
 {opcode:'cua1',blockType:rep,text:'ℍ[a]+[b]',hideFromPalette:cuat,arguments:{a:{type:txt},b:{type:txt}}},
@@ -251,6 +255,8 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'cua8',blockType:rep,text:'ℍ e^[V]',hideFromPalette:cuat,arguments:{V:{type:txt}}},
 {opcode:'cua10',blockType:rep,text:'ℍ ||[V]||',hideFromPalette:cuat,arguments:{V:{type:txt}}},
 {opcode:'cua18',blockType:rep,text:'ℍ Distg[a][b]',hideFromPalette:cuat,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'cua19',blockType:rep,text:'rotar R3[a]con ℍu[b]',hideFromPalette:cuat,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'cua20',blockType:rep,text:'rotar varios R3[a]con ℍu[b]',hideFromPalette:cuat,arguments:{a:{type:txt,defaultValue:'[...]'},b:{type:txt}}},
 {opcode:'cua9',blockType:eva,text:'¿[a]es ℍ?',hideFromPalette:cuat,arguments:{a:{type:txt}}},
 {opcode:'cua11',blockType:com,text:'ℍ[a]+[b]_salida[c]',hideFromPalette:cuat,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
 {opcode:'cua12',blockType:com,text:'ℍ[a]-[b]_salida[c]',hideFromPalette:cuat,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
@@ -259,6 +265,8 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'cua15',blockType:com,text:'ℍ conj[a]_salida[c]',hideFromPalette:cuat,arguments:{a:{type:txt},c:{type:txt}}},
 {opcode:'cua16',blockType:com,text:'ℍ LN[V]_salida[k]',hideFromPalette:cuat,arguments:{V:{type:txt},k:{type:txt}}},
 {opcode:'cua17',blockType:com,text:'ℍ e^[V]_salida[c]',hideFromPalette:cuat,arguments:{V:{type:txt},c:{type:txt}}},
+{opcode:'cua21',blockType:com,text:'rotar R3[a]con ℍu[b]_salida[c]',hideFromPalette:cuat,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
+{opcode:'cua22',blockType:com,text:'rotar varios R3[a]con ℍu[b]_salida[c]',hideFromPalette:cuat,arguments:{a:{type:txt},b:{type:txt,defaultValue:'[...]'},c:{type:txt}}},
 {blockType:"label",text:"Octoniones",hideFromPalette:oct},//--------------------------------------------------------------------------------------------------------------------------------
 {opcode:'octa1',blockType:rep,text:'𝕆[a]+[b]',hideFromPalette:oct,arguments:{a:{type:txt},b:{type:txt}}},
 {opcode:'octa2',blockType:rep,text:'𝕆[a]-[b]',hideFromPalette:oct,arguments:{a:{type:txt},b:{type:txt}}},
@@ -362,6 +370,7 @@ c[0]=(v[0]*k[0])-(v[1]*k[1])-(v[2]*k[2])-(v[3]*k[3])-(v[4]*k[4])-(v[5]*k[5])-(v[
 ,c[13]=(v[0]*k[13])-(v[1]*k[12])+(v[2]*k[15])-(v[3]*k[14])+(v[4]*k[9])+(v[5]*k[8])+(v[6]*k[11])-(v[7]*k[10])-(v[8]*k[5])-(v[9]*k[4])+(v[10]*k[7])-(v[11]*k[6])+(v[12]*k[1])+(v[13]*k[0])+(v[14]*k[3])-(v[15]*k[2])
 ,c[14]=(v[0]*k[14])-(v[1]*k[15])-(v[2]*k[12])+(v[3]*k[13])+(v[4]*k[10])-(v[5]*k[11])+(v[6]*k[8])+(v[7]*k[9])-(v[8]*k[6])-(v[9]*k[7])-(v[10]*k[4])+(v[11]*k[5])+(v[12]*k[2])-(v[13]*k[3])+(v[14]*k[0])+(v[15]*k[1])
 ,c[15]=(v[0]*k[15])+(v[1]*k[14])-(v[2]*k[13])-(v[3]*k[12])+(v[4]*k[11])+(v[5]*k[10])-(v[6]*k[9])+(v[7]*k[8])-(v[8]*k[7])+(v[9]*k[6])-(v[10]*k[5])-(v[11]*k[4])+(v[12]*k[3])+(v[13]*k[2])-(v[14]*k[1])+(v[15]*k[0])}
+//--------------------------------------------------------------------------------------------------------------------------------------octaniones
 octa1({a,b}){return [a[0]*1+1*b[0],a[1]*1+b[1]*1,a[2]*1+b[2]*1,a[3]*1+b[3]*1,a[4]*1+b[4]*1,a[5]*1+b[5]*1,a[6]*1+b[6]*1,a[7]*1+b[7]*1]}
 octa2({a,b}){return [a[0]-b[0],a[1]-b[1],a[2]-b[2],a[3]-b[3],a[4]-b[4],a[5]-b[5],a[6]-b[6],a[7]-b[7]]}
 octa3({v1,v2}){return [
@@ -410,6 +419,7 @@ c[7]=((v1[0]*-v2[7])+(v1[1]*-v2[6])-(v1[2]*-v2[5])-(v1[3]*-v2[4])+(v1[4]*-v2[3])
 octa15({a,c}){c[0]=a[0],c[1]=-a[1],c[2]=-a[2],c[3]=-a[3],c[4]=-a[4],c[5]=-a[5],c[6]=-a[6],c[7]=-a[7]}
 octa17({v,c}){const mo=Math.hypot(v[1],v[2],v[3],v[4],v[5],v[6],v[7]),s=Math.sin(mo)*Math.exp(v[0]);c[0]=Math.cos(mo)*Math.exp(v[0]),c[1]=s*v[1]/mo,c[2]=s*v[2]/mo,c[3]=s*v[3]/mo,c[4]=s*v[4]/mo,c[5]=s*v[5]/mo,c[6]=s*v[6]/mo,c[7]=s*v[7]/mo}
 octa16({V,k}){const M=((V[1]**2)+(V[2]**2)+(V[3]**2)+(V[4]**2)+(V[5]**2)+(V[6]**2)+(V[7]**2))**0.5,c=Math.acos(V[0]/Math.hypot(V[0],V[1],V[2],V[3],V[4],V[5],V[6],V[7]));k[0]=Math.log(Math.hypot(V[0],V[1],V[2],V[3],V[4],V[5],V[6],V[7])),k[1]=(V[1]/M*c),k[2]=(V[2]/M*c),k[3]=(V[3]/M*c),k[4]=(V[4]/M*c),k[5]=(V[5]/M*c),k[6]=(V[6]/M*c),k[7]=(V[7]/M*c)}
+//--------------------------------------------------------------------------------------------------------------------cuaterniones
 cua1({a,b}){return [a[0]*1+1*b[0],a[1]*1+b[1]*1,a[2]*1+b[2]*1,a[3]*1+b[3]*1]}
 cua2({a,b}){return [a[0]-b[0],a[1]-b[1],a[2]-b[2],a[3]-b[3]]}
 cua3({v1,v2}){return [
@@ -443,6 +453,17 @@ cua15({a,c}){c[0]=a[0],c[1]=-a[1],c[2]=-a[2],c[3]=-a[3]}
 cua16({V,k}){const M=((V[1]**2)+(V[2]**2)+(V[3]**2))**0.5,c=Math.acos(V[0]/Math.hypot(V[0],V[1],V[2],V[3]));k[0]=Math.log(Math.hypot(V[0],V[1],V[2],V[3])),k[1]=(V[1]/M*c),k[2]=(V[2]/M*c),k[3]=(V[3]/M*c)}
 cua17({V,c}){const r=((V[1]**2)+(V[2]**2)+(V[3]**2))**0.5,srad=Math.sin(r)/r*Math.exp(V[0]);c[0]=(Math.exp(V[0])*Math.cos(r)),c[1]=srad*V[1],c[2]=srad*V[2],c[3]=srad*V[3]}
 cua18({a,b}){return Math.acos(2*((a[0]*b[0]+a[1]*b[1]+a[2]*b[2]+a[3]*b[3])**2)-1)}
+cua19(ar){const a=Math.hypot(ar.b[1],ar.b[2],ar.b[3]),ang=Math.asin(a/Math.hypot(ar.b[0],ar.b[1],ar.b[2],ar.b[3]))*2,unit=[ar.b[1]/a,ar.b[2]/a,ar.b[3]/a],cos=Math.cos(ang),sen=Math.sin(ang),b=((unit[0]*ar.a[0])+(unit[1]*ar.a[1])+(unit[2]*ar.a[2]))*(1-cos);
+return [unit[0]*b+(ar.a[0]*cos)+((unit[1]*ar.a[2])-(unit[2]*ar.a[1]))*sen,unit[1]*b+(ar.a[1]*cos)+((unit[2]*ar.a[0])-(unit[0]*ar.a[2]))*sen,unit[2]*b+(ar.a[2]*cos)+((unit[0]*ar.a[1])-(unit[1]*ar.a[0]))*sen]}
+cua20(ar){const a=Math.hypot(ar.b[1],ar.b[2],ar.b[3]),ang=Math.asin(a/Math.hypot(ar.b[0],ar.b[1],ar.b[2],ar.b[3]))*2,unit=[ar.b[1]/a,ar.b[2]/a,ar.b[3]/a],cos=Math.cos(ang),sen=Math.sin(ang);let b=0,i=0,NV=Array(ar.a.length);
+while(i<NV.length){b=((unit[0]*ar.a[i][0])+(unit[1]*ar.a[i][1])+(unit[2]*ar.a[i][2]))*(1-cos);
+NV[i]=[unit[0]*b+(ar.a[i][0]*cos)+((unit[1]*ar.a[i][2])-(unit[2]*ar.a[i][1]))*sen,unit[1]*b+(ar.a[i][1]*cos)+((unit[2]*ar.a[i][0])-(unit[0]*ar.a[i][2]))*sen,unit[2]*b+(ar.a[i][2]*cos)+((unit[0]*ar.a[i][1])-(unit[1]*ar.a[i++][0]))*sen]}return NV}
+cua21(ar){const a=Math.hypot(ar.b[1],ar.b[2],ar.b[3]),ang=Math.asin(a/Math.hypot(ar.b[0],ar.b[1],ar.b[2],ar.b[3]))*2,unit=[ar.b[1]/a,ar.b[2]/a,ar.b[3]/a],cos=Math.cos(ang),sen=Math.sin(ang),b=((unit[0]*ar.a[0])+(unit[1]*ar.a[1])+(unit[2]*ar.a[2]))*(1-cos);
+ar.c[0]=unit[0]*b+(ar.a[0]*cos)+((unit[1]*ar.a[2])-(unit[2]*ar.a[1]))*sen,ar.c[1]=unit[1]*b+(ar.a[1]*cos)+((unit[2]*ar.a[0])-(unit[0]*ar.a[2]))*sen,ar.c[2]=unit[2]*b+(ar.a[2]*cos)+((unit[0]*ar.a[1])-(unit[1]*ar.a[0]))*sen;}
+cua22(ar){const a=Math.hypot(ar.b[1],ar.b[2],ar.b[3]),ang=Math.asin(a/Math.hypot(ar.b[0],ar.b[1],ar.b[2],ar.b[3]))*2,unit=[ar.b[1]/a,ar.b[2]/a,ar.b[3]/a],cos=Math.cos(ang),sen=Math.sin(ang);let b=0,i=0;
+while(i<ar.a.length){b=((unit[0]*ar.a[i][0])+(unit[1]*ar.a[i][1])+(unit[2]*ar.a[i][2]))*(1-cos);
+ar.c[i][0]=unit[0]*b+(ar.a[i][0]*cos)+((unit[1]*ar.a[i][2])-(unit[2]*ar.a[i][1]))*sen,ar.c[i][1]=unit[1]*b+(ar.a[i][1]*cos)+((unit[2]*ar.a[i][0])-(unit[0]*ar.a[i][2]))*sen,ar.c[i][2]=unit[2]*b+(ar.a[i][2]*cos)+((unit[0]*ar.a[i][1])-(unit[1]*ar.a[i++][0]))*sen;}}
+//------------------------------------------------------------------------------------------------------------------complejos
 cc1(ar){return [ar.a[0]*1+1*ar.b[0],ar.a[1]*1+ar.b[1]*1]}
 cc2(ar){return [ar.a[0]-ar.b[0],ar.a[1]-ar.b[1]]}
 cc3(ar){return [(ar.a[0]*ar.b[0])-ar.a[1]*ar.b[1],ar.a[0]*ar.b[1]+ar.b[0]*ar.a[1]]}
@@ -460,6 +481,28 @@ cc15({a,b,c}){const G=(b[0]**2)+(b[1]**2);c[0]=((a[0]*b[0])+a[1]*b[1])/G,c[1]=(b
 cc16(ar){ar.c[0]=ar.a[0],ar.c[1]=-ar.a[1];}
 cc17(ar){ar.c[0]=Math.log(Math.hypot(ar.a[0],ar.a[1])),ar.c[1]=Math.atan2(ar.a[1],ar.a[0]);}
 cc18(ar){const pa=Math.exp(ar.a[0]);ar.c[0]=(Math.cos(ar.a[1])*pa),ar.c[1]=(Math.sin(ar.a[1])*pa);}
+cc19(ar){let vec0=ar.a;
+var Z1=unosobrez(vec0[0]*10,vec0[1]*10),Z3=unosobrez(((vec0[0]*12)-(Z1[0])),((vec0[1]*12)-(Z1[1]))),Z4=[((vec0[0]+(Z3[0]))*(1/2.7182818284590452)),((vec0[1]+(Z3[1]))*(1/2.7182818284590452))],Z5=[Math.log(Math.hypot(Z4[0],Z4[1])),Math.atan2(Z4[1],Z4[0])];
+var img3=((vec0[0]*Z5[1])+(Z5[0]*vec0[1])),ARC=unosobrez(vec0[0],vec0[1]),dat1=Math.atan2((ARC[1]*6.283185307179586),(ARC[0]*6.283185307179586)),dat2=Math.pow(Math.hypot((ARC[0]*6.283185307179586),(ARC[1]*6.283185307179586)),0.5),pa3=Math.exp((vec0[0]*Z5[0])-(vec0[1]*Z5[1]));
+var Z6=[(Math.cos(img3)*pa3),(Math.sin(img3)*pa3)],Z7=[(Math.cos(((dat1)/2)))*dat2,(Math.sin(((dat1)/2)))*dat2];
+return [((Z7[0]*Z6[0])-(Z7[1]*Z6[1])),((Z7[0]*Z6[1])+(Z6[0]*Z7[1]))];}
+cc20(ar){let vec0=ar.a;
+var Z1=unosobrez(vec0[0]*10,vec0[1]*10),Z3=unosobrez(((vec0[0]*12)-(Z1[0])),((vec0[1]*12)-(Z1[1]))),Z4=[((vec0[0]+(Z3[0]))*(1/2.7182818284590452)),((vec0[1]+(Z3[1]))*(1/2.7182818284590452))],Z5=[Math.log(Math.hypot(Z4[0],Z4[1])),Math.atan2(Z4[1],Z4[0])];
+var img3=((vec0[0]*Z5[1])+(Z5[0]*vec0[1])),ARC=unosobrez(vec0[0],vec0[1]),dat1=Math.atan2((ARC[1]*6.283185307179586),(ARC[0]*6.283185307179586)),dat2=Math.pow(Math.hypot((ARC[0]*6.283185307179586),(ARC[1]*6.283185307179586)),0.5),pa3=Math.exp((vec0[0]*Z5[0])-(vec0[1]*Z5[1]));
+var Z6=[(Math.cos(img3)*pa3),(Math.sin(img3)*pa3)],Z7=[(Math.cos(((dat1)/2)))*dat2,(Math.sin(((dat1)/2)))*dat2];
+Z1=[((Z7[0]*Z6[0])-(Z7[1]*Z6[1])),((Z7[0]*Z6[1])+(Z6[0]*Z7[1]))];ar.c[0]=Z1[0],ar.c[1]=Z1[1]}
+cc21(ar){let z1=expz(multz(ar.a,[0,1])),z2=expz(multz(ar.a,[0,-1]));return divz([z1[0]-z2[0],z1[1]-z2[1]],[0,2])}
+cc22(ar){let z1=expz(multz(ar.a,[0,1])),z2=expz(multz(ar.a,[0,-1]));return divz([z1[0]+z2[0],z1[1]+z2[1]],[2,0])}
+cc23(ar){let z1=expz(multz(ar.a,[0,1])),z2=expz(multz(ar.a,[0,-1]));return divz(divz([z1[0]-z2[0],z1[1]-z2[1]],[0,2]),divz([z1[0]+z2[0],z1[1]+z2[1]],[2,0]))}
+cc24(ar){let z1=multz(ar.a,ar.a),z2=multz(ar.a,[0,1]);
+z1=zelevN([1-z1[0],-z1[1]],0.5);z1[0]=z1[0]+z2[0],z1[1]=z1[1]+z2[1];return multz([Math.log(Math.hypot(z1[0],z1[1])),Math.atan2(z1[1],z1[0])],[0,-1])}
+cc25(ar){let z1=multz(ar.a,ar.a);z1=multz(zelevN([1-z1[0],-z1[1]],0.5),[0,1]);z1[0]=ar.a[0]+z1[0],z1[1]=ar.a[1]+z1[1];return multz([Math.log(Math.hypot(z1[0],z1[1])),Math.atan2(z1[1],z1[0])],[0,-1])}
+cc26(ar){let z1=divz([-ar.a[0],1-ar.a[1]],[ar.a[0],1+ar.a[1]]);return multz([Math.log(Math.hypot(z1[0],z1[1])),Math.atan2(z1[1],z1[0])],[0,-0.5])}
+cc27(ar){return [ar.a[0]*ar.b,ar.a[1]*ar.b]}
+cc28(ar){ar.c[0]=ar.a[0]*ar.b,ar.c[1]=ar.a[1]*ar.b}
+cc29(ar){return [Math.cos(ar.a),Math.sin(ar.a)]}
+cc30(ar){ar.c[0]=Math.cos(ar.a),ar.c[1]=Math.sin(ar.a)}
+//---------------------------------------------------------------------------------------------------------------------otro codigo
 ma(ar){switch(ar.ou){
 case'+':return ar.a.map(k=>k*1+ar.b*1);case'-':return ar.a.map(k=>k-ar.b);case'*':return ar.a.map(k=>k*ar.b);case'/':return ar.a.map(k=>k/ar.b);
 case'**':return ar.a.map(k=>k**ar.b);case'%':return ar.a.map(k=>k%ar.b);case'LogB':return ar.a.map(k=>Math.log(k)/Math.log(ar.b));case'sen':return ar.a.map(Math.sin);case'cos':return ar.a.map(Math.cos);
@@ -730,23 +773,6 @@ s43(ar){runtime.threads.forEach(k=>{if(k.status!==0){k.status=0;}})}
 s44(ar){var ids=ar.a.map(k=>k.id);runtime.threads.forEach(k=>{if(!ids.includes(k.target.id)&&k.status!==0){k.status=0;}})}
 gen0(ar){return Array(ar.a)}
 async arrfA(ar){return await Array.fromAsync(ar.a)}
-cc19(ar){let vec0=ar.a;
-var Z1=unosobrez(vec0[0]*10,vec0[1]*10),Z3=unosobrez(((vec0[0]*12)-(Z1[0])),((vec0[1]*12)-(Z1[1]))),Z4=[((vec0[0]+(Z3[0]))*(1/2.7182818284590452)),((vec0[1]+(Z3[1]))*(1/2.7182818284590452))],Z5=[Math.log(Math.hypot(Z4[0],Z4[1])),Math.atan2(Z4[1],Z4[0])];
-var img3=((vec0[0]*Z5[1])+(Z5[0]*vec0[1])),ARC=unosobrez(vec0[0],vec0[1]),dat1=Math.atan2((ARC[1]*6.283185307179586),(ARC[0]*6.283185307179586)),dat2=Math.pow(Math.hypot((ARC[0]*6.283185307179586),(ARC[1]*6.283185307179586)),0.5),pa3=Math.exp((vec0[0]*Z5[0])-(vec0[1]*Z5[1]));
-var Z6=[(Math.cos(img3)*pa3),(Math.sin(img3)*pa3)],Z7=[(Math.cos(((dat1)/2)))*dat2,(Math.sin(((dat1)/2)))*dat2];
-return [((Z7[0]*Z6[0])-(Z7[1]*Z6[1])),((Z7[0]*Z6[1])+(Z6[0]*Z7[1]))];}
-cc20(ar){let vec0=ar.a;
-var Z1=unosobrez(vec0[0]*10,vec0[1]*10),Z3=unosobrez(((vec0[0]*12)-(Z1[0])),((vec0[1]*12)-(Z1[1]))),Z4=[((vec0[0]+(Z3[0]))*(1/2.7182818284590452)),((vec0[1]+(Z3[1]))*(1/2.7182818284590452))],Z5=[Math.log(Math.hypot(Z4[0],Z4[1])),Math.atan2(Z4[1],Z4[0])];
-var img3=((vec0[0]*Z5[1])+(Z5[0]*vec0[1])),ARC=unosobrez(vec0[0],vec0[1]),dat1=Math.atan2((ARC[1]*6.283185307179586),(ARC[0]*6.283185307179586)),dat2=Math.pow(Math.hypot((ARC[0]*6.283185307179586),(ARC[1]*6.283185307179586)),0.5),pa3=Math.exp((vec0[0]*Z5[0])-(vec0[1]*Z5[1]));
-var Z6=[(Math.cos(img3)*pa3),(Math.sin(img3)*pa3)],Z7=[(Math.cos(((dat1)/2)))*dat2,(Math.sin(((dat1)/2)))*dat2];
-Z1=[((Z7[0]*Z6[0])-(Z7[1]*Z6[1])),((Z7[0]*Z6[1])+(Z6[0]*Z7[1]))];ar.c[0]=Z1[0],ar.c[1]=Z1[1]}
-cc21(ar){let z1=expz(multz(ar.a,[0,1])),z2=expz(multz(ar.a,[0,-1]));return divz([z1[0]-z2[0],z1[1]-z2[1]],[0,2])}
-cc22(ar){let z1=expz(multz(ar.a,[0,1])),z2=expz(multz(ar.a,[0,-1]));return divz([z1[0]+z2[0],z1[1]+z2[1]],[2,0])}
-cc23(ar){let z1=expz(multz(ar.a,[0,1])),z2=expz(multz(ar.a,[0,-1]));return divz(divz([z1[0]-z2[0],z1[1]-z2[1]],[0,2]),divz([z1[0]+z2[0],z1[1]+z2[1]],[2,0]))}
-cc24(ar){let z1=multz(ar.a,ar.a),z2=multz(ar.a,[0,1]);
-z1=zelevN([1-z1[0],-z1[1]],0.5);z1[0]=z1[0]+z2[0],z1[1]=z1[1]+z2[1];return multz([Math.log(Math.hypot(z1[0],z1[1])),Math.atan2(z1[1],z1[0])],[0,-1])}
-cc25(ar){let z1=multz(ar.a,ar.a);z1=multz(zelevN([1-z1[0],-z1[1]],0.5),[0,1]);z1[0]=ar.a[0]+z1[0],z1[1]=ar.a[1]+z1[1];return multz([Math.log(Math.hypot(z1[0],z1[1])),Math.atan2(z1[1],z1[0])],[0,-1])}
-cc26(ar){let z1=divz([-ar.a[0],1-ar.a[1]],[ar.a[0],1+ar.a[1]]);return multz([Math.log(Math.hypot(z1[0],z1[1])),Math.atan2(z1[1],z1[0])],[0,-0.5])}
 s45(ar){return [ar.a.x,ar.a.y]}
 geo19({a,b,c,d}){let rect1=[(a[1]-b[1])/(a[0]-b[0]),b[1]-((a[1]-b[1])/(a[0]-b[0]))*b[0]],rect2=[(c[1]-d[1])/(c[0]-d[0]),d[1]-((c[1]-d[1])/(c[0]-d[0]))*d[0]];
 return [(rect2[1]-rect1[1])/(rect1[0]-rect2[0]),(rect1[0]*rect2[1]-rect2[0]*rect1[1])/(rect1[0]-rect2[0])];}
