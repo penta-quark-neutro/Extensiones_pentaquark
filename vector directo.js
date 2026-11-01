@@ -1,6 +1,6 @@
 (function(Scratch) {'use strict';//por el (pentaquark neutro, penta quark neutro) y neutral auream
 const txt=Scratch.ArgumentType.STRING,rep=Scratch.BlockType.REPORTER,num=Scratch.ArgumentType.NUMBER,vgbb=Scratch.BlockType.BUTTON,eva=Scratch.BlockType.BOOLEAN,com=Scratch.BlockType.COMMAND;
-const vm=Scratch.vm,runtime=vm.runtime,grrad=Math.PI/180,iv=[1,0,0],jv=[0,1,0],kv=[0,0,1];let Gvec=[],ops=1,vecs=1,prop=1,glo=1,cc=1,cuat=1,oct=1,sed=1,geo=1;
+const vm=Scratch.vm,runtime=vm.runtime,grrad=Math.PI/180,iv=[1,0,0],jv=[0,1,0],kv=[0,0,1];let Gvec=[],ops=1,vecs=1,prop=1,glo=1,cc=1,cuat=1,oct=1,sed=1,geo=1,tup=1;
 function unosobrez(RE,IM){return [(((1*RE))/((RE*RE)+(IM*IM))),((-(1*IM))/((RE*RE)+(IM*IM)))];}
 function expz(z){let p=Math.exp(z[0]);return [(Math.cos(z[1])*p),(Math.sin(z[1])*p)];}
 function multz(z1,z2){return [((z1[0]*z2[0])-(z1[1]*z2[1])),((z1[0]*z2[1])+(z1[1]*z2[0]))];}
@@ -13,6 +13,7 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {func:'herr0',blockType:vgbb,text:'Redes pentaquark',},
 {func:'herr1',blockType:vgbb,hideFromPalette:!ops,text:'Mostrar operadores matematicos',},{func:'herr2',blockType:vgbb,hideFromPalette:ops,text:'Ocultar operadores matematicos',},
 {func:'herr3',blockType:vgbb,hideFromPalette:!vecs,text:'Mostrar vectores',},{func:'herr4',blockType:vgbb,hideFromPalette:vecs,text:'Ocultar vectores',},
+{func:'herr19',blockType:vgbb,hideFromPalette:!tup,text:'Mostrar tuplas y accesores',},{func:'herr20',blockType:vgbb,hideFromPalette:tup,text:'Ocultar tuplas y accesores',},
 {func:'herr5',blockType:vgbb,hideFromPalette:!prop,text:'Mostrar Obj.vec',},{func:'herr6',blockType:vgbb,hideFromPalette:prop,text:'Ocultar Obj.vec',},
 {func:'herr7',blockType:vgbb,hideFromPalette:!glo,text:'Mostrar global',},{func:'herr8',blockType:vgbb,hideFromPalette:glo,text:'Ocultar global',},
 {func:'herr9',blockType:vgbb,hideFromPalette:!cc,text:'Mostrar Complejos',},{func:'herr10',blockType:vgbb,hideFromPalette:cc,text:'Ocultar Complejos',},
@@ -119,38 +120,38 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'uin9',blockType:rep,text:'new Float64Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
 {opcode:'uin11',blockType:rep,text:'new BigInt64Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
 {opcode:'uin12',blockType:rep,text:'new BigUint64Array[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
-{blockType:"label",text:"vectores-tuplas y accesores",hideFromPalette:vecs},//--------------------------------------------------------------------------------------------------------------------------------
-{opcode:'cu_i',blockType:rep,text:'i',hideFromPalette:vecs,disableMonitor:1},
-{opcode:'cu_j',blockType:rep,text:'j',hideFromPalette:vecs,disableMonitor:1},
-{opcode:'cu_k',blockType:rep,text:'k',hideFromPalette:vecs,disableMonitor:1},
-{opcode:'cu',blockType:rep,text:'[a]',hideFromPalette:vecs,arguments:{a:{type:txt}}},
-{opcode:'cu2',blockType:rep,text:'[a][b]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt}}},
-{opcode:'cu3',blockType:rep,text:'[a][b][c]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
-{opcode:'cu4',blockType:rep,text:'[a][b][c][d]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt}}},
-{opcode:'cu6',blockType:rep,text:'[a][b][c][d][e]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt}}},
-{opcode:'cu7',blockType:rep,text:'[a][b][c][d][e][f]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt},f:{type:txt}}},
-{opcode:'cu8',blockType:rep,text:'[a][b][c][d][e][f][g]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt},f:{type:txt},g:{type:txt}}},
-{opcode:'cu5',blockType:rep,text:'[a][b][c][d][e][f][g][h]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt},f:{type:txt},g:{type:txt},h:{type:txt}}},
-{opcode:'pt2',blockType:rep,text:'[a]〚[b]〛〚[c]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
-{opcode:'pt3',blockType:rep,text:'[a]〚[b]〛〚[c]〛〚[d]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt}}},
-{opcode:'pt4',blockType:rep,text:'[a]〚[b]〛〚[c]〛〚[d]〛〚[e]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt}}},
-{opcode:'rpt4',blockType:com,text:'[a]〚[b]〛=[c],〚[d]〛=[e]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt}}},
-{opcode:'rpt5',blockType:com,text:'[a]〚[b]〛=[c],〚[d]〛=[e],〚[f]〛=[g]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt},f:{type:txt},g:{type:txt}}},
-{opcode:'rpt6',blockType:com,text:'[a]〚[b]〛=[c],〚[d]〛=[e],〚[f]〛=[g],〚[h]〛=[i]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt},f:{type:txt},g:{type:txt},h:{type:txt},i:{type:txt}}},
-{opcode:'rpt18',blockType:com,text:'[a]〚[b]〛〚[c]〛=[d]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt}}},
-{opcode:'rpt19',blockType:com,text:'[a]〚[b]〛〚[c]〛〚[d]〛=[e]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt}}},
-{opcode:'rpt20',blockType:com,text:'[a]〚[b]〛〚[c]〛〚[d]〛〚[e]〛=[f]',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt},f:{type:txt}}},
+{blockType:"label",text:"tuplas y accesores",hideFromPalette:tup},//--------------------------------------------------------------------------------------------------------------------------------
+{opcode:'cu_i',blockType:rep,text:'i',hideFromPalette:tup,disableMonitor:1},
+{opcode:'cu_j',blockType:rep,text:'j',hideFromPalette:tup,disableMonitor:1},
+{opcode:'cu_k',blockType:rep,text:'k',hideFromPalette:tup,disableMonitor:1},
+{opcode:'cu',blockType:rep,text:'[a]',hideFromPalette:tup,arguments:{a:{type:txt}}},
+{opcode:'cu2',blockType:rep,text:'[a][b]',hideFromPalette:tup,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'cu3',blockType:rep,text:'[a][b][c]',hideFromPalette:tup,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
+{opcode:'cu4',blockType:rep,text:'[a][b][c][d]',hideFromPalette:tup,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt}}},
+{opcode:'cu6',blockType:rep,text:'[a][b][c][d][e]',hideFromPalette:tup,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt}}},
+{opcode:'cu7',blockType:rep,text:'[a][b][c][d][e][f]',hideFromPalette:tup,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt},f:{type:txt}}},
+{opcode:'cu8',blockType:rep,text:'[a][b][c][d][e][f][g]',hideFromPalette:tup,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt},f:{type:txt},g:{type:txt}}},
+{opcode:'cu5',blockType:rep,text:'[a][b][c][d][e][f][g][h]',hideFromPalette:tup,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt},f:{type:txt},g:{type:txt},h:{type:txt}}},
+{opcode:'pt2',blockType:rep,text:'[a]〚[b]〛〚[c]〛',hideFromPalette:tup,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
+{opcode:'pt3',blockType:rep,text:'[a]〚[b]〛〚[c]〛〚[d]〛',hideFromPalette:tup,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt}}},
+{opcode:'pt4',blockType:rep,text:'[a]〚[b]〛〚[c]〛〚[d]〛〚[e]〛',hideFromPalette:tup,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt}}},
+{opcode:'rpt4',blockType:com,text:'[a]〚[b]〛=[c],〚[d]〛=[e]',hideFromPalette:tup,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt}}},
+{opcode:'rpt5',blockType:com,text:'[a]〚[b]〛=[c],〚[d]〛=[e],〚[f]〛=[g]',hideFromPalette:tup,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt},f:{type:txt},g:{type:txt}}},
+{opcode:'rpt6',blockType:com,text:'[a]〚[b]〛=[c],〚[d]〛=[e],〚[f]〛=[g],〚[h]〛=[i]',hideFromPalette:tup,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt},f:{type:txt},g:{type:txt},h:{type:txt},i:{type:txt}}},
+{opcode:'rpt18',blockType:com,text:'[a]〚[b]〛〚[c]〛=[d]',hideFromPalette:tup,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt}}},
+{opcode:'rpt19',blockType:com,text:'[a]〚[b]〛〚[c]〛〚[d]〛=[e]',hideFromPalette:tup,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt}}},
+{opcode:'rpt20',blockType:com,text:'[a]〚[b]〛〚[c]〛〚[d]〛〚[e]〛=[f]',hideFromPalette:tup,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt},f:{type:txt}}},
 {opcode:'rpt7',blockType:com,text:'〚...[a]〛=〚...[b]〛',hideFromPalette:true,arguments:{a:{type:txt},b:{type:txt}}},
-{opcode:'rpt8',blockType:rep,text:'++[a]〚[b]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt}}},
-{opcode:'rpt9',blockType:rep,text:'--[a]〚[b]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt}}},
-{opcode:'rpt10',blockType:rep,text:'[a]〚[b]〛++',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt}}},
-{opcode:'rpt11',blockType:rep,text:'[a]〚[b]〛--',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt}}},
-{opcode:'rpt12',blockType:com,text:'++[a]〚[b]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt}}},
-{opcode:'rpt13',blockType:com,text:'--[a]〚[b]〛',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt}}},
-{opcode:'rpt14',blockType:com,text:'[a]〚[b]〛++',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt}}},
-{opcode:'rpt15',blockType:com,text:'[a]〚[b]〛--',hideFromPalette:vecs,arguments:{a:{type:txt},b:{type:txt}}},
-{opcode:'rpt16',blockType:rep,text:'lista[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:'lista_1'}}},
-{opcode:'rpt17',blockType:com,text:'lista[a]=[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:'lista_1'},b:{type:txt}}},
+{opcode:'rpt8',blockType:rep,text:'++[a]〚[b]〛',hideFromPalette:tup,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'rpt9',blockType:rep,text:'--[a]〚[b]〛',hideFromPalette:tup,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'rpt10',blockType:rep,text:'[a]〚[b]〛++',hideFromPalette:tup,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'rpt11',blockType:rep,text:'[a]〚[b]〛--',hideFromPalette:tup,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'rpt12',blockType:com,text:'++[a]〚[b]〛',hideFromPalette:tup,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'rpt13',blockType:com,text:'--[a]〚[b]〛',hideFromPalette:tup,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'rpt14',blockType:com,text:'[a]〚[b]〛++',hideFromPalette:tup,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'rpt15',blockType:com,text:'[a]〚[b]〛--',hideFromPalette:tup,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'rpt16',blockType:rep,text:'lista[a]',hideFromPalette:tup,arguments:{a:{type:txt,defaultValue:'lista_1'}}},
+{opcode:'rpt17',blockType:com,text:'lista[a]=[b]',hideFromPalette:tup,arguments:{a:{type:txt,defaultValue:'lista_1'},b:{type:txt}}},
 {blockType:"label",text:"Obj.vec o propiedad",hideFromPalette:prop},//--------------------------------------------------------------------------------------------------------------------------------
 {opcode:'tagtp1m',blockType:com,text:'añadir[t]tp1 NR',hideFromPalette:prop,arguments:{t:{type:txt,defaultValue:'K'}}},
 {opcode:'tagtp1mc',blockType:com,text:'añadir[t]tp1',hideFromPalette:prop,arguments:{t:{type:txt,defaultValue:'K'}}},
@@ -249,18 +250,21 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'cua1',blockType:rep,text:'ℍ[a]+[b]',hideFromPalette:cuat,arguments:{a:{type:txt},b:{type:txt}}},
 {opcode:'cua2',blockType:rep,text:'ℍ[a]-[b]',hideFromPalette:cuat,arguments:{a:{type:txt},b:{type:txt}}},
 {opcode:'cua3',blockType:rep,text:'ℍ[v1]*[v2]',hideFromPalette:cuat,arguments:{v1:{type:txt},v2:{type:txt}}},
+{opcode:'cua23',blockType:rep,text:'ℍ[v1]*[e]',hideFromPalette:cuat,arguments:{v1:{type:txt},e:{type:num}}},
 {opcode:'cua4',blockType:rep,text:'ℍ[v1]/[v2]',hideFromPalette:cuat,arguments:{v1:{type:txt},v2:{type:txt}}},
 {opcode:'cua6',blockType:rep,text:'ℍ conj[a]',hideFromPalette:cuat,arguments:{a:{type:txt}}},
 {opcode:'cua7',blockType:rep,text:'ℍ LN[V]',hideFromPalette:cuat,arguments:{V:{type:txt}}},
 {opcode:'cua8',blockType:rep,text:'ℍ e^[V]',hideFromPalette:cuat,arguments:{V:{type:txt}}},
 {opcode:'cua10',blockType:rep,text:'ℍ ||[V]||',hideFromPalette:cuat,arguments:{V:{type:txt}}},
 {opcode:'cua18',blockType:rep,text:'ℍ Distg[a][b]',hideFromPalette:cuat,arguments:{a:{type:txt},b:{type:txt}}},
+{opcode:'cua25',blockType:rep,text:'ℍ θ[a]',hideFromPalette:cuat,arguments:{a:{type:txt}}},
 {opcode:'cua19',blockType:rep,text:'rotar R3[a]con ℍu[b]',hideFromPalette:cuat,arguments:{a:{type:txt},b:{type:txt}}},
 {opcode:'cua20',blockType:rep,text:'rotar varios R3[a]con ℍu[b]',hideFromPalette:cuat,arguments:{a:{type:txt,defaultValue:'[...]'},b:{type:txt}}},
 {opcode:'cua9',blockType:eva,text:'¿[a]es ℍ?',hideFromPalette:cuat,arguments:{a:{type:txt}}},
 {opcode:'cua11',blockType:com,text:'ℍ[a]+[b]_salida[c]',hideFromPalette:cuat,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
 {opcode:'cua12',blockType:com,text:'ℍ[a]-[b]_salida[c]',hideFromPalette:cuat,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
 {opcode:'cua13',blockType:com,text:'ℍ[v1]*[v2]_salida[c]',hideFromPalette:cuat,arguments:{v1:{type:txt},v2:{type:txt},c:{type:txt}}},
+{opcode:'cua24',blockType:com,text:'ℍ[v1]*[e]_salida[c]',hideFromPalette:cuat,arguments:{v1:{type:txt},e:{type:num},c:{type:txt}}},
 {opcode:'cua14',blockType:com,text:'ℍ[v1]/[v2]_salida[c]',hideFromPalette:cuat,arguments:{v1:{type:txt},v2:{type:txt},c:{type:txt}}},
 {opcode:'cua15',blockType:com,text:'ℍ conj[a]_salida[c]',hideFromPalette:cuat,arguments:{a:{type:txt},c:{type:txt}}},
 {opcode:'cua16',blockType:com,text:'ℍ LN[V]_salida[k]',hideFromPalette:cuat,arguments:{V:{type:txt},k:{type:txt}}},
@@ -276,7 +280,7 @@ class vectorr{getInfo(){return{id:'vectorr',name:'vectorr',color1:'#a4a4a4',colo
 {opcode:'octa10',blockType:rep,text:'𝕆 LN[V]',hideFromPalette:oct,arguments:{V:{type:txt}}},
 {opcode:'octa8',blockType:rep,text:'𝕆 e^[v]',hideFromPalette:oct,arguments:{v:{type:txt}}},
 {opcode:'octa9',blockType:rep,text:'𝕆 ||[v]||',hideFromPalette:oct,arguments:{v:{type:txt}}},
-{opcode:'octa7',blockType:eva,text:'¿[a]es 𝕆?',hideFromPalette:oct,arguments:{a:{type:txt}}},
+{opcode:'octa7',blockType:eva,text:'¿[a]es 𝕆?',hideFromPalette: oct,arguments:{a:{type:txt}}},
 {opcode:'octa11',blockType:com,text:'𝕆[a]+[b]_salida[c]',hideFromPalette:oct,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
 {opcode:'octa12',blockType:com,text:'𝕆[a]-[b]_salida[c]',hideFromPalette:oct,arguments:{a:{type:txt},b:{type:txt},c:{type:txt}}},
 {opcode:'octa13',blockType:com,text:'𝕆[v1]*[v2]_salida[c]',hideFromPalette:oct,arguments:{v1:{type:txt},v2:{type:txt},c:{type:txt}}},
@@ -463,6 +467,9 @@ ar.c[0]=unit[0]*b+(ar.a[0]*cos)+((unit[1]*ar.a[2])-(unit[2]*ar.a[1]))*sen,ar.c[1
 cua22(ar){const a=Math.hypot(ar.b[1],ar.b[2],ar.b[3]),ang=Math.asin(a/Math.hypot(ar.b[0],ar.b[1],ar.b[2],ar.b[3]))*2,unit=[ar.b[1]/a,ar.b[2]/a,ar.b[3]/a],cos=Math.cos(ang),sen=Math.sin(ang);let b=0,i=0;
 while(i<ar.a.length){b=((unit[0]*ar.a[i][0])+(unit[1]*ar.a[i][1])+(unit[2]*ar.a[i][2]))*(1-cos);
 ar.c[i][0]=unit[0]*b+(ar.a[i][0]*cos)+((unit[1]*ar.a[i][2])-(unit[2]*ar.a[i][1]))*sen,ar.c[i][1]=unit[1]*b+(ar.a[i][1]*cos)+((unit[2]*ar.a[i][0])-(unit[0]*ar.a[i][2]))*sen,ar.c[i][2]=unit[2]*b+(ar.a[i][2]*cos)+((unit[0]*ar.a[i][1])-(unit[1]*ar.a[i++][0]))*sen;}}
+cua23(ar){return [ar.v1[0]*ar.e,ar.v1[1]*ar.e,ar.v1[2]*ar.e,ar.v1[3]*ar.e]}
+cua24(ar){return ar.c[0]=ar.v1[0]*ar.e,ar.c[1]=ar.v1[1]*ar.e,ar.c[2]=ar.v1[2]*ar.e,ar.c[3]=ar.v1[3]*ar.e}
+cua25(ar){return (ar.a[0]!=0?Math.acos(ar.a[0]/Math.hypot(ar.a[0],ar.a[1],ar.a[2],ar.a[3])):Math.asin(Math.hypot(ar.a[1],ar.a[2],ar.a[3])/Math.hypot(ar.a[0],ar.a[1],ar.a[2],ar.a[3])))}
 //------------------------------------------------------------------------------------------------------------------complejos
 cc1(ar){return [ar.a[0]*1+1*ar.b[0],ar.a[1]*1+ar.b[1]*1]}
 cc2(ar){return [ar.a[0]-ar.b[0],ar.a[1]-ar.b[1]]}
@@ -545,7 +552,7 @@ case'max':return ar.a.reduceRight((ac,an)=>Math.max(ac,an),-Infinity);case'min':
 
 herr0(){Scratch.openWindow('https://linktr.ee/Penta_quark_neutro');}
 herr1(){ops=0;ref();}herr2(){ops=1;ref();}herr3(){vecs=0;ref();}herr4(){vecs=1;ref();}herr5(){prop=0;ref();}herr6(){prop=1;ref();}herr7(){glo=0;ref();}herr8(){glo=1;ref();}
-herr9(){cc=0;ref();}herr10(){cc=1;ref();}herr11(){cuat=0;ref();}herr12(){cuat=1;ref();}herr13(){oct=0;ref();}herr14(){oct=1;ref();}herr15(){sed=0;ref();}herr16(){sed=1;ref();}herr17(){geo=0;ref();}herr18(){geo=1;ref();}
+herr9(){cc=0;ref();}herr10(){cc=1;ref();}herr11(){cuat=0;ref();}herr12(){cuat=1;ref();}herr13(){oct=0;ref();}herr14(){oct=1;ref();}herr15(){sed=0;ref();}herr16(){sed=1;ref();}herr17(){geo=0;ref();}herr18(){geo=1;ref();}herr19(){tup=0;ref();}herr20(){tup=1;ref();}
 arr(ar){return Array.from(ar.a.split(','));}
 le(ar){return ar.a.length;}
 nor(ar){var i=0,b=0;while(i<ar.a.length){b+=ar.a[i++]**2}return b**0.5}

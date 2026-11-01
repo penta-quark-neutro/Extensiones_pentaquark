@@ -1,12 +1,14 @@
 (function(Scratch) {'use strict';//por el (pentaquark neutro, penta quark neutro) y neutral auream
 const txt=Scratch.ArgumentType.STRING,rep=Scratch.BlockType.REPORTER,num=Scratch.ArgumentType.NUMBER,vgbb=Scratch.BlockType.BUTTON,evaluador=Scratch.BlockType.BOOLEAN,com=Scratch.BlockType.COMMAND,bol1=Scratch.ArgumentType.BOOLEAN;;
-const vm=Scratch.vm,runtime=vm.runtime;let ops=1,vecs=1,grrad=Math.PI/180;
+const vm=Scratch.vm,runtime=vm.runtime,grrad=Math.PI/180;let ops=1,vecs=1,comp=1,uti=1;
 function ref(){Scratch.vm.extensionManager.refreshBlocks();}
 if(!Scratch.extensions.unsandboxed){throw new Error('unsandboxed');}
 class Typedvectorr{getInfo(){return{id:'Typedvectorr',name:'Typedvectorr',color1:'#94b3d2',color2:'#00ffff',color3:'#ff0000',blocks:[
 {func:'herr0',blockType:vgbb,text:'Redes pentaquark',},
 {func:'herr1',blockType:vgbb,hideFromPalette:!ops,text:'Mostrar operadores matematicos',},{func:'herr2',blockType:vgbb,hideFromPalette:ops,text:'Ocultar operadores matematicos',},
 {func:'herr3',blockType:vgbb,hideFromPalette:!vecs,text:'Mostrar vectores',},{func:'herr4',blockType:vgbb,hideFromPalette:vecs,text:'Ocultar vectores',},
+{func:'herr7',blockType:vgbb,hideFromPalette:!uti,text:'Mostrar utiles',},{func:'herr8',blockType:vgbb,hideFromPalette:uti,text:'utiles',},
+{func:'herr5',blockType:vgbb,hideFromPalette:!comp,text:'Mostrar compatibilidad',},{func:'herr6',blockType:vgbb,hideFromPalette:comp,text:'Ocultar compatibilidad',},
 {blockType:"label",text:"Operadores matematicos",hideFromPalette:ops},//--------------------------------------------------------------------------------------------------------------------------------
 {blockType:"label",text:"Mutan vector principal",hideFromPalette:ops},//--------------------------------------------------------------------------------------------------------------------------------
 {opcode:'m',blockType:com,text:'[a]+[b]',hideFromPalette:ops,arguments:{a:{type:txt,defaultValue:''},b:{type:num,defaultValue:''}}},
@@ -46,6 +48,8 @@ class Typedvectorr{getInfo(){return{id:'Typedvectorr',name:'Typedvectorr',color1
 {opcode:'uin1',blockType:rep,text:'new [u][a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},u:{type:txt,menu:'uins'}}},
 {opcode:'buffer',blockType:rep,text:'new ArrayBuffer[a][b]',hideFromPalette:vecs,arguments:{a:{type:num,defaultValue:'8'},b:{type:num,defaultValue:'12'}}},
 {opcode:'buffer2',blockType:rep,text:'new ArrayBuffer[a]',hideFromPalette:vecs,arguments:{a:{type:num,defaultValue:'8'}}},
+{opcode:'buffer3',blockType:rep,text:'new SharedArrayBuffer[a][b]',hideFromPalette:vecs,arguments:{a:{type:num,defaultValue:'8'},b:{type:num,defaultValue:'12'}}},
+{opcode:'buffer4',blockType:rep,text:'new SharedArrayBuffer[a]',hideFromPalette:vecs,arguments:{a:{type:num,defaultValue:'8'}}},
 {opcode:'isview',blockType:rep,text:'isView[a]',hideFromPalette:vecs,arguments:{a:{type:num,defaultValue:''}}},
 {opcode:'esTyped',blockType:rep,text:'¿TypedArray[a]?',hideFromPalette:vecs,arguments:{a:{type:num,defaultValue:''}}},
 {opcode:'trans',blockType:rep,text:'[b].transfer[a]',hideFromPalette:vecs,arguments:{a:{type:num,defaultValue:'0'},b:{type:txt,defaultValue:'buffer'}}},
@@ -78,6 +82,12 @@ class Typedvectorr{getInfo(){return{id:'Typedvectorr',name:'Typedvectorr',color1
 {opcode:'mtx5',blockType:com,text:'mtz(2x2)_[c]T',hideFromPalette:vecs,arguments:{c:{type:txt,defaultValue:''}}},
 {opcode:'mtx6',blockType:com,text:'mtz(3x3)_[c]T',hideFromPalette:vecs,arguments:{c:{type:txt,defaultValue:''}}},
 {opcode:'mtx7',blockType:com,text:'mtz(4x4)_[c]T',hideFromPalette:vecs,arguments:{c:{type:txt,defaultValue:''}}},
+{blockType:"label",text:"Utiles",hideFromPalette:uti},//--------------------------------------------------------------------------------------------------------------------------------
+{opcode:'util0',blockType:com,text:'Guardar datos de[a]en este objeto como[b]',hideFromPalette:uti,arguments:{a:{type:txt,defaultValue:'ArrayBuffer'},b:{type:txt,defaultValue:'buff1'}}},
+{opcode:'util1',blockType:rep,text:'De este objeto construir[a]',hideFromPalette:uti,arguments:{a:{type:txt,defaultValue:'buff1'}}},
+{opcode:'util2',blockType:rep,text:'De este objeto bufferes',hideFromPalette:uti,disableMonitor:1},
+{blockType:"label",text:"compatibilidad",hideFromPalette:comp},//--------------------------------------------------------------------------------------------------------------------------------
+{opcode:'comp0',blockType:rep,text:'typedArraysCpu[a]',color1:'#4C97FF',hideFromPalette:!Array.from(vm.extensionManager._loadedExtensions.keys()).includes('typedArraysCpu')||comp,arguments:{a:{type:txt,defaultValue:'1'}}},
 ],menus:{
 outs:{acceptReporters:0,items:['+','-','*','/','**','%','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','Log2','|','&','^','~','<<','>>','>>>','tofixed','senh','cosh','tanh','asenh','acosh','atanh','fround','f16round','round','trunc']},
 Filt:{acceptReporters:0,items:['==','===','<','>','>=','<=','!=']},
@@ -103,7 +113,7 @@ case'>=':return ar.a.filter(dat=>(dat>=ar.b ? 1:0));case'<=':return ar.a.filter(
 case'!=':return ar.a.filter(dat=>(dat!=ar.b ? 1:0));
 }}
 herr0(){Scratch.openWindow('https://linktr.ee/Penta_quark_neutro');}
-herr1(){ops=0;ref();}herr2(){ops=1;ref();}herr3(){vecs=0;ref();}herr4(){vecs=1;ref();}
+herr1(){ops=0;ref();}herr2(){ops=1;ref();}herr3(){vecs=0;ref();}herr4(){vecs=1;ref();}herr5(){comp=0;ref();}herr6(){comp=1;ref();}herr7(){uti=0;ref();}herr8(){uti=1;ref();}
 le(ar){return ar.a.length;}
 nor(ar){var i=0,b=0;while(i<ar.a.length){b+=ar.a[i++]**2}return b**0.5}
 unit(ar){var i=0,b=0;while(i<ar.a.length){b+=ar.a[i++]**2}b**=0.5;return ar.a.map(g=>g/b)}
@@ -134,6 +144,8 @@ muVE(ar){var i=0;while(i<ar.a.length){ar.a[i++]*=ar.b}}
 cruz(ar){return [(ar.a[1]*ar.b[2])-(ar.a[2]*ar.b[1]),(ar.a[2]*ar.b[0])-(ar.a[0]*ar.b[2]),(ar.a[0]*ar.b[1])-(ar.a[1]*ar.b[0])]}
 buffer(ar){return new ArrayBuffer(ar.a,{maxByteLength:ar.b})}
 buffer2(ar){return new ArrayBuffer(ar.a)}
+buffer3(ar){return new SharedArrayBuffer(ar.a,{maxByteLength:ar.b})}
+buffer4(ar){return new SharedArrayBuffer(ar.a)}
 subar(ar){return ar.c.subarray(ar.a,ar.b)}
 trans(ar){return ar.b.transfer(ar.a)}
 view(ar){return new DataView(ar.a,ar.b,ar.c)}
@@ -198,5 +210,9 @@ c[6]=(a[6]*b[0]+a[7]*b[3]+a[8]*b[6]),c[7]=(a[6]*b[1]+a[7]*b[4]+a[8]*b[7]),c[8]=(
 mtx5({c}){let a=c[1];c[1]=c[2],c[2]=a;}
 mtx6({c}){let a=[c[1],c[2],c[5]];c[1]=c[3],c[2]=c[6],c[5]=c[7],c[3]=a[0],c[6]=a[1],c[7]=a[2]}
 mtx7({c}){let a=[c[1],c[2],c[3],c[6],c[7],c[11]];c[1]=c[4],c[2]=c[8],c[6]=c[9],c[3]=c[12],c[7]=c[13],c[11]=c[14],c[4]=a[0],c[8]=a[1],c[9]=a[3],c[12]=a[2],c[13]=a[4],c[14]=a[5]}
+comp0(ar,util){return util.target.extensionStorage['typedArraysShared']?.arrays?.[ar.a]?.data}
+util0(ar,util){if(!util.target.extensionStorage['TypedvectorrBuffers']){util.target.extensionStorage['TypedvectorrBuffers']={};}util.target.extensionStorage['TypedvectorrBuffers'][ar.b]=(new Uint8Array(ar.a)).toHex()}
+util1(ar,util){let a=util.target.extensionStorage['TypedvectorrBuffers']?.[ar.a]; return (a?Uint8Array.fromHex(a).buffer:undefined)}
+util2(ar,util){let a=util.target.extensionStorage['TypedvectorrBuffers']; return (a?Object.keys(a):undefined)}
 
 }Scratch.extensions.register(new Typedvectorr());})(Scratch);
