@@ -31,9 +31,9 @@ da disponibilidad a los primitivos Symbol.
 es una decente extensión para cálculos de números complejos,cuaterniones y octaniones.
 es menos eficiente que vector directo que también incluye esto, pero esta extensión es muy
 accesible y fácil de usar para dichos cálculos, ademas de mas completa.
-### Typedvector
-es una potente extensión para usar los TypedVector, ArrayBuffer y DataView.
-ademas de otro calculo aritmético.
+## Typedvector
+es una potente extensión para usar los TypedVector, SharedArrayBuffer, ArrayBuffer y DataView.
+ademas de otro calculo aritmético basico y calculo basico de matrices 2x2, 3x3 y 4x4.
 ideal para trabajar con 'vector directo' si la eficiencia de datos te preocupa.
 también es útil con 'RSA'.
 ## vector directo
