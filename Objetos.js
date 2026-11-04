@@ -116,6 +116,11 @@ Object.defineProperties(ScratchBlocks.Blocks,{exps_me0:function a(){
 		})}
 		})
 */
+//-------------------------------------------------------------cambia el reporte de datos de los reporteros
+if(false){function sfSTR(val){return val?.toString?.()}
+function teset(target,blockId,value){if(target===this.getEditingTarget()){this.emit('VISUAL_REPORT',{id:blockId,value:sfSTR(value)});}}
+Scratch.vm.runtime.visualReport= (a,b,c)=>{Reflect.apply(teset,Scratch.vm.runtime,[a,b,c])}}
+//--------------------------------------------------------------------------------------------------------------
 
 const com0=Scratch.BlockType.COMMAND,vgbb=Scratch.BlockType.BUTTON,str0=Scratch.ArgumentType.STRING,bol=Scratch.BlockType.BOOLEAN,rep=Scratch.BlockType.REPORTER,bol1=Scratch.ArgumentType.BOOLEAN,txt=Scratch.ArgumentType.STRING;
 if(!Scratch.extensions.unsandboxed){throw new Error('Esta extension solo funcion sin "sandbox"');}

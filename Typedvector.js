@@ -211,8 +211,8 @@ mtx5({c}){let a=c[1];c[1]=c[2],c[2]=a;}
 mtx6({c}){let a=[c[1],c[2],c[5]];c[1]=c[3],c[2]=c[6],c[5]=c[7],c[3]=a[0],c[6]=a[1],c[7]=a[2]}
 mtx7({c}){let a=[c[1],c[2],c[3],c[6],c[7],c[11]];c[1]=c[4],c[2]=c[8],c[6]=c[9],c[3]=c[12],c[7]=c[13],c[11]=c[14],c[4]=a[0],c[8]=a[1],c[9]=a[3],c[12]=a[2],c[13]=a[4],c[14]=a[5]}
 comp0(ar,util){return util.target.extensionStorage['typedArraysShared']?.arrays?.[ar.a]?.data}
-util0(ar,util){if(!util.target.extensionStorage['TypedvectorrBuffers']){util.target.extensionStorage['TypedvectorrBuffers']={};}util.target.extensionStorage['TypedvectorrBuffers'][ar.b]=(new Uint8Array(ar.a)).toHex()}
-util1(ar,util){let a=util.target.extensionStorage['TypedvectorrBuffers']?.[ar.a]; return (a?Uint8Array.fromHex(a).buffer:undefined)}
+util0(ar,util){if(!util.target.extensionStorage['TypedvectorrBuffers']){util.target.extensionStorage['TypedvectorrBuffers']={};}util.target.extensionStorage['TypedvectorrBuffers'][ar.b]=(new Uint8Array(ar.a)).toBase64()}
+util1(ar,util){let a=util.target.extensionStorage['TypedvectorrBuffers']?.[ar.a]; return (a?Uint8Array.fromBase64(a).buffer:undefined)}
 util2(ar,util){let a=util.target.extensionStorage['TypedvectorrBuffers']; return (a?Object.keys(a):undefined)}
 
 }Scratch.extensions.register(new Typedvectorr());})(Scratch);
