@@ -17,11 +17,12 @@ class FilSYS{getInfo(){return {id:'FileSYS',name:'FileSystemHandle',color1:'#f00
 {opcode:'fs9',blockType:com,text:'[a].close()',arguments:{a:{type:str}}},
 {opcode:'fs10',blockType:bol,text:'[a].[b]',arguments:{a:{type:str},b:{type:str}}},
 {opcode:'fs14',blockType:com,text:'[a].remove()',arguments:{a:{type:str}}},
-{blockType:"label",text:"para Directorios o Arrays con contenido"},//---------------------------------------------------------------
+{blockType:"label",text:"Para Directorios"},//---------------------------------------------------------------
 {opcode:'fs15',blockType:rep,text:'Directorios de[a]',arguments:{a:{type:str}}},
 {opcode:'fs16',blockType:rep,text:'Archivos de[a]',arguments:{a:{type:str}}},
 {opcode:'fs17',blockType:rep,text:'Archivos de[a],extension[b]',arguments:{a:{type:str},b:{type:str,defaultValue:'.txt'}}},
 {opcode:'fs18',blockType:rep,text:'nombres del contenido de[a]',arguments:{a:{type:str}}},
+{opcode:'fs20',blockType:com,text:'añadir array[b]a lista[a]',arguments:{a:{type:str},b:{type:str}}},
 
 ],menus:{}
 };}
@@ -45,5 +46,6 @@ async fs16(ar){let A=[],B=(ar.a.values?ar.a.values():ar.a);for await(const val o
 async fs17(ar){let A=[],B=(ar.a.values?ar.a.values():ar.a);for await(const val of B){if(val.kind=='file'&&val.name.endsWith(ar.b)){A.push(val)}}return A}
 async fs18(ar){let A=[],B=(ar.a.values?ar.a.values():ar.a);for await(const val of B){A.push(val.name)}return A}
 fs19(ar){return ar.a.entries()}
+fs20(ar){util.target.lookupVariableByNameAndType(ar.a+'','list').value.push(...ar.b)}
 
 }Scratch.extensions.register(new FilSYS());})(Scratch);
