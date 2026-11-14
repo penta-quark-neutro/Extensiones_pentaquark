@@ -2,12 +2,13 @@
 const txt=Scratch.ArgumentType.STRING,rep=Scratch.BlockType.REPORTER,num=Scratch.ArgumentType.NUMBER,vgbb=Scratch.BlockType.BUTTON,evaluador=Scratch.BlockType.BOOLEAN,com=Scratch.BlockType.COMMAND,bol1=Scratch.ArgumentType.BOOLEAN;;
 const vm=Scratch.vm,runtime=vm.runtime,grrad=Math.PI/180;let ops=1,vecs=1,comp=1,uti=1;
 function ref(){Scratch.vm.extensionManager.refreshBlocks();}
+function ext(a){return Array.from(vm.extensionManager._loadedExtensions.keys()).includes(a)}
 if(!Scratch.extensions.unsandboxed){throw new Error('unsandboxed');}
 class Typedvectorr{getInfo(){return{id:'Typedvectorr',name:'Typedvectorr',color1:'#94b3d2',color2:'#00ffff',color3:'#ff0000',blocks:[
 {func:'herr0',blockType:vgbb,text:'Redes pentaquark',},
 {func:'herr1',blockType:vgbb,hideFromPalette:!ops,text:'Mostrar operadores matematicos',},{func:'herr2',blockType:vgbb,hideFromPalette:ops,text:'Ocultar operadores matematicos',},
 {func:'herr3',blockType:vgbb,hideFromPalette:!vecs,text:'Mostrar vectores',},{func:'herr4',blockType:vgbb,hideFromPalette:vecs,text:'Ocultar vectores',},
-{func:'herr7',blockType:vgbb,hideFromPalette:!uti,text:'Mostrar utiles',},{func:'herr8',blockType:vgbb,hideFromPalette:uti,text:'utiles',},
+{func:'herr7',blockType:vgbb,hideFromPalette:!uti,text:'Mostrar utiles',},{func:'herr8',blockType:vgbb,hideFromPalette:uti,text:'Ocultar utiles',},
 {func:'herr5',blockType:vgbb,hideFromPalette:!comp,text:'Mostrar compatibilidad',},{func:'herr6',blockType:vgbb,hideFromPalette:comp,text:'Ocultar compatibilidad',},
 {blockType:"label",text:"Operadores matematicos",hideFromPalette:ops},//--------------------------------------------------------------------------------------------------------------------------------
 {blockType:"label",text:"Mutan vector principal",hideFromPalette:ops},//--------------------------------------------------------------------------------------------------------------------------------
@@ -83,11 +84,12 @@ class Typedvectorr{getInfo(){return{id:'Typedvectorr',name:'Typedvectorr',color1
 {opcode:'mtx6',blockType:com,text:'mtz(3x3)_[c]T',hideFromPalette:vecs,arguments:{c:{type:txt,defaultValue:''}}},
 {opcode:'mtx7',blockType:com,text:'mtz(4x4)_[c]T',hideFromPalette:vecs,arguments:{c:{type:txt,defaultValue:''}}},
 {blockType:"label",text:"Utiles",hideFromPalette:uti},//--------------------------------------------------------------------------------------------------------------------------------
-{opcode:'util0',blockType:com,text:'Guardar datos de[a]en este objeto como[b]',hideFromPalette:uti,arguments:{a:{type:txt,defaultValue:'ArrayBuffer'},b:{type:txt,defaultValue:'buff1'}}},
-{opcode:'util1',blockType:rep,text:'De este objeto construir[a]',hideFromPalette:uti,arguments:{a:{type:txt,defaultValue:'buff1'}}},
-{opcode:'util2',blockType:rep,text:'De este objeto bufferes',hideFromPalette:uti,disableMonitor:1},
+{opcode:'util0',blockType:com,text:'Guardar datos de[a]en este objeto como[b]frio',hideFromPalette:uti,arguments:{a:{type:txt,defaultValue:'ArrayBuffer'},b:{type:txt,defaultValue:'buff1'}}},
+{opcode:'util1',blockType:rep,text:'De este objeto construir[a]frio',hideFromPalette:uti,arguments:{a:{type:txt,defaultValue:'buff1'}}},
+{opcode:'util2',blockType:rep,text:'De este objeto bufferes frios',hideFromPalette:uti,disableMonitor:1},
 {blockType:"label",text:"compatibilidad",hideFromPalette:comp},//--------------------------------------------------------------------------------------------------------------------------------
-{opcode:'comp0',blockType:rep,text:'typedArraysCpu[a]',color1:'#4C97FF',hideFromPalette:!Array.from(vm.extensionManager._loadedExtensions.keys()).includes('typedArraysCpu')||comp,arguments:{a:{type:txt,defaultValue:'1'}}},
+{opcode:'comp0',blockType:rep,text:'typedArraysCpu/gpuFast[a]',color1:'#4C97FF',hideFromPalette:(!ext('typedArraysCpu')&&!ext('gpuFast'))||comp,arguments:{a:{type:txt,defaultValue:'1'}}},
+{opcode:'comp1',blockType:com,text:'typedArraysCpu/gpuFast[a]reemplzar con[b]',color1:'#4C97FF',hideFromPalette:(!ext('typedArraysCpu')&&!ext('gpuFast'))||comp,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
 ],menus:{
 outs:{acceptReporters:0,items:['+','-','*','/','**','%','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','Log2','|','&','^','~','<<','>>','>>>','tofixed','senh','cosh','tanh','asenh','acosh','atanh','fround','f16round','round','trunc']},
 Filt:{acceptReporters:0,items:['==','===','<','>','>=','<=','!=']},
@@ -214,5 +216,6 @@ comp0(ar,util){return util.target.extensionStorage['typedArraysShared']?.arrays?
 util0(ar,util){if(!util.target.extensionStorage['TypedvectorrBuffers']){util.target.extensionStorage['TypedvectorrBuffers']={};}util.target.extensionStorage['TypedvectorrBuffers'][ar.b]=(new Uint8Array(ar.a)).toBase64()}
 util1(ar,util){let a=util.target.extensionStorage['TypedvectorrBuffers']?.[ar.a]; return (a?Uint8Array.fromBase64(a).buffer:undefined)}
 util2(ar,util){let a=util.target.extensionStorage['TypedvectorrBuffers']; return (a?Object.keys(a):undefined)}
+comp1(ar,util){util.target.extensionStorage['typedArraysShared'].arrays[ar.a].data=ar.b}
 
 }Scratch.extensions.register(new Typedvectorr());})(Scratch);

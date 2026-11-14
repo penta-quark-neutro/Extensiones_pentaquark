@@ -258,6 +258,7 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me162',blockType:rep,text:'{[a]:[b],[c]:[d]}',hideFromPalette:obs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt}}},
 {opcode:'me163',blockType:rep,text:'{[a]:[b],[c]:[d],[e]:[f]}',hideFromPalette:obs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt},f:{type:txt}}},
 {opcode:'me164',blockType:rep,text:'{[a]:[b],[c]:[d],[e]:[f],[g]:[h]}',hideFromPalette:obs,arguments:{a:{type:txt},b:{type:txt},c:{type:txt},d:{type:txt},e:{type:txt},f:{type:txt},g:{type:txt},h:{type:txt}}},
+{opcode:'me165',blockType:rep,text:'performance.now()',hideFromPalette:obs,disableMonitor:1},
 {opcode:'me38',blockType:bol,text:'[a]',hideFromPalette:obs,disableMonitor:1,arguments:{a:{type:txt,menu:'vals'}}},
 {opcode:'me12',blockType:rep,text:'interno[a]',hideFromPalette:obs,disableMonitor:1,arguments:{a:{type:txt,menu:'in'}}},
 {opcode:'me20',blockType:rep,text:'Objeto Global',hideFromPalette:obs,disableMonitor:1},
@@ -444,5 +445,6 @@ me161(ar){return {[ar.a]:ar.b}}
 me162(ar){return {[ar.a]:ar.b,[ar.c]:ar.d}}
 me163(ar){return {[ar.a]:ar.b,[ar.c]:ar.d,[ar.e]:ar.f}}
 me164(ar){return {[ar.a]:ar.b,[ar.c]:ar.d,[ar.e]:ar.f,[ar.g]:ar.h}}
+me165(ar){return performance.now()}
 
 }Scratch.extensions.register(new exps());})(Scratch);

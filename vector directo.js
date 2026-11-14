@@ -1,8 +1,8 @@
 (function(Scratch) {'use strict';//por el (pentaquark neutro, penta quark neutro) y neutral auream
 const txt=Scratch.ArgumentType.STRING,rep=Scratch.BlockType.REPORTER,num=Scratch.ArgumentType.NUMBER,vgbb=Scratch.BlockType.BUTTON,eva=Scratch.BlockType.BOOLEAN,com=Scratch.BlockType.COMMAND;
 const vm=Scratch.vm,runtime=vm.runtime,grrad=Math.PI/180;let Gvec=[],ops=1,vecs=1,prop=1,glo=1,cc=1,cuat=1,oct=1,sed=1,geo=1,tup=1;
-function unosobrez(RE,IM){return [(((1*RE))/((RE*RE)+(IM*IM))),((-(1*IM))/((RE*RE)+(IM*IM)))];}
-function expz(z){let p=Math.exp(z[0]);return [(Math.cos(z[1])*p),(Math.sin(z[1])*p)];}
+function unosobrez(RE,IM){return [(((RE))/((RE*RE)+(IM*IM))),((-(IM))/((RE*RE)+(IM*IM)))];}
+function expz(z){let p=Math.exp(z[0]);return [Math.cos(z[1])*p,Math.sin(z[1])*p];}
 function multz(z1,z2){return [((z1[0]*z2[0])-(z1[1]*z2[1])),((z1[0]*z2[1])+(z1[1]*z2[0]))];}
 function divz(z1,z2){var vadz=(z2[0]**2)+(z2[1]**2);return [((z1[0]*z2[0])+(z1[1]*z2[1]))/vadz,((z1[1]*z2[0])-(z1[0]*z2[1]))/vadz];}
 function zelevN(z,N){let dat3=1/N,dat1=Math.atan2(z[1],z[0]),dat2=Math.pow(Math.hypot(z[0],z[1]),1/dat3);return [(Math.cos((dat1)/dat3))*dat2,(Math.sin((dat1)/dat3))*dat2];}
@@ -335,7 +335,7 @@ Asig:{acceptReporters:1,items:['=','+=','-=','/=','*=','**=','<<=','??=','%=','>
 figs:{acceptReporters:0,items:['circulos','cuadrados','rectangulos']},
 redu:{acceptReporters:1,items:['+','-','*','/','**','|','&','^','max','min']}}
 };}
-sed1({v,w}){return [v[0]*1+w[0]*1,v[1]*1+w[1]*1,v[2]*1+w[2]*1,v[3]*1+w[3]*1,v[4]*1+w[4]*1,v[5]*1+w[5]*1,v[6]*1+w[6]*1,v[7]*1+w[7]*1,v[8]*1+w[8]*1,v[9]*1+w[9]*1,v[10]*1+w[10]*1,v[11]*1+w[11]*1,v[12]*1+w[12]*1,v[13]*1+w[13]*1,v[14]*1+w[14]*1,v[15]*1+w[15]*1]}
+sed1({v,w}){return [v[0]+w[0],v[1]+w[1],v[2]+w[2],v[3]+w[3],v[4]+w[4],v[5]+w[5],v[6]+w[6],v[7]+w[7],v[8]+w[8],v[9]+w[9],v[10]+w[10],v[11]+w[11],v[12]+w[12],v[13]+w[13],v[14]+w[14],v[15]+w[15]]}
 sed2({v,w}){return [v[0]-w[0],v[1]-w[1],v[2]-w[2],v[3]-w[3],v[4]-w[4],v[5]-w[5],v[6]-w[6],v[7]-w[7],v[8]-w[8],v[9]-w[9],v[10]-w[10],v[11]-w[11],v[12]-w[12],v[13]-w[13],v[14]-w[14],v[15]-w[15]]}
 sed3({v}){return [v[0],-v[1],-v[2],-v[3],-v[4],-v[5],-v[6],-v[7],-v[8],-v[9],-v[10],-v[11],-v[12],-v[13],-v[14],-v[15]]}
 sed4({a}){return (a.every((r)=>!isNaN(Number(r)))&&a.length==16)}
@@ -357,7 +357,7 @@ sed5({v,k}){return [
 ,(v[0]*k[14])-(v[1]*k[15])-(v[2]*k[12])+(v[3]*k[13])+(v[4]*k[10])-(v[5]*k[11])+(v[6]*k[8])+(v[7]*k[9])-(v[8]*k[6])-(v[9]*k[7])-(v[10]*k[4])+(v[11]*k[5])+(v[12]*k[2])-(v[13]*k[3])+(v[14]*k[0])+(v[15]*k[1])
 ,(v[0]*k[15])+(v[1]*k[14])-(v[2]*k[13])-(v[3]*k[12])+(v[4]*k[11])+(v[5]*k[10])-(v[6]*k[9])+(v[7]*k[8])-(v[8]*k[7])+(v[9]*k[6])-(v[10]*k[5])-(v[11]*k[4])+(v[12]*k[3])+(v[13]*k[2])-(v[14]*k[1])+(v[15]*k[0])
 ]}
-sed6({v,w,c}){c[0]=v[0]*1+w[0]*1,c[1]=v[1]*1+w[1]*1,c[2]=v[2]*1+w[2]*1,c[3]=v[3]*1+w[3]*1,c[4]=v[4]*1+w[4]*1,c[5]=v[5]*1+w[5]*1,c[6]=v[6]*1+w[6]*1,c[7]=v[7]*1+w[7]*1,c[8]=v[8]*1+w[8]*1,c[9]=v[9]*1+w[9]*1,c[10]=v[10]*1+w[10]*1,c[11]=v[11]*1+w[11]*1,c[12]=v[12]*1+w[12]*1,c[13]=v[13]*1+w[13]*1,c[14]=v[14]*1+w[14]*1,c[15]=v[15]*1+w[15]*1}
+sed6({v,w,c}){c[0]=v[0]+w[0],c[1]=v[1]+w[1],c[2]=v[2]+w[2],c[3]=v[3]+w[3],c[4]=v[4]+w[4],c[5]=v[5]+w[5],c[6]=v[6]+w[6],c[7]=v[7]+w[7],c[8]=v[8]+w[8],c[9]=v[9]+w[9],c[10]=v[10]+w[10],c[11]=v[11]+w[11],c[12]=v[12]+w[12],c[13]=v[13]+w[13],c[14]=v[14]+w[14],c[15]=v[15]+w[15]}
 sed7({v,w,c}){c[0]=v[0]-w[0],c[1]=v[1]-w[1],c[2]=v[2]-w[2],c[3]=v[3]-w[3],c[4]=v[4]-w[4],c[5]=v[5]-w[5],c[6]=v[6]-w[6],c[7]=v[7]-w[7],c[8]=v[8]-w[8],c[9]=v[9]-w[9],c[10]=v[10]-w[10],c[11]=v[11]-w[11],c[12]=v[12]-w[12],c[13]=v[13]-w[13],c[14]=v[14]-w[14],c[15]=v[15]-w[15]}
 sed9({v,c}){c[0]=v[0],c[1]=-v[1],c[2]=-v[2],c[3]=-v[3],c[4]=-v[4],c[5]=-v[5],c[6]=-v[6],c[7]=-v[7],c[8]=-v[8],c[9]=-v[9],c[10]=-v[10],c[11]=-v[11],c[12]=-v[12],c[13]=-v[13],c[14]=-v[14],c[15]=-v[15]}
 sed8({v,k,c}){
@@ -378,7 +378,7 @@ c[0]=(v[0]*k[0])-(v[1]*k[1])-(v[2]*k[2])-(v[3]*k[3])-(v[4]*k[4])-(v[5]*k[5])-(v[
 ,c[14]=(v[0]*k[14])-(v[1]*k[15])-(v[2]*k[12])+(v[3]*k[13])+(v[4]*k[10])-(v[5]*k[11])+(v[6]*k[8])+(v[7]*k[9])-(v[8]*k[6])-(v[9]*k[7])-(v[10]*k[4])+(v[11]*k[5])+(v[12]*k[2])-(v[13]*k[3])+(v[14]*k[0])+(v[15]*k[1])
 ,c[15]=(v[0]*k[15])+(v[1]*k[14])-(v[2]*k[13])-(v[3]*k[12])+(v[4]*k[11])+(v[5]*k[10])-(v[6]*k[9])+(v[7]*k[8])-(v[8]*k[7])+(v[9]*k[6])-(v[10]*k[5])-(v[11]*k[4])+(v[12]*k[3])+(v[13]*k[2])-(v[14]*k[1])+(v[15]*k[0])}
 //--------------------------------------------------------------------------------------------------------------------------------------octaniones
-octa1({a,b}){return [a[0]*1+1*b[0],a[1]*1+b[1]*1,a[2]*1+b[2]*1,a[3]*1+b[3]*1,a[4]*1+b[4]*1,a[5]*1+b[5]*1,a[6]*1+b[6]*1,a[7]*1+b[7]*1]}
+octa1({a,b}){return [a[0]+b[0],a[1]+b[1],a[2]+b[2],a[3]+b[3],a[4]+b[4],a[5]+b[5],a[6]+b[6],a[7]+b[7]]}
 octa2({a,b}){return [a[0]-b[0],a[1]-b[1],a[2]-b[2],a[3]-b[3],a[4]-b[4],a[5]-b[5],a[6]-b[6],a[7]-b[7]]}
 octa3({v1,v2}){return [
 (v1[0]*v2[0])-(v1[1]*v2[1])-(v1[2]*v2[2])-(v1[3]*v2[3])-(v1[4]*v2[4])-(v1[5]*v2[5])-(v1[6]*v2[6])-(v1[7]*v2[7]),
@@ -403,7 +403,7 @@ octa7({a}){return (a.length==8&&!isNaN(Number(a[0]))&&!isNaN(Number(a[1]))&&!isN
 octa8({v}){const mo=Math.hypot(v[1],v[2],v[3],v[4],v[5],v[6],v[7]),s=Math.sin(mo)*Math.exp(v[0]);return [Math.cos(mo)*Math.exp(v[0]),s*v[1]/mo,s*v[2]/mo,s*v[3]/mo,s*v[4]/mo,s*v[5]/mo,s*v[6]/mo,s*v[7]/mo]}
 octa9({v}){return (v[0]**2+v[1]**2+v[2]**2+v[3]**2+v[4]**2+v[5]**2+v[6]**2+v[7]**2)**0.5}
 octa10({V}){const M=((V[1]**2)+(V[2]**2)+(V[3]**2)+(V[4]**2)+(V[5]**2)+(V[6]**2)+(V[7]**2))**0.5,c=Math.acos(V[0]/Math.hypot(V[0],V[1],V[2],V[3],V[4],V[5],V[6],V[7]));return [Math.log(Math.hypot(V[0],V[1],V[2],V[3],V[4],V[5],V[6],V[7])),(V[1]/M*c),(V[2]/M*c),(V[3]/M*c),(V[4]/M*c),(V[5]/M*c),(V[6]/M*c),(V[7]/M*c)]}
-octa11({a,b,c}){c[0]=a[0]*1+1*b[0],c[1]=a[1]*1+b[1]*1,c[2]=a[2]*1+b[2]*1,c[3]=a[3]*1+b[3]*1,c[4]=a[4]*1+b[4]*1,c[5]=a[5]*1+b[5]*1,c[6]=a[6]*1+b[6]*1,c[7]=a[7]*1+b[7]*1;}
+octa11({a,b,c}){c[0]=a[0]+1[0],c[1]=a[1]+b[1],c[2]=a[2]+b[2],c[3]=a[3]+b[3],c[4]=a[4]+b[4],c[5]=a[5]+b[5],c[6]=a[6]+b[6],c[7]=a[7]+b[7];}
 octa12({a,b,c}){c[0]=a[0]-b[0],c[1]=a[1]-b[1],c[2]=a[2]-b[2],c[3]=a[3]-b[3],c[4]=a[4]-b[4],c[5]=a[5]-b[5],c[6]=a[6]-b[6],c[7]=a[7]-b[7];}
 octa13({v1,v2,c}){
 c[0]=(v1[0]*v2[0])-(v1[1]*v2[1])-(v1[2]*v2[2])-(v1[3]*v2[3])-(v1[4]*v2[4])-(v1[5]*v2[5])-(v1[6]*v2[6])-(v1[7]*v2[7]),
@@ -430,7 +430,7 @@ octa18({v1,e}){return [v1[0]*e,v1[1]*e,v1[2]*e,v1[3]*e,v1[4]*e,v1[5]*e,v1[6]*e,v
 octa19({v1,e,c}){c[0]=v1[0]*e,c[1]=v1[1]*e,c[2]=v1[2]*e,c[3]=v1[3]*e,c[4]=v1[4]*e,c[5]=v1[5]*e,c[6]=v1[6]*e,c[7]=v1[7]*e}
 octa20({v}){return (v[0]!=0?Math.acos(v[0]/Math.hypot(v[0],v[1],v[2],v[3],v[4],v[5],v[6],v[7])):Math.asin(Math.hypot(v[1],v[2],v[3],v[4],v[5],v[6],v[7])/Math.hypot(v[0],v[1],v[2],v[3],v[4],v[5],v[6],v[7])))}
 //--------------------------------------------------------------------------------------------------------------------cuaterniones
-cua1({a,b}){return [a[0]*1+1*b[0],a[1]*1+b[1]*1,a[2]*1+b[2]*1,a[3]*1+b[3]*1]}
+cua1({a,b}){return [a[0]+b[0],a[1]+b[1],a[2]+b[2],a[3]+b[3]]}
 cua2({a,b}){return [a[0]-b[0],a[1]-b[1],a[2]-b[2],a[3]-b[3]]}
 cua3({v1,v2}){return [
 ((v1[0]*v2[0])-(v1[1]*v2[1])-(v1[2]*v2[2])-(v1[3]*v2[3])),
@@ -447,7 +447,7 @@ cua7({V}){const M=((V[1]**2)+(V[2]**2)+(V[3]**2))**0.5,c=Math.acos(V[0]/Math.hyp
 cua8({V}){const r=((V[1]**2)+(V[2]**2)+(V[3]**2))**0.5,srad=Math.sin(r)/r*Math.exp(V[0]);return [(Math.exp(V[0])*Math.cos(r)),srad*V[1],srad*V[2],srad*V[3]]}
 cua9({a}){return (a.length==4&&!isNaN(Number(a[0]))&&!isNaN(Number(a[1]))&&!isNaN(Number(a[2]))&&!isNaN(Number(a[3])))}
 cua10({V}){return (V[0]**2+V[1]**2+V[2]**2+V[3]**2)**0.5}
-cua11({a,b,c}){c[0]=a[0]*1+1*b[0],c[1]=a[1]*1+b[1]*1,c[2]=a[2]*1+b[2]*1,c[3]=a[3]*1+b[3]*1;}
+cua11({a,b,c}){c[0]=a[0]+b[0],c[1]=a[1]+b[1],c[2]=a[2]+b[2],c[3]=a[3]+b[3];}
 cua12({a,b,c}){c[0]=a[0]-b[0],c[1]=a[1]-b[1],c[2]=a[2]-b[2],c[3]=a[3]-b[3]}
 cua13({v1,v2,c}){
 c[0]=((v1[0]*v2[0])-(v1[1]*v2[1])-(v1[2]*v2[2])-(v1[3]*v2[3])),
@@ -477,7 +477,7 @@ cua23(ar){return [ar.v1[0]*ar.e,ar.v1[1]*ar.e,ar.v1[2]*ar.e,ar.v1[3]*ar.e]}
 cua24(ar){return ar.c[0]=ar.v1[0]*ar.e,ar.c[1]=ar.v1[1]*ar.e,ar.c[2]=ar.v1[2]*ar.e,ar.c[3]=ar.v1[3]*ar.e}
 cua25(ar){return (ar.a[0]!=0?Math.acos(ar.a[0]/Math.hypot(ar.a[0],ar.a[1],ar.a[2],ar.a[3])):Math.asin(Math.hypot(ar.a[1],ar.a[2],ar.a[3])/Math.hypot(ar.a[0],ar.a[1],ar.a[2],ar.a[3])))}
 //------------------------------------------------------------------------------------------------------------------complejos
-cc1(ar){return [ar.a[0]*1+1*ar.b[0],ar.a[1]*1+ar.b[1]*1]}
+cc1(ar){return [ar.a[0]+ar.b[0],ar.a[1]+ar.b[1]]}
 cc2(ar){return [ar.a[0]-ar.b[0],ar.a[1]-ar.b[1]]}
 cc3(ar){return [(ar.a[0]*ar.b[0])-ar.a[1]*ar.b[1],ar.a[0]*ar.b[1]+ar.b[0]*ar.a[1]]}
 cc4({a,b}){const G=(b[0]**2)+(b[1]**2);return [((a[0]*b[0])+a[1]*b[1])/G,(b[0]*a[1]-a[0]*b[1])/G]}
@@ -487,7 +487,7 @@ cc8(ar){const pa=Math.exp(ar.a[0]);return [(Math.cos(ar.a[1])*pa),(Math.sin(ar.a
 cc9(ar){return Math.atan2(ar.a[1],ar.a[0]);}
 cc10(ar){return (ar.a.length==2&&!isNaN(Number(ar.a[0]))&&!isNaN(Number(ar.a[1])))}
 cc11(ar){return Math.hypot(ar.a[0],ar.a[1])}
-cc12(ar){ar.c[0]=ar.a[0]*1+1*ar.b[0],ar.c[1]=ar.a[1]*1+ar.b[1]*1;}
+cc12(ar){ar.c[0]=ar.a[0]+ar.b[0],ar.c[1]=ar.a[1]+ar.b[1];}
 cc13(ar){ar.c[0]=ar.a[0]-ar.b[0],ar.c[1]=ar.a[1]-ar.b[1];}
 cc14(ar){ar.c[0]=(ar.a[0]*ar.b[0])-ar.a[1]*ar.b[1],ar.c[1]=ar.a[0]*ar.b[1]+ar.b[0]*ar.a[1];}
 cc15({a,b,c}){const G=(b[0]**2)+(b[1]**2);c[0]=((a[0]*b[0])+a[1]*b[1])/G,c[1]=(b[0]*a[1]-a[0]*b[1])/G;}
