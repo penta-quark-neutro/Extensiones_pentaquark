@@ -70,7 +70,7 @@ por el momento cuenta con 12 modos de uniones.
 usando DirectorySystemHandle, es capas de accede a arboles de directorios, capaz de crear y leer archivos y directorios.
 y solo requiere una vez el acceso para manipular continuamente el directorio abierto y su contenido.
 recomiendo usarlo junto a Blob.
-## WebGpu
+## WebGPU
 es una extension creada por [milyjdomchii-ship-it](https://github.com/milyjdomchii-ship-it)
 permite computo y renderisado con GPU atravez de WebGpu.
 puede crear multiples ventanas de renderizado, en las cuales con buferes se puede hacer renderizado a nivel de pixel o triangulos.
