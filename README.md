@@ -3,7 +3,7 @@ las extensiones aquí presentes están diseñadas para el entorno de turbowarp.
 presentan bastantes diferencias, su construcción les confiere mas velocidad, pero no tienen manejo de errores (en la mayoria de casos)
 ni devuelven numbers y strings únicamente, pueden devolver: vectores, Objects, etc...
 por lo cual su lógica de manejo debe ser mas cuidadoso.
-si no están escritos créditos, el la descripción de una extension, fueron hecha por pentaquark o neutral auream.
+si no están escritos créditos, el la descripción de una extension, fue hecha por pentaquark o neutral auream, (aplica lo mismo si na hay descripcion).
 aun así los créditos los podrá encontrar dentro de los archivos de las extensiones.
 ## contenido de extensiones
 ## bigint y operadores
@@ -15,16 +15,14 @@ pero es un poquito mas eficiente moviendo muchos objetos, que si todos tuvieran 
 no tiene mucho de interface.
 permite usar eval, y varias funciones internas de turbowarp, ademas de unos valores primitivos directamente.
 un sistema básico para cargar y guardar archivos y un observador de precion.
-⚠️permite ejecución arbitraria de código.
+descontinuada. ⚠️permite ejecución arbitraria de código.
 ## Map
 da disponibilidad al Objeto Map y WeakMap.
 ## set
 da disponibilidad al Objeto Set y WeakSet.
 ## RSA
 de la API cripto, da disponibilidad parcial a la encriptacion RSA.
-perfecto para web sockets...
 también tiene las firmas con HMAC.
-¡aun esta en desarrollo!
 ⚠️usar con precaución, es fácil cometer errores que anules su funcionalidad.
 ## Symbol
 da disponibilidad a los primitivos Symbol.
@@ -37,7 +35,7 @@ accesible y fácil de usar para dichos cálculos, ademas de mas completa.
 es una potente extensión para usar los TypedVector, SharedArrayBuffer, ArrayBuffer y DataView.
 ademas de otro calculo aritmético basico y calculo basico de matrices 2x2, 3x3 y 4x4.
 ideal para trabajar con 'vector directo' si la eficiencia de datos te preocupa.
-también es útil con 'RSA'.
+también es útil con 'RSA' y WebGpu.
 ## vector directo
 es una de las potentes, permite usar Arrays y TypedArray (pero menos flexible que 'Typedvector')
 con la mayoría de métodos de Array, muchos métodos para ahorrar espacio de bloques y eficiencia.
@@ -65,9 +63,6 @@ permite usar Worker y SharedWorker de una forma simple.
 también tiene la Api MessageChannel.
 ademas de unos bloques de acceso y ejecución de código.
 ⚠️permite ejecución arbitraria de código.
-## Logica trivalente
-parecido y compatible con Boolean.
-es una lógica que tiene los valores verdadero, falso y desconocido.
 ## Uniones
 es una extensión básica en desarrollo que permite crear uniones entre objetos, estas uniones son de coordenadas o direccion.
 por el momento cuenta con 12 modos de uniones.
@@ -75,3 +70,10 @@ por el momento cuenta con 12 modos de uniones.
 usando DirectorySystemHandle, es capas de accede a arboles de directorios, capaz de crear y leer archivos y directorios.
 y solo requiere una vez el acceso para manipular continuamente el directorio abierto y su contenido.
 recomiendo usarlo junto a Blob.
+##WebGpu
+es una extension creada por [milyjdomchii-ship-it](https://github.com/milyjdomchii-ship-it)
+permite computo y renderisado con GPU atravez de WebGpu.
+puede crear multiples ventanas de renderizado, en las cuales con buferes se puede hacer renderizado a nivel de pixel o triangulos.
+el renderizado ademas de las ventanas de renderizado, tambien es posible hacerla sobre objetos/sprites.
+el renderizado o computo se hace atraves de sombreadores/shaders que se construyen con la extension.
+compatible con Typedvector.
