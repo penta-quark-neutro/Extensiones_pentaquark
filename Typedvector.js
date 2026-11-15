@@ -36,9 +36,9 @@ class Typedvectorr{getInfo(){return{id:'Typedvectorr',name:'Typedvectorr',color1
 {blockType:"label",text:"vectores",hideFromPalette:vecs},//--------------------------------------------------------------------------------------------------------------------------------
 {opcode:'pt',blockType:rep,text:'[a]〚[b]〛',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'2'}}},
 {opcode:'le',blockType:rep,text:'length[a]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'rpt',blockType:rep,text:'[a]p[b]=[c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'0'},c:{type:txt,defaultValue:'10'}}},
-{opcode:'rpt2',blockType:com,text:'[a]p[b]=[c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'0'},c:{type:txt,defaultValue:'10'}}},
-{opcode:'rpt3',blockType:com,text:'[a]p[b][tip][c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'0'},c:{type:txt,defaultValue:'10'},tip:{type:txt,menu:'Asig'}}},
+{opcode:'rpt',blockType:rep,text:'[a]〚[b]〛=[c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'0'},c:{type:txt,defaultValue:'10'}}},
+{opcode:'rpt2',blockType:com,text:'[a]〚[b]〛=[c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'0'},c:{type:txt,defaultValue:'10'}}},
+{opcode:'rpt3',blockType:com,text:'[a]〚[b]〛[tip][c]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'0'},c:{type:txt,defaultValue:'10'},tip:{type:txt,menu:'Asig'}}},
 {opcode:'ma',blockType:rep,text:'[a].map[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'outs'},b:{type:num,defaultValue:'3'}}},
 {opcode:'Fil',blockType:rep,text:'[a].filter[ou][b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},ou:{type:txt,menu:'Filt'},b:{type:txt,defaultValue:'3'}}},
 {opcode:'set',blockType:com,text:'[a].set[b]',hideFromPalette:vecs,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
@@ -89,7 +89,9 @@ class Typedvectorr{getInfo(){return{id:'Typedvectorr',name:'Typedvectorr',color1
 {opcode:'util2',blockType:rep,text:'De este objeto bufferes frios',hideFromPalette:uti,disableMonitor:1},
 {blockType:"label",text:"compatibilidad",hideFromPalette:comp},//--------------------------------------------------------------------------------------------------------------------------------
 {opcode:'comp0',blockType:rep,text:'typedArraysCpu/gpuFast[a]',color1:'#4C97FF',hideFromPalette:(!ext('typedArraysCpu')&&!ext('gpuFast'))||comp,arguments:{a:{type:txt,defaultValue:'1'}}},
-{opcode:'comp1',blockType:com,text:'typedArraysCpu/gpuFast[a]reemplzar con[b]',color1:'#4C97FF',hideFromPalette:(!ext('typedArraysCpu')&&!ext('gpuFast'))||comp,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'comp1',blockType:com,text:'typedArraysCpu/gpuFast[a]reemplazar con[b]',color1:'#4C97FF',hideFromPalette:(!ext('typedArraysCpu')&&!ext('gpuFast'))||comp,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'comp2',blockType:com,text:'gpuFast[a]reemplazar/crear con[b](f32,i32,u32)',color1:'#4C97FF',hideFromPalette:(!ext('typedArraysCpu')&&!ext('gpuFast'))||comp,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'comp3',blockType:rep,text:'typedArraysCpu/gpuFast, entradas',color1:'#4C97FF',hideFromPalette:(!ext('typedArraysCpu')&&!ext('gpuFast'))||comp,disableMonitor:1},
 ],menus:{
 outs:{acceptReporters:0,items:['+','-','*','/','**','%','LogB','sen','cos','tan','sign','abs','rampa','lim+','lim-','int','arcsen','arccos','arctan','e^','Ln','Log10','Log2','|','&','^','~','<<','>>','>>>','tofixed','senh','cosh','tanh','asenh','acosh','atanh','fround','f16round','round','trunc']},
 Filt:{acceptReporters:0,items:['==','===','<','>','>=','<=','!=']},
@@ -216,6 +218,11 @@ comp0(ar,util){return util.target.extensionStorage['typedArraysShared']?.arrays?
 util0(ar,util){if(!util.target.extensionStorage['TypedvectorrBuffers']){util.target.extensionStorage['TypedvectorrBuffers']={};}util.target.extensionStorage['TypedvectorrBuffers'][ar.b]=(new Uint8Array(ar.a)).toBase64()}
 util1(ar,util){let a=util.target.extensionStorage['TypedvectorrBuffers']?.[ar.a]; return (a?Uint8Array.fromBase64(a).buffer:undefined)}
 util2(ar,util){let a=util.target.extensionStorage['TypedvectorrBuffers']; return (a?Object.keys(a):undefined)}
-comp1(ar,util){util.target.extensionStorage['typedArraysShared'].arrays[ar.a].data=ar.b}
+comp1(ar,util){if(util.target.extensionStorage['TypedvectorrBuffers']?.arrays?.[ar.a]&&ar.b instanceof Uint8Array.__proto__){util.target.extensionStorage['typedArraysShared'].arrays[ar.a].data=ar.b}}
+comp2(ar,util){//bloque por milyjdomchii-ship-it en github, con ligeras modificasiones
+const storage =(util.target.extensionStorage['typedArraysShared']||(util.target.extensionStorage['typedArraysShared']={nextId:1,arrays:{}})),type=(ar.b&&ar.b.constructor&&ar.b.constructor.name),supported=['Float32Array','Int32Array','Uint32Array']; 
+if(!type||!supported.includes(type)){throw new Error(`WebGPU only supports Float32Array / Int32Array / Uint32Array (obtained ${type})`)} 
+storage.arrays[Math.floor(Number(ar.a))]={type,data:ar.b};}
+comp3(ar,util){if(util.target.extensionStorage['typedArraysShared']?.arrays){return Object.keys(util.target.extensionStorage['typedArraysShared']?.arrays)}}
 
 }Scratch.extensions.register(new Typedvectorr());})(Scratch);
