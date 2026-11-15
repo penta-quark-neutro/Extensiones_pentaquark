@@ -1,33 +1,35 @@
 # Extensiones pentaquark
 las extensiones aquí presentes están diseñadas para el entorno de turbowarp.
-presentan bastantes diferencias, su construcción les confiere mas velocidad, pero no tienen manejo de errores
+presentan bastantes diferencias, su construcción les confiere mas velocidad, pero no tienen manejo de errores (en la mayoria de casos)
 ni devuelven numbers y strings únicamente, pueden devolver: vectores, Objects, etc...
 por lo cual su lógica de manejo debe ser mas cuidadoso.
+si no están escritos créditos, el la descripción de una extension, fueron hecha por pentaquark o neutral auream.
+aun así los créditos los podrá encontrar dentro de los archivos de las extensiones.
 ## contenido de extensiones
-### bigint y operadores
+## bigint y operadores
 contiene los operadores básicos de js (+,-,/,*,**,%,<<,>>,>>>,^,~,|,&) y Bigint() y comparadores
-### control de multitudes
+## control de multitudes
 actualmente sin mantenimiento...
 pero es un poquito mas eficiente moviendo muchos objetos, que si todos tuvieran su propio código... no es muy útil realmente.
-### interface
+## interface
 no tiene mucho de interface.
 permite usar eval, y varias funciones internas de turbowarp, ademas de unos valores primitivos directamente.
 un sistema básico para cargar y guardar archivos y un observador de precion.
 ⚠️permite ejecución arbitraria de código.
-### Map
+## Map
 da disponibilidad al Objeto Map y WeakMap.
-### set
+## set
 da disponibilidad al Objeto Set y WeakSet.
-### RSA
+## RSA
 de la API cripto, da disponibilidad parcial a la encriptacion RSA.
 perfecto para web sockets...
 también tiene las firmas con HMAC.
 ¡aun esta en desarrollo!
 ⚠️usar con precaución, es fácil cometer errores que anules su funcionalidad.
-### Symbol
+## Symbol
 da disponibilidad a los primitivos Symbol.
 ⚠️permite ejecución arbitraria de código.
-### compleX
+## compleX
 es una decente extensión para cálculos de números complejos,cuaterniones y octaniones.
 es menos eficiente que vector directo que también incluye esto, pero esta extensión es muy
 accesible y fácil de usar para dichos cálculos, ademas de mas completa.
@@ -53,9 +55,9 @@ técnicamente con esta, se puede hacer todo lo que Js pueda hacer, pero recomien
 ademas de facilitar el remplazo de código generado por turbowarp con propio.
 ⚠️permite ejecución arbitraria de código.
 +160 bloques, +20 acciones de menús.
-### Decimal arbitrario
+## Decimal arbitrario
 es una extensión para trabajar con numero decimales arbitrarios en su longitud, funciona en base a [Decimal.js](https://github.com/MikeMcl/decimal.js)
-### Iterador
+## Iterador
 Da facilidad de uso a Iteradores, y sus métodos.
 ⚠️permite ejecución arbitraria de código.
 ## workers
@@ -63,13 +65,13 @@ permite usar Worker y SharedWorker de una forma simple.
 también tiene la Api MessageChannel.
 ademas de unos bloques de acceso y ejecución de código.
 ⚠️permite ejecución arbitraria de código.
-### Logica trivalente
+## Logica trivalente
 parecido y compatible con Boolean.
 es una lógica que tiene los valores verdadero, falso y desconocido.
 ## Uniones
 es una extensión básica en desarrollo que permite crear uniones entre objetos, estas uniones son de coordenadas o direccion.
 por el momento cuenta con 12 modos de uniones.
-### DirectorySystemHandle
+## DirectorySystemHandle
 usando DirectorySystemHandle, es capas de accede a arboles de directorios, capaz de crear y leer archivos y directorios.
 y solo requiere una vez el acceso para manipular continuamente el directorio abierto y su contenido.
 recomiendo usarlo junto a Blob.
