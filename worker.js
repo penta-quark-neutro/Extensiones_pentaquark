@@ -13,7 +13,7 @@ class Workers{getInfo(){return {id:'Workers',name:'Workers',color1:'#0faa0f',col
 {opcode:'wr14',blockType:com,text:'[a]onerror variable[b]=k',arguments:{a:{type:str,defaultValue:'worker_1'},b:{type:str,defaultValue:'var_1'}}},
 {opcode:'wr4',blockType:com,text:'revokeURL[a]',arguments:{a:{type:str,defaultValue:'scriptURL'}}},
 {opcode:'wr5',blockType:com,text:'[a]terminate worker',arguments:{a:{type:str,defaultValue:'worker_1'}}},
-{opcode:'wr6',blockType:rep,text:'workers',disableMonitor:1},
+{opcode:'wr6',blockType:rep,text:'workers resgitro',disableMonitor:1},
 {opcode:'wr7',blockType:rep,text:'{}',disableMonitor:1},
 {opcode:'wr8',blockType:rep,text:'〚〛',disableMonitor:1},
 {opcode:'wr9',blockType:rep,text:'[a]〚[b]〛',arguments:{a:{type:str},b:{type:str}}},
@@ -34,10 +34,11 @@ class Workers{getInfo(){return {id:'Workers',name:'Workers',color1:'#0faa0f',col
 {opcode:'wr23',blockType:com,text:'[a]port.onerror variable[b]=k',arguments:{a:{type:str,defaultValue:'worker_1'},b:{type:str,defaultValue:'var_1'}}},
 {opcode:'wr25',blockType:com,text:'[a]port.onconnect variable[b]=k',arguments:{a:{type:str,defaultValue:'worker_1'},b:{type:str,defaultValue:'var_1'}}},
 {opcode:'wr35',blockType:com,text:'[a]terminate SharedWorker',arguments:{a:{type:str,defaultValue:'worker_1'}}},
-{opcode:'wr17',blockType:rep,text:'sharedworkers',disableMonitor:1},
+{opcode:'wr17',blockType:rep,text:'sharedworkers registro',disableMonitor:1},
 {opcode:'wr28',blockType:com,text:'new MessageChannel registro[a]',arguments:{a:{type:str,defaultValue:'Mech_1'}}},
 {opcode:'wr29',blockType:rep,text:'MessageChannel[a]',arguments:{a:{type:str,defaultValue:'Mech_1'}}},
-{opcode:'wr32',blockType:rep,text:'MessageChannels',disableMonitor:1},
+{opcode:'wr32',blockType:rep,text:'MessageChannels registro',disableMonitor:1},
+{opcode:'wr36',blockType:rep,text:'Todos las referencias de objetos',disableMonitor:1},
 
 ],};}
 wr0(ar){if(regWork[ar.b]){return ;}regWork[ar.b]=(new Worker(ar.a))}
@@ -76,5 +77,6 @@ wr32(ar){return Reflect.ownKeys(regMc).toString()}
 wr33(ar){return ar.a[ar.b]()}
 wr34(ar){return ar.a[ar.b](ar.c)}
 wr35(ar){if(regSWork[ar.a]){regSWork[ar.a].terminate();Reflect.deleteProperty(regSWork,ar.a);}}
+wr36(ar){return [regWork,regSWork,regMc]}
 
 }Scratch.extensions.register(new Workers());})(Scratch);
