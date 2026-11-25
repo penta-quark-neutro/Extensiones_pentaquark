@@ -22,21 +22,29 @@ var Objglob={},fun=1,dap=1,obs=1,pun=0,blo=1,adv=1;
 const AsyncFunction=async function(){}.constructor,GeneratorFunction=function*(){}.constructor,AsyncGeneratorFunction=async function*(){}.constructor;
 function ref(){Scratch.vm.extensionManager.refreshBlocks();}
 
-function ExpsCadena(objetivo,vistor){let ff=new Set(vistor);//v1.0.6
+function ExpsCadena(objetivo,vistor){let ff=new Set(vistor);//v1.0.7
 try{var gj=JSON.stringify(objetivo)}catch(sec){console.warn(gj);var gj='000XecjsEiC';}
 try{if(!ff.has(objetivo)){if(typeof(objetivo)=="object"){
 if(objetivo===null){return '"[null]"'}
+if(objetivo instanceof SharedArrayBuffer){return '["[sarb]","'+new Uint8Array(objetivo).toHex()+'"]'}
 if(objetivo instanceof Iterator){return '["[it]",['+objetivo.toArray().map(t=>ExpsCadena(t))+"]]"}
 if(objetivo instanceof BigInt64Array){return '["[bi64a]","'+new Uint8Array(objetivo.buffer).toBase64()+'"]'}
 if(objetivo instanceof BigUint64Array){return '["[bui64a]","'+new Uint8Array(objetivo.buffer).toBase64()+'"]'}
 if(objetivo instanceof ArrayBuffer){return '["[arb]","'+new Uint8Array(objetivo).toHex()+'"]'}
-if(objetivo instanceof Uint8Array){return '["[ui8a]",['+objetivo.toString()+"]]"}if(objetivo instanceof Uint16Array){return '["[ui16a]",['+objetivo.toString()+"]]"}
-if(objetivo instanceof Uint32Array){return '["[ui32a]",['+objetivo.toString()+"]]"}if(objetivo instanceof Uint8ClampedArray){return '["[ui8ca]",['+objetivo.toString()+"]]"}
-if(objetivo instanceof Int8Array){return '["[i8a]",['+objetivo.toString()+"]]"}if(objetivo instanceof Int16Array){return '["[i16a]",['+objetivo.toString()+"]]"}
-if(objetivo instanceof Int32Array){return '["[i32a]",['+objetivo.toString()+"]]"}if(objetivo instanceof Float16Array){return '["[f16a]",['+objetivo.toString()+"]]"}
-if(objetivo instanceof Float32Array){return '["[f32a]",['+objetivo.toString()+"]]"}if(objetivo instanceof Float64Array){return '["[f64a]",['+objetivo.toString()+"]]"}
-if(objetivo instanceof Array){return '["[ga]",['+objetivo.map(t=>ExpsCadena(t))+"]]"}if(objetivo instanceof Map){return '["[Mp]",['+Array.from(objetivo).map(t=>ExpsCadena(t))+"]]"}
-if(objetivo instanceof Set){return '["[St]",['+Array.from(objetivo).map(t=>ExpsCadena(t))+"]]"}if(objetivo instanceof Date){return '["[dt]",'+'"'+objetivo.toISOString()+'"'}
+if(objetivo instanceof Uint8Array){return '["[ui8a]",['+objetivo.toString()+"]]"}
+if(objetivo instanceof Uint16Array){return '["[ui16a]",['+objetivo.toString()+"]]"}
+if(objetivo instanceof Uint32Array){return '["[ui32a]",['+objetivo.toString()+"]]"}
+if(objetivo instanceof Uint8ClampedArray){return '["[ui8ca]",['+objetivo.toString()+"]]"}
+if(objetivo instanceof Int8Array){return '["[i8a]",['+objetivo.toString()+"]]"}
+if(objetivo instanceof Int16Array){return '["[i16a]",['+objetivo.toString()+"]]"}
+if(objetivo instanceof Int32Array){return '["[i32a]",['+objetivo.toString()+"]]"}
+if(objetivo instanceof Float16Array){return '["[f16a]",['+objetivo.toString()+"]]"}
+if(objetivo instanceof Float32Array){return '["[f32a]",['+objetivo.toString()+"]]"}
+if(objetivo instanceof Float64Array){return '["[f64a]",['+objetivo.toString()+"]]"}
+if(objetivo instanceof Array){return '["[ga]",['+objetivo.map(t=>ExpsCadena(t))+"]]"}
+if(objetivo instanceof Map){return '["[Mp]",['+Array.from(objetivo).map(t=>ExpsCadena(t))+"]]"}
+if(objetivo instanceof Set){return '["[St]",['+Array.from(objetivo).map(t=>ExpsCadena(t))+"]]"}
+if(objetivo instanceof Date){return '["[dt]",'+'"'+objetivo.toISOString()+'"'}
 if(objetivo instanceof Object){ff.add(objetivo);let cad="{";for(const ENT in objetivo){cad+=","+JSON.stringify(ENT)+":"+ExpsCadena(objetivo[ENT],ff)}return cad.replace(',','')+"}"}
 }else{
 if(typeof(objetivo)=="bigint"){return '["[bi]","'+objetivo.toString(16)+'"]'}
@@ -44,7 +52,8 @@ if(typeof(objetivo)=="function"){if((objetivo.toString()).includes("[native code
 if(typeof(objetivo)=="number"){if(isFinite(objetivo)){return objetivo.toString()}else{if(!isNaN(objetivo)){return '"['+objetivo.toString()+']"'}else{return '"[Na]"'}}}else{
 if(typeof(objetivo)=="boolean"){return (objetivo?'true':'false')}else{return JSON.stringify((objetivo?objetivo?.toString?.():'[Udf]'))}}}}else{return '"DETENCION"'}ff=null;}catch(fail){console.error(fail);return gj;}}
 
-function reconstruccion(arg,func){//v1.0.3
+function reconstruccion(arg,func){//v1.0.4
+if(arg[0]=="[sarb]"){let a=Uint8Array.fromHex(arg[1]).buffer,b=new Uint8Array(new SharedArrayBuffer(a.byteLenght));b.set(a);return b.buffer}
 if(arg[0]=="[it]"){return Iterator.from(arg[1].map(k=>ExpsParseCadena(k,true,func)))}
 if(arg[0]=="[bi64a]"){return new BigInt64Array(Uint8Array.fromBase64(arg[1]).buffer)}
 if(arg[0]=="[bui64a]"){return new BigUint64Array(Uint8Array.fromBase64(arg[1]).buffer)}
@@ -73,6 +82,8 @@ case"exps_me149":return{kind:"exps.me149",id:block.id};case"exps_me150":return{k
 case"exps_me152":return{kind:"exps.me152",id:block.id};case"exps_me153":return{kind:"exps.me153",id:block.id};
 case"exps_me154":return{kind:"exps.me154",id:block.id};case"exps_me155":return{kind:"exps.me155",id:block.id};
 case"exps_me158":return{kind:"exps.me158",id:block.id};case"exps_me159":return{kind:"exps.me159",id:block.id};
+case"exps_me167":return{kind:"exps.me167",id:block.id};case"exps_me168":return{kind:"exps.me168",id:block.id};
+case"exps_me169":return{kind:"exps.me169",id:block.id};case"exps_me170":return{kind:"exps.me170",id:block.id};
 default:return _ogIRdescendStack.call(this, block);}};
 const _ogJSdescendStack = JSGenerator.prototype.descendStackedBlock;
 JSGenerator.prototype.descendStackedBlock=function(node){switch(node.kind){
@@ -96,6 +107,10 @@ this.source+=vm.runtime.getTargetForStage().lookupVariableByNameAndType(yy+'',''
 case"exps.me159":{let yy=JSON.parse(((this.source.split('yield* executeInCompatibilityLayer(')).pop()).split(',}, ')[0]+'}').Z.split(',');
 this.source=this.source.split('yield* executeInCompatibilityLayer(').slice(0,-1).join('yield* executeInCompatibilityLayer(');
 this.source+=vm.runtime.getTargetForStage().lookupVariableByNameAndType(yy[0]+'','list').value[yy[1]];break;}
+case"exps.me167":{this.source+="try{\n";break;}
+case"exps.me168":{this.source+="}catch(a){thread.error=a;\n";break;}
+case"exps.me169":{this.source+="}finally{\n";break;}
+case"exps.me170":{this.source+="}\n";break;}
 default:return _ogJSdescendStack.call(this, node);}};}
 //---------------------------------fin de codigo de prueba
 
@@ -133,52 +148,52 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {blockType:"label",text:"Uso de funciones",hideFromPalette:fun},//--------------------------------------------------------------------------------------------------------------------------------
 {func:'herr7',blockType:vgbb,hideFromPalette:!pun||fun,text:'Ocultar punto funcion',},{func:'herr8',blockType:vgbb,hideFromPalette:pun||fun,text:'Mostrar punto funcion'},
 {func:'herr9',blockType:vgbb,hideFromPalette:!blo||fun,text:'Mostrar forma comando',},{func:'herr10',blockType:vgbb,hideFromPalette:blo||fun,text:'Ocultar forma comando'},
-{opcode:'me27',blockType:bol,text:'[a]()',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'me28',blockType:bol,text:'[a]([b])',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'me29',blockType:bol,text:'[a](...[b])',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'me33',blockType:bol,text:'new[a]()',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'me34',blockType:bol,text:'new[a]([b])',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'me35',blockType:bol,text:'new[a](...[b])',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'me48',blockType:bol,text:'[a].[c]()',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
-{opcode:'me49',blockType:bol,text:'[a].[c]([b])',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
-{opcode:'me50',blockType:bol,text:'[a].[c](...[b])',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
-{opcode:'me51',blockType:bol,text:'new[a].[c]()',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
-{opcode:'me52',blockType:bol,text:'new[a].[c]([b])',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
-{opcode:'me53',blockType:bol,text:'new[a].[c](...[b])',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
-{opcode:'me55',blockType:com0,text:'[a]()',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'me56',blockType:com0,text:'[a]([b])',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'me57',blockType:com0,text:'[a](...[b])',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'me58',blockType:com0,text:'new[a]()',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'me59',blockType:com0,text:'new[a]([b])',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'me60',blockType:com0,text:'new[a](...[b])',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'me61',blockType:com0,text:'[a].[c]()',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
-{opcode:'me62',blockType:com0,text:'[a].[c]([b])',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
-{opcode:'me63',blockType:com0,text:'[a].[c](...[b])',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
-{opcode:'me64',blockType:com0,text:'new[a].[c]()',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
-{opcode:'me65',blockType:com0,text:'new[a].[c]([b])',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
-{opcode:'me66',blockType:com0,text:'new[a].[c](...[b])',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
-{opcode:'me107',blockType:bol,text:'[a]?.()',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'me105',blockType:bol,text:'[a]?.([b])',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'me106',blockType:bol,text:'[a]?.(...[b])',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'me108',blockType:bol,text:'[a].[b]?.()',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'}}},
-{opcode:'me109',blockType:bol,text:'[a].[b]?.([c])',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:''}}},
-{opcode:'me110',blockType:bol,text:'[a].[b]?.(...[c])',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:''}}},
-{opcode:'me111',blockType:com0,text:'[a]?.()',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'me112',blockType:com0,text:'[a]?.([b])',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'me113',blockType:com0,text:'[a]?.(...[b])',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'me114',blockType:com0,text:'[a].[b]?.()',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'me115',blockType:com0,text:'[a].[b]?.([c])',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:''}}},
-{opcode:'me116',blockType:com0,text:'[a].[b]?.(...[c])',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:''}}},
-{opcode:'me37',blockType:rep,text:'try{[a](...[b])}',hideFromPalette:fun||pun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'me98',blockType:rep,text:'try{[a].[b](...[c])}',hideFromPalette:fun||!pun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:''}}},
-{opcode:'me128',blockType:Scratch.BlockType.LOOP,text:['try{[d]=[a](...[b])}catch[c]{','}'],isTerminal:0,branchCount:1,hideFromPalette:fun||pun,arguments:{a:{type:txt},b:{type:txt},c:{type:txt,defaultValue:'variable 2'},d:{type:txt,defaultValue:'variable'}}},
-{opcode:'me129',blockType:Scratch.BlockType.LOOP,text:['try{[d]=[a].[e](...[b])}catch[c]{','}'],isTerminal:0,branchCount:1,hideFromPalette:fun||!pun,arguments:{a:{type:txt},b:{type:txt},c:{type:txt,defaultValue:'variable 2'},d:{type:txt,defaultValue:'variable'},e:{type:txt}}},
-{opcode:'me130',blockType:Scratch.BlockType.LOOP,text:['try{[a](...[b])}catch[c]{','}'],isTerminal:0,branchCount:1,hideFromPalette:fun||pun,arguments:{a:{type:txt},b:{type:txt},c:{type:txt,defaultValue:'variable'}}},
-{opcode:'me131',blockType:Scratch.BlockType.LOOP,text:['try{[a].[e](...[b])}catch[c]{','}'],isTerminal:0,branchCount:1,hideFromPalette:fun||!pun,arguments:{a:{type:txt},b:{type:txt},c:{type:txt,defaultValue:'variable'},e:{type:txt}}},
-{opcode:'me15',blockType:rep,text:'Apply[a][b][c]',hideFromPalette:fun||!blo,arguments:{a:{type:txt,defaultValue:'funcion'},b:{type:txt,defaultValue:'this'},c:{type:txt,defaultValue:'Array'}}},
-{opcode:'me70',blockType:com0,text:'Apply[a][b][c]',hideFromPalette:fun||blo,arguments:{a:{type:txt,defaultValue:'funcion'},b:{type:txt,defaultValue:'this'},c:{type:txt,defaultValue:'Array'}}},
-{opcode:'me73',blockType:rep,text:'[a].bind(...[b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
-{opcode:'me117',blockType:rep,text:'[a].call([b],...[c])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
+{opcode:'me27',color1:'#983975',blockType:bol,text:'[a]()',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me28',color1:'#983975',blockType:bol,text:'[a]([b])',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me29',color1:'#983975',blockType:bol,text:'[a](...[b])',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me33',color1:'#983975',blockType:bol,text:'new[a]()',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me34',color1:'#983975',blockType:bol,text:'new[a]([b])',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me35',color1:'#983975',blockType:bol,text:'new[a](...[b])',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me48',color1:'#983975',blockType:bol,text:'[a].[c]()',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me49',color1:'#983975',blockType:bol,text:'[a].[c]([b])',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me50',color1:'#983975',blockType:bol,text:'[a].[c](...[b])',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me51',color1:'#983975',blockType:bol,text:'new[a].[c]()',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me52',color1:'#983975',blockType:bol,text:'new[a].[c]([b])',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me53',color1:'#983975',blockType:bol,text:'new[a].[c](...[b])',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me55',color1:'#983975',blockType:com0,text:'[a]()',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me56',color1:'#983975',blockType:com0,text:'[a]([b])',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me57',color1:'#983975',blockType:com0,text:'[a](...[b])',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me58',color1:'#983975',blockType:com0,text:'new[a]()',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me59',color1:'#983975',blockType:com0,text:'new[a]([b])',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me60',color1:'#983975',blockType:com0,text:'new[a](...[b])',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me61',color1:'#983975',blockType:com0,text:'[a].[c]()',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me62',color1:'#983975',blockType:com0,text:'[a].[c]([b])',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me63',color1:'#983975',blockType:com0,text:'[a].[c](...[b])',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me64',color1:'#983975',blockType:com0,text:'new[a].[c]()',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me65',color1:'#983975',blockType:com0,text:'new[a].[c]([b])',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me66',color1:'#983975',blockType:com0,text:'new[a].[c](...[b])',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:'tr'}}},
+{opcode:'me107',color1:'#983975',blockType:bol,text:'[a]?.()',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me105',color1:'#983975',blockType:bol,text:'[a]?.([b])',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me106',color1:'#983975',blockType:bol,text:'[a]?.(...[b])',hideFromPalette:(fun||pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me108',color1:'#983975',blockType:bol,text:'[a].[b]?.()',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'}}},
+{opcode:'me109',color1:'#983975',blockType:bol,text:'[a].[b]?.([c])',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:''}}},
+{opcode:'me110',color1:'#983975',blockType:bol,text:'[a].[b]?.(...[c])',hideFromPalette:(fun||!pun)||!blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:''}}},
+{opcode:'me111',color1:'#983975',blockType:com0,text:'[a]?.()',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me112',color1:'#983975',blockType:com0,text:'[a]?.([b])',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me113',color1:'#983975',blockType:com0,text:'[a]?.(...[b])',hideFromPalette:(fun||pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me114',color1:'#983975',blockType:com0,text:'[a].[b]?.()',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me115',color1:'#983975',blockType:com0,text:'[a].[b]?.([c])',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:''}}},
+{opcode:'me116',color1:'#983975',blockType:com0,text:'[a].[b]?.(...[c])',hideFromPalette:(fun||!pun)||blo,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:''}}},
+{opcode:'me37',color1:'#983975',blockType:rep,text:'try{[a](...[b])}',hideFromPalette:fun||pun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me98',color1:'#983975',blockType:rep,text:'try{[a].[b](...[c])}',hideFromPalette:fun||!pun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:'tr'},c:{type:txt,defaultValue:''}}},
+{opcode:'me128',color1:'#983975',blockType:Scratch.BlockType.LOOP,text:['try{[d]=[a](...[b])}catch[c]{','}'],isTerminal:0,branchCount:1,hideFromPalette:fun||pun,arguments:{a:{type:txt},b:{type:txt},c:{type:txt,defaultValue:'variable 2'},d:{type:txt,defaultValue:'variable'}}},
+{opcode:'me129',color1:'#983975',blockType:Scratch.BlockType.LOOP,text:['try{[d]=[a].[e](...[b])}catch[c]{','}'],isTerminal:0,branchCount:1,hideFromPalette:fun||!pun,arguments:{a:{type:txt},b:{type:txt},c:{type:txt,defaultValue:'variable 2'},d:{type:txt,defaultValue:'variable'},e:{type:txt}}},
+{opcode:'me130',color1:'#983975',blockType:Scratch.BlockType.LOOP,text:['try{[a](...[b])}catch[c]{','}'],isTerminal:0,branchCount:1,hideFromPalette:fun||pun,arguments:{a:{type:txt},b:{type:txt},c:{type:txt,defaultValue:'variable'}}},
+{opcode:'me131',color1:'#983975',blockType:Scratch.BlockType.LOOP,text:['try{[a].[e](...[b])}catch[c]{','}'],isTerminal:0,branchCount:1,hideFromPalette:fun||!pun,arguments:{a:{type:txt},b:{type:txt},c:{type:txt,defaultValue:'variable'},e:{type:txt}}},
+{opcode:'me15',color1:'#983975',blockType:rep,text:'Apply[a][b][c]',hideFromPalette:fun||!blo,arguments:{a:{type:txt,defaultValue:'funcion'},b:{type:txt,defaultValue:'this'},c:{type:txt,defaultValue:'Array'}}},
+{opcode:'me70',color1:'#983975',blockType:com0,text:'Apply[a][b][c]',hideFromPalette:fun||blo,arguments:{a:{type:txt,defaultValue:'funcion'},b:{type:txt,defaultValue:'this'},c:{type:txt,defaultValue:'Array'}}},
+{opcode:'me73',color1:'#983975',blockType:rep,text:'[a].bind(...[b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''}}},
+{opcode:'me117',color1:'#983975',blockType:rep,text:'[a].call([b],...[c])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:''},b:{type:txt,defaultValue:''},c:{type:txt,defaultValue:''}}},
 {opcode:'me36',blockType:rep,text:'Function(...[a],[b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'Args'},b:{type:txt,defaultValue:'Estructura'}}},
 {opcode:'me40',blockType:rep,text:'AsyncFunction(...[a],[b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'Args'},b:{type:txt,defaultValue:'Estructura'}}},
 {opcode:'me42',blockType:rep,text:'GeneratorFunction(...[a],[b])',hideFromPalette:fun,arguments:{a:{type:txt,defaultValue:'Args'},b:{type:txt,defaultValue:'Estructura'}}},
@@ -281,31 +296,36 @@ class exps{getInfo(){return {id:'exps',name:'exps',color1:'#984905',color2:'#763
 {opcode:'me160',blockType:Scratch.BlockType.LOOP,text:['Iniciar en nuevo hilo'],isTerminal:0,branchCount:1,hideFromPalette:obs},
 {opcode:'me132',blockType:Scratch.BlockType.LOOP,text:['do{','}while[a]'],isTerminal:0,branchCount:1,hideFromPalette:obs,arguments:{a:{type:txt}}},
 {opcode:'me133',blockType:Scratch.BlockType.LOOP,text:['for(var[a]of[b]){','}'],isTerminal:0,branchCount:1,hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'variable'},b:{type:txt}}},
+{opcode:'me166',blockType:Scratch.BlockType.LOOP,text:['for(var[a]in[b]){','}'],isTerminal:0,branchCount:1,hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'variable'},b:{type:txt}}},
 {opcode:'me134',blockType:com0,text:'Notification[a][b]click[c]close[d]error[e]var[f]',hideFromPalette:obs,arguments:{a:{type:txt,defaultValue:'titulo'},b:{type:txt,defaultValue:'{opciones}'},c:{type:txt,defaultValue:'ƒ'},d:{type:txt,defaultValue:'ƒ'},e:{type:txt,defaultValue:'ƒ'},f:{type:txt,defaultValue:'variable'}}},
 {opcode:'me147',blockType:com0,text:'break;',hideFromPalette:obs,isTerminal:1},
 {opcode:'me148',blockType:com0,text:'continue;',hideFromPalette:obs,isTerminal:1},
 {opcode:'me149',blockType:com0,text:'yield;',hideFromPalette:obs},
+{opcode:'me167',blockType:com0,color1:'#c0a900',text:'try{',hideFromPalette:obs},
+{opcode:'me168',blockType:com0,color1:'#c0a900',text:'}catch(a){thread.error=a;',hideFromPalette:obs},
+{opcode:'me169',blockType:com0,color1:'#c0a900',text:'}finally{',hideFromPalette:obs},
+{opcode:'me170',blockType:com0,color1:'#c0a900',text:'}',hideFromPalette:obs},
 {blockType:"label",text:"Avanzados",hideFromPalette:adv},//--------------------------------------------------------------------------------------------------------------------------------
-{opcode:'me135',blockType:rep,text:'Buscar procedimiento de hilo: pista[a]',hideFromPalette:adv,arguments:{a:{type:txt,defaultValue:'nombre o parte del nombre de la funcion'}}},
-{opcode:'me136',blockType:com0,text:'remplazar procedimiento de hilo:pista[a] rem[b]',hideFromPalette:adv,arguments:{a:{type:txt,defaultValue:'nombre o parte del nombre de la funcion'},b:{type:txt,defaultValue:'ƒ'}}},
-{opcode:'me139',blockType:rep,text:'Buscar procedimiento en[c]:pista[a]',hideFromPalette:adv,arguments:{a:{type:txt,defaultValue:'nombre o parte del nombre de la funcion'},c:{type:txt,defaultValue:'thread'}}},
-{opcode:'me140',blockType:com0,text:'remplazar procedimiento en[c]:pista[a] rem[b]',hideFromPalette:adv,arguments:{a:{type:txt,defaultValue:'nombre o parte del nombre de la funcion'},b:{type:txt,defaultValue:'ƒ'},c:{type:txt,defaultValue:'thread'}}},
-{opcode:'me137',blockType:rep,text:'thread',hideFromPalette:adv,disableMonitor:1},
-{opcode:'me138',blockType:rep,text:'todos los threads',hideFromPalette:adv,disableMonitor:1},
-{opcode:'me146',blockType:rep,text:'threads de este objeto',hideFromPalette:adv,disableMonitor:1},
-{opcode:'me141',blockType:rep,text:'exps',hideFromPalette:adv,disableMonitor:1},
-{opcode:'me144',blockType:com0,text:'remplazar Generador con[a]',hideFromPalette:adv,arguments:{a:{type:txt,defaultValue:'[object Generator] o ƒ o txt'}}},
-{opcode:'me145',blockType:com0,text:'retirar thread[a]',isTerminal:1,hideFromPalette:adv,arguments:{a:{type:txt,defaultValue:''}}},
-{opcode:'me151',blockType:com0,text:'carga util[Z]',hideFromPalette:adv,arguments:{Z:{type:txt,defaultValue:'target.mira="funciona";'}}},
-{opcode:'me156',blockType:com0,text:'carga util var[Z]',hideFromPalette:adv,arguments:{Z:{type:txt,defaultValue:'variable'}}},
-{opcode:'me157',blockType:com0,text:'carga util lista[Z]',hideFromPalette:adv,arguments:{Z:{type:txt,defaultValue:'lista1,0'}}},
-{opcode:'me152',blockType:com0,text:'inyectar',hideFromPalette:adv},
-{opcode:'me158',blockType:com0,text:'inyectar var',hideFromPalette:adv},
-{opcode:'me159',blockType:com0,text:'inyectar lista',hideFromPalette:adv},
-{opcode:'me153',blockType:com0,text:'/ n',hideFromPalette:adv},
-{opcode:'me150',blockType:com0,text:'debugger;',hideFromPalette:adv},
-{opcode:'me154',blockType:com0,text:'extraer codigo asta este punto en window.fuenteTw',hideFromPalette:adv},
-{opcode:'me155',blockType:com0,text:'romper capa de compatibilidad(Alpha)',hideFromPalette:adv},
+{opcode:'me135',blockType:rep,color1:'#c0390f',text:'Buscar procedimiento de hilo: pista[a]',hideFromPalette:adv,arguments:{a:{type:txt,defaultValue:'nombre o parte del nombre de la funcion'}}},
+{opcode:'me136',blockType:com0,color1:'#c0390f',text:'remplazar procedimiento de hilo:pista[a] rem[b]',hideFromPalette:adv,arguments:{a:{type:txt,defaultValue:'nombre o parte del nombre de la funcion'},b:{type:txt,defaultValue:'ƒ'}}},
+{opcode:'me139',blockType:rep,color1:'#c0390f',text:'Buscar procedimiento en[c]:pista[a]',hideFromPalette:adv,arguments:{a:{type:txt,defaultValue:'nombre o parte del nombre de la funcion'},c:{type:txt,defaultValue:'thread'}}},
+{opcode:'me140',blockType:com0,color1:'#c0390f',text:'remplazar procedimiento en[c]:pista[a] rem[b]',hideFromPalette:adv,arguments:{a:{type:txt,defaultValue:'nombre o parte del nombre de la funcion'},b:{type:txt,defaultValue:'ƒ'},c:{type:txt,defaultValue:'thread'}}},
+{opcode:'me137',blockType:rep,color1:'#c0390f',text:'thread',hideFromPalette:adv,disableMonitor:1},
+{opcode:'me138',blockType:rep,color1:'#c0390f',text:'todos los threads',hideFromPalette:adv,disableMonitor:1},
+{opcode:'me146',blockType:rep,color1:'#c0390f',text:'threads de este objeto',hideFromPalette:adv,disableMonitor:1},
+{opcode:'me141',blockType:rep,color1:'#c0390f',text:'exps',hideFromPalette:adv,disableMonitor:1},
+{opcode:'me144',blockType:com0,color1:'#c0390f',text:'remplazar Generador con[a]',hideFromPalette:adv,arguments:{a:{type:txt,defaultValue:'[object Generator] o ƒ o txt'}}},
+{opcode:'me145',blockType:com0,color1:'#c0390f',text:'retirar thread[a]',isTerminal:1,hideFromPalette:adv,arguments:{a:{type:txt,defaultValue:''}}},
+{opcode:'me151',blockType:com0,color1:'#c0390f',text:'carga util[Z]',hideFromPalette:adv,arguments:{Z:{type:txt,defaultValue:'target.mira="funciona";'}}},
+{opcode:'me156',blockType:com0,color1:'#c0390f',text:'carga util var[Z]',hideFromPalette:adv,arguments:{Z:{type:txt,defaultValue:'variable'}}},
+{opcode:'me157',blockType:com0,color1:'#c0390f',text:'carga util lista[Z]',hideFromPalette:adv,arguments:{Z:{type:txt,defaultValue:'lista1,0'}}},
+{opcode:'me152',blockType:com0,color1:'#c0390f',text:'inyectar',hideFromPalette:adv},
+{opcode:'me158',blockType:com0,color1:'#c0390f',text:'inyectar var',hideFromPalette:adv},
+{opcode:'me159',blockType:com0,color1:'#c0390f',text:'inyectar lista',hideFromPalette:adv},
+{opcode:'me153',blockType:com0,color1:'#c0390f',text:'/ n',hideFromPalette:adv},
+{opcode:'me150',blockType:com0,color1:'#c0390f',text:'debugger;',hideFromPalette:adv},
+{opcode:'me154',blockType:com0,color1:'#c0390f',text:'extraer codigo asta este punto en window.fuenteTw',hideFromPalette:adv},
+{opcode:'me155',blockType:com0,color1:'#c0390f',text:'romper capa de compatibilidad(Alpha)',hideFromPalette:adv},
 
 
 ],menus:{pr:{acceptReporters:0,items:['value','writable','enumerable','configurable']},
@@ -415,8 +435,8 @@ me130(ar,util){try{ar.a(...ar.b)}catch(e){util.target.lookupVariableByNameAndTyp
 me131(ar,util){try{ar.a[ar.e](...ar.b)}catch(e){util.target.lookupVariableByNameAndType(ar.c+'','').value=e;util.startBranch(1,false)}}
 me132(ar,util){if(ar.a){util.startBranch(1,true);util.thread[util.thread.peekStack()]=1;}else{if(!util.thread[util.thread.peekStack()]){util.startBranch(1,false)}else{delete util.thread[util.thread.peekStack()]}}}
 me133(ar,util){let Ident=util.thread.peekStack();
-if(!util.thread[Ident]){util.thread[Ident]=[Object.keys(ar.b),0]}
-if(util.thread[Ident][0].length>util.thread[Ident][1]){util.target.lookupVariableByNameAndType(ar.a+'','').value=ar.b[util.thread[Ident][0][util.thread[Ident][1]++]];util.startBranch(1,true);}else
+if(!util.thread[Ident]){util.thread[Ident]=[ar.b[Symbol['iterator']](),false]}
+if(util.thread[Ident][1]==false){let vals=util.thread[Ident][0].next();(vals.done?0:util.target.lookupVariableByNameAndType(ar.a+'','').value=vals.value);util.thread[Ident][1]=vals.done;(vals.done?0:util.startBranch(1,true));}else
 {delete util.thread[Ident];}}
 me134(ar,util){let j=util.target.lookupVariableByNameAndType(ar.f+'',''),k=new Notification(ar.a,ar.b);
 k.addEventListener("click",(event)=>{if(typeof(ar.c)=='function'){j.value=ar.c()}else{j.value=ar.c}});
@@ -446,5 +466,10 @@ me162(ar){return {[ar.a]:ar.b,[ar.c]:ar.d}}
 me163(ar){return {[ar.a]:ar.b,[ar.c]:ar.d,[ar.e]:ar.f}}
 me164(ar){return {[ar.a]:ar.b,[ar.c]:ar.d,[ar.e]:ar.f,[ar.g]:ar.h}}
 me165(ar){return performance.now()}
+me166(ar,util){let Ident=util.thread.peekStack();
+if(!util.thread[Ident]){util.thread[Ident]=[Object.keys(ar.b),0]}
+if(util.thread[Ident][1]<util.thread[Ident][0].length){util.target.lookupVariableByNameAndType(ar.a+'','').value=util.thread[Ident][0][util.thread[Ident][1]++];util.startBranch(1,true);}else
+{delete util.thread[Ident];}}
+me167(){}me168(){}me169(){}me170(){}
 
 }Scratch.extensions.register(new exps());})(Scratch);
