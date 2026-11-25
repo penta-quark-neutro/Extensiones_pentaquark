@@ -25,6 +25,7 @@ class Workers{getInfo(){return {id:'Workers',name:'Workers',color1:'#0faa0f',col
 {opcode:'wr15',blockType:com,text:'new SharedWorker[a] registro[b]',arguments:{a:{type:str,defaultValue:'scriptURL/URL'},b:{type:str,defaultValue:'worker_1'}}},
 {opcode:'wr16',blockType:com,text:'new SharedWorker[a][c] registro[b]',arguments:{a:{type:str,defaultValue:'scriptURL/URL'},b:{type:str,defaultValue:'worker_1'},c:{type:str,defaultValue:'{opciones}/nombre'}}},
 {opcode:'wr18',blockType:com,text:'[a]port.start()',arguments:{a:{type:str,defaultValue:'worker_1'}}},
+{opcode:'wr38',blockType:com,text:'[a]port.close()',arguments:{a:{type:str,defaultValue:'worker_1'}}},
 {opcode:'wr19',blockType:com,text:'[a]port.onmessage=(k)=>{[b]}',arguments:{a:{type:str,defaultValue:'worker_1'},b:{type:str,defaultValue:'JS'}}},
 {opcode:'wr20',blockType:com,text:'[a]port.onerror=(k)=>{[b]}',arguments:{a:{type:str,defaultValue:'worker_1'},b:{type:str,defaultValue:'JS'}}},
 {opcode:'wr24',blockType:com,text:'[a]port.onconnect=(k)=>{[b]}',arguments:{a:{type:str,defaultValue:'worker_1'},b:{type:str,defaultValue:'JS'}}},
@@ -34,6 +35,7 @@ class Workers{getInfo(){return {id:'Workers',name:'Workers',color1:'#0faa0f',col
 {opcode:'wr23',blockType:com,text:'[a]port.onerror variable[b]=k',arguments:{a:{type:str,defaultValue:'worker_1'},b:{type:str,defaultValue:'var_1'}}},
 {opcode:'wr25',blockType:com,text:'[a]port.onconnect variable[b]=k',arguments:{a:{type:str,defaultValue:'worker_1'},b:{type:str,defaultValue:'var_1'}}},
 {opcode:'wr35',blockType:com,text:'[a]terminate SharedWorker',arguments:{a:{type:str,defaultValue:'worker_1'}}},
+{opcode:'wr37',blockType:rep,text:'[a]port',arguments:{a:{type:str,defaultValue:'worker_1'}}},
 {opcode:'wr17',blockType:rep,text:'sharedworkers registro',disableMonitor:1},
 {opcode:'wr28',blockType:com,text:'new MessageChannel registro[a]',arguments:{a:{type:str,defaultValue:'Mech_1'}}},
 {opcode:'wr29',blockType:rep,text:'MessageChannel[a]',arguments:{a:{type:str,defaultValue:'Mech_1'}}},
@@ -78,5 +80,7 @@ wr33(ar){return ar.a[ar.b]()}
 wr34(ar){return ar.a[ar.b](ar.c)}
 wr35(ar){if(regSWork[ar.a]){regSWork[ar.a].terminate();Reflect.deleteProperty(regSWork,ar.a);}}
 wr36(ar){return [regWork,regSWork,regMc]}
+wr37(ar){if(regSWork[ar.a]){return regSWork[ar.a].port}}
+wr38(ar){if(regSWork[ar.a]){regSWork[ar.a].port.close()}}
 
 }Scratch.extensions.register(new Workers());})(Scratch);
